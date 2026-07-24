@@ -1,0 +1,905 @@
+     1→// RehobothSocial In-Memory Data Store
+     2→// This is a mock data layer that simulates Supabase.
+     3→// When Supabase is connected, replace these functions with actual Supabase queries.
+     4→// All data resets on server restart (intentional for mock mode).
+     5→
+     6→import {
+     7→  SocialQuestion,
+     8→  QuestionResponse,
+     9→  PublicPrayerRequest,
+    10→  PrivatePrayerRequest,
+    11→  AmenWallPost,
+    12→  WeeklyChallenge,
+    13→  LiveSession,
+    14→  AttendanceIntention,
+    15→  PresenceRecord,
+    16→  ModerationLogEntry,
+    17→  ChatChannel,
+    18→  ChatMessage,
+    19→  ChatReport,
+    20→} from "./types";
+    21→
+    22→// --- Presence ---
+    23→const presenceStore = new Map<string, number>(); // sessionId -> lastSeen timestamp
+    24→
+    25→export function getPresenceCount(): number {
+    26→  const now = Date.now();
+    27→  const threshold = 5 * 60 * 1000; // 5 minutes
+    28→  let count = 0;
+    29→  presenceStore.forEach((ts) => {
+    30→    if (now - ts < threshold) count++;
+    31→  });
+    32→  // Add a base count to simulate real activity
+    33→  return count + Math.floor(Math.random() * 15) + 20;
+    34→}
+    35→
+    36→export function recordPresence(sessionId: string): void {
+    37→  presenceStore.set(sessionId, Date.now());
+    38→  // Clean up old entries
+    39→  const now = Date.now();
+    40→  const threshold = 10 * 60 * 1000;
+    41→  presenceStore.forEach((ts, key) => {
+    42→    if (now - ts > threshold) presenceStore.delete(key);
+    43→  });
+    44→}
+    45→
+    46→// --- Today's Question ---
+    47→const questions: SocialQuestion[] = [
+    48→  {
+    49→    id: "q1",
+    50→    question: "What are you thanking God for today?",
+    51→    status: "published",
+    52→    createdAt: new Date().toISOString(),
+    53→    updatedAt: new Date().toISOString(),
+    54→    totalResponses: 47,
+    55→  },
+    56→  {
+    57→    id: "q2",
+    58→    question: "What are you trusting God for this week?",
+    59→    status: "published",
+    60→    createdAt: new Date(Date.now() - 86400000).toISOString(),
+    61→    updatedAt: new Date(Date.now() - 86400000).toISOString(),
+    62→    totalResponses: 32,
+    63→  },
+    64→];
+    65→
+    66→const questionResponses: QuestionResponse[] = [
+    67→  {
+    68→    id: "qr1",
+    69→    questionId: "q1",
+    70→    response: "For life, health, and my family. God has been so faithful!",
+    71→    displayName: "Anonymous",
+    72→    sessionId: "s1",
+    73→    status: "approved",
+    74→    reactions: { love: 12, praying: 8, amen: 15, fire: 5 },
+    75→    createdAt: new Date().toISOString(),
+    76→  },
+    77→  {
+    78→    id: "qr2",
+    79→    questionId: "q1",
+    80→    response: "God just opened a new door for me at work. Glory!",
+    81→    displayName: "Anonymous",
+    82→    sessionId: "s2",
+    83→    status: "approved",
+    84→    reactions: { love: 9, praying: 5, amen: 11, fire: 8 },
+    85→    createdAt: new Date(Date.now() - 3600000).toISOString(),
+    86→  },
+    87→  {
+    88→    id: "qr3",
+    89→    questionId: "q1",
+    90→    response: "My son passed his exams. Thank You, Jesus!",
+    91→    displayName: "Anonymous",
+    92→    sessionId: "s3",
+    93→    status: "approved",
+    94→    reactions: { love: 18, praying: 12, amen: 20, fire: 6 },
+    95→    createdAt: new Date(Date.now() - 7200000).toISOString(),
+    96→  },
+    97→];
+    98→
+    99→export function getCurrentQuestion(): SocialQuestion | null {
+   100→  return questions.find((q) => q.status === "published") || null;
+   101→}
+   102→
+   103→export function getQuestionResponses(questionId: string): QuestionResponse[] {
+   104→  return questionResponses.filter(
+   105→    (r) => r.questionId === questionId && r.status === "approved"
+   106→  );
+   107→}
+   108→
+   109→export function addQuestionResponse(
+   110→  questionId: string,
+   111→  response: string,
+   112→  sessionId: string,
+   113→  autoApprove: boolean = true
+   114→): QuestionResponse {
+   115→  const resp: QuestionResponse = {
+   116→    id: `qr_${Date.now()}`,
+   117→    questionId,
+   118→    response: response.substring(0, 200),
+   119→    displayName: "Anonymous",
+   120→    sessionId,
+   121→    status: autoApprove ? "approved" : "pending",
+   122→    reactions: { love: 0, praying: 0, amen: 0, fire: 0 },
+   123→    createdAt: new Date().toISOString(),
+   124→  };
+   125→  questionResponses.unshift(resp);
+   126→  const q = questions.find((q) => q.id === questionId);
+   127→  if (q) q.totalResponses++;
+   128→  return resp;
+   129→}
+   130→
+   131→export function addReactionToResponse(
+   132→  responseId: string,
+   133→  type: "love" | "praying" | "amen" | "fire"
+   134→): QuestionResponse | null {
+   135→  const resp = questionResponses.find((r) => r.id === responseId);
+   136→  if (resp) {
+   137→    resp.reactions[type]++;
+   138→    return resp;
+   139→  }
+   140→  return null;
+   141→}
+   142→
+   143→// --- Prayer Circle ---
+   144→const publicPrayers: PublicPrayerRequest[] = [
+   145→  {
+   146→    id: "pr1",
+   147→    request: "Please pray for my mother's health. She is going through surgery next week.",
+   148→    displayName: "Anonymous",
+   149→    category: "healing",
+   150→    sessionId: "s10",
+   151→    status: "approved",
+   152→    prayerCount: 27,
+   153→    createdAt: new Date(Date.now() - 86400000).toISOString(),
+   154→  },
+   155→  {
+   156→    id: "pr2",
+   157→    request: "Pray for wisdom as I prepare for my final exams this month.",
+   158→    displayName: "Anonymous",
+   159→    category: "guidance",
+   160→    sessionId: "s11",
+   161→    status: "approved",
+   162→    prayerCount: 15,
+   163→    createdAt: new Date(Date.now() - 43200000).toISOString(),
+   164→  },
+   165→  {
+   166→    id: "pr3",
+   167→    request: "Standing in faith for a financial breakthrough for my family.",
+   168→    displayName: "Anonymous",
+   169→    category: "finances",
+   170→    sessionId: "s12",
+   171→    status: "approved",
+   172→    prayerCount: 34,
+   173→    createdAt: new Date(Date.now() - 172800000).toISOString(),
+   174→  },
+   175→];
+   176→
+   177→export function getPublicPrayerRequests(): PublicPrayerRequest[] {
+   178→  return publicPrayers.filter((p) => p.status === "approved");
+   179→}
+   180→
+   181→export function addPublicPrayerRequest(
+   182→  request: string,
+   183→  category: string,
+   184→  sessionId: string,
+   185→ autoApprove: boolean = true
+   186→): PublicPrayerRequest {
+   187→  const prayer: PublicPrayerRequest = {
+   188→    id: `pr_${Date.now()}`,
+   189→    request: request.substring(0, 500),
+   190→    displayName: "Anonymous",
+   191→    category,
+   192→    sessionId,
+   193→    status: autoApprove ? "approved" : "pending",
+   194→    prayerCount: 0,
+   195→    createdAt: new Date().toISOString(),
+   196→  };
+   197→  publicPrayers.unshift(prayer);
+   198→  return prayer;
+   199→}
+   200→
+   201→export function incrementPrayerCount(prayerId: string): PublicPrayerRequest | null {
+   202→  const prayer = publicPrayers.find((p) => p.id === prayerId);
+   203→  if (prayer) {
+   204→    prayer.prayerCount++;
+   205→    return prayer;
+   206→  }
+   207→  return null;
+   208→}
+   209→
+   210→// --- Private Prayer Requests (Admin-only access) ---
+   211→const privatePrayers: PrivatePrayerRequest[] = [];
+   212→
+   213→export function addPrivatePrayerRequest(
+   214→  request: string,
+   215→  category: string,
+   216→  fullName?: string,
+   217→  email?: string,
+   218→  phone?: string,
+   219→  isUrgent: boolean = false
+   220→): PrivatePrayerRequest {
+   221→  const prayer: PrivatePrayerRequest = {
+   222→    id: `priv_pr_${Date.now()}`,
+   223→    request: request.substring(0, 1000),
+   224→    fullName: fullName || undefined,
+   225→    email: email || undefined,
+   226→    phone: phone || undefined,
+   227→    category,
+   228→    isUrgent,
+   229→    status: "new",
+   230→    createdAt: new Date().toISOString(),
+   231→  };
+   232→  privatePrayers.unshift(prayer);
+   233→  return prayer;
+   234→}
+   235→
+   236→// Admin-only: retrieve all private prayers
+   237→export function getPrivatePrayerRequests(): PrivatePrayerRequest[] {
+   238→  return [...privatePrayers];
+   239→}
+   240→
+   241→// Admin-only: mark as reviewed
+   242→export function markPrivatePrayerReviewed(prayerId: string): boolean {
+   243→  const prayer = privatePrayers.find((p) => p.id === prayerId);
+   244→  if (prayer) {
+   245→    prayer.status = "reviewed";
+   246→    return true;
+   247→  }
+   248→  return false;
+   249→}
+   250→
+   251→// --- Moderation Queue ---
+   252→const moderationQueue: ModerationLogEntry[] = [];
+   253→
+   254→export function getModerationQueue(): ModerationLogEntry[] {
+   255→  return [...moderationQueue];
+   256→}
+   257→
+   258→export function addToModerationQueue(entry: Omit<ModerationLogEntry, "id" | "createdAt">): ModerationLogEntry {
+   259→  const logEntry: ModerationLogEntry = {
+   260→    ...entry,
+   261→    id: `mod_${Date.now()}`,
+   262→    createdAt: new Date().toISOString(),
+   263→  };
+   264→  moderationQueue.unshift(logEntry);
+   265→  return logEntry;
+   266→}
+   267→
+   268→export function approveModerationItem(id: string, targetCollection: "publicPrayers" | "amenPosts" | "questionResponses"): boolean {
+   269→  // Find in moderation queue and update status
+   270→  const item = moderationQueue.find((m) => m.id === id);
+   271→  if (!item) return false;
+   272→  item.action = "approved";
+   273→
+   274→  // Find and approve in the target collection
+   275→  switch (targetCollection) {
+   276→    case "publicPrayers": {
+   277→      const prayer = publicPrayers.find((p) => p.id === item.targetId);
+   278→      if (prayer) prayer.status = "approved";
+   279→      break;
+   280→    }
+   281→    case "amenPosts": {
+   282→      const post = amenPosts.find((p) => p.id === item.targetId);
+   283→      if (post) post.status = "approved";
+   284→      break;
+   285→    }
+   286→    case "questionResponses": {
+   287→      const resp = questionResponses.find((r) => r.id === item.targetId);
+   288→      if (resp) resp.status = "approved";
+   289→      break;
+   290→    }
+   291→  }
+   292→  return true;
+   293→}
+   294→
+   295→export function hideModerationItem(id: string, targetCollection: "publicPrayers" | "amenPosts" | "questionResponses"): boolean {
+   296→  const item = moderationQueue.find((m) => m.id === id);
+   297→  if (!item) return false;
+   298→  item.action = "hidden";
+   299→
+   300→  switch (targetCollection) {
+   301→    case "publicPrayers": {
+   302→      const prayer = publicPrayers.find((p) => p.id === item.targetId);
+   303→      if (prayer) prayer.status = "hidden";
+   304→      break;
+   305→    }
+   306→    case "amenPosts": {
+   307→      const post = amenPosts.find((p) => p.id === item.targetId);
+   308→      if (post) post.status = "hidden";
+   309→      break;
+   310→    }
+   311→    case "questionResponses": {
+   312→      const resp = questionResponses.find((r) => r.id === item.targetId);
+   313→      if (resp) resp.status = "hidden";
+   314→      break;
+   315→    }
+   316→  }
+   317→  return true;
+   318→}
+   319→
+   320→// --- Amen Wall ---
+   321→const amenPosts: AmenWallPost[] = [
+   322→  {
+   323→    id: "aw1",
+   324→    message: "God has been faithful to my family. Thank You, Lord!",
+   325→    displayName: "Anonymous",
+   326→    sessionId: "s20",
+   327→    status: "approved",
+   328→    reactions: { praying: 8, love: 12, amen: 15, fire: 3 },
+   329→    createdAt: new Date(Date.now() - 3600000).toISOString(),
+   330→  },
+   331→  {
+   332→    id: "aw2",
+   333→    message: "Thank You, Jesus! My testimony is coming soon.",
+   334→    displayName: "Anonymous",
+   335→    sessionId: "s21",
+   336→    status: "approved",
+   337→    reactions: { praying: 5, love: 9, amen: 18, fire: 7 },
+   338→    createdAt: new Date(Date.now() - 7200000).toISOString(),
+   339→  },
+   340→  {
+   341→    id: "aw3",
+   342→    message: "Praying for everyone going through a difficult season. God is with you!",
+   343→    displayName: "Anonymous",
+   344→    sessionId: "s22",
+   345→    status: "approved",
+   346→    reactions: { praying: 20, love: 14, amen: 10, fire: 4 },
+   347→    createdAt: new Date(Date.now() - 10800000).toISOString(),
+   348→  },
+   349→];
+   350→
+   351→export function getAmenWallPosts(): AmenWallPost[] {
+   352→  return amenPosts.filter((p) => p.status === "approved");
+   353→}
+   354→
+   355→export function addAmenWallPost(
+   356→  message: string,
+   357→  sessionId: string,
+   358→  autoApprove: boolean = true
+   359→): AmenWallPost {
+   360→  const post: AmenWallPost = {
+   361→    id: `aw_${Date.now()}`,
+   362→    message: message.substring(0, 200),
+   363→    displayName: "Anonymous",
+   364→    sessionId,
+   365→    status: autoApprove ? "approved" : "pending",
+   366→    reactions: { praying: 0, love: 0, amen: 0, fire: 0 },
+   367→    createdAt: new Date().toISOString(),
+   368→  };
+   369→  amenPosts.unshift(post);
+   370→  return post;
+   371→}
+   372→
+   373→export function addReactionToAmenPost(
+   374→  postId: string,
+   375→  type: "praying" | "love" | "amen" | "fire"
+   376→): AmenWallPost | null {
+   377→  const post = amenPosts.find((p) => p.id === postId);
+   378→  if (post) {
+   379→    post.reactions[type]++;
+   380→    return post;
+   381→  }
+   382→  return null;
+   383→}
+   384→
+   385→// --- Weekly Challenge ---
+   386→const challenges: WeeklyChallenge[] = [
+   387→  {
+   388→    id: "ch1",
+   389→    title: "Encourage one person who needs hope",
+   390→    description:
+   391→      "This week, reach out to at least one person who is going through a tough time. Send them a message of encouragement, share a scripture, or simply let them know you are praying for them. A small act of kindness can change someone's entire week.",
+   392→    status: "published",
+   393→    scheduledDate: new Date().toISOString(),
+   394→    endDate: new Date(Date.now() + 7 * 86400000).toISOString(),
+   395→    participationCount: 126,
+   396→    createdAt: new Date().toISOString(),
+   397→  },
+   398→];
+   399→
+   400→const challengeParticipations = new Set<string>();
+   401→
+   402→export function getCurrentChallenge(): WeeklyChallenge | null {
+   403→  const now = new Date();
+   404→  return (
+   405→    challenges.find(
+   406→      (c) =>
+   407→        c.status === "published" &&
+   408→        new Date(c.scheduledDate) <= now &&
+   409→        new Date(c.endDate) >= now
+   410→    ) || null
+   411→  );
+   412→}
+   413→
+   414→export function joinChallenge(
+   415→  challengeId: string,
+   416→  sessionId: string
+   417→): { joined: boolean; total: number } {
+   418→  const key = `${challengeId}:${sessionId}`;
+   419→  if (challengeParticipations.has(key)) {
+   420→    return { joined: false, total: challenges[0]?.participationCount || 0 };
+   421→  }
+   422→  challengeParticipations.add(key);
+   423→  const challenge = challenges.find((c) => c.id === challengeId);
+   424→  if (challenge) challenge.participationCount++;
+   425→  return { joined: true, total: challenge?.participationCount || 0 };
+   426→}
+   427→
+   428→// --- Live Together ---
+   429→const liveSession: LiveSession = {
+   430→  id: "ls1",
+   431→  title: "Sunday Worship Service",
+   432→  status: "scheduled",
+   433→  youtubeUrl: "https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID",
+   434→  viewerCount: 0,
+   435→};
+   436→
+   437→export function getLiveSession(): LiveSession {
+   438→  const now = new Date();
+   439→  const day = now.getDay();
+   440→  const hour = now.getHours();
+   441→  const minute = now.getMinutes();
+   442→  const time = hour * 60 + minute;
+   443→
+   444→  // Sunday 7:00 AM - 10:00 AM
+   445→  if (day === 0 && time >= 420 && time <= 600) {
+   446→    liveSession.status = "live";
+   447→    liveSession.title = "Sunday Worship Service";
+   448→    liveSession.viewerCount = Math.floor(Math.random() * 200) + 150;
+   449→  }
+   450→  // Tuesday 5:30 PM - 7:00 PM
+   451→  else if (day === 2 && time >= 1050 && time <= 1140) {
+   452→    liveSession.status = "live";
+   453→    liveSession.title = "Tuesday Digging Deep";
+   454→    liveSession.viewerCount = Math.floor(Math.random() * 100) + 50;
+   455→  }
+   456→  // Thursday 5:30 PM - 7:00 PM
+   457→  else if (day === 4 && time >= 1050 && time <= 1140) {
+   458→    liveSession.status = "live";
+   459→    liveSession.title = "Thursday Faith Clinic";
+   460→    liveSession.viewerCount = Math.floor(Math.random() * 100) + 50;
+   461→  } else {
+   462→    liveSession.status = "scheduled";
+   463→    liveSession.viewerCount = 0;
+   464→  }
+   465→
+   466→  return { ...liveSession };
+   467→}
+   468→
+   469→const liveReactionCounts = { worship: 0, prayer: 0, love: 0, fire: 0 };
+   470→
+   471→export function addLiveReaction(
+   472→  type: "worship" | "prayer" | "love" | "fire"
+   473→): Record<string, number> {
+   474→  liveReactionCounts[type]++;
+   475→  return { ...liveReactionCounts };
+   476→}
+   477→
+   478→export function getLiveReactionCounts(): Record<string, number> {
+   479→  return { ...liveReactionCounts };
+   480→}
+   481→
+   482→// --- Who's Coming? ---
+   483→const attendanceIntentions: AttendanceIntention[] = [];
+   484→
+   485→export function addAttendanceIntention(
+   486→  eventId: string,
+   487→  sessionId: string,
+   488→  type: "self" | "family" | "friend"
+   489→): { counts: { self: number; family: number; friend: number; total: number } } {
+   490→  const key = `${eventId}:${sessionId}`;
+   491→  const existing = attendanceIntentions.find((a) => a.sessionId === sessionId && a.eventId === eventId);
+   492→  if (existing) {
+   493→    existing.type = type;
+   494→  } else {
+   495→    attendanceIntentions.push({
+   496→      id: `att_${Date.now()}`,
+   497→      eventId,
+   498→      sessionId,
+   499→      type,
+   500→      createdAt: new Date().toISOString(),
+   501→    });
+   502→  }
+   503→  return getAttendanceCounts(eventId);
+   504→}
+   505→
+   506→export function getAttendanceCounts(eventId: string): {
+   507→  self: number;
+   508→  family: number;
+   509→  friend: number;
+   510→  total: number;
+   511→} {
+   512→  const eventIntentions = attendanceIntentions.filter((a) => a.eventId === eventId);
+   513→  const self = eventIntentions.filter((a) => a.type === "self").length;
+   514→  const family = eventIntentions.filter((a) => a.type === "family").length;
+   515→  const friend = eventIntentions.filter((a) => a.type === "friend").length;
+   516→  return { self, family, friend, total: self + family + friend };
+   517→}
+   518→
+   519→// Seed some mock attendance data
+   520→addAttendanceIntention("ev1", "mock_s1", "self");
+   521→addAttendanceIntention("ev1", "mock_s2", "self");
+   522→addAttendanceIntention("ev1", "mock_s3", "family");
+   523→addAttendanceIntention("ev1", "mock_s4", "self");
+   524→addAttendanceIntention("ev1", "mock_s5", "friend");
+   525→
+   526→// ============================================================
+   527→// FamilyChat Store
+   528→// ============================================================
+   529→
+   530→const chatChannels: ChatChannel[] = [
+   531→  {
+   532→    id: "ch_general",
+   533→    name: "General Family",
+   534→    emoji: "🏠",
+   535→    description: "Everyday church-family conversation.",
+   536→    order: 0,
+   537→    isAnnouncement: false,
+   538→    status: "active",
+   539→    createdAt: new Date().toISOString(),
+   540→    updatedAt: new Date().toISOString(),
+   541→    lastMessageAt: new Date(Date.now() - 60000).toISOString(),
+   542→    messageCount: 42,
+   543→  },
+   544→  {
+   545→    id: "ch_prayer",
+   546→    name: "Prayer & Encouragement",
+   547→    emoji: "🙏",
+   548→    description: "Prayer and spiritual support.",
+   549→    order: 1,
+   550→    isAnnouncement: false,
+   551→    status: "active",
+   552→    createdAt: new Date().toISOString(),
+   553→    updatedAt: new Date().toISOString(),
+   554→    lastMessageAt: new Date(Date.now() - 300000).toISOString(),
+   555→    messageCount: 28,
+   556→  },
+   557→  {
+   558→    id: "ch_bible",
+   559→    name: "Bible & Faith",
+   560→    emoji: "📖",
+   561→    description: "Healthy Bible discussions.",
+   562→    order: 2,
+   563→    isAnnouncement: false,
+   564→    status: "active",
+   565→    createdAt: new Date().toISOString(),
+   566→    updatedAt: new Date().toISOString(),
+   567→    lastMessageAt: new Date(Date.now() - 900000).toISOString(),
+   568→    messageCount: 15,
+   569→  },
+   570→  {
+   571→    id: "ch_family",
+   572→    name: "Family & Marriage",
+   573→    emoji: "👨‍👩‍👧",
+   574→    description: "Christian family and relationship discussions.",
+   575→    order: 3,
+   576→    isAnnouncement: false,
+   577→    status: "active",
+   578→    createdAt: new Date().toISOString(),
+   579→    updatedAt: new Date().toISOString(),
+   580→    lastMessageAt: new Date(Date.now() - 1800000).toISOString(),
+   581→    messageCount: 8,
+   582→  },
+   583→  {
+   584→    id: "ch_church_life",
+   585→    name: "Church Life & Activities",
+   586→    emoji: "🎉",
+   587→    description: "Church activities and community matters.",
+   588→    order: 4,
+   589→    isAnnouncement: false,
+   590→    status: "active",
+   591→    createdAt: new Date().toISOString(),
+   592→    updatedAt: new Date().toISOString(),
+   593→    lastMessageAt: new Date(Date.now() - 3600000).toISOString(),
+   594→    messageCount: 12,
+   595→  },
+   596→  {
+   597→    id: "ch_announcements",
+   598→    name: "Church Announcements",
+   599→    emoji: "📢",
+   600→    description: "Admin-only publishing.",
+   601→    order: 5,
+   602→    isAnnouncement: true,
+   603→    status: "active",
+   604→    createdAt: new Date().toISOString(),
+   605→    updatedAt: new Date().toISOString(),
+   606→    lastMessageAt: new Date(Date.now() - 7200000).toISOString(),
+   607→    messageCount: 3,
+   608→  },
+   609→];
+   610→
+   611→const chatMessages: ChatMessage[] = [
+   612→  {
+   613→    id: "msg_1",
+   614→    channelId: "ch_general",
+   615→    content: "Good morning, family! Hope everyone had a blessed week. God is faithful!",
+   616→    displayName: "Anonymous",
+   617→    sessionId: "s100",
+   618→    status: "approved",
+   619→    isAnnouncement: false,
+   620→    reactions: { "❤️": 8, "🙏": 5, "🙌": 3 },
+   621→    reportCount: 0,
+   622→    createdAt: new Date(Date.now() - 600000).toISOString(),
+   623→  },
+   624→  {
+   625→    id: "msg_2",
+   626→    channelId: "ch_general",
+   627→    content: "Praise God! He's been so good to my family this week. My daughter got admitted to university!",
+   628→    displayName: "Anonymous",
+   629→    sessionId: "s101",
+   630→    status: "approved",
+   631→    isAnnouncement: false,
+   632→    replyToId: "msg_1",
+   633→    reactions: { "🙏": 12, "🔥": 7, "❤️": 9 },
+   634→    reportCount: 0,
+   635→    createdAt: new Date(Date.now() - 540000).toISOString(),
+   636→  },
+   637→  {
+   638→    id: "msg_3",
+   639→    channelId: "ch_general",
+   640→    content: "Congratulations! That's wonderful news. God will continue to guide her path. Amen!",
+   641→    displayName: "Anonymous",
+   642→    sessionId: "s102",
+   643→    status: "approved",
+   644→    isAnnouncement: false,
+   645→    replyToId: "msg_2",
+   646→    reactions: { "❤️": 4, "🙌": 6 },
+   647→    reportCount: 0,
+   648→    createdAt: new Date(Date.now() - 480000).toISOString(),
+   649→  },
+   650→  {
+   651→    id: "msg_4",
+   652→    channelId: "ch_general",
+   653→    content: "Does anyone know if there's a Bible study this Tuesday? I want to come prepared.",
+   654→    displayName: "Anonymous",
+   655→    sessionId: "s103",
+   656→    status: "approved",
+   657→    isAnnouncement: false,
+   658→    reactions: {},
+   659→    reportCount: 0,
+   660→    createdAt: new Date(Date.now() - 360000).toISOString(),
+   661→  },
+   662→  {
+   663→    id: "msg_5",
+   664→    channelId: "ch_general",
+   665→    content: "Yes! Tuesday Digging Deep at 5:30 PM. We're studying the book of Romans. Come join us!",
+   666→    displayName: "Anonymous",
+   667→    sessionId: "s104",
+   668→    status: "approved",
+   669→    isAnnouncement: false,
+   670→    replyToId: "msg_4",
+   671→    reactions: { "🙏": 3, "❤️": 2 },
+   672→    reportCount: 0,
+   673→    createdAt: new Date(Date.now() - 300000).toISOString(),
+   674→  },
+   675→  {
+   676→    id: "msg_6",
+   677→    channelId: "ch_prayer",
+   678→    content: "Please keep my family in your prayers. My father is going for a medical procedure next week. We trust God for a successful outcome.",
+   679→    displayName: "Anonymous",
+   680→    sessionId: "s105",
+   681→    status: "approved",
+   682→    isAnnouncement: false,
+   683→    reactions: { "🙏": 18, "❤️": 12 },
+   684→    reportCount: 0,
+   685→    createdAt: new Date(Date.now() - 1200000).toISOString(),
+   686→  },
+   687→  {
+   688→    id: "msg_7",
+   689→    channelId: "ch_prayer",
+   690→    content: "We are praying with you, dear. God is the Great Physician. He will see your father through. Be encouraged!",
+   691→    displayName: "Anonymous",
+   692→    sessionId: "s106",
+   693→    status: "approved",
+   694→    isAnnouncement: false,
+   695→    replyToId: "msg_6",
+   696→    reactions: { "🙏": 7, "❤️": 5 },
+   697→    reportCount: 0,
+   698→    createdAt: new Date(Date.now() - 1080000).toISOString(),
+   699→  },
+   700→  {
+   701→    id: "msg_8",
+   702→    channelId: "ch_bible",
+   703→    content: "\"Trust in the Lord with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths.\" - Proverbs 3:5-6",
+   704→    displayName: "Anonymous",
+   705→    sessionId: "s107",
+   706→    status: "approved",
+   707→    isAnnouncement: false,
+   708→    reactions: { "❤️": 15, "🙏": 11, "🔥": 8, "🙌": 6 },
+   709→    reportCount: 0,
+   710→    createdAt: new Date(Date.now() - 1800000).toISOString(),
+   711→  },
+   712→  {
+   713→    id: "msg_announce_1",
+   714→    channelId: "ch_announcements",
+   715→    content: "Sunday Worship Service this week starts at 7:00 AM. Theme: \"Grace That Transform.\" Please come early. God bless you all!",
+   716→    displayName: "Church Admin",
+   717→    sessionId: "admin_1",
+   718→    status: "approved",
+   719→    isAnnouncement: true,
+   720→    reactions: { "❤️": 22, "🙏": 14 },
+   721→    reportCount: 0,
+   722→    createdAt: new Date(Date.now() - 7200000).toISOString(),
+   723→  },
+   724→];
+   725→
+   726→const chatReports: ChatReport[] = [];
+   727→const blockedSessions = new Set<string>();
+   728→
+   729→// --- FamilyChat Functions ---
+   730→
+   731→export function getChatChannels(): ChatChannel[] {
+   732→  return chatChannels
+   733→    .filter((ch) => ch.status === "active")
+   734→    .sort((a, b) => a.order - b.order);
+   735→}
+   736→
+   737→export function getChatChannelById(channelId: string): ChatChannel | null {
+   738→  return chatChannels.find((ch) => ch.id === channelId && ch.status === "active") || null;
+   739→}
+   740→
+   741→export function getChatMessages(
+   742→  channelId: string,
+   743→  limit: number = 50,
+   744→  before?: string
+   745→): ChatMessage[] {
+   746→  let messages = chatMessages.filter(
+   747→    (m) => m.channelId === channelId && m.status === "approved"
+   748→  );
+   749→  if (before) {
+   750→    const beforeDate = new Date(before).getTime();
+   751→    messages = messages.filter((m) => new Date(m.createdAt).getTime() < beforeDate);
+   752→  }
+   753→  return messages.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, limit);
+   754→}
+   755→
+   756→export function addChatMessage(
+   757→  channelId: string,
+   758→  content: string,
+   759→  sessionId: string,
+   760→  displayName: string = "Anonymous",
+   761→  replyToId?: string
+   762→): ChatMessage {
+   763→  const channel = chatChannels.find((ch) => ch.id === channelId);
+   764→  const isAnnouncement = channel?.isAnnouncement || false;
+   765→
+   766→  const msg: ChatMessage = {
+   767→    id: `msg_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+   768→    channelId,
+   769→    content: content.substring(0, 500),
+   770→    displayName,
+   771→    sessionId,
+   772→    status: "approved",
+   773→    isAnnouncement,
+   774→    replyToId,
+   775→    reactions: {},
+   776→    reportCount: 0,
+   777→    createdAt: new Date().toISOString(),
+   778→  };
+   779→  chatMessages.push(msg);
+   780→
+   781→  // Update channel stats
+   782→  if (channel) {
+   783→    channel.lastMessageAt = msg.createdAt;
+   784→    channel.messageCount++;
+   785→    channel.updatedAt = msg.createdAt;
+   786→  }
+   787→
+   788→  return msg;
+   789→}
+   790→
+   791→export function addReactionToChatMessage(
+   792→  messageId: string,
+   793→  reaction: string
+   794→): ChatMessage | null {
+   795→  const msg = chatMessages.find((m) => m.id === messageId);
+   796→  if (msg) {
+   797→    msg.reactions[reaction] = (msg.reactions[reaction] || 0) + 1;
+   798→    return msg;
+   799→  }
+   800→  return null;
+   801→}
+   802→
+   803→export function reportChatMessage(
+   804→  messageId: string,
+   805→  channelId: string,
+   806→  sessionId: string,
+   807→  reason: string
+   808→): ChatReport {
+   809→  const report: ChatReport = {
+   810→    id: `rpt_${Date.now()}`,
+   811→    messageId,
+   812→    channelId,
+   813→    sessionId,
+   814→    reason,
+   815→    status: "pending",
+   816→    createdAt: new Date().toISOString(),
+   817→  };
+   818→  chatReports.push(report);
+   819→
+   820→  // Increment report count on message
+   821→  const msg = chatMessages.find((m) => m.id === messageId);
+   822→  if (msg) msg.reportCount++;
+   823→
+   824→  // Auto-hide if 3+ reports
+   825→  if (msg && msg.reportCount >= 3) {
+   826→    msg.status = "hidden";
+   827→  }
+   828→
+   829→  return report;
+   830→}
+   831→
+   832→export function getChatReports(): ChatReport[] {
+   833→  return [...chatReports].sort(
+   834→    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+   835→  );
+   836→}
+   837→
+   838→// Admin functions for FamilyChat
+   839→export function removeChatMessage(messageId: string): boolean {
+   840→  const idx = chatMessages.findIndex((m) => m.id === messageId);
+   841→  if (idx !== -1) {
+   842→    chatMessages[idx].status = "hidden";
+   843→    return true;
+   844→  }
+   845→  return false;
+   846→}
+   847→
+   848→export function pinChatMessage(messageId: string): boolean {
+   849→  const msg = chatMessages.find((m) => m.id === messageId);
+   850→  if (msg) {
+   851→    msg.status = "pinned";
+   852→    msg.pinnedAt = new Date().toISOString();
+   853→    return true;
+   854→  }
+   855→  return false;
+   856→}
+   857→
+   858→export function unpinChatMessage(messageId: string): boolean {
+   859→  const msg = chatMessages.find((m) => m.id === messageId);
+   860→  if (msg && msg.status === "pinned") {
+   861→    msg.status = "approved";
+   862→    msg.pinnedAt = undefined;
+   863→    return true;
+   864→  }
+   865→  return false;
+   866→}
+   867→
+   868→export function blockUser(sessionId: string): boolean {
+   869→  blockedSessions.add(sessionId);
+   870→  return true;
+   871→}
+   872→
+   873→export function unblockUser(sessionId: string): boolean {
+   874→  blockedSessions.delete(sessionId);
+   875→  return true;
+   876→}
+   877→
+   878→export function isUserBlocked(sessionId: string): boolean {
+   879→  return blockedSessions.has(sessionId);
+   880→}
+   881→
+   882→// --- Update Admin Overview Stats to include FamilyChat ---
+   883→export function getSocialOverviewStats() {
+   884→  const activeChannels = chatChannels.filter((ch) => ch.status === "active");
+   885→  const totalMessages = chatMessages.filter((m) => m.status === "approved").length;
+   886→  const pendingReports = chatReports.filter((r) => r.status === "pending").length;
+   887→
+   888→  return {
+   889→    presenceCount: getPresenceCount(),
+   890→    currentQuestion: getCurrentQuestion(),
+   891→    totalPublicPrayers: publicPrayers.filter((p) => p.status === "approved").length,
+   892→    totalPrivatePrayers: privatePrayers.length,
+   893→    pendingPrivatePrayers: privatePrayers.filter((p) => p.status === "new").length,
+   894→    totalAmenPosts: amenPosts.filter((p) => p.status === "approved").length,
+   895→    totalQuestionResponses: questionResponses.filter((r) => r.status === "approved").length,
+   896→    totalChatChannels: activeChannels.length,
+   897→    totalChatMessages: totalMessages,
+   898→    pendingChatReports: pendingReports,
+   899→    currentChallenge: getCurrentChallenge(),
+   900→    liveSession: getLiveSession(),
+   901→    moderationQueueSize: moderationQueue.filter((m) => m.action === "pending").length,
+   902→    totalAttendanceIntentions: attendanceIntentions.length,
+   903→  };
+   904→}
+   905→
