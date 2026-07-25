@@ -111,11 +111,31 @@ export function FamilyChat() {
   const [charCount, setCharCount] = useState(0);
   const MAX_CHARS = 500;
 
-  // Force page to scroll to top on mount
+  // Permanently force page to scroll to top on mount
+  // Disable browser's scroll restoration + defer scrollTo to run after everything else
   useEffect(() => {
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    // Immediate
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
+    // Deferred — runs after React paints and after any auto-scrolls
+    const raf = requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    });
+    const t1 = setTimeout(() => window.scrollTo(0, 0), 50);
+    const t2 = setTimeout(() => window.scrollTo(0, 0), 200);
+    const t3 = setTimeout(() => window.scrollTo(0, 0), 500);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
   }, []);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -429,7 +449,7 @@ export function FamilyChat() {
         {/* ===== CHAT AREA ===== */}
         <div className="flex-1 flex flex-col min-w-0 bg-white">
           {/* Chat Header */}
-          <div className="bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between shadow-sm shrink-0">
+          <div className="bg-white border-b border-gray-100 px-4 pt-6 pb-4 flex items-center justify-between shadow-sm shrink-0">
             {/* Left: "Chat Rooms" label + arrow to open sidebar */}
             <button
               onClick={() => setShowSidebar(true)}

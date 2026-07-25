@@ -8,9 +8,26 @@ import { socialFeatures } from "@/components/social/social-data";
 export default function FamilyChatPage() {
   const [entered, setEntered] = useState(false);
 
-  // Scroll to top when entering the feature
+  // Aggressive scroll-to-top when entering the feature
   useEffect(() => {
-    if (entered) window.scrollTo(0, 0);
+    if (!entered) return;
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    const scrollToTop = () => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+    scrollToTop();
+    const raf = requestAnimationFrame(scrollToTop);
+    const t1 = setTimeout(scrollToTop, 50);
+    const t2 = setTimeout(scrollToTop, 200);
+    const t3 = setTimeout(scrollToTop, 500);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
   }, [entered]);
 
   if (entered) return <FamilyChat />;
