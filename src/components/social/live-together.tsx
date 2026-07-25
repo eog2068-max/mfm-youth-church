@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Radio } from "lucide-react";
 import { BackToSocial } from "./back-to-social";
+import { SocialFeatureNav } from "./social-feature-nav";
 
 interface LiveSession {
   title: string;
@@ -50,7 +51,7 @@ export function LiveTogether() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFF]">
-      <div className="max-w-4xl mx-auto px-4 pt-28 pb-16">
+      <div className="max-w-4xl mx-auto px-4 pt-28 pb-24">
         <BackToSocial />
 
         {/* Header */}
@@ -136,6 +137,8 @@ export function LiveTogether() {
           </motion.div>
         )}
       </div>
+
+      <SocialFeatureNav currentFeatureId="live-together" />
     </div>
   );
 }

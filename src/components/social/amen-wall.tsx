@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 import { BackToSocial } from "./back-to-social";
+import { SocialFeatureNav } from "./social-feature-nav";
 
 interface AmenPost {
   id: string;
@@ -67,7 +68,7 @@ export function AmenWall() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFF]">
-      <div className="max-w-3xl mx-auto px-4 pt-28 pb-16">
+      <div className="max-w-3xl mx-auto px-4 pt-28 pb-24">
         <BackToSocial />
 
         {/* Header */}
@@ -130,6 +131,8 @@ export function AmenWall() {
           )}
         </div>
       </div>
+
+      <SocialFeatureNav currentFeatureId="amen-wall" />
     </div>
   );
 }

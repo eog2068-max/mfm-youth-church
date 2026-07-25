@@ -16,6 +16,7 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { BackToSocial } from "./back-to-social";
+import { SocialFeatureNav } from "./social-feature-nav";
 
 /* ============ TYPES ============ */
 interface Channel {
@@ -627,7 +628,7 @@ export function FamilyChat() {
 
           {/* Input Area */}
           {activeChannel && (
-            <div className="bg-white border-t border-gray-100 p-3 shrink-0">
+            <div className="bg-white border-t border-gray-100 p-3 pb-16 shrink-0">
               {/* Replying to indicator */}
               <AnimatePresence>
                 {replyingTo && (
@@ -826,6 +827,9 @@ export function FamilyChat() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Feature Navigation Bar */}
+      <SocialFeatureNav currentFeatureId="family-chat" />
     </div>
   );
 }

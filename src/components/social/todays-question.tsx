@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 import { BackToSocial } from "./back-to-social";
+import { SocialFeatureNav } from "./social-feature-nav";
 
 interface Question {
   id: string;
@@ -85,7 +86,7 @@ export function TodaysQuestion() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFF]">
-      <div className="max-w-3xl mx-auto px-4 pt-28 pb-16">
+      <div className="max-w-3xl mx-auto px-4 pt-28 pb-24">
         <BackToSocial />
 
         {/* Question Card */}
@@ -162,6 +163,8 @@ export function TodaysQuestion() {
           )}
         </div>
       </div>
+
+      <SocialFeatureNav currentFeatureId="todays-question" />
     </div>
   );
 }
