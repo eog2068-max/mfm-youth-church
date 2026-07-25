@@ -6,6 +6,7 @@ import {
   Send,
   Flag,
   ChevronLeft,
+  ChevronRight,
   Megaphone,
   SmilePlus,
   Reply,
@@ -14,6 +15,7 @@ import {
   Users,
   MessageCircle,
   AlertTriangle,
+  Home,
 } from "lucide-react";
 import { BackToSocial } from "./back-to-social";
 import { SocialFeatureNav } from "./social-feature-nav";
@@ -108,6 +110,13 @@ export function FamilyChat() {
   const [reportSubmitting, setReportSubmitting] = useState(false);
   const [charCount, setCharCount] = useState(0);
   const MAX_CHARS = 500;
+
+  // Force page to scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
@@ -340,18 +349,27 @@ export function FamilyChat() {
             >
               {/* Sidebar Header */}
               <div className="p-4 border-b border-gray-100 bg-gradient-to-br from-[#F8FAFF] to-white">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1A237E] to-[#283593] flex items-center justify-center">
-                    <MessageCircle className="size-4 text-white" />
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1A237E] to-[#283593] flex items-center justify-center">
+                      <MessageCircle className="size-4 text-white" />
+                    </div>
+                    <div>
+                      <h2 className="text-sm font-bold text-[#1A237E]">
+                        FamilyChat
+                      </h2>
+                      <p className="text-[9px] text-gray-400 leading-tight mt-0.5">
+                        I Remain Connected To My Church Family
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h2 className="text-sm font-bold text-[#1A237E]">
-                      FamilyChat
-                    </h2>
-                    <p className="text-[9px] text-gray-400 leading-tight mt-0.5">
-                      I Remain Connected To My Church Family
-                    </p>
-                  </div>
+                  <button
+                    onClick={() => setShowSidebar(false)}
+                    className="p-1.5 hover:bg-gray-200/80 rounded-lg transition-colors"
+                    aria-label="Close chat rooms"
+                  >
+                    <X className="size-4 text-gray-500" />
+                  </button>
                 </div>
               </div>
 
@@ -411,23 +429,25 @@ export function FamilyChat() {
         {/* ===== CHAT AREA ===== */}
         <div className="flex-1 flex flex-col min-w-0 bg-white">
           {/* Chat Header */}
-          <div className="bg-white border-b border-gray-100 px-4 py-3 flex items-center gap-3 shadow-sm shrink-0">
-            {!showSidebar && (
-              <button
-                onClick={() => setShowSidebar(true)}
-                className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors"
-                aria-label="Show channels"
-              >
-                <ChevronLeft className="size-5 text-gray-500" />
-              </button>
-            )}
+          <div className="bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between shadow-sm shrink-0">
+            {/* Left: "Chat Rooms" label + arrow to open sidebar */}
+            <button
+              onClick={() => setShowSidebar(true)}
+              className="flex flex-col items-center gap-0.5 hover:opacity-80 transition-opacity"
+              aria-label="Open chat rooms"
+            >
+              <span className="text-sm font-bold text-[#1A237E] leading-tight">Chat Rooms</span>
+              <ChevronLeft className="size-5 text-[#1A237E] stroke-[2.5]" />
+            </button>
+
+            {/* Right: House icon + current channel name */}
             {activeChannel ? (
-              <>
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#F0F4FF] to-[#E8EDFF] flex items-center justify-center text-xl">
-                  {activeChannel.emoji}
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#F0F4FF] to-[#E8EDFF] flex items-center justify-center">
+                  <Home className="size-4 text-[#1A237E]" />
                 </div>
-                <div className="min-w-0">
-                  <h3 className="text-sm font-bold text-gray-800 flex items-center gap-1.5">
+                <div className="min-w-0 text-right">
+                  <h3 className="text-sm font-bold text-gray-800 flex items-center gap-1.5 justify-end">
                     {activeChannel.name}
                     {activeChannel.isAnnouncement && (
                       <Megaphone className="size-3 text-amber-500" />
@@ -437,7 +457,7 @@ export function FamilyChat() {
                     {activeChannel.description}
                   </p>
                 </div>
-              </>
+              </div>
             ) : (
               <p className="text-sm text-gray-500">Select a channel</p>
             )}
