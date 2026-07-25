@@ -95,7 +95,7 @@ export function FamilyChat() {
   const [activeChannel, setActiveChannel] = useState<Channel | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState("");
-  const [showSidebar, setShowSidebar] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(false);
   const [replyingTo, setReplyingTo] = useState<Message | null>(null);
   const [reportingMsg, setReportingMsg] = useState<Message | null>(null);
   const [showReactions, setShowReactions] = useState<string | null>(null);
@@ -326,7 +326,7 @@ export function FamilyChat() {
         <BackToSocial />
       </div>
 
-      <div className="flex flex-1 min-h-0 max-w-5xl mx-auto w-full px-0 md:px-0">
+      <div className="flex flex-1 min-h-0 max-w-5xl mx-auto w-full px-0 md:px-0 relative">
         {/* ===== CHANNEL SIDEBAR ===== */}
         <AnimatePresence>
           {showSidebar && (
@@ -335,7 +335,7 @@ export function FamilyChat() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -280, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="w-64 md:w-72 bg-white border-r border-gray-100 flex flex-col shrink-0 shadow-sm"
+              className="absolute md:relative inset-y-0 left-0 z-20 w-64 md:w-72 bg-white border-r border-gray-100 flex flex-col shrink-0 shadow-sm md:shadow-none"
             >
               {/* Sidebar Header */}
               <div className="p-4 border-b border-gray-100 bg-gradient-to-br from-[#F8FAFF] to-white">
