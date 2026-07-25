@@ -165,7 +165,7 @@ export function SocialLandingPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
-            className="mt-8"
+            className="mt-4"
           >
             <motion.div
               animate={{ y: [0, 8, 0] }}
