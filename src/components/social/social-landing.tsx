@@ -159,11 +159,48 @@ export function SocialLandingPage() {
               </span>
             </motion.div>
           )}
+
+          {/* Scroll-down indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+            className="absolute bottom-6 left-1/2 -translate-x-1/2"
+          >
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+              className="flex flex-col items-center gap-1 cursor-pointer"
+              onClick={() => {
+                document
+                  .getElementById("features-section")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              <span className="text-[10px] font-medium text-white/40 uppercase tracking-widest">
+                Scroll
+              </span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                className="text-white/40"
+              >
+                <path
+                  d="M10 4v12M10 16l-4-4M10 16l4-4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
-
       {/* ===== ALL 5 FEATURES GRID ===== */}
-      <section className="max-w-5xl mx-auto px-4 py-14 md:py-18 relative z-20">
+      <section id="features-section" className="max-w-5xl mx-auto px-4 py-14 md:py-18 relative z-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
