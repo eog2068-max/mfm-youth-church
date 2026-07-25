@@ -80,7 +80,7 @@ export function SocialLandingPage() {
           />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pt-8">
           {/* Emoji icon — larger, top anchor */}
           <motion.div
             initial={{ scale: 0, rotate: -10 }}
@@ -89,7 +89,7 @@ export function SocialLandingPage() {
             className="relative block mb-8"
           >
             <div className="absolute inset-0 bg-blue-400/25 rounded-full blur-3xl scale-[2]" />
-            <div className="relative text-[8rem] sm:text-[10rem] md:text-[12rem] leading-none">💬</div>
+            <div className="relative text-[6rem] sm:text-[7rem] md:text-[9rem] leading-none">💬</div>
           </motion.div>
 
           {/* Pill badge */}
