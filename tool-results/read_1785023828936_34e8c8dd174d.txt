@@ -1,0 +1,941 @@
+     1→     1→"use client";
+     2→     2→
+     3→     3→import { useState, useEffect, useRef, useCallback } from "react";
+     4→     4→import { motion, AnimatePresence } from "framer-motion";
+     5→     5→import {
+     6→     6→  Send,
+     7→     7→  Flag,
+     8→     8→  ChevronLeft,
+     9→     9→  ChevronRight,
+    10→    10→  Megaphone,
+    11→    11→  SmilePlus,
+    12→    12→  Reply,
+    13→    13→  X,
+    14→    14→  Loader2,
+    15→    15→  Users,
+    16→    16→  MessageCircle,
+    17→    17→  AlertTriangle,
+    18→    18→  Home,
+    19→    19→} from "lucide-react";
+    20→    20→import { BackToSocial } from "./back-to-social";
+    21→    21→import { SocialFeatureNav } from "./social-feature-nav";
+    22→    22→
+    23→    23→/* ============ TYPES ============ */
+    24→    24→interface Channel {
+    25→    25→  id: string;
+    26→    26→  name: string;
+    27→    27→  emoji: string;
+    28→    28→  description: string;
+    29→    29→  isAnnouncement: boolean;
+    30→    30→  messageCount: number;
+    31→    31→  lastMessageAt?: string;
+    32→    32→}
+    33→    33→
+    34→    34→interface Message {
+    35→    35→  id: string;
+    36→    36→  channelId: string;
+    37→    37→  content: string;
+    38→    38→  displayName: string;
+    39→    39→  isAnnouncement: boolean;
+    40→    40→  replyToId?: string;
+    41→    41→  replyToContent?: string;
+    42→    42→  replyToDisplayName?: string;
+    43→    43→  reactions: Record<string, number>;
+    44→    44→  createdAt: string;
+    45→    45→}
+    46→    46→
+    47→    47→/* ============ CONSTANTS ============ */
+    48→    48→const REACTION_OPTIONS = ["❤️", "🙏", "🙌", "🔥", "👍"];
+    49→    49→
+    50→    50→const REPORT_REASONS = [
+    51→    51→  { value: "inappropriate", label: "Inappropriate content" },
+    52→    52→  { value: "harassment", label: "Harassment or bullying" },
+    53→    53→  { value: "spam", label: "Spam or advertising" },
+    54→    54→  { value: "scam", label: "Scam or fraud attempt" },
+    55→    55→  { value: "hate", label: "Hate speech" },
+    56→    56→  { value: "false_accusation", label: "False accusation / gossip" },
+    57→    57→  { value: "unchristian", label: "Unchristian conduct" },
+    58→    58→  { value: "other", label: "Other" },
+    59→    59→];
+    60→    60→
+    61→    61→const WARM_GREETINGS = [
+    62→    62→  "Welcome to FamilyChat! 🏠",
+    63→    63→  "God bless you as you connect with the family today. 💬",
+    64→    64→  "The service may end, but the fellowship continues here. ❤️",
+    65→    65→];
+    66→    66→
+    67→    67→/* ============ HELPERS ============ */
+    68→    68→function formatTimeAgo(dateStr: string): string {
+    69→    69→  const diff = Date.now() - new Date(dateStr).getTime();
+    70→    70→  const mins = Math.floor(diff / 60000);
+    71→    71→  if (mins < 1) return "just now";
+    72→    72→  if (mins < 60) return `${mins}m ago`;
+    73→    73→  const hrs = Math.floor(mins / 60);
+    74→    74→  if (hrs < 24) return `${hrs}h ago`;
+    75→    75→  const days = Math.floor(hrs / 24);
+    76→    76→  return `${days}d ago`;
+    77→    77→}
+    78→    78→
+    79→    79→function getAvatarColor(name: string): string {
+    80→    80→  const colors = [
+    81→    81→    "from-[#1A237E] to-[#283593]",
+    82→    82→    "from-[#D32F2F] to-[#E53935]",
+    83→    83→    "from-[#2E7D32] to-[#388E3C]",
+    84→    84→    "from-[#E65100] to-[#F57C00]",
+    85→    85→    "from-[#6A1B9A] to-[#8E24AA]",
+    86→    86→    "from-[#00695C] to-[#00897B]",
+    87→    87→  ];
+    88→    88→  let hash = 0;
+    89→    89→  for (let i = 0; i < name.length; i++) {
+    90→    90→    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    91→    91→  }
+    92→    92→  return colors[Math.abs(hash) % colors.length];
+    93→    93→}
+    94→    94→
+    95→    95→/* ============ MAIN COMPONENT ============ */
+    96→    96→export function FamilyChat() {
+    97→    97→  const [channels, setChannels] = useState<Channel[]>([]);
+    98→    98→  const [activeChannel, setActiveChannel] = useState<Channel | null>(null);
+    99→    99→  const [messages, setMessages] = useState<Message[]>([]);
+   100→   100→  const [inputText, setInputText] = useState("");
+   101→   101→  const [showSidebar, setShowSidebar] = useState(false);
+   102→   102→  const [replyingTo, setReplyingTo] = useState<Message | null>(null);
+   103→   103→  const [reportingMsg, setReportingMsg] = useState<Message | null>(null);
+   104→   104→  const [showReactions, setShowReactions] = useState<string | null>(null);
+   105→   105→  const [sending, setSending] = useState(false);
+   106→   106→  const [loading, setLoading] = useState(true);
+   107→   107→  const [error, setError] = useState("");
+   108→   108→  const [reportReason, setReportReason] = useState("");
+   109→   109→  const [reportExplanation, setReportExplanation] = useState("");
+   110→   110→  const [reportSubmitting, setReportSubmitting] = useState(false);
+   111→   111→  const [charCount, setCharCount] = useState(0);
+   112→   112→  const MAX_CHARS = 500;
+   113→   113→
+   114→   114→  // Permanently force page to scroll to top on mount
+   115→   115→  // Disable browser's scroll restoration + defer scrollTo to run after everything else
+   116→   116→  useEffect(() => {
+   117→   117→    if ("scrollRestoration" in history) {
+   118→   118→      history.scrollRestoration = "manual";
+   119→   119→    }
+   120→   120→    // Immediate
+   121→   121→    window.scrollTo(0, 0);
+   122→   122→    document.documentElement.scrollTop = 0;
+   123→   123→    document.body.scrollTop = 0;
+   124→   124→    // Deferred — runs after React paints and after any auto-scrolls
+   125→   125→    const raf = requestAnimationFrame(() => {
+   126→   126→      window.scrollTo(0, 0);
+   127→   127→      document.documentElement.scrollTop = 0;
+   128→   128→      document.body.scrollTop = 0;
+   129→   129→    });
+   130→   130→    const t1 = setTimeout(() => window.scrollTo(0, 0), 50);
+   131→   131→    const t2 = setTimeout(() => window.scrollTo(0, 0), 200);
+   132→   132→    const t3 = setTimeout(() => window.scrollTo(0, 0), 500);
+   133→   133→    return () => {
+   134→   134→      cancelAnimationFrame(raf);
+   135→   135→      clearTimeout(t1);
+   136→   136→      clearTimeout(t2);
+   137→   137→      clearTimeout(t3);
+   138→   138→    };
+   139→   139→  }, []);
+   140→   140→
+   141→   141→  const messagesEndRef = useRef<HTMLDivElement>(null);
+   142→   142→  const messagesContainerRef = useRef<HTMLDivElement>(null);
+   143→   143→  const inputRef = useRef<HTMLTextAreaElement>(null);
+   144→   144→  const sessionIdRef = useRef(
+   145→   145→    typeof window !== "undefined"
+   146→   146→      ? sessionStorage.getItem("rs_session") || `user_${Date.now()}`
+   147→   147→      : `user_${Date.now()}`
+   148→   148→  );
+   149→   149→
+   150→   150→  // Initialize session
+   151→   151→  useEffect(() => {
+   152→   152→    if (typeof window !== "undefined") {
+   153→   153→      if (!sessionStorage.getItem("rs_session")) {
+   154→   154→        sessionStorage.setItem("rs_session", sessionIdRef.current);
+   155→   155→      }
+   156→   156→    }
+   157→   157→  }, []);
+   158→   158→
+   159→   159→  // Load channels
+   160→   160→  useEffect(() => {
+   161→   161→    fetch("/api/social/chat/channels")
+   162→   162→      .then((r) => r.json())
+   163→   163→      .then((d) => {
+   164→   164→        setChannels(d.channels || []);
+   165→   165→        if (d.channels?.[0]) setActiveChannel(d.channels[0]);
+   166→   166→        setLoading(false);
+   167→   167→      })
+   168→   168→      .catch(() => {
+   169→   169→        setError("Failed to load channels");
+   170→   170→        setLoading(false);
+   171→   171→      });
+   172→   172→  }, []);
+   173→   173→
+   174→   174→  // Load messages for a channel
+   175→   175→  const loadMessages = useCallback(async (channelId: string) => {
+   176→   176→    try {
+   177→   177→      const r = await fetch(
+   178→   178→        `/api/social/chat/messages?channelId=${channelId}&limit=40`
+   179→   179→      );
+   180→   180→      const d = await r.json();
+   181→   181→      if (d.messages) {
+   182→   182→        // Enrich messages with reply content previews
+   183→   183→        const enriched = d.messages.map((msg: Message) => {
+   184→   184→          if (msg.replyToId) {
+   185→   185→            const replyMsg = d.messages.find(
+   186→   186→              (m: Message) => m.id === msg.replyToId
+   187→   187→            );
+   188→   188→            if (replyMsg) {
+   189→   189→              return {
+   190→   190→                ...msg,
+   191→   191→                replyToContent: replyMsg.content,
+   192→   192→                replyToDisplayName: replyMsg.displayName,
+   193→   193→              };
+   194→   194→            }
+   195→   195→          }
+   196→   196→          return msg;
+   197→   197→        });
+   198→   198→        setMessages(enriched.reverse()); // newest at bottom
+   199→   199→      }
+   200→   200→    } catch {
+   201→   201→      setMessages([]);
+   202→   202→    }
+   203→   203→  }, []);
+   204→   204→
+   205→   205→  // Switch channel
+   206→   206→  useEffect(() => {
+   207→   207→    if (activeChannel) {
+   208→   208→      loadMessages(activeChannel.id);
+   209→   209→      setReplyingTo(null);
+   210→   210→      setShowReactions(null);
+   211→   211→      setReportingMsg(null);
+   212→   212→      setError("");
+   213→   213→    }
+   214→   214→  }, [activeChannel, loadMessages]);
+   215→   215→
+   216→   216→  // Poll for new messages (every 6 seconds)
+   217→   217→  useEffect(() => {
+   218→   218→    if (!activeChannel) return;
+   219→   219→    const interval = setInterval(() => {
+   220→   220→      loadMessages(activeChannel.id);
+   221→   221→    }, 6000);
+   222→   222→    return () => clearInterval(interval);
+   223→   223→  }, [activeChannel, loadMessages]);
+   224→   224→
+   225→   225→  // Auto-scroll chat container to bottom on new messages
+   226→   226→  const isNearBottom = useRef(true);
+   227→   227→  useEffect(() => {
+   228→   228→    if (isNearBottom.current && messagesContainerRef.current) {
+   229→   229→      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+   230→   230→    }
+   231→   231→  }, [messages.length]);
+   232→   232→
+   233→   233→  // Track scroll position to prevent forced scroll when user reads history
+   234→   234→  const handleScroll = () => {
+   235→   235→    const el = messagesContainerRef.current;
+   236→   236→    if (!el) return;
+   237→   237→    isNearBottom.current =
+   238→   238→      el.scrollHeight - el.scrollTop - el.clientHeight < 120;
+   239→   239→  };
+   240→   240→
+   241→   241→  // Send message
+   242→   242→  const sendMessage = async () => {
+   243→   243→    if (!inputText.trim() || !activeChannel || sending) return;
+   244→   244→    if (charCount > MAX_CHARS) return;
+   245→   245→    setSending(true);
+   246→   246→    setError("");
+   247→   247→    try {
+   248→   248→      const res = await fetch("/api/social/chat/messages", {
+   249→   249→        method: "POST",
+   250→   250→        headers: {
+   251→   251→          "Content-Type": "application/json",
+   252→   252→          "x-session-id": sessionIdRef.current,
+   253→   253→        },
+   254→   254→        body: JSON.stringify({
+   255→   255→          channelId: activeChannel.id,
+   256→   256→          content: inputText.trim(),
+   257→   257→          replyToId: replyingTo?.id,
+   258→   258→        }),
+   259→   259→      });
+   260→   260→      const data = await res.json();
+   261→   261→      if (!res.ok) {
+   262→   262→        setError(data.error || "Failed to send message");
+   263→   263→        return;
+   264→   264→      }
+   265→   265→      setInputText("");
+   266→   266→      setCharCount(0);
+   267→   267→      setReplyingTo(null);
+   268→   268→      isNearBottom.current = true;
+   269→   269→      loadMessages(activeChannel.id);
+   270→   270→    } catch {
+   271→   271→      setError("Network error. Please try again.");
+   272→   272→    } finally {
+   273→   273→      setSending(false);
+   274→   274→      inputRef.current?.focus();
+   275→   275→    }
+   276→   276→  };
+   277→   277→
+   278→   278→  // React to message
+   279→   279→  const addReaction = async (messageId: string, reaction: string) => {
+   280→   280→    try {
+   281→   281→      await fetch(`/api/social/chat/messages/${messageId}/react`, {
+   282→   282→        method: "POST",
+   283→   283→        headers: { "Content-Type": "application/json" },
+   284→   284→        body: JSON.stringify({ reaction }),
+   285→   285→      });
+   286→   286→      loadMessages(activeChannel?.id || "");
+   287→   287→      setShowReactions(null);
+   288→   288→    } catch {
+   289→   289→      // Silent
+   290→   290→    }
+   291→   291→  };
+   292→   292→
+   293→   293→  // Report message
+   294→   294→  const submitReport = async () => {
+   295→   295→    if (!reportingMsg || !activeChannel || !reportReason) return;
+   296→   296→    setReportSubmitting(true);
+   297→   297→    try {
+   298→   298→      await fetch(`/api/social/chat/messages/${reportingMsg.id}/report`, {
+   299→   299→        method: "POST",
+   300→   300→        headers: {
+   301→   301→          "Content-Type": "application/json",
+   302→   302→          "x-session-id": sessionIdRef.current,
+   303→   303→        },
+   304→   304→        body: JSON.stringify({
+   305→   305→          channelId: activeChannel.id,
+   306→   306→          reason: reportReason,
+   307→   307→          explanation: reportExplanation,
+   308→   308→        }),
+   309→   309→      });
+   310→   310→      setReportingMsg(null);
+   311→   311→      setReportReason("");
+   312→   312→      setReportExplanation("");
+   313→   313→    } catch {
+   314→   314→      // Silent
+   315→   315→    } finally {
+   316→   316→      setReportSubmitting(false);
+   317→   317→    }
+   318→   318→  };
+   319→   319→
+   320→   320→  // Handle input change with character count
+   321→   321→  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+   322→   322→    const val = e.target.value;
+   323→   323→    if (val.length <= MAX_CHARS) {
+   324→   324→      setInputText(val);
+   325→   325→      setCharCount(val.length);
+   326→   326→    }
+   327→   327→  };
+   328→   328→
+   329→   329→  const handleKeyDown = (e: React.KeyboardEvent) => {
+   330→   330→    if (e.key === "Enter" && !e.shiftKey) {
+   331→   331→      e.preventDefault();
+   332→   332→      sendMessage();
+   333→   333→    }
+   334→   334→  };
+   335→   335→
+   336→   336→  // Loading state
+   337→   337→  if (loading) {
+   338→   338→    return (
+   339→   339→      <div className="h-screen bg-[#F8FAFF] flex flex-col">
+   340→   340→        <BackToSocial />
+   341→   341→        <div className="flex-1 flex items-center justify-center">
+   342→   342→          <div className="text-center">
+   343→   343→            <Loader2 className="size-8 text-[#1A237E] animate-spin mx-auto mb-3" />
+   344→   344→            <p className="text-sm text-gray-500">Loading FamilyChat...</p>
+   345→   345→          </div>
+   346→   346→        </div>
+   347→   347→      </div>
+   348→   348→    );
+   349→   349→  }
+   350→   350→
+   351→   351→  const greeting = WARM_GREETINGS[Math.floor(Date.now() / 86400000) % WARM_GREETINGS.length];
+   352→   352→
+   353→   353→  return (
+   354→   354→    <div className="h-screen bg-[#F8FAFF] flex flex-col overflow-hidden">
+   355→   355→      <div className="shrink-0 px-4 pt-4 max-w-5xl mx-auto w-full">
+   356→   356→        <BackToSocial />
+   357→   357→      </div>
+   358→   358→
+   359→   359→      <div className="flex flex-1 min-h-0 max-w-5xl mx-auto w-full px-0 md:px-0 relative">
+   360→   360→        {/* ===== CHANNEL SIDEBAR ===== */}
+   361→   361→        <AnimatePresence>
+   362→   362→          {showSidebar && (
+   363→   363→            <motion.aside
+   364→   364→              initial={{ x: -280, opacity: 0 }}
+   365→   365→              animate={{ x: 0, opacity: 1 }}
+   366→   366→              exit={{ x: -280, opacity: 0 }}
+   367→   367→              transition={{ duration: 0.2 }}
+   368→   368→              className="absolute md:relative inset-y-0 left-0 z-20 w-64 md:w-72 bg-white border-r border-gray-100 flex flex-col shrink-0 shadow-sm md:shadow-none"
+   369→   369→            >
+   370→   370→              {/* Sidebar Header */}
+   371→   371→              <div className="p-4 border-b border-gray-100 bg-gradient-to-br from-[#F8FAFF] to-white">
+   372→   372→                <div className="flex items-center justify-between">
+   373→   373→                  <div className="flex items-center gap-2.5">
+   374→   374→                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1A237E] to-[#283593] flex items-center justify-center">
+   375→   375→                      <MessageCircle className="size-4 text-white" />
+   376→   376→                    </div>
+   377→   377→                    <div>
+   378→   378→                      <h2 className="text-sm font-bold text-[#1A237E]">
+   379→   379→                        FamilyChat
+   380→   380→                      </h2>
+   381→   381→                      <p className="text-[9px] text-gray-400 leading-tight mt-0.5">
+   382→   382→                        I Remain Connected To My Church Family
+   383→   383→                      </p>
+   384→   384→                    </div>
+   385→   385→                  </div>
+   386→   386→                  <button
+   387→   387→                    onClick={() => setShowSidebar(false)}
+   388→   388→                    className="p-1.5 hover:bg-gray-200/80 rounded-lg transition-colors"
+   389→   389→                    aria-label="Close chat rooms"
+   390→   390→                  >
+   391→   391→                    <X className="size-4 text-gray-500" />
+   392→   392→                  </button>
+   393→   393→                </div>
+   394→   394→              </div>
+   395→   395→
+   396→   396→              {/* Channel List */}
+   397→   397→              <div className="flex-1 overflow-y-auto py-1">
+   398→   398→                {channels.map((ch) => (
+   399→   399→                  <button
+   400→   400→                    key={ch.id}
+   401→   401→                    onClick={() => {
+   402→   402→                      setActiveChannel(ch);
+   403→   403→                      if (window.innerWidth < 768) setShowSidebar(false);
+   404→   404→                    }}
+   405→   405→                    className={`w-full text-left px-4 py-3 flex items-center gap-3 transition-all duration-150 ${
+   406→   406→                      activeChannel?.id === ch.id
+   407→   407→                        ? "bg-[#1A237E]/5 border-l-[3px] border-[#1A237E]"
+   408→   408→                        : "hover:bg-gray-50/80 border-l-[3px] border-transparent"
+   409→   409→                    }`}
+   410→   410→                  >
+   411→   411→                    <span className="text-lg shrink-0">{ch.emoji}</span>
+   412→   412→                    <div className="min-w-0 flex-1">
+   413→   413→                      <p
+   414→   414→                        className={`text-[13px] font-medium truncate ${
+   415→   415→                          activeChannel?.id === ch.id
+   416→   416→                            ? "text-[#1A237E]"
+   417→   417→                            : "text-gray-600"
+   418→   418→                        }`}
+   419→   419→                      >
+   420→   420→                        {ch.name}
+   421→   421→                      </p>
+   422→   422→                      <p className="text-[10px] text-gray-400 truncate">
+   423→   423→                        {ch.isAnnouncement
+   424→   424→                          ? `${ch.messageCount} announcements`
+   425→   425→                          : `${ch.messageCount} messages`}
+   426→   426→                      </p>
+   427→   427→                    </div>
+   428→   428→                  </button>
+   429→   429→                ))}
+   430→   430→              </div>
+   431→   431→
+   432→   432→              {/* Community Guidelines */}
+   433→   433→              <div className="p-3 border-t border-gray-100 bg-gray-50/50">
+   434→   434→                <div className="flex items-center gap-1.5 mb-1.5">
+   435→   435→                  <Users className="size-3 text-gray-400" />
+   436→   436→                  <p className="text-[10px] font-medium text-gray-500">
+   437→   437→                    Community Guidelines
+   438→   438→                  </p>
+   439→   439→                </div>
+   440→   440→                <p className="text-[9px] text-gray-400 leading-relaxed">
+   441→   441→                  Be kind. Be respectful. Be Christ-like. This is your church
+   442→   442→                  family.
+   443→   443→                </p>
+   444→   444→              </div>
+   445→   445→            </motion.aside>
+   446→   446→          )}
+   447→   447→        </AnimatePresence>
+   448→   448→
+   449→   449→        {/* ===== CHAT AREA ===== */}
+   450→   450→        <div className="flex-1 flex flex-col min-w-0 bg-white">
+   451→   451→          {/* Chat Header */}
+   452→   452→          <div className="bg-white border-b border-gray-100 px-4 pt-6 pb-4 flex items-center justify-between shadow-sm shrink-0">
+   453→   453→            {/* Left: "Chat Rooms" label + arrow to open sidebar */}
+   454→   454→            <button
+   455→   455→              onClick={() => setShowSidebar(true)}
+   456→   456→              className="flex flex-col items-center gap-0.5 hover:opacity-80 transition-opacity"
+   457→   457→              aria-label="Open chat rooms"
+   458→   458→            >
+   459→   459→              <span className="text-sm font-bold text-[#1A237E] leading-tight">Chat Rooms</span>
+   460→   460→              <ChevronLeft className="size-5 text-[#1A237E] stroke-[2.5]" />
+   461→   461→            </button>
+   462→   462→
+   463→   463→            {/* Right: House icon + current channel name */}
+   464→   464→            {activeChannel ? (
+   465→   465→              <div className="flex items-center gap-2">
+   466→   466→                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#F0F4FF] to-[#E8EDFF] flex items-center justify-center">
+   467→   467→                  <Home className="size-4 text-[#1A237E]" />
+   468→   468→                </div>
+   469→   469→                <div className="min-w-0 text-right">
+   470→   470→                  <h3 className="text-sm font-bold text-gray-800 flex items-center gap-1.5 justify-end">
+   471→   471→                    {activeChannel.name}
+   472→   472→                    {activeChannel.isAnnouncement && (
+   473→   473→                      <Megaphone className="size-3 text-amber-500" />
+   474→   474→                    )}
+   475→   475→                  </h3>
+   476→   476→                  <p className="text-[10px] text-gray-400 truncate">
+   477→   477→                    {activeChannel.description}
+   478→   478→                  </p>
+   479→   479→                </div>
+   480→   480→              </div>
+   481→   481→            ) : (
+   482→   482→              <p className="text-sm text-gray-500">Select a channel</p>
+   483→   483→            )}
+   484→   484→          </div>
+   485→   485→
+   486→   486→          {/* Messages Area */}
+   487→   487→          <div
+   488→   488→            ref={messagesContainerRef}
+   489→   489→            onScroll={handleScroll}
+   490→   490→            className="flex-1 overflow-y-auto px-4 py-4"
+   491→   491→          >
+   492→   492→            {/* Announcement channel banner */}
+   493→   493→            {activeChannel?.isAnnouncement && (
+   494→   494→              <div className="bg-amber-50 border border-amber-200/80 rounded-xl p-3 flex items-start gap-2.5 mb-4">
+   495→   495→                <div className="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center shrink-0">
+   496→   496→                  <Megaphone className="size-4 text-amber-600" />
+   497→   497→                </div>
+   498→   498→                <div>
+   499→   499→                  <p className="text-xs font-semibold text-amber-800">
+   500→   500→                    Official Announcements
+   501→   501→                  </p>
+   502→   502→                  <p className="text-[10px] text-amber-600/80 mt-0.5 leading-relaxed">
+   503→   503→                    Updates from church leadership appear here. This channel is
+   504→   504→                    read-only for members.
+   505→   505→                  </p>
+   506→   506→                </div>
+   507→   507→              </div>
+   508→   508→            )}
+   509→   509→
+   510→   510→            {/* Empty state */}
+   511→   511→            {activeChannel && messages.length === 0 && !activeChannel.isAnnouncement && (
+   512→   512→              <div className="text-center py-16">
+   513→   513→                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F0F4FF] to-[#E8EDFF] flex items-center justify-center mx-auto mb-4">
+   514→   514→                  <span className="text-3xl">{activeChannel.emoji}</span>
+   515→   515→                </div>
+   516→   516→                <p className="text-sm font-medium text-gray-600 mb-1">
+   517→   517→                  {activeChannel.name}
+   518→   518→                </p>
+   519→   519→                <p className="text-xs text-gray-400 mb-4">
+   520→   520→                  No messages yet. Start the conversation!
+   521→   521→                </p>
+   522→   522→                <p className="text-[10px] text-gray-300 italic">{greeting}</p>
+   523→   523→              </div>
+   524→   524→            )}
+   525→   525→
+   526→   526→            {/* Messages */}
+   527→   527→            <div className="space-y-1">
+   528→   528→              {messages.map((msg, idx) => {
+   529→   529→                const isFirst = idx === 0 || messages[idx - 1]?.displayName !== msg.displayName;
+   530→   530→                const showAvatar = isFirst || msg.isAnnouncement;
+   531→   531→
+   532→   532→                return (
+   533→   533→                  <div key={msg.id} className="group relative py-0.5">
+   534→   534→                    {msg.isAnnouncement ? (
+   535→   535→                      /* === ANNOUNCEMENT MESSAGE === */
+   536→   536→                      <div className="bg-gradient-to-r from-[#1A237E]/[0.04] to-[#283593]/[0.04] border border-[#1A237E]/10 rounded-xl p-3.5 my-1">
+   537→   537→                        <div className="flex items-center gap-2 mb-1.5">
+   538→   538→                          <div className="w-6 h-6 rounded-md bg-[#1A237E]/10 flex items-center justify-center">
+   539→   539→                            <Megaphone className="size-3 text-[#1A237E]/70" />
+   540→   540→                          </div>
+   541→   541→                          <span className="text-[11px] font-bold text-[#1A237E]">
+   542→   542→                            {msg.displayName}
+   543→   543→                          </span>
+   544→   544→                          <span className="text-[10px] text-gray-400 ml-auto">
+   545→   545→                            {formatTimeAgo(msg.createdAt)}
+   546→   546→                          </span>
+   547→   547→                        </div>
+   548→   548→                        <p className="text-[13px] text-gray-700 leading-relaxed pl-8">
+   549→   549→                          {msg.content}
+   550→   550→                        </p>
+   551→   551→                        <MessageReactions
+   552→   552→                          reactions={msg.reactions}
+   553→   553→                          onReact={(r) => addReaction(msg.id, r)}
+   554→   554→                          showPicker={showReactions === msg.id}
+   555→   555→                          onTogglePicker={() =>
+   556→   556→                            setShowReactions(showReactions === msg.id ? null : msg.id)
+   557→   557→                          }
+   558→   558→                        />
+   559→   559→                      </div>
+   560→   560→                    ) : (
+   561→   561→                      /* === REGULAR MESSAGE === */
+   562→   562→                      <div className="flex gap-2.5">
+   563→   563→                        {/* Avatar */}
+   564→   564→                        <div className="w-8 h-8 rounded-full bg-gradient-to-br {getAvatarColor(msg.displayName)} flex items-center justify-center shrink-0 mt-0.5">
+   565→   565→                          <span className="text-white text-[11px] font-bold">
+   566→   566→                            {msg.displayName.charAt(0).toUpperCase()}
+   567→   567→                          </span>
+   568→   568→                        </div>
+   569→   569→
+   570→   570→                        <div className="min-w-0 flex-1">
+   571→   571→                          {/* Name + time (only show on first message in group) */}
+   572→   572→                          {showAvatar && (
+   573→   573→                            <div className="flex items-baseline gap-2 mb-0.5">
+   574→   574→                              <span className="text-[11px] font-semibold text-gray-700">
+   575→   575→                                {msg.displayName}
+   576→   576→                              </span>
+   577→   577→                              <span className="text-[10px] text-gray-400">
+   578→   578→                                {formatTimeAgo(msg.createdAt)}
+   579→   579→                              </span>
+   580→   580→                            </div>
+   581→   581→                          )}
+   582→   582→
+   583→   583→                          {/* Reply reference */}
+   584→   584→                          {msg.replyToId && (
+   585→   585→                            <div className="mt-1 bg-[#F0F4FF] border-l-2 border-[#1A237E]/25 rounded-r-lg px-2.5 py-1.5">
+   586→   586→                              {msg.replyToDisplayName && (
+   587→   587→                                <p className="text-[10px] font-semibold text-[#1A237E]/60">
+   588→   588→                                  {msg.replyToDisplayName}
+   589→   589→                                </p>
+   590→   590→                              )}
+   591→   591→                              <p className="text-[10px] text-gray-500 italic truncate max-w-xs">
+   592→   592→                                {msg.replyToContent || "Original message"}
+   593→   593→                              </p>
+   594→   594→                            </div>
+   595→   595→                          )}
+   596→   596→
+   597→   597→                          {/* Message bubble */}
+   598→   598→                          <div className="mt-0.5 group-hover:bg-gray-50/80 rounded-xl px-0.5 py-0.5 -mx-0.5 transition-colors">
+   599→   599→                            <p className="text-[13px] text-gray-700 leading-relaxed break-words pr-16">
+   600→   600→                              {msg.content}
+   601→   601→                            </p>
+   602→   602→                          </div>
+   603→   603→
+   604→   604→                          {/* Reactions */}
+   605→   605→                          <MessageReactions
+   606→   606→                            reactions={msg.reactions}
+   607→   607→                            onReact={(r) => addReaction(msg.id, r)}
+   608→   608→                            showPicker={showReactions === msg.id}
+   609→   609→                            onTogglePicker={() =>
+   610→   610→                              setShowReactions(showReactions === msg.id ? null : msg.id)
+   611→   611→                            }
+   612→   612→                          />
+   613→   613→
+   614→   614→                          {/* Hover actions */}
+   615→   615→                          <div className="flex items-center gap-0.5 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+   616→   616→                            <button
+   617→   617→                              onClick={() => setReplyingTo(msg)}
+   618→   618→                              className="p-1 hover:bg-gray-100 rounded-md text-gray-400 hover:text-[#1A237E] transition-colors"
+   619→   619→                              title="Reply"
+   620→   620→                            >
+   621→   621→                              <Reply className="size-3" />
+   622→   622→                            </button>
+   623→   623→                            <button
+   624→   624→                              onClick={() => setShowReactions(showReactions === msg.id ? null : msg.id)}
+   625→   625→                              className="p-1 hover:bg-gray-100 rounded-md text-gray-400 hover:text-[#1A237E] transition-colors"
+   626→   626→                              title="React"
+   627→   627→                            >
+   628→   628→                              <SmilePlus className="size-3" />
+   629→   629→                            </button>
+   630→   630→                            <button
+   631→   631→                              onClick={() => setReportingMsg(msg)}
+   632→   632→                              className="p-1 hover:bg-red-50 rounded-md text-gray-400 hover:text-red-500 transition-colors"
+   633→   633→                              title="Report"
+   634→   634→                            >
+   635→   635→                              <Flag className="size-3" />
+   636→   636→                            </button>
+   637→   637→                          </div>
+   638→   638→                        </div>
+   639→   639→                      </div>
+   640→   640→                    )}
+   641→   641→                  </div>
+   642→   642→                );
+   643→   643→              })}
+   644→   644→            </div>
+   645→   645→            <div ref={messagesEndRef} />
+   646→   646→          </div>
+   647→   647→
+   648→   648→          {/* Error banner */}
+   649→   649→          <AnimatePresence>
+   650→   650→            {error && (
+   651→   651→              <motion.div
+   652→   652→                initial={{ opacity: 0, height: 0 }}
+   653→   653→                animate={{ opacity: 1, height: "auto" }}
+   654→   654→                exit={{ opacity: 0, height: 0 }}
+   655→   655→                className="bg-red-50 border-t border-red-100 px-4 py-2 flex items-center gap-2 shrink-0"
+   656→   656→              >
+   657→   657→                <AlertTriangle className="size-3.5 text-red-500 shrink-0" />
+   658→   658→                <p className="text-xs text-red-600 flex-1">{error}</p>
+   659→   659→                <button
+   660→   660→                  onClick={() => setError("")}
+   661→   661→                  className="text-red-400 hover:text-red-600"
+   662→   662→                >
+   663→   663→                  <X className="size-3" />
+   664→   664→                </button>
+   665→   665→              </motion.div>
+   666→   666→            )}
+   667→   667→          </AnimatePresence>
+   668→   668→
+   669→   669→          {/* Input Area */}
+   670→   670→          {activeChannel && (
+   671→   671→            <div className="bg-white border-t border-gray-100 p-3 pb-16 shrink-0">
+   672→   672→              {/* Replying to indicator */}
+   673→   673→              <AnimatePresence>
+   674→   674→                {replyingTo && (
+   675→   675→                  <motion.div
+   676→   676→                    initial={{ opacity: 0, height: 0 }}
+   677→   677→                    animate={{ opacity: 1, height: "auto" }}
+   678→   678→                    exit={{ opacity: 0, height: 0 }}
+   679→   679→                    className="overflow-hidden"
+   680→   680→                  >
+   681→   681→                    <div className="flex items-center gap-2 bg-[#F0F4FF] border border-[#1A237E]/10 rounded-lg px-3 py-2 mb-2">
+   682→   682→                      <Reply className="size-3 text-[#1A237E] shrink-0" />
+   683→   683→                      <div className="min-w-0 flex-1">
+   684→   684→                        <p className="text-[10px] font-semibold text-[#1A237E]/60">
+   685→   685→                          Replying to {replyingTo.displayName}
+   686→   686→                        </p>
+   687→   687→                        <p className="text-[10px] text-gray-500 truncate">
+   688→   688→                          {replyingTo.content.substring(0, 80)}
+   689→   689→                        </p>
+   690→   690→                      </div>
+   691→   691→                      <button
+   692→   692→                        onClick={() => setReplyingTo(null)}
+   693→   693→                        className="text-gray-400 hover:text-gray-600 shrink-0"
+   694→   694→                      >
+   695→   695→                        <X className="size-3.5" />
+   696→   696→                      </button>
+   697→   697→                    </div>
+   698→   698→                  </motion.div>
+   699→   699→                )}
+   700→   700→              </AnimatePresence>
+   701→   701→
+   702→   702→              {/* Composer */}
+   703→   703→              <div className="flex items-end gap-2">
+   704→   704→                <div className="flex-1 relative">
+   705→   705→                  <textarea
+   706→   706→                    ref={inputRef}
+   707→   707→                    value={inputText}
+   708→   708→                    onChange={handleInputChange}
+   709→   709→                    onKeyDown={handleKeyDown}
+   710→   710→                    placeholder={
+   711→   711→                      activeChannel.isAnnouncement
+   712→   712→                        ? "This channel is for announcements only."
+   713→   713→                        : `Message ${activeChannel.name}...`
+   714→   714→                    }
+   715→   715→                    disabled={activeChannel.isAnnouncement}
+   716→   716→                    rows={1}
+   717→   717→                    className="w-full resize-none rounded-xl border border-gray-200 bg-[#FAFBFF] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/15 focus:border-[#1A237E]/25 transition-all min-h-[42px] max-h-24 disabled:opacity-50 disabled:cursor-not-allowed"
+   718→   718→                    style={{ lineHeight: "1.5" }}
+   719→   719→                  />
+   720→   720→                  {/* Character counter */}
+   721→   721→                  {charCount > 0 && (
+   722→   722→                    <span
+   723→   723→                      className={`absolute bottom-1.5 right-3 text-[9px] ${
+   724→   724→                        charCount > MAX_CHARS * 0.9
+   725→   725→                          ? "text-red-400"
+   726→   726→                          : "text-gray-300"
+   727→   727→                      }`}
+   728→   728→                    >
+   729→   729→                      {charCount}/{MAX_CHARS}
+   730→   730→                    </span>
+   731→   731→                  )}
+   732→   732→                </div>
+   733→   733→                <button
+   734→   734→                  onClick={sendMessage}
+   735→   735→                  disabled={!inputText.trim() || sending || activeChannel.isAnnouncement}
+   736→   736→                  className="shrink-0 w-10 h-[42px] rounded-xl bg-[#1A237E] hover:bg-[#283593] text-white flex items-center justify-center transition-colors disabled:opacity-30 disabled:cursor-not-allowed shadow-sm"
+   737→   737→                >
+   738→   738→                  {sending ? (
+   739→   739→                    <Loader2 className="size-4 animate-spin" />
+   740→   740→                  ) : (
+   741→   741→                    <Send className="size-4" />
+   742→   742→                  )}
+   743→   743→                </button>
+   744→   744→              </div>
+   745→   745→            </div>
+   746→   746→          )}
+   747→   747→        </div>
+   748→   748→      </div>
+   749→   749→
+   750→   750→      {/* ===== REPORT MODAL ===== */}
+   751→   751→      <AnimatePresence>
+   752→   752→        {reportingMsg && (
+   753→   753→          <motion.div
+   754→   754→            initial={{ opacity: 0 }}
+   755→   755→            animate={{ opacity: 1 }}
+   756→   756→            exit={{ opacity: 0 }}
+   757→   757→            className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4"
+   758→   758→            onClick={() => {
+   759→   759→              setReportingMsg(null);
+   760→   760→              setReportReason("");
+   761→   761→              setReportExplanation("");
+   762→   762→            }}
+   763→   763→          >
+   764→   764→            <motion.div
+   765→   765→              initial={{ scale: 0.95, opacity: 0, y: 10 }}
+   766→   766→              animate={{ scale: 1, opacity: 1, y: 0 }}
+   767→   767→              exit={{ scale: 0.95, opacity: 0, y: 10 }}
+   768→   768→              className="bg-white rounded-2xl p-5 max-w-sm w-full shadow-xl"
+   769→   769→              onClick={(e) => e.stopPropagation()}
+   770→   770→            >
+   771→   771→              {/* Header */}
+   772→   772→              <div className="flex items-center gap-3 mb-4">
+   773→   773→                <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center">
+   774→   774→                  <Flag className="size-5 text-red-500" />
+   775→   775→                </div>
+   776→   776→                <div>
+   777→   777→                  <h3 className="text-sm font-bold text-gray-800">
+   778→   778→                    Report Message
+   779→   779→                  </h3>
+   780→   780→                  <p className="text-[10px] text-gray-500">
+   781→   781→                    Reviewed confidentially by a church moderator
+   782→   782→                  </p>
+   783→   783→                </div>
+   784→   784→              </div>
+   785→   785→
+   786→   786→              {/* Reported message preview */}
+   787→   787→              <div className="bg-gray-50 rounded-lg p-2.5 mb-4 border border-gray-100">
+   788→   788→                <p className="text-[11px] text-gray-600 italic line-clamp-2">
+   789→   789→                  &ldquo;{reportingMsg.content.substring(0, 120)}&rdquo;
+   790→   790→                </p>
+   791→   791→              </div>
+   792→   792→
+   793→   793→              {/* Reason selection */}
+   794→   794→              <div className="mb-4">
+   795→   795→                <p className="text-xs font-medium text-gray-700 mb-2">
+   796→   796→                  What is the reason?
+   797→   797→                </p>
+   798→   798→                <div className="space-y-1.5 max-h-48 overflow-y-auto">
+   799→   799→                  {REPORT_REASONS.map((r) => (
+   800→   800→                    <label
+   801→   801→                      key={r.value}
+   802→   802→                      className={`flex items-center gap-2.5 px-3 py-2 rounded-lg border cursor-pointer transition-colors ${
+   803→   803→                        reportReason === r.value
+   804→   804→                          ? "border-[#1A237E] bg-[#1A237E]/5"
+   805→   805→                          : "border-gray-100 hover:bg-gray-50"
+   806→   806→                      }`}
+   807→   807→                    >
+   808→   808→                      <div
+   809→   809→                        className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors ${
+   810→   810→                          reportReason === r.value
+   811→   811→                            ? "border-[#1A237E]"
+   812→   812→                            : "border-gray-300"
+   813→   813→                        }`}
+   814→   814→                      >
+   815→   815→                        {reportReason === r.value && (
+   816→   816→                          <div className="w-2 h-2 rounded-full bg-[#1A237E]" />
+   817→   817→                        )}
+   818→   818→                      </div>
+   819→   819→                      <span className="text-xs text-gray-700">{r.label}</span>
+   820→   820→                    </label>
+   821→   821→                  ))}
+   822→   822→                </div>
+   823→   823→              </div>
+   824→   824→
+   825→   825→              {/* Optional explanation */}
+   826→   826→              {reportReason && (
+   827→   827→                <div className="mb-4">
+   828→   828→                  <p className="text-xs font-medium text-gray-700 mb-1.5">
+   829→   829→                    Additional details (optional)
+   830→   830→                  </p>
+   831→   831→                  <textarea
+   832→   832→                    value={reportExplanation}
+   833→   833→                    onChange={(e) => setReportExplanation(e.target.value)}
+   834→   834→                    placeholder="Provide any helpful context..."
+   835→   835→                    rows={2}
+   836→   836→                    className="w-full resize-none rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#1A237E]/15 focus:border-[#1A237E]/25 transition-colors"
+   837→   837→                  />
+   838→   838→                </div>
+   839→   839→              )}
+   840→   840→
+   841→   841→              {/* Actions */}
+   842→   842→              <div className="flex gap-3">
+   843→   843→                <button
+   844→   844→                  onClick={() => {
+   845→   845→                    setReportingMsg(null);
+   846→   846→                    setReportReason("");
+   847→   847→                    setReportExplanation("");
+   848→   848→                  }}
+   849→   849→                  className="flex-1 py-2.5 rounded-xl border border-gray-200 text-xs font-medium text-gray-600 hover:bg-gray-50 transition-colors"
+   850→   850→                >
+   851→   851→                  Cancel
+   852→   852→                </button>
+   853→   853→                <button
+   854→   854→                  onClick={submitReport}
+   855→   855→                  disabled={!reportReason || reportSubmitting}
+   856→   856→                  className="flex-1 py-2.5 rounded-xl bg-red-500 hover:bg-red-600 text-xs font-medium text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-1.5"
+   857→   857→                >
+   858→   858→                  {reportSubmitting ? (
+   859→   859→                    <Loader2 className="size-3 animate-spin" />
+   860→   860→                  ) : (
+   861→   861→                    <Flag className="size-3" />
+   862→   862→                  )}
+   863→   863→                  Submit Report
+   864→   864→                </button>
+   865→   865→              </div>
+   866→   866→            </motion.div>
+   867→   867→          </motion.div>
+   868→   868→        )}
+   869→   869→      </AnimatePresence>
+   870→   870→
+   871→   871→      {/* Feature Navigation Bar */}
+   872→   872→      <SocialFeatureNav currentFeatureId="family-chat" />
+   873→   873→    </div>
+   874→   874→  );
+   875→   875→}
+   876→   876→
+   877→   877→/* ============ REACTIONS SUB-COMPONENT ============ */
+   878→   878→function MessageReactions({
+   879→   879→  reactions,
+   880→   880→  onReact,
+   881→   881→  showPicker,
+   882→   882→  onTogglePicker,
+   883→   883→}: {
+   884→   884→  reactions: Record<string, number>;
+   885→   885→  onReact: (r: string) => void;
+   886→   886→  showPicker: boolean;
+   887→   887→  onTogglePicker: () => void;
+   888→   888→}) {
+   889→   889→  const hasReactions = Object.values(reactions).some((c) => c > 0);
+   890→   890→
+   891→   891→  return (
+   892→   892→    <div className="flex items-center gap-1 mt-1 flex-wrap">
+   893→   893→      {Object.entries(reactions)
+   894→   894→        .filter(([, count]) => count > 0)
+   895→   895→        .map(([emoji, count]) => (
+   896→   896→          <button
+   897→   897→            key={emoji}
+   898→   898→            onClick={() => onReact(emoji)}
+   899→   899→            className="inline-flex items-center gap-0.5 bg-gray-100/80 hover:bg-gray-200 rounded-full px-1.5 py-0.5 text-[11px] transition-colors"
+   900→   900→          >
+   901→   901→            <span className="text-[10px]">{emoji}</span>
+   902→   902→            <span className="text-gray-500 text-[9px]">{count}</span>
+   903→   903→          </button>
+   904→   904→        ))}
+   905→   905→
+   906→   906→      <button
+   907→   907→        onClick={onTogglePicker}
+   908→   908→        className={`inline-flex items-center justify-center hover:bg-gray-100 rounded-full p-0.5 transition-colors ${
+   909→   909→          showPicker ? "bg-gray-100" : ""
+   910→   910→        }`}
+   911→   911→        title="Add reaction"
+   912→   912→      >
+   913→   913→        <SmilePlus
+   914→   914→          className={`size-3 transition-colors ${showPicker ? "text-[#1A237E]" : "text-gray-400"}`}
+   915→   915→        />
+   916→   916→      </button>
+   917→   917→
+   918→   918→      <AnimatePresence>
+   919→   919→        {showPicker && (
+   920→   920→          <motion.div
+   921→   921→            initial={{ opacity: 0, scale: 0.9, y: 4 }}
+   922→   922→            animate={{ opacity: 1, scale: 1, y: 0 }}
+   923→   923→            exit={{ opacity: 0, scale: 0.9, y: 4 }}
+   924→   924→            className="flex items-center gap-0.5 bg-white border border-gray-200 rounded-full px-2 py-1 shadow-md"
+   925→   925→          >
+   926→   926→            {REACTION_OPTIONS.map((emoji) => (
+   927→   927→              <button
+   928→   928→                key={emoji}
+   929→   929→                onClick={() => onReact(emoji)}
+   930→   930→                className="hover:scale-125 transition-transform p-0.5 rounded-full hover:bg-gray-50"
+   931→   931→              >
+   932→   932→                {emoji}
+   933→   933→              </button>
+   934→   934→            ))}
+   935→   935→          </motion.div>
+   936→   936→        )}
+   937→   937→      </AnimatePresence>
+   938→   938→    </div>
+   939→   939→  );
+   940→   940→}
+   941→   941→

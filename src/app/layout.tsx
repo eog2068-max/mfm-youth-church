@@ -113,6 +113,15 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="RCCG Rehoboth" />
+        {/* Permanently disable browser scroll restoration BEFORE React hydrates.
+            This must run synchronously in <head> so the browser never restores
+            the previous scroll position when navigating between social features. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; } try { window.scrollTo(0, 0); } catch (e) {}",
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
