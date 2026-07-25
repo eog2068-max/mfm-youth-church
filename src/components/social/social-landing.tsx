@@ -86,7 +86,7 @@ export function SocialLandingPage() {
             initial={{ scale: 0, rotate: -10 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            className="relative inline-block mb-5"
+            className="relative block mb-5"
           >
             <div className="absolute inset-0 bg-blue-400/25 rounded-full blur-3xl scale-[2]" />
             <div className="relative text-6xl sm:text-7xl md:text-8xl">💬</div>
@@ -101,7 +101,7 @@ export function SocialLandingPage() {
           >
             <Users className="size-3.5 text-blue-300" />
             <span className="text-xs font-medium text-blue-200/80">
-              Your Digital Family Hub
+              Your Digital Church Family Hub
             </span>
           </motion.div>
 
