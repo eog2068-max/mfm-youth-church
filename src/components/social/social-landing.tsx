@@ -86,10 +86,10 @@ export function SocialLandingPage() {
             initial={{ scale: 0, rotate: -10 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            className="relative block mb-5"
+            className="relative block mb-8"
           >
             <div className="absolute inset-0 bg-blue-400/25 rounded-full blur-3xl scale-[2]" />
-            <div className="relative text-6xl sm:text-7xl md:text-8xl">💬</div>
+            <div className="relative text-[8rem] sm:text-[10rem] md:text-[12rem] leading-none">💬</div>
           </motion.div>
 
           {/* Pill badge */}
@@ -97,7 +97,7 @@ export function SocialLandingPage() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.05 }}
-            className="inline-flex items-center gap-2 bg-white/[0.07] backdrop-blur-sm border border-white/[0.12] rounded-full px-4 py-1.5 mb-6"
+            className="inline-flex items-center gap-2 bg-white/[0.07] backdrop-blur-sm border border-white/[0.12] rounded-full px-4 py-1.5 mb-8"
           >
             <Users className="size-3.5 text-blue-300" />
             <span className="text-xs font-medium text-blue-200/80">
@@ -110,7 +110,7 @@ export function SocialLandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-5"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6"
           >
             <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
               RehobothSocial
