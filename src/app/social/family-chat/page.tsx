@@ -1,12 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FeatureLandingPage } from "@/components/social/feature-landing-page";
 import { FamilyChat } from "@/components/social/family-chat";
 import { socialFeatures } from "@/components/social/social-data";
 
 export default function FamilyChatPage() {
   const [entered, setEntered] = useState(false);
+
+  // Scroll to top when entering the feature
+  useEffect(() => {
+    if (entered) window.scrollTo(0, 0);
+  }, [entered]);
 
   if (entered) return <FamilyChat />;
 

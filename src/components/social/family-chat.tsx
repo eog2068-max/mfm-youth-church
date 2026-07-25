@@ -192,11 +192,11 @@ export function FamilyChat() {
     return () => clearInterval(interval);
   }, [activeChannel, loadMessages]);
 
-  // Auto-scroll to bottom on new messages
+  // Auto-scroll chat container to bottom on new messages
   const isNearBottom = useRef(true);
   useEffect(() => {
-    if (isNearBottom.current) {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (isNearBottom.current && messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
     }
   }, [messages.length]);
 
