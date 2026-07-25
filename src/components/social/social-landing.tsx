@@ -160,12 +160,12 @@ export function SocialLandingPage() {
             </motion.div>
           )}
 
-          {/* Scroll-down indicator */}
+          {/* Scroll-down indicator — directly below presence badge */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
-            className="absolute bottom-6 left-1/2 -translate-x-1/2"
+            className="mt-8"
           >
             <motion.div
               animate={{ y: [0, 8, 0] }}
