@@ -49,7 +49,7 @@ export function SocialLandingPage() {
   return (
     <div className="min-h-screen bg-[#EDF1FA]">
       {/* ===== HERO — Modernized with animated mesh + glow ===== */}
-      <section className="relative overflow-hidden bg-[#0B0F3A] pt-28 pb-28 md:pt-36 md:pb-36">
+      <section className="relative overflow-hidden bg-[#0B0F3A] min-h-screen flex flex-col justify-center">
         {/* Animated mesh gradient background */}
         <div className="absolute inset-0">
           <div
@@ -81,28 +81,28 @@ export function SocialLandingPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          {/* Emoji icon — larger, top anchor */}
+          <motion.div
+            initial={{ scale: 0, rotate: -10 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 200, damping: 15 }}
+            className="relative inline-block mb-5"
+          >
+            <div className="absolute inset-0 bg-blue-400/25 rounded-full blur-3xl scale-[2]" />
+            <div className="relative text-6xl sm:text-7xl md:text-8xl">💬</div>
+          </motion.div>
+
           {/* Pill badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.05 }}
-            className="inline-flex items-center gap-2 bg-white/[0.07] backdrop-blur-sm border border-white/[0.12] rounded-full px-4 py-1.5 mb-7"
+            className="inline-flex items-center gap-2 bg-white/[0.07] backdrop-blur-sm border border-white/[0.12] rounded-full px-4 py-1.5 mb-6"
           >
             <Users className="size-3.5 text-blue-300" />
             <span className="text-xs font-medium text-blue-200/80">
               Your Digital Family Hub
             </span>
-          </motion.div>
-
-          {/* Emoji icon with glow ring */}
-          <motion.div
-            initial={{ scale: 0, rotate: -10 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            className="relative inline-block mb-7"
-          >
-            <div className="absolute inset-0 bg-blue-400/20 rounded-full blur-2xl scale-150" />
-            <div className="relative text-5xl md:text-6xl">💬</div>
           </motion.div>
 
           {/* Title with gradient text effect */}
@@ -165,7 +165,7 @@ export function SocialLandingPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
-            className="mt-4"
+            className="mt-3"
           >
             <motion.div
               animate={{ y: [0, 8, 0] }}
