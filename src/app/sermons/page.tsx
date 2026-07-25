@@ -6,7 +6,7 @@ import { SermonCTA } from "@/components/sermons/sermon-cta";
 export const metadata: Metadata = {
   title: "Sermon Library",
   description:
-    "Browse and listen to powerful sermons, Bible studies, and spiritual teachings from Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja.",
+    "Browse and listen to powerful sermons, Bible studies, and spiritual teachings from The Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja.",
 };
 
 export default function SermonsPage() {

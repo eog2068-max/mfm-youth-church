@@ -10,7 +10,7 @@ import { LiveCTA } from "@/components/live/live-cta";
 export const metadata: Metadata = {
   title: "Live Stream",
   description:
-    "Watch our services live online. Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja — Sunday, Tuesday, and Thursday services streamed live.",
+    "Watch our services live online. The Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja — Sunday, Tuesday, and Thursday services streamed live.",
 };
 
 export default function LivePage() {

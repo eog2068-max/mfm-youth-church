@@ -226,7 +226,7 @@ const mockSearchResults: SearchResult[] = [
     type: "event",
     title: "RCCG Holy Ghost Congress",
     description:
-      "The annual Holy Ghost Congress of the Redeemed Christian Church of God. A gathering of millions of believers worldwide for supernatural encounters, miracles, and divine empowerment.",
+      "The annual Holy Ghost Congress of The Redeemed Christian Church of God. A gathering of millions of believers worldwide for supernatural encounters, miracles, and divine empowerment.",
     url: "/events#evt3",
     date: "2025-12-08",
     tags: ["congress", "holy ghost", "miracles", "RCCG"],

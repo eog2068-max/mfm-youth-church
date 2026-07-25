@@ -7,7 +7,7 @@ import { LeadershipCTA } from "@/components/leadership/leadership-cta";
 export const metadata: Metadata = {
   title: "Leadership",
   description:
-    "Meet the dedicated leaders of Redeemed Christian Church of God, Rehoboth Assembly Parish — our pastors, ministers, and elders who serve with passion and purpose.",
+    "Meet the dedicated leaders of The Redeemed Christian Church of God, Rehoboth Assembly Parish — our pastors, ministers, and elders who serve with passion and purpose.",
 };
 
 export default function LeadershipPage() {

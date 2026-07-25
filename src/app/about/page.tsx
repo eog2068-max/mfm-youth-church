@@ -9,7 +9,7 @@ import { AboutCTA } from "@/components/about/about-cta";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Redeemed Christian Church of God, Rehoboth Assembly Parish — our story, mission, vision, beliefs, and core values as we serve God in Utako, Abuja.",
+    "Learn about The Redeemed Christian Church of God, Rehoboth Assembly Parish — our story, mission, vision, beliefs, and core values as we serve God in Utako, Abuja.",
 };
 
 export default function AboutPage() {

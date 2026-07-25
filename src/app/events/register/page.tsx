@@ -5,7 +5,7 @@ import { EventRegistrationForm } from "@/components/events/event-registration";
 export const metadata: Metadata = {
   title: "Event Registration",
   description:
-    "Register for upcoming events at Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja.",
+    "Register for upcoming events at The Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja.",
 };
 
 export default function EventRegistrationPage() {

@@ -37,7 +37,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* About Column */}
           <div>
-            <h3 className="text-lg font-bold leading-tight">Redeemed Christian Church of God</h3>
+            <h3 className="text-lg font-bold leading-tight">The Redeemed Christian Church of God</h3>
             <p className="text-sm text-blue-200/70 mt-0.5">(Rehoboth Assembly Parish)</p>
             <p className="text-sm text-blue-200/60 mt-4 leading-relaxed">
               A place of destiny fulfillment, where lives are transformed by the power of God&apos;s Word and the fellowship of the Holy Spirit.
@@ -186,7 +186,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <p className="text-center text-xs sm:text-sm text-blue-200/50">
-            &copy; 2026 Redeemed Christian Church of God, Rehoboth Assembly Parish. All rights reserved.
+            &copy; 2026 The Redeemed Christian Church of God, Rehoboth Assembly Parish. All rights reserved.
           </p>
         </div>
       </div>

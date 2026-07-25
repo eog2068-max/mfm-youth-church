@@ -6,7 +6,7 @@ import { MembersCTA } from "@/components/members/members-cta";
 export const metadata: Metadata = {
   title: "Members Gallery",
   description:
-    "Meet the wonderful members of Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja. A family united in faith and service to God.",
+    "Meet the wonderful members of The Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja. A family united in faith and service to God.",
 };
 
 export default function MembersPage() {

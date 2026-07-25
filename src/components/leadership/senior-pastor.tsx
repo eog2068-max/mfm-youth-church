@@ -56,7 +56,7 @@ export function SeniorPastor() {
 
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                Pastor [Name] is the founding and Senior Pastor of Redeemed Christian Church of God,
+                Pastor [Name] is the founding and Senior Pastor of The Redeemed Christian Church of God,
                 Rehoboth Assembly Parish, Utako, Abuja. Called into ministry under the RCCG
                 umbrella, Pastor [Name] has served the Lord faithfully for over two decades,
                 demonstrating an unwavering commitment to the preaching of the Gospel and the

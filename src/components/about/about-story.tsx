@@ -63,9 +63,9 @@ export function AboutStory() {
             </h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                Redeemed Christian Church of God, Rehoboth Assembly Parish, was established with a
+                The Redeemed Christian Church of God, Rehoboth Assembly Parish, was established with a
                 divine mandate to be a beacon of hope and a place of spiritual rejuvenation in the
-                heart of Utako, Abuja. Founded under the leadership of the Redeemed Christian Church
+                heart of Utako, Abuja. Founded under the leadership of The Redeemed Christian Church
                 of God, our parish began as a small gathering of believers united by a common
                 faith and an unwavering commitment to the Word of God.
               </p>

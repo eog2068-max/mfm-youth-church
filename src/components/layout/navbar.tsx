@@ -73,7 +73,7 @@ export function Navbar() {
             <div className="relative h-10 w-10 md:h-12 md:w-12 rounded-full bg-white/90 p-0.5 shadow-md">
               <Image
                 src="/rccg-logo.png"
-                alt="Redeemed Christian Church of God"
+                alt="The Redeemed Christian Church of God"
                 fill
                 sizes="40px"
                 className="object-contain"
@@ -89,7 +89,7 @@ export function Navbar() {
                     : "text-[#1A237E]/90"
                 )}
               >
-                Redeemed Christian Church of God
+                The Redeemed Christian Church of God
               </p>
               <p
                 className={cn(
@@ -168,7 +168,7 @@ export function Navbar() {
                     <div className="relative h-8 w-8 rounded-full bg-[#F0F4FF] p-0.5">
                       <Image
                         src="/rccg-logo.png"
-                        alt="Redeemed Christian Church of God"
+                        alt="The Redeemed Christian Church of God"
                         fill
                         sizes="32px"
                         className="object-contain"

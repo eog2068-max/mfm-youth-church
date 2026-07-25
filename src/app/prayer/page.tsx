@@ -5,7 +5,7 @@ import { PrayerRequestForm } from "@/components/prayer/prayer-request-form";
 export const metadata: Metadata = {
   title: "Prayer Request",
   description:
-    "Submit your prayer request to Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja. Our prayer team will stand in agreement with you.",
+    "Submit your prayer request to The Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja. Our prayer team will stand in agreement with you.",
 };
 
 export default function PrayerPage() {

@@ -64,7 +64,7 @@ export function AboutMissionVision() {
               </div>
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Our Vision</h3>
               <p className="text-blue-200/80 leading-relaxed mb-6">
-                To be a leading parish of the Redeemed Christian Church of God, renowned for
+                To be a leading parish of The Redeemed Christian Church of God, renowned for
                 spiritual depth, genuine love, and transformative community impact. We envision a
                 church where every member discovers their purpose, develops their gifts, and
                 deploys them for the advancement of God&apos;s Kingdom. Rehoboth Assembly shall be

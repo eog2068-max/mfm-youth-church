@@ -7,7 +7,7 @@ import { MediaCTA } from "@/components/media/media-cta";
 export const metadata: Metadata = {
   title: "Media Center",
   description:
-    "Watch live services, browse sermon videos, view photos, and listen to audio content from Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja.",
+    "Watch live services, browse sermon videos, view photos, and listen to audio content from The Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja.",
 };
 
 export default function MediaPage() {

@@ -1,5 +1,5 @@
 export const churchInfo = {
-  name: "Redeemed Christian Church of God, Rehoboth Assembly Parish",
+  name: "The Redeemed Christian Church of God, Rehoboth Assembly Parish",
   shortName: "RCCG Rehoboth Assembly",
   address: "1 Rehoboth Close, off Utako Market Road, Utako, Abuja FCT, Nigeria",
   mapsQuery: "1+Rehoboth+Close+Utako+Abuja+Nigeria",

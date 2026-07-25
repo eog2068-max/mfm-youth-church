@@ -31,13 +31,13 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Redeemed Christian Church of God | Rehoboth Assembly Parish",
-    template: "%s | Redeemed Christian Church of God",
+    default: "The Redeemed Christian Church of God | Rehoboth Assembly Parish",
+    template: "%s | The Redeemed Christian Church of God",
   },
   description:
-    "Redeemed Christian Church of God, Rehoboth Assembly Parish - Silla-Zeka Plaza, Adebayo Adedeji Street, Utako, FCT, Abuja, Nigeria. Worship with us!",
+    "The Redeemed Christian Church of God, Rehoboth Assembly Parish - Silla-Zeka Plaza, Adebayo Adedeji Street, Utako, FCT, Abuja, Nigeria. Worship with us!",
   keywords: [
-    "Redeemed Christian Church of God",
+    "The Redeemed Christian Church of God",
     "RCCG",
     "Rehoboth Assembly Parish",
     "Church in Abuja",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     "Prayer",
     "Sermons",
   ],
-  authors: [{ name: "Redeemed Christian Church of God, Rehoboth Assembly Parish" }],
-  creator: "Redeemed Christian Church of God, Rehoboth Assembly Parish",
-  publisher: "Redeemed Christian Church of God, Rehoboth Assembly Parish",
+  authors: [{ name: "The Redeemed Christian Church of God, Rehoboth Assembly Parish" }],
+  creator: "The Redeemed Christian Church of God, Rehoboth Assembly Parish",
+  publisher: "The Redeemed Christian Church of God, Rehoboth Assembly Parish",
   formatDetection: {
     telephone: true,
     email: true,
@@ -66,10 +66,10 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Redeemed Christian Church of God | Rehoboth Assembly Parish",
+    title: "The Redeemed Christian Church of God | Rehoboth Assembly Parish",
     description:
-      "Redeemed Christian Church of God, Rehoboth Assembly Parish - Silla-Zeka Plaza, Adebayo Adedeji Street, Utako, Abuja. Worship with us.",
-    siteName: "Redeemed Christian Church of God - Rehoboth Assembly",
+      "The Redeemed Christian Church of God, Rehoboth Assembly Parish - Silla-Zeka Plaza, Adebayo Adedeji Street, Utako, Abuja. Worship with us.",
+    siteName: "The Redeemed Christian Church of God - Rehoboth Assembly",
     type: "website",
     locale: "en_NG",
     images: [
@@ -83,9 +83,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Redeemed Christian Church of God - Rehoboth Assembly Parish",
+    title: "The Redeemed Christian Church of God - Rehoboth Assembly Parish",
     description:
-      "Redeemed Christian Church of God, Rehoboth Assembly Parish - Utako, Abuja.",
+      "The Redeemed Christian Church of God, Rehoboth Assembly Parish - Utako, Abuja.",
     images: ["/icons/icon-192x192.png"],
   },
   robots: {

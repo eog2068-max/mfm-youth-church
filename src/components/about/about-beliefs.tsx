@@ -53,7 +53,7 @@ export function AboutBeliefs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="What We Believe"
-          subtitle="Our statement of faith is rooted in the eternal Word of God and aligned with the foundational beliefs of the Redeemed Christian Church of God worldwide."
+          subtitle="Our statement of faith is rooted in the eternal Word of God and aligned with the foundational beliefs of The Redeemed Christian Church of God worldwide."
         />
 
         <div className="grid md:grid-cols-2 gap-6 mt-12">

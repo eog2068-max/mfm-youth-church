@@ -36,7 +36,7 @@ export function HeroSection() {
           <div className="relative h-32 w-32 md:h-40 md:w-40 lg:h-48 lg:w-48 mx-auto rounded-full bg-white p-2 shadow-2xl shadow-black/30">
             <Image
               src="/rccg-logo.png"
-              alt="Redeemed Christian Church of God Logo"
+              alt="The Redeemed Christian Church of God Logo"
               fill
               sizes="192px"
               className="object-contain"
@@ -52,7 +52,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
-            Redeemed Christian Church of God
+            The Redeemed Christian Church of God
           </h1>
           <p className="text-lg md:text-2xl text-blue-100/80 font-medium mt-2 md:mt-3">
             (Rehoboth Assembly Parish)

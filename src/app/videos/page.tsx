@@ -6,7 +6,7 @@ import { VideoCTA } from "@/components/videos/video-cta";
 export const metadata: Metadata = {
   title: "Video Gallery",
   description:
-    "Watch powerful sermons, sermon series, and service recordings from Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja.",
+    "Watch powerful sermons, sermon series, and service recordings from The Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja.",
 };
 
 export default function VideosPage() {

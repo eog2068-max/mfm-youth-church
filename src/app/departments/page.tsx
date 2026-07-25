@@ -6,7 +6,7 @@ import { DepartmentsCTA } from "@/components/departments/departments-cta";
 export const metadata: Metadata = {
   title: "Departments",
   description:
-    "Explore the various departments and ministries at Redeemed Christian Church of God, Rehoboth Assembly Parish. Find your place to serve and grow.",
+    "Explore the various departments and ministries at The Redeemed Christian Church of God, Rehoboth Assembly Parish. Find your place to serve and grow.",
 };
 
 export default function DepartmentsPage() {
