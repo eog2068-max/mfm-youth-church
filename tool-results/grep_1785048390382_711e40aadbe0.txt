@@ -1,0 +1,252 @@
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:86:          <CheckCircle2 className="size-10 text-[#2E7D32]" />
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:88:        <h2 className="text-2xl font-bold text-[#1A237E] mb-2">Prayer Request Received</h2>
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:103:            className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl px-6"
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:128:            <div className="bg-gradient-to-r from-[#D32F2F] to-[#E53935] px-6 py-5">
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:144:                  Prayer Category <span className="text-[#D32F2F]">*</span>
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:159:                            ? "border-[#1A237E] bg-[#F0F4FF]"
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:164:                          isSelected ? "bg-[#1A237E]" : "bg-gray-100"
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:169:                          <p className={`text-sm font-semibold leading-snug ${isSelected ? "text-[#1A237E]" : "text-gray-700"}`}>
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:178:                {errors.prayerCategory && <p className="text-xs text-[#D32F2F] mt-1.5">{errors.prayerCategory}</p>}
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:188:                  Your Prayer Request <span className="text-[#D32F2F]">*</span>
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:195:                  className="rounded-xl border-gray-200 focus:border-[#1A237E]/30 resize-none"
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:197:                {errors.request && <p className="text-xs text-[#D32F2F] mt-1">{errors.request}</p>}
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:211:                    className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:224:                    className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:240:                  className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30 max-w-sm"
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:249:                  className="flex items-center gap-2 text-xs text-gray-500 hover:text-[#1A237E] transition-colors"
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:252:                    formData.isAnonymous ? "bg-[#1A237E] border-[#1A237E]" : "border-gray-300"
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:261:                  className="flex items-center gap-2 text-xs text-gray-500 hover:text-[#D32F2F] transition-colors"
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:264:                    formData.isUrgent ? "bg-[#D32F2F] border-[#D32F2F]" : "border-gray-300"
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:282:                className="w-full bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl h-12 text-base font-semibold"
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:293:          <div className="bg-gradient-to-br from-[#0D1557] to-[#1A237E] rounded-2xl p-6 text-white">
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:303:            <h3 className="text-sm font-bold text-[#1A237E] mb-4">How It Works</h3>
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:313:                    <span className="text-[10px] font-bold text-[#1A237E]">{item.step}</span>
+/home/z/my-project/src/components/prayer/prayer-request-form.tsx:330:            <Button asChild size="sm" className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg text-xs">
+/home/z/my-project/src/app/live/page.tsx:42:                <h3 className="text-sm font-bold text-[#1A237E] mb-1">Streaming Tips</h3>
+/home/z/my-project/src/app/live/page.tsx:46:                      <span className="text-[10px] font-bold text-[#1A237E]">1</span>
+/home/z/my-project/src/app/live/page.tsx:52:                      <span className="text-[10px] font-bold text-[#1A237E]">2</span>
+/home/z/my-project/src/app/live/page.tsx:58:                      <span className="text-[10px] font-bold text-[#1A237E]">3</span>
+/home/z/my-project/src/app/live/page.tsx:64:                      <span className="text-[10px] font-bold text-[#1A237E]">4</span>
+/home/z/my-project/src/components/admin/admin-data.ts:181:    color: "#1A237E",
+/home/z/my-project/src/components/admin/admin-data.ts:189:    color: "#2E7D32",
+/home/z/my-project/src/components/admin/admin-data.ts:197:    color: "#D32F2F",
+/home/z/my-project/src/components/admin/admin-topbar.tsx:40:        <Menu className="size-5 text-[#1A237E]" />
+/home/z/my-project/src/components/admin/admin-topbar.tsx:49:              className="text-sm text-[#1A237E]/60 hover:text-[#1A237E]"
+/home/z/my-project/src/components/admin/admin-topbar.tsx:56:            <BreadcrumbPage className="text-sm font-medium text-[#1A237E]">
+/home/z/my-project/src/components/admin/admin-topbar.tsx:64:      <h1 className="text-sm font-semibold text-[#1A237E] sm:hidden">{pageTitle}</h1>
+/home/z/my-project/src/components/admin/admin-topbar.tsx:69:          <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#1A237E]/40" />
+/home/z/my-project/src/components/admin/admin-topbar.tsx:73:            className="h-9 w-56 rounded-lg border-[#EBF0FA] bg-[#F5F7FF] pl-9 text-sm placeholder:text-[#1A237E]/40 focus-visible:ring-[#1A237E]/20 lg:w-64"
+/home/z/my-project/src/components/admin/admin-topbar.tsx:79:          <Search className="size-5 text-[#1A237E]/60" />
+/home/z/my-project/src/components/admin/admin-topbar.tsx:91:              <Bell className="size-5 text-[#1A237E]/60" />
+/home/z/my-project/src/components/admin/admin-topbar.tsx:92:              <span className="absolute right-1.5 top-1.5 flex size-4 items-center justify-center rounded-full bg-[#D32F2F] text-[10px] font-bold text-white">
+/home/z/my-project/src/components/admin/admin-topbar.tsx:98:            <DropdownMenuLabel className="text-[#1A237E]">
+/home/z/my-project/src/components/admin/admin-topbar.tsx:104:              <span className="text-xs text-[#1A237E]/50">2 hours ago</span>
+/home/z/my-project/src/components/admin/admin-topbar.tsx:108:              <span className="text-xs text-[#1A237E]/50">4 hours ago</span>
+/home/z/my-project/src/components/admin/admin-topbar.tsx:112:              <span className="text-xs text-[#1A237E]/50">Yesterday</span>
+/home/z/my-project/src/components/admin/admin-topbar.tsx:115:            <DropdownMenuItem className="justify-center text-sm text-[#1A237E]/60">
+/home/z/my-project/src/components/admin/admin-topbar.tsx:126:                <AvatarFallback className="bg-[#1A237E] text-xs font-bold text-white">
+/home/z/my-project/src/components/admin/admin-topbar.tsx:130:              <span className="hidden text-sm font-medium text-[#1A237E] xl:inline">
+/home/z/my-project/src/components/admin/admin-topbar.tsx:136:            <DropdownMenuLabel className="text-sm font-normal text-[#1A237E]/60">
+/home/z/my-project/src/components/admin/admin-topbar.tsx:143:            <DropdownMenuItem className="text-sm text-[#D32F2F]">
+/home/z/my-project/src/components/admin/social-admin-dashboard.tsx:116:      <div className="bg-gradient-to-r from-[#1A237E] to-[#283593] text-white px-6 py-6">
+/home/z/my-project/src/components/admin/social-admin-dashboard.tsx:158:                  ? "bg-white text-[#1A237E] shadow-sm"
+/home/z/my-project/src/components/admin/social-admin-dashboard.tsx:275:                    <Link key={link.href} href={link.href} className="block text-sm text-[#1A237E] hover:underline">
+/home/z/my-project/src/components/admin/social-admin-dashboard.tsx:295:                  className="text-sm text-[#1A237E] hover:underline"
+/home/z/my-project/src/components/admin/pending-items.tsx:17:    color: "text-[#D32F2F]",
+/home/z/my-project/src/components/admin/pending-items.tsx:18:    bg: "bg-[#D32F2F]/10 border-[#D32F2F]/20",
+/home/z/my-project/src/components/admin/pending-items.tsx:27:    color: "text-[#1A237E]/50",
+/home/z/my-project/src/components/admin/pending-items.tsx:28:    bg: "bg-[#1A237E]/5 border-[#1A237E]/10",
+/home/z/my-project/src/components/admin/pending-items.tsx:94:                  className="rounded-full border-[#EBF0FA] bg-[#F5F7FF] px-2 py-0 text-[10px] font-semibold text-[#1A237E]/70"
+/home/z/my-project/src/components/admin/pending-items.tsx:98:                <span className="text-[10px] text-[#1A237E]/40">
+/home/z/my-project/src/components/admin/pending-items.tsx:102:              <p className="mt-1 text-sm font-medium leading-snug text-[#1A237E]">
+/home/z/my-project/src/components/admin/pending-items.tsx:105:              <p className="mt-0.5 text-xs text-[#1A237E]/50">
+/home/z/my-project/src/components/admin/pending-items.tsx:112:                  className="h-7 rounded-md bg-[#1A237E] px-3 text-xs font-medium text-white hover:bg-[#1A237E]/90"
+/home/z/my-project/src/components/admin/pending-items.tsx:135:                  className="h-7 rounded-md border-[#EBF0FA] px-3 text-xs font-medium text-[#1A237E]/60 hover:border-[#D32F2F]/30 hover:bg-[#D32F2F]/5 hover:text-[#D32F2F]"
+/home/z/my-project/src/components/admin/pending-items.tsx:169:          <CardTitle className="text-base font-semibold text-[#1A237E]">
+/home/z/my-project/src/components/admin/pending-items.tsx:172:          <Badge className="rounded-full bg-[#D32F2F] px-2 py-0.5 text-xs font-semibold text-white">
+/home/z/my-project/src/components/admin/recent-activity.tsx:34:  member: "bg-[#1A237E]/10 text-[#1A237E]",
+/home/z/my-project/src/components/admin/recent-activity.tsx:35:  sermon: "bg-[#2E7D32]/10 text-[#2E7D32]",
+/home/z/my-project/src/components/admin/recent-activity.tsx:43:  new: "bg-[#1A237E] text-white",
+/home/z/my-project/src/components/admin/recent-activity.tsx:45:  approved: "bg-[#2E7D32]/10 text-[#2E7D32] border-[#2E7D32]/20",
+/home/z/my-project/src/components/admin/recent-activity.tsx:70:        <CardTitle className="text-base font-semibold text-[#1A237E]">
+/home/z/my-project/src/components/admin/recent-activity.tsx:76:          className="text-xs text-[#1A237E]/60 hover:text-[#1A237E]"
+/home/z/my-project/src/components/admin/recent-activity.tsx:105:                      <p className="text-sm font-medium leading-snug text-[#1A237E]">
+/home/z/my-project/src/components/admin/recent-activity.tsx:116:                    <p className="mt-1 text-xs leading-relaxed text-[#1A237E]/50">
+/home/z/my-project/src/components/admin/recent-activity.tsx:119:                    <div className="mt-1.5 flex items-center gap-1 text-[10px] text-[#1A237E]/40">
+/home/z/my-project/src/components/admin/attendance-chart.tsx:19:        <CardTitle className="text-base font-semibold text-[#1A237E]">
+/home/z/my-project/src/components/admin/attendance-chart.tsx:44:                  className="pointer-events-none absolute -top-10 z-10 rounded-lg bg-[#1A237E] px-3 py-1.5 shadow-lg"
+/home/z/my-project/src/components/admin/attendance-chart.tsx:49:                  <div className="absolute -bottom-1 left-1/2 size-2 -translate-x-1/2 rotate-45 bg-[#1A237E]" />
+/home/z/my-project/src/components/admin/attendance-chart.tsx:64:                    backgroundColor: isHovered ? "#1A237E" : "#1A237E33",
+/home/z/my-project/src/components/admin/attendance-chart.tsx:72:                      ? "font-semibold text-[#1A237E]"
+/home/z/my-project/src/components/admin/attendance-chart.tsx:73:                      : "text-[#1A237E]/45"
+/home/z/my-project/src/components/admin/attendance-chart.tsx:89:            <p className="text-xs text-[#1A237E]/50">Average Attendance</p>
+/home/z/my-project/src/components/admin/attendance-chart.tsx:90:            <p className="text-lg font-bold text-[#1A237E]">
+/home/z/my-project/src/components/admin/attendance-chart.tsx:97:            <p className="text-xs text-[#1A237E]/50">Peak This Period</p>
+/home/z/my-project/src/components/admin/attendance-chart.tsx:98:            <p className="text-lg font-bold text-[#2E7D32]">
+/home/z/my-project/src/components/admin/admin-sidebar.tsx:72:        "flex h-full flex-col bg-[#1A237E] text-white transition-all duration-300",
+/home/z/my-project/src/components/admin/admin-sidebar.tsx:172:            <AvatarFallback className="bg-[#D32F2F] text-xs font-bold text-white">
+/home/z/my-project/src/components/admin/admin-dashboard.tsx:50:              <h2 className="text-xl font-bold text-[#1A237E] sm:text-2xl">
+/home/z/my-project/src/components/admin/admin-dashboard.tsx:53:              <p className="mt-1 text-sm text-[#1A237E]/50">{today}</p>
+/home/z/my-project/src/components/admin/stats-cards.tsx:33:    gradient: "from-[#1A237E] to-[#3949AB]",
+/home/z/my-project/src/components/admin/stats-cards.tsx:34:    iconBg: "bg-[#1A237E]/10",
+/home/z/my-project/src/components/admin/stats-cards.tsx:42:    gradient: "from-[#2E7D32] to-[#43A047]",
+/home/z/my-project/src/components/admin/stats-cards.tsx:43:    iconBg: "bg-[#2E7D32]/10",
+/home/z/my-project/src/components/admin/stats-cards.tsx:128:                <IconComponent className="size-5 text-[#1A237E]" />
+/home/z/my-project/src/components/admin/stats-cards.tsx:133:                <p className="text-2xl font-bold tracking-tight text-[#1A237E] sm:text-3xl">
+/home/z/my-project/src/components/admin/stats-cards.tsx:136:                <p className="mt-0.5 text-xs font-medium text-[#1A237E]/50 sm:text-sm">
+/home/z/my-project/src/components/admin/stats-cards.tsx:144:                  <ArrowUpRight className="size-3.5 text-[#2E7D32]" />
+/home/z/my-project/src/components/admin/stats-cards.tsx:146:                  <ArrowDownRight className="size-3.5 text-[#D32F2F]" />
+/home/z/my-project/src/components/admin/stats-cards.tsx:151:                      ? "text-[#2E7D32]"
+/home/z/my-project/src/components/admin/stats-cards.tsx:152:                      : "text-[#D32F2F]"
+/home/z/my-project/src/components/admin/stats-cards.tsx:157:                <span className="text-xs text-[#1A237E]/40">vs last period</span>
+/home/z/my-project/src/app/social/live-together/page.tsx:49:        <p className="text-xs font-semibold text-[#1A237E] mb-3">
+/home/z/my-project/src/components/admin/quick-actions.tsx:51:        <CardTitle className="text-base font-semibold text-[#1A237E]">
+/home/z/my-project/src/components/admin/quick-actions.tsx:85:                  <p className="text-xs font-semibold text-[#1A237E] sm:text-sm">
+/home/z/my-project/src/components/admin/quick-actions.tsx:88:                  <p className="mt-0.5 hidden text-[10px] leading-snug text-[#1A237E]/45 sm:block">
+/home/z/my-project/src/app/social/amen-wall/page.tsx:49:        <p className="text-xs font-semibold text-[#1A237E] mb-3">
+/home/z/my-project/src/components/testimonies/testimonies-cta.tsx:10:      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
+/home/z/my-project/src/components/testimonies/testimonies-cta.tsx:12:        <div className="absolute top-0 right-0 w-96 h-96 bg-[#D32F2F] rounded-full blur-[128px] -translate-y-1/2 translate-x-1/3" />
+/home/z/my-project/src/components/testimonies/testimonies-cta.tsx:57:            className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl h-12 px-8 font-semibold shadow-lg"
+/home/z/my-project/src/app/social/todays-question/page.tsx:49:        <p className="text-xs font-semibold text-[#1A237E] mb-3">
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:121:          <CheckCircle2 className="size-10 text-[#2E7D32]" />
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:123:        <h2 className="text-2xl font-bold text-[#1A237E] mb-2">
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:131:        <div className="bg-gradient-to-br from-[#0D1557] to-[#1A237E] rounded-2xl p-6 text-white max-w-lg mx-auto mb-8">
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:144:            className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl px-6"
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:169:        <div className="bg-gradient-to-r from-[#1A237E] to-[#283593] px-6 py-5">
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:189:              Category <span className="text-[#D32F2F]">*</span>
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:203:                        ? "border-[#1A237E] bg-[#F0F4FF]"
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:209:                        isSelected ? "bg-[#1A237E]" : "bg-gray-100"
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:220:                        isSelected ? "text-[#1A237E]" : "text-gray-700"
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:230:              <p className="text-xs text-[#D32F2F] mt-1.5">
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:242:              Testimony Title <span className="text-[#D32F2F]">*</span>
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:248:              className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:251:              <p className="text-xs text-[#D32F2F] mt-1">{errors.title}</p>
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:259:              Your Testimony <span className="text-[#D32F2F]">*</span>
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:266:              className="rounded-xl border-gray-200 focus:border-[#1A237E]/30 resize-none"
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:270:                <p className="text-xs text-[#D32F2F]">{errors.body}</p>
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:295:                        ? "bg-[#1A237E] text-white border-[#1A237E]"
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:322:                className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:335:                className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:351:              className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30 max-w-sm"
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:361:            className="flex items-center gap-2 text-xs text-gray-500 hover:text-[#1A237E] transition-colors"
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:366:                  ? "bg-[#1A237E] border-[#1A237E]"
+/home/z/my-project/src/components/testimonies/testimony-form.tsx:392:            className="w-full bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl h-12 text-base font-semibold"
+/home/z/my-project/src/components/testimonies/testimony-card.tsx:53:    "bg-[#1A237E]",
+/home/z/my-project/src/components/testimonies/testimony-card.tsx:54:    "bg-[#D32F2F]",
+/home/z/my-project/src/components/testimonies/testimony-card.tsx:55:    "bg-[#2E7D32]",
+/home/z/my-project/src/components/testimonies/testimony-card.tsx:77:        <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
+/home/z/my-project/src/components/testimonies/testimony-card.tsx:79:          <div className="absolute top-0 right-0 w-72 h-72 bg-[#D32F2F] rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3" />
+/home/z/my-project/src/components/testimonies/testimony-card.tsx:206:        <h3 className="text-base font-bold text-gray-800 mb-2 leading-snug group-hover:text-[#1A237E] transition-colors">
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:149:                <Heart className="size-5 text-[#1A237E]" />
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:151:              <p className="text-2xl font-bold text-[#1A237E]">
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:160:                <TrendingUp className="size-5 text-[#D32F2F]" />
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:162:              <p className="text-2xl font-bold text-[#D32F2F]">
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:169:                <Sparkles className="size-5 text-[#2E7D32]" />
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:171:              <p className="text-2xl font-bold text-[#2E7D32]">
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:193:            <h3 className="text-lg font-bold text-[#1A237E]">
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:198:              className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl h-9 px-4 text-sm font-semibold"
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:213:                className="pl-10 rounded-xl border-gray-200 bg-white h-10 focus:border-[#1A237E]/30"
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:230:                className="h-10 rounded-xl border border-gray-200 bg-white px-3 text-sm text-gray-600 focus:outline-none focus:border-[#1A237E]/30 cursor-pointer"
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:245:                  ? "bg-[#1A237E] text-white"
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:259:                      ? "bg-[#1A237E] text-white"
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:273:              className="text-xs text-[#D32F2F] hover:text-[#B71C1C] mt-2 mb-2"
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:326:              <BookOpen className="size-7 text-[#1A237E]" />
+/home/z/my-project/src/components/testimonies/testimonies-main.tsx:333:              <p className="text-lg md:text-xl font-semibold text-[#1A237E] leading-relaxed mb-3 italic max-w-2xl mx-auto">
+/home/z/my-project/src/components/live/service-schedule.tsx:58:          <div className="bg-[#0D1557] text-white text-xl md:text-2xl font-bold w-14 md:w-16 h-14 md:h-16 rounded-xl flex items-center justify-center tabular-nums">
+/home/z/my-project/src/components/live/service-schedule.tsx:106:              <Badge className="bg-[#F0F4FF] text-[#1A237E] border-0 text-xs font-semibold uppercase tracking-wider mb-3">
+/home/z/my-project/src/components/live/service-schedule.tsx:109:              <h3 className="text-xl md:text-2xl font-bold text-[#1A237E] mb-1">
+/home/z/my-project/src/components/live/service-schedule.tsx:135:        <h3 className="text-lg font-bold text-[#1A237E] mb-4">Weekly Service Schedule</h3>
+/home/z/my-project/src/components/live/service-schedule.tsx:150:                  isNext ? "border-[#1A237E]/20 shadow-md ring-1 ring-[#1A237E]/5" : "border-gray-100"
+/home/z/my-project/src/components/live/service-schedule.tsx:156:                      isNext ? "bg-[#1A237E]" : "bg-[#F0F4FF]"
+/home/z/my-project/src/components/live/service-schedule.tsx:158:                      <IconComp className={`size-5 ${isNext ? "text-white" : "text-[#1A237E]"}`} />
+/home/z/my-project/src/components/live/service-schedule.tsx:162:                        <h4 className="text-sm font-bold text-[#1A237E]">{service.title}</h4>
+/home/z/my-project/src/components/live/service-schedule.tsx:164:                          <span className="text-[10px] font-bold text-[#D32F2F] bg-red-50 px-2 py-0.5 rounded-md uppercase tracking-wider">
+/home/z/my-project/src/components/live/service-schedule.tsx:183:                            <span className="text-[10px] font-medium text-[#2E7D32] bg-green-50 px-1.5 py-0.5 rounded">
+/home/z/my-project/src/components/live/service-schedule.tsx:203:                        ? "text-[#D32F2F] hover:text-[#B71C1C] hover:bg-red-50"
+/home/z/my-project/src/components/live/service-schedule.tsx:204:                        : "text-gray-500 hover:text-[#1A237E] hover:bg-[#F0F4FF]"
+/home/z/my-project/src/app/globals.css:13:  --color-rccg-blue: #1A237E;
+/home/z/my-project/src/app/globals.css:14:  --color-rccg-blue-light: #3949AB;
+/home/z/my-project/src/app/globals.css:15:  --color-rccg-blue-dark: #0D1557;
+/home/z/my-project/src/app/globals.css:16:  --color-rccg-red: #D32F2F;
+/home/z/my-project/src/app/globals.css:17:  --color-rccg-red-light: #EF5350;
+/home/z/my-project/src/app/globals.css:18:  --color-rccg-red-dark: #B71C1C;
+/home/z/my-project/src/app/globals.css:19:  --color-rccg-green: #2E7D32;
+/home/z/my-project/src/app/globals.css:20:  --color-rccg-green-light: #4CAF50;
+/home/z/my-project/src/app/globals.css:21:  --color-rccg-green-dark: #1B5E20;
+/home/z/my-project/src/app/globals.css:22:  --color-rccg-white: #FFFFFF;
+/home/z/my-project/src/app/globals.css:161:  background: #1A237E;
+/home/z/my-project/src/app/layout.tsx:20:  themeColor: "#1A237E",
+/home/z/my-project/src/components/live/live-cta.tsx:11:      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
+/home/z/my-project/src/components/live/live-cta.tsx:13:        <div className="absolute top-0 left-0 w-96 h-96 bg-[#D32F2F] rounded-full blur-[128px] -translate-y-1/2 -translate-x-1/3" />
+/home/z/my-project/src/components/live/live-cta.tsx:39:              className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl h-12 px-8 font-semibold shadow-lg"
+/home/z/my-project/src/components/members/add-member-modal.tsx:66:            <h2 className="text-lg font-bold text-[#1A237E]">Add New Member</h2>
+/home/z/my-project/src/components/members/add-member-modal.tsx:81:            <div className="w-28 h-28 rounded-2xl bg-[#F0F4FF] border-2 border-dashed border-[#1A237E]/20 flex flex-col items-center justify-center cursor-pointer hover:bg-[#E8EDFF] hover:border-[#1A237E]/40 transition-colors group">
+/home/z/my-project/src/components/members/add-member-modal.tsx:83:                <User className="size-5 text-[#1A237E]/50" />
+/home/z/my-project/src/components/members/add-member-modal.tsx:85:              <div className="mt-2 flex items-center gap-1 text-xs text-[#1A237E]/60 font-medium">
+/home/z/my-project/src/components/members/add-member-modal.tsx:95:              Full Name <span className="text-[#D32F2F]">*</span>
+/home/z/my-project/src/components/members/add-member-modal.tsx:102:              className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+/home/z/my-project/src/components/members/add-member-modal.tsx:110:                Role <span className="text-[#D32F2F]">*</span>
+/home/z/my-project/src/components/members/add-member-modal.tsx:115:                className="w-full h-11 px-3 rounded-xl border border-gray-200 bg-white text-sm text-gray-700 appearance-none cursor-pointer focus:outline-none focus:border-[#1A237E]/30 focus:ring-2 focus:ring-[#1A237E]/10"
+/home/z/my-project/src/components/members/add-member-modal.tsx:126:                Department <span className="text-[#D32F2F]">*</span>
+/home/z/my-project/src/components/members/add-member-modal.tsx:132:                className="w-full h-11 px-3 rounded-xl border border-gray-200 bg-white text-sm text-gray-700 appearance-none cursor-pointer focus:outline-none focus:border-[#1A237E]/30 focus:ring-2 focus:ring-[#1A237E]/10"
+/home/z/my-project/src/components/members/add-member-modal.tsx:156:              className="rounded-xl border-gray-200 resize-none focus:border-[#1A237E]/30"
+/home/z/my-project/src/components/members/add-member-modal.tsx:173:              className="flex-1 rounded-xl h-11 bg-[#1A237E] hover:bg-[#0D1557] text-white font-semibold disabled:opacity-50"
+/home/z/my-project/src/components/members/member-card.tsx:37:            <User className="size-20 text-[#1A237E]/15" />
+/home/z/my-project/src/components/members/member-card.tsx:38:            <span className="absolute text-xs text-[#1A237E]/30 font-medium">Photo</span>
+/home/z/my-project/src/components/members/member-card.tsx:43:              <User className="size-10 text-[#1A237E]/40" />
+/home/z/my-project/src/components/members/member-card.tsx:51:            <span className="inline-flex items-center px-2.5 py-1 rounded-lg bg-[#1A237E]/90 text-white text-xs font-semibold backdrop-blur-sm">
+/home/z/my-project/src/components/members/member-card.tsx:60:            <span className="inline-flex items-center px-2.5 py-1 rounded-lg bg-white/90 text-[#1A237E] text-xs font-medium backdrop-blur-sm">
+/home/z/my-project/src/components/members/member-card.tsx:72:                className="px-3 py-1.5 rounded-lg bg-white text-[#1A237E] text-xs font-semibold hover:bg-[#F0F4FF] transition-colors shadow-md"
+/home/z/my-project/src/components/members/member-card.tsx:80:                className="ml-2 px-3 py-1.5 rounded-lg bg-[#D32F2F] text-white text-xs font-semibold hover:bg-[#B71C1C] transition-colors shadow-md"
+/home/z/my-project/src/components/members/member-card.tsx:91:        <h3 className="text-base md:text-lg font-bold text-[#1A237E] leading-tight truncate">
+/home/z/my-project/src/components/members/members-gallery.tsx:171:                className="pl-10 rounded-xl border-gray-200 bg-white h-11 focus:border-[#1A237E]/30"
+/home/z/my-project/src/components/members/members-gallery.tsx:182:                  className="pl-10 pr-8 h-11 rounded-xl border border-gray-200 bg-white text-sm text-gray-700 appearance-none cursor-pointer focus:outline-none focus:border-[#1A237E]/30 focus:ring-2 focus:ring-[#1A237E]/10"
+/home/z/my-project/src/components/members/members-gallery.tsx:198:                      ? "bg-[#1A237E] text-white"
+/home/z/my-project/src/components/members/members-gallery.tsx:209:                      ? "bg-[#1A237E] text-white"
+/home/z/my-project/src/components/members/members-gallery.tsx:222:                  className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl h-11 font-semibold shadow-md"
+/home/z/my-project/src/components/members/members-gallery.tsx:234:          Showing <span className="font-semibold text-[#1A237E]">{filtered.length}</span> member{filtered.length !== 1 ? "s" : ""}
+/home/z/my-project/src/components/members/members-gallery.tsx:299:        <span className="text-lg font-bold text-[#1A237E]">
+/home/z/my-project/src/components/members/members-gallery.tsx:305:        <h3 className="text-sm font-semibold text-[#1A237E] truncate">{member.name}</h3>
+/home/z/my-project/src/components/members/members-cta.tsx:12:      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
+/home/z/my-project/src/components/members/members-cta.tsx:26:            <Heart className="size-8 text-[#D32F2F]" />
+/home/z/my-project/src/components/members/members-cta.tsx:40:              className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl h-12 px-8 font-semibold shadow-lg"
+/home/z/my-project/src/components/live/live-player.tsx:49:      <div className="relative w-full aspect-video bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#0D1557]">
+/home/z/my-project/src/components/live/live-player.tsx:60:              <Badge className="bg-[#D32F2F] text-white border-0 px-3 py-1.5 text-xs font-bold uppercase tracking-wider shadow-lg">
+/home/z/my-project/src/components/live/live-player.tsx:159:        <div className="bg-[#0D1557] px-5 py-4 flex items-center justify-between">
+/home/z/my-project/src/components/live/live-player.tsx:185:              className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg text-xs"
+/home/z/my-project/src/components/live/live-faq.tsx:46:        <HelpCircle className="size-5 text-[#1A237E]" />
+/home/z/my-project/src/components/live/live-faq.tsx:47:        <h3 className="text-lg font-bold text-[#1A237E]">Frequently Asked Questions</h3>
+/home/z/my-project/src/components/live/live-prayer.tsx:40:      <div className="bg-gradient-to-r from-[#1A237E] to-[#283593] px-6 py-4">
+/home/z/my-project/src/components/live/live-prayer.tsx:60:              <CheckCircle2 className="size-8 text-[#2E7D32]" />
+/home/z/my-project/src/components/live/live-prayer.tsx:62:            <h4 className="text-lg font-bold text-[#1A237E] mb-1">Prayer Request Sent</h4>
+/home/z/my-project/src/components/live/live-prayer.tsx:80:                className="rounded-xl border-gray-200 h-10 focus:border-[#1A237E]/30"
+/home/z/my-project/src/components/live/live-prayer.tsx:88:              className="flex items-center gap-2 text-xs text-gray-500 hover:text-[#1A237E] transition-colors"
+/home/z/my-project/src/components/live/live-prayer.tsx:91:                isAnonymous ? "bg-[#1A237E] border-[#1A237E]" : "border-gray-300"
+/home/z/my-project/src/components/live/live-prayer.tsx:110:                className="rounded-xl border-gray-200 focus:border-[#1A237E]/30 resize-none"
+/home/z/my-project/src/components/live/live-prayer.tsx:118:              className="w-full bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl h-11 font-semibold"
+/home/z/my-project/src/components/live/past-streams.tsx:13:        <h3 className="text-lg font-bold text-[#1A237E]">Recent Service Replays</h3>
+/home/z/my-project/src/components/live/past-streams.tsx:16:          className="text-sm text-[#1A237E] hover:text-[#0D1557] font-medium transition-colors"
+/home/z/my-project/src/components/live/past-streams.tsx:33:            <div className="relative aspect-video bg-gradient-to-br from-[#0D1557] to-[#1A237E] flex items-center justify-center">
+/home/z/my-project/src/components/live/past-streams.tsx:50:              <h4 className="text-sm font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-[#1A237E] transition-colors leading-snug">
+/home/z/my-project/src/components/pwa/pwa-provider.tsx:135:                <Download className="h-5 w-5 text-[#1A237E]" />
+/home/z/my-project/src/components/pwa/pwa-provider.tsx:161:                className="w-full sm:w-auto bg-[#1A237E] hover:bg-[#0D1557] text-white"
+/home/z/my-project/src/components/pwa/pwa-provider.tsx:173:        <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#D32F2F] text-white p-3 text-center text-sm flex items-center justify-center gap-2 animate-in slide-in-from-bottom-5 duration-300">
+/home/z/my-project/src/components/announcements/announcement-card.tsx:53:        <div className="h-1.5 bg-gradient-to-r from-[#1A237E] via-[#3949AB] to-[#5C6BC0]" />
+/home/z/my-project/src/components/announcements/announcement-card.tsx:58:                <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#D32F2F] bg-red-50 px-2 py-0.5 rounded-md uppercase tracking-wider">
+/home/z/my-project/src/components/announcements/announcement-card.tsx:78:            <h3 className="text-xl md:text-2xl font-bold text-[#1A237E] mb-3 leading-snug">
+/home/z/my-project/src/components/announcements/announcement-card.tsx:136:            {a.isPinned && <Pin className="size-3 text-[#D32F2F] shrink-0" />}
+/home/z/my-project/src/components/announcements/announcement-card.tsx:137:            <p className="text-sm font-semibold text-gray-800 truncate group-hover:text-[#1A237E] transition-colors">
+/home/z/my-project/src/components/announcements/announcement-card.tsx:172:            <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#D32F2F] bg-red-50 px-2 py-0.5 rounded-md uppercase tracking-wider">
+/home/z/my-project/src/components/announcements/announcement-card.tsx:192:        <h3 className="text-base font-bold text-gray-800 mb-2 group-hover:text-[#1A237E] transition-colors leading-snug">
+/home/z/my-project/src/components/announcements/announcement-card.tsx:201:            <Calendar className="size-3.5 text-[#D32F2F]" />
+/home/z/my-project/src/components/announcements/announcements-cta.tsx:11:      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
+/home/z/my-project/src/components/announcements/announcements-cta.tsx:13:        <div className="absolute top-0 right-0 w-96 h-96 bg-[#D32F2F] rounded-full blur-[128px] -translate-y-1/2 translate-x-1/3" />
+/home/z/my-project/src/components/announcements/announcements-cta.tsx:39:              className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl h-12 px-8 font-semibold shadow-lg"
+/home/z/my-project/src/components/sermons/sermon-cta.tsx:11:      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
+/home/z/my-project/src/components/sermons/sermon-cta.tsx:13:        <div className="absolute top-0 right-0 w-96 h-96 bg-[#D32F2F] rounded-full blur-[128px] -translate-y-1/2 translate-x-1/3" />
+/home/z/my-project/src/components/sermons/sermon-cta.tsx:38:              className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl h-12 px-8 font-semibold shadow-lg"
+/home/z/my-project/src/components/sermons/sermon-card.tsx:27:          ? "border-[#1A237E]/30 shadow-md ring-1 ring-[#1A237E]/10"
+/home/z/my-project/src/components/sermons/sermon-card.tsx:34:          <span className="inline-flex text-[10px] font-semibold uppercase tracking-wider text-[#1A237E] bg-[#F0F4FF] px-2 py-0.5 rounded-md">
+/home/z/my-project/src/components/sermons/sermon-card.tsx:61:          isActive ? "text-[#1A237E]" : "text-gray-800 group-hover:text-[#1A237E]"
+
+[Showing results with pagination = limit: 250]
