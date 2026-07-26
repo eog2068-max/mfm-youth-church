@@ -8,12 +8,18 @@ import { socialFeatures } from "@/components/social/social-data";
 export default function TodaysQuestionPage() {
   const [entered, setEntered] = useState(false);
 
-  // Aggressive scroll-to-top when entering the feature
+  // PERMANENT scroll-to-top — use behavior:'instant' to bypass
+  // globals.css `html { scroll-behavior: smooth }` which was animating
+  // window.scrollTo(0,0) and landing mid-page.
   useEffect(() => {
     if (!entered) return;
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
     const scrollToTop = () => {
-      window.scrollTo(0, 0);
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+      } catch {
+        window.scrollTo(0, 0);
+      }
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
     };
@@ -22,11 +28,13 @@ export default function TodaysQuestionPage() {
     const t1 = setTimeout(scrollToTop, 50);
     const t2 = setTimeout(scrollToTop, 200);
     const t3 = setTimeout(scrollToTop, 500);
+    const t4 = setTimeout(scrollToTop, 1000);
     return () => {
       cancelAnimationFrame(raf);
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
+      clearTimeout(t4);
     };
   }, [entered]);
 

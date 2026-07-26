@@ -111,30 +111,39 @@ export function FamilyChat() {
   const [charCount, setCharCount] = useState(0);
   const MAX_CHARS = 500;
 
-  // Permanently force page to scroll to top on mount
-  // Disable browser's scroll restoration + defer scrollTo to run after everything else
+  // PERMANENT scroll-to-top on mount.
+  // Root cause: globals.css `html { scroll-behavior: smooth }` was animating
+  // window.scrollTo(0,0) instead of jumping, and the chat container's
+  // auto-scroll-to-bottom was interrupting the animation mid-flight.
+  // Fix: use behavior:'instant' to bypass the CSS smooth-scroll.
   useEffect(() => {
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "manual";
     }
-    // Immediate
-    window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    // Deferred — runs after React paints and after any auto-scrolls
-    const raf = requestAnimationFrame(() => {
-      window.scrollTo(0, 0);
+    const scrollToTop = () => {
+      // behavior:'instant' overrides CSS scroll-behavior:smooth
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+      } catch {
+        window.scrollTo(0, 0);
+      }
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
-    });
-    const t1 = setTimeout(() => window.scrollTo(0, 0), 50);
-    const t2 = setTimeout(() => window.scrollTo(0, 0), 200);
-    const t3 = setTimeout(() => window.scrollTo(0, 0), 500);
+    };
+    // Immediate
+    scrollToTop();
+    // Deferred — runs after React paints and after any auto-scrolls
+    const raf = requestAnimationFrame(scrollToTop);
+    const t1 = setTimeout(scrollToTop, 50);
+    const t2 = setTimeout(scrollToTop, 200);
+    const t3 = setTimeout(scrollToTop, 500);
+    const t4 = setTimeout(scrollToTop, 1000);
     return () => {
       cancelAnimationFrame(raf);
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
+      clearTimeout(t4);
     };
   }, []);
 
