@@ -594,3 +594,45 @@ BLOCKERS for live deployment (user must action):
 5. (Optional) Set first user's role to admin: Supabase dashboard → Authentication → Users → edit user → app_metadata: {"role": "admin"}
 
 Awaiting user "Go for 5" to begin Stage 5 — public leaderboard page + /api/gaf/leaderboard route + ranking calculation engine.
+
+---
+Task ID: GAF-S5
+Agent: Main Agent
+Task: Go-A-Fishing Stage 5 — Public leaderboard (ranking engine + UI + auto-refresh)
+
+Work Log:
+- Created src/lib/gaf/leaderboard.ts — ranking engine
+  * computeLeaderboard(period, limit, offset) — main entry point
+  * getMemberRank(memberId, period) — for "Your rank: #5" badges
+  * Period helpers: getQuarter(), getPreviousQuarter(), getQuarterRange(), getYtdRange(), getAllTimeRange()
+  * Scoring: referrals counted toward a cycle if updatedAt falls in window (so progression during cycle counts at latest status)
+  * Tiebreakers: (1) count of "member" referrals, (2) "baptized", (3) "saved", (4) "attended", (5) oldest joinDate
+  * Rank assignment with proper tie handling (tied entries share rank, next entry skips)
+  * Loads scoring weights from AdminConfig (Stage 6 will add admin UI to edit)
+- Created src/app/api/gaf/leaderboard/route.ts — GET endpoint (period=current|previous|ytd|all, limit 1-100, offset 0+)
+  * Public endpoint — no auth required (leaderboard is a public celebration)
+  * Strips sensitive fields (only exposes fullName, avatarUrl, referralCode, totalScore, counts)
+- Created src/components/gaf/gaf-leaderboard.tsx — public leaderboard UI
+  * Period toggle (Current Quarter / Previous Quarter / YTD / All Time)
+  * Top 3 podium with gold/silver/bronze styling (Crown/Medal icons)
+  * Remaining ranks as list with status chips (invited/attended/saved/baptized/member)
+  * Cycle info banner (name, participants, status badge: open/tallying/closed)
+  * Auto-refresh polling (5 min default, matches AdminConfig.leaderboardRefreshIntervalSec)
+  * Manual refresh button
+  * Loading / error / empty states
+  * Highlights current member with amber background + "You" badge
+- Created src/app/go-a-fishing/leaderboard/page.tsx — server component, public, passes currentMemberId (if logged in) to highlight own row
+- Ran npm run build — ✓ Compiled successfully in 17.4s, 57 pages generated (was 55; +2 new leaderboard routes), zero errors
+
+Stage Summary:
+- Public leaderboard live at /go-a-fishing/leaderboard
+- API at /api/gaf/leaderboard?period=current&limit=50
+- Supports 4 period views: current quarter, previous quarter, year-to-date, all-time
+- Top 3 get podium treatment; ranks 4+ render as list with full status breakdown chips
+- Auto-refreshes every 5 minutes; manual refresh button available
+- Public — no auth required (unauthenticated visitors still see full standings)
+- If logged in, your row is highlighted with amber background + "You" badge
+- Cycle status badge (OPEN/TALLYING/CLOSED) reflects the matching RewardCycle row from DB (Stage 6 will add cycle management UI)
+- Build PASS, zero errors
+
+Awaiting user "Go for 6" to begin Stage 6 — admin/pastoral UI (member management, referral moderation, cycle management, AdminConfig editor, audit log viewer). Stage 6 will also add auth-gated /admin/gaf/* routes and /api/gaf/admin/* endpoints.
