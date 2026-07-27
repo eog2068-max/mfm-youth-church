@@ -63,6 +63,7 @@ model Member {
   commendations      PastoralCommendation[] @relation("CommendationRecipient")
   commendationsGiven PastoralCommendation[] @relation("CommendationGiver")
   auditLogs          AuditLog[]
+  outreachActivities OutreachActivity[]
 
   @@index([status])
   @@index([referralCode])
@@ -205,4 +206,26 @@ model AuditLog {
   @@index([entityType, entityId])
   @@index([actorMemberId, createdAt])
   @@index([action, createdAt])
+}
+
+model OutreachActivity {
+  id          String   @id @default(cuid())
+  memberId    String
+  type        String   // door_to_door | street_preaching | hospital_visit | prison_ministry | school_outreach | market evangelism | phone_call | social_media | personal_visit | other
+  title       String   // brief title e.g. "Door-to-door in Gwarinpa"
+  description String?  // optional details
+  activityDate DateTime // when the outreach happened
+  location    String?  // where it took place
+  contacts    Int      @default(0) // number of people spoken to
+  decisions   Int      @default(0) // number of decisions for Christ
+  notes       String?  // prayer points, follow-up needs
+  status      String   @default("confirmed") // confirmed | flagged | disputed
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  member Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@index([memberId, activityDate])
+  @@index([type, activityDate])
+  @@index([status])
 }

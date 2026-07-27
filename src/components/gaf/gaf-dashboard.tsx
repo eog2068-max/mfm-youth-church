@@ -21,6 +21,7 @@ import {
   ArrowRight,
   Sparkles,
   Award,
+  MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -278,7 +279,7 @@ export function GafDashboard({ member, baseUrl }: GafDashboardProps) {
 
         {/* Quick links */}
         <SectionWrapper>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <Button
               asChild
               variant="outline"
@@ -287,6 +288,16 @@ export function GafDashboard({ member, baseUrl }: GafDashboardProps) {
               <Link href="/go-a-fishing/my-referrals">
                 <Users className="size-6 text-[#1A237E]" />
                 <span className="text-[#1A237E]">My Referrals</span>
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="h-auto py-6 flex-col gap-2 rounded-xl border-[#1A237E]/20 hover:bg-[#1A237E]/5"
+            >
+              <Link href="/go-a-fishing/my-outreach">
+                <MapPin className="size-6 text-blue-600" />
+                <span className="text-[#1A237E]">My Outreach</span>
               </Link>
             </Button>
             <Button
@@ -306,7 +317,7 @@ export function GafDashboard({ member, baseUrl }: GafDashboardProps) {
             >
               <Link href="/go-a-fishing/awards">
                 <Award className="size-6 text-rose-600" />
-                <span className="text-[#1A237E]">Awards &amp; Commendations</span>
+                <span className="text-[#1A237E]">Awards</span>
               </Link>
             </Button>
           </div>

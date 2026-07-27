@@ -25,6 +25,7 @@ import {
   ChevronRight,
   Award,
   BarChart3,
+  MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -40,6 +41,7 @@ const NAV_ITEMS = [
   { label: "Overview", icon: LayoutDashboard, href: "/admin/gaf" },
   { label: "Members", icon: Users, href: "/admin/gaf/members" },
   { label: "Referrals", icon: Fish, href: "/admin/gaf/referrals" },
+  { label: "Outreach", icon: MapPin, href: "/admin/gaf/outreach" },
   { label: "Cycles", icon: Trophy, href: "/admin/gaf/cycles" },
   { label: "Commendations", icon: Award, href: "/admin/gaf/commendations" },
   { label: "Reports", icon: BarChart3, href: "/admin/gaf/reports" },

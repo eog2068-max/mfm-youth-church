@@ -755,7 +755,34 @@ Stage Summary:
 
 BLOCKERS still apply from Stage 4:
 1. Supabase project provisioning (env vars)
-2. Run `npx prisma db push` to create tables
+2. Run `npx prisma db push` to create tables (now 9 GAF tables)
 3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
 
-Awaiting user "Go for 9" to begin Stage 9.
+---
+Task ID: GAF-S9
+Agent: Main Agent
+Task: Go-A-Fishing Stage 9 — Outreach Activity Self-Reporting (member outreach log + admin moderation)
+
+Work Log:
+- Added OutreachActivity model to prisma/schema.prisma — 9th GAF model. Fields: type (10 outreach types), title, description, activityDate, location, contacts, decisions, notes, status (confirmed/flagged/disputed). Indexed on memberId+activityDate, type+activityDate, status.
+- Added outreachActivities relation to Member model.
+- Ran npx prisma generate — Prisma Client v6.19.2 regenerated.
+- Created src/lib/gaf/outreach-types.ts — shared constants (VALID_TYPES, TYPE_LABELS, TYPE_COLORS).
+- Created src/app/api/gaf/outreach/route.ts — GET (member's activities + stats with weekly streak) + POST (create activity, validates AdminConfig.outreachActivitySelfReportAllowed).
+- Created src/app/api/gaf/admin/outreach/route.ts — GET (all members' activities + aggregate summary) + PATCH (status moderation) + DELETE (with audit trail).
+- Created src/components/gaf/gaf-my-outreach.tsx — member outreach page: 4 stat cards, 10-type filter pills, activity log, create dialog with type picker grid, Matt 28:19 footer.
+- Created src/app/go-a-fishing/my-outreach/page.tsx — auth-guarded server component.
+- Created src/components/gaf/admin/gaf-admin-outreach.tsx — admin outreach viewer with summary stats, type+status filters, Flag/Confirm/Dispute/Delete actions.
+- Created src/app/admin/gaf/outreach/page.tsx — admin page route.
+- Updated gaf-dashboard.tsx — added "My Outreach" quick-link, expanded grid to 4 columns.
+- Updated gaf-admin-shell.tsx — added "Outreach" nav item (9 items total).
+- Ran npm run build — ✓ 80 pages, zero errors
+
+Stage Summary:
+- Member outreach page at /go-a-fishing/my-outreach (10 outreach types, stats, streak tracking)
+- Admin outreach viewer at /admin/gaf/outreach (moderation: flag/confirm/dispute/delete)
+- 9th Prisma model: OutreachActivity
+- Dashboard: 4 quick-links, Admin sidebar: 9 nav items
+- Build PASS, zero errors, 80 pages total
+
+Awaiting user "Go for 10" to begin Stage 10.
