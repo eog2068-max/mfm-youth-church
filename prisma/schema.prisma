@@ -15,7 +15,9 @@ datasource db {
 
 // ============================================================================
 // EXISTING BOILERPLATE — preserved verbatim per Stage 1 preservation rule.
-// (Currently unused by any feature; will be cleaned up in a post-Stage-12 pass.)
+// These models are NOT used by any feature. They were part of the Next.js
+// starter template. The User model was originally intended for next-auth (now
+// removed in Stage 12). These can be safely deleted in a future cleanup.
 // ============================================================================
 
 model User {
@@ -37,9 +39,9 @@ model Post {
 }
 
 // ============================================================================
-// Go-A-Fishing Models — Stage 2 design, Stage 3 implementation.
-// All 8 models are additive. None of the existing User/Post models above were
-// modified. See worklog GAF-S2 for the full design rationale.
+// Go-A-Fishing Models — Stage 2 design, Stage 3+ implementation.
+// 10 models total. All additive — none of the existing User/Post above modified.
+// See worklog GAF-S2 for design rationale.
 // ============================================================================
 
 model Member {

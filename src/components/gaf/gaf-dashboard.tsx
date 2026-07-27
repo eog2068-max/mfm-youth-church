@@ -26,6 +26,7 @@ import {
   User,
 } from "lucide-react";
 import { NotificationBell } from "./notification-bell";
+import { GafOnboardingGuide } from "./gaf-onboarding-guide";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SectionWrapper } from "@/components/home/section-wrapper";
@@ -165,6 +166,13 @@ export function GafDashboard({ member, baseUrl }: GafDashboardProps) {
             })}
           </div>
         </SectionWrapper>
+
+        {/* Onboarding guide (shown to new members with no referrals) */}
+        <GafOnboardingGuide
+          memberName={member.fullName}
+          referralCode={member.referralCode}
+          hasReferrals={member.referralsMade.length > 0}
+        />
 
         {/* Referral card */}
         <SectionWrapper>

@@ -30,6 +30,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_GAF_BASE_URL || "https://rccg-rehoboth.app"),
   title: {
     default: "The Redeemed Christian Church of God | Rehoboth Assembly Parish",
     template: "%s | The Redeemed Christian Church of God",

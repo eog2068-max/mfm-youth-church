@@ -842,3 +842,50 @@ Stage Summary:
 - Dashboard: 6 quick-links (added Profile)
 - ReferralCard: now uses EnhancedShareDialog for richer sharing
 - Build PASS, zero errors, 86 pages total
+
+---
+Task ID: GAF-S12
+Agent: Main Agent
+Task: Go-A-Fishing Stage 12 — Final Polish & Deploy Prep (cleanup, SEO, onboarding, dependency removal)
+
+Work Log:
+- Removed dead next-auth@4.24.11 dependency (npm uninstall — 23 packages removed). No src/ files imported next-auth; confirmed via grep.
+- Updated .env.example — removed legacy NEXTAUTH_SECRET/NEXTAUTH_URL vars, added GAF_SCORING_WEIGHTS_JSON documentation, consolidated into clean sections (Supabase, GAF Config, Social Features).
+- Added metadataBase to root layout (src/app/layout.tsx) — resolves "metadataBase not set" build warning. Uses NEXT_PUBLIC_GAF_BASE_URL with fallback.
+- Created src/app/sitemap.ts — dynamic sitemap generator covering all 31 public routes (static pages, social features, GAF public pages). GAF pages get priority 0.8, social 0.5, static 0.6.
+- Created src/app/robots.txt (src/app/robots.ts) — allows all crawlers on public routes, blocks /admin/ /api/ /r/, links to sitemap.xml.
+- Created src/components/gaf/gaf-onboarding-guide.tsx — 4-step onboarding card for new members (Share Your Link → Track Referrals → Log Outreach → Earn Awards). Shown only when member has 0 referrals. Dismissible with localStorage persistence. Animated step transitions, per-step action links, progress dots.
+- Updated gaf-dashboard.tsx — integrated GafOnboardingGuide between stats grid and referral card.
+- Updated prisma/schema.prisma comments — marked 10 GAF models, updated boilerplate comment (next-auth removed), noted User/Post safe for future deletion.
+- Scanned all GAF components for console.log/TODO/FIXME — zero instances found (clean).
+- Verified all GAF pages have Metadata exports — confirmed (all 8 member pages + admin layout).
+- Ran npm run build — ✓ 88 pages, zero errors, no warnings
+
+Stage Summary — ALL 12 STAGES COMPLETE:
+- Dead dependency removed: next-auth (23 packages)
+- SEO: sitemap.xml + robots.txt + metadataBase fix
+- Onboarding: 4-step guide for new members
+- .env.example: cleaned up, documented
+- Schema comments: updated for 10 models
+- Build PASS: 88 pages, zero errors, zero warnings
+
+FULL GO-A-FISHING BUILD SUMMARY (Stages 1-12):
+├── 10 Prisma models (Member, ReferralEvent, RewardCategory, RewardCycle, RewardWinner, PastoralCommendation, AdminConfig, AuditLog, OutreachActivity, Notification)
+├── 22 GAF components (8 member-facing, 10 admin, 4 shared utilities)
+├── 6 member pages: /dashboard, /login, /my-referrals, /my-outreach, /leaderboard, /awards, /notifications, /profile (8 total)
+├── 10 admin pages: /overview, /members, /referrals, /outreach, /cycles, /commendations, /reports, /notifications, /config, /audit-log
+├── 15+ API routes: auth (3), members (1+admin 2), referrals (1+admin 3), leaderboard (1), awards (1), commendations (2+admin 2), analytics (1), outreach (1+admin 1), notifications (2+admin 1), config (1), audit-log (1), setup (1)
+├── Referral landing: /r/[code]
+├── Public landing: /go-a-fishing (4-pillar program overview)
+├── Sharing: EnhancedShareDialog (5 channels + QR customization), E-Invite Card, ShareButton
+├── Notifications: bell dropdown (60s polling), full page, admin broadcast
+├── Onboarding: 4-step guide for new members
+├── SEO: sitemap.xml, robots.txt, metadataBase
+└── Build: 88 pages, zero errors, zero warnings
+
+BLOCKERS (from Stage 4, still apply):
+1. Supabase project provisioning (env vars)
+2. Run `npx prisma db push` to create tables
+3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
+
+READY FOR: git push to eog2068-max/rccg-rehoboth-assembly (awaiting user authorization)
