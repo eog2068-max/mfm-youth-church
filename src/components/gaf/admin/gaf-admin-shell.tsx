@@ -23,6 +23,7 @@ import {
   X,
   Church,
   ChevronRight,
+  Award,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -39,6 +40,7 @@ const NAV_ITEMS = [
   { label: "Members", icon: Users, href: "/admin/gaf/members" },
   { label: "Referrals", icon: Fish, href: "/admin/gaf/referrals" },
   { label: "Cycles", icon: Trophy, href: "/admin/gaf/cycles" },
+  { label: "Commendations", icon: Award, href: "/admin/gaf/commendations" },
   { label: "Configuration", icon: Settings, href: "/admin/gaf/config" },
   { label: "Audit Log", icon: Shield, href: "/admin/gaf/audit-log" },
 ];

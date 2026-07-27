@@ -677,4 +677,47 @@ BLOCKERS still apply from Stage 4:
 2. Run `npx prisma db push` to create tables
 3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
 
-Awaiting user "Go for 7" to begin Stage 7 — Awards & Commendations display (public /go-a-fishing/awards page + pastoral commendation issuance API + UI).
+---
+Task ID: GAF-S7
+Agent: Main Agent
+Task: Go-A-Fishing Stage 7 — Awards & Commendations (public awards page + admin commendation management)
+
+Work Log:
+- Created src/app/api/gaf/awards/route.ts — GET: public endpoint returning closed cycle winners (with category + member info), recent public commendations, and active/tallying cycles for context. Paginatable via limit + commendLimit params.
+- Created src/app/api/gaf/commendations/route.ts — GET: public endpoint for commendations list. Visibility filtering: unauthenticated users see only "public"; authenticated members see "public" + "members_only". Supports cursor pagination + memberId filter.
+- Created src/app/api/gaf/admin/commendations/route.ts — POST: admin/pastor create commendation (validates recipient memberId, title, message, optional visibility/scripture/givenBy, verifies target member exists and is active). GET: admin endpoint returning ALL commendations (including private), with visibility/memberId filters.
+- Created src/app/api/gaf/admin/commendations/[id]/route.ts — PATCH: update commendation fields (title, message, visibility, scriptureReference) with audit trail diff tracking. DELETE: remove commendation with audit log. Both admin/pastor only.
+- Created src/components/gaf/gaf-awards.tsx — public awards showcase: hero section with scripture (Matt 25:21), active competitions banner (open/tallying cycles with status badges), closed cycle winners with podium display (gold/silver/bronze for up to 3, extended list for 4+), score breakdown chips, pastoral commendations wall (2-column grid with amber gradient cards, scripture references, giver attribution), load-more pagination for both sections, empty states, loading/error states, 1 Cor 15:58 scripture footer.
+- Created src/app/go-a-fishing/awards/page.tsx — server component with PageBanner, renders GafAwards.
+- Created src/components/gaf/admin/gaf-admin-commendations.tsx — admin commendation management: full list with visibility badges (public/members_only/private), search by member/title/giver, filter by visibility, create dialog with debounced member search (reuses /api/gaf/admin/members endpoint), form fields (recipient, title, message, scripture, givenBy, visibility toggle), delete with confirmation dialog, stats bar (total/public/members-only counts), cursor pagination.
+- Created src/app/admin/gaf/commendations/page.tsx — admin page route.
+- Updated src/components/gaf/admin/gaf-admin-shell.tsx — added "Commendations" nav item (Award icon) between Cycles and Configuration in both desktop sidebar and mobile overlay.
+- Ran npm run build — ✓ Compiled successfully in 18.0s, 74 pages generated (was 69; +5 new routes), zero errors
+
+Stage Summary:
+- Public awards page live at /go-a-fishing/awards
+  * Hero with scripture (Matt 25:21)
+  * Active competitions banner (shows open/tallying cycles with countdown context)
+  * Closed cycle winners — podium display (gold/silver/bronze) per cycle with score breakdown
+  * Pastoral commendations wall — 2-column cards with scripture refs + giver attribution
+  * Load-more pagination for both sections
+- 4 new API endpoints:
+  * GET /api/gaf/awards — public (closed cycles + public commendations + active cycles)
+  * GET /api/gaf/commendations — public (commendations with auth-aware visibility filtering)
+  * POST /api/gaf/admin/commendations — admin (create commendation)
+  * PATCH /api/gaf/admin/commendations/[id] — admin (update commendation)
+  * DELETE /api/gaf/admin/commendations/[id] — admin (delete commendation)
+- Admin commendation management at /admin/gaf/commendations
+  * Full list with visibility filter pills + search
+  * Create dialog with member search, form validation, visibility toggle
+  * Delete with confirmation
+- Admin sidebar updated: "Commendations" nav item added (7 items now)
+- Dashboard quick-link to awards page already existed from Stage 4 (link to /go-a-fishing/awards)
+- Build PASS, zero errors, 74 pages total
+
+BLOCKERS still apply from Stage 4:
+1. Supabase project provisioning (env vars)
+2. Run `npx prisma db push` to create tables
+3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
+
+Awaiting user "Go for 8" to begin Stage 8.
