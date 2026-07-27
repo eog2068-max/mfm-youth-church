@@ -720,4 +720,42 @@ BLOCKERS still apply from Stage 4:
 2. Run `npx prisma db push` to create tables
 3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
 
-Awaiting user "Go for 8" to begin Stage 8.
+Awaiting user "Go for 9" to begin Stage 9.
+
+---
+Task ID: GAF-S8
+Agent: Main Agent
+Task: Go-A-Fishing Stage 8 — Reports & Analytics (pastoral insights dashboard with recharts)
+
+Work Log:
+- Created src/lib/gaf/analytics.ts — analytics engine: computeAnalytics() function returning comprehensive outreach data. Includes: referral funnel (6 statuses with counts + percentages), monthly trend (last 12 months — referrals, conversions, new members), top performers (up to 20 by score with conversion rate + avg days to convert), channel distribution (link/qr/whatsapp/manual/flyer/other), quarter-over-quarter growth calculation, overall conversion rate (attended+ percentage), lost contact count, inactive member count. All queries in parallel for performance.
+- Created src/app/api/gaf/admin/analytics/route.ts — GET: admin/pastor endpoint. Supports section param (overview|funnel|trends|performers|all) for partial loads. Full analytics is heavy but admin-only and infrequent.
+- Created src/components/gaf/admin/gaf-admin-reports.tsx — pastoral analytics dashboard using recharts (already installed): 4 KPI cards (total members, total referrals, conversion rate, quarter growth with trend arrow + lost contact/inactive alerts), referral funnel bar chart (color-coded per status), channel distribution (horizontal progress bars), monthly trend line chart (3 lines: referrals, conversions, new members), top performers table (rank badge, name, referral code, score, conversion rate pill with color coding, avg days to convert). All sections with loading/error states.
+- Created src/app/admin/gaf/reports/page.tsx — admin page route.
+- Updated src/components/gaf/admin/gaf-admin-shell.tsx — added "Reports" nav item (BarChart3 icon) between Commendations and Configuration in both desktop sidebar and mobile overlay (8 items total).
+- Ran npm run build — ✓ Compiled successfully in 22.5s, 76 pages generated (was 74; +2 new routes), zero errors
+
+Stage Summary:
+- Admin reports page live at /admin/gaf/reports
+  * 4 KPI summary cards with quarter-over-quarter growth indicator
+  * Referral funnel bar chart (color-coded: invited→member→lost_contact)
+  * Channel distribution visualization (link, QR, WhatsApp, manual, flyer)
+  * Monthly trend line chart (12 months — referrals, conversions, new members)
+  * Top performers table (ranked by score, up to 15 shown, conversion rate color-coded)
+  * Lost contact + inactive member alert badges
+  * Refresh button for live data reload
+- Analytics engine in src/lib/gaf/analytics.ts
+  * All queries parallelized via Promise.all
+  * Scoring weights loaded from AdminConfig (same as leaderboard)
+  * Conversion rate = referrals reaching "attended" or beyond
+  * Avg days to convert = mean time from referral creation to first status advancement
+- API at GET /api/gaf/admin/analytics (supports section param for partial loads)
+- Admin sidebar: 8 nav items now (Overview, Members, Referrals, Cycles, Commendations, Reports, Configuration, Audit Log)
+- Build PASS, zero errors, 76 pages total
+
+BLOCKERS still apply from Stage 4:
+1. Supabase project provisioning (env vars)
+2. Run `npx prisma db push` to create tables
+3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
+
+Awaiting user "Go for 9" to begin Stage 9.
