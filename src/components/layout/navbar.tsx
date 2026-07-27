@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, Radio, Heart } from "lucide-react";
+import { Menu, Radio, Heart, Fish } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -31,6 +31,7 @@ const navItems = [
   { label: "Giving", href: "/giving" },
   { label: "Contact", href: "/contact" },
   { label: "RehobothSocial", href: "/social" },
+  { label: "Go-A-Fishing", href: "/go-a-fishing" },
 ];
 
 export function Navbar() {
@@ -146,6 +147,15 @@ export function Navbar() {
                 RehobothSocial
               </Link>
             </Button>
+            <Button
+              asChild
+              className="hidden md:inline-flex bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl px-4 font-semibold shadow-md"
+            >
+              <Link href="/go-a-fishing">
+                <Fish className="size-4" />
+                Go-A-Fishing
+              </Link>
+            </Button>
 
             {/* Mobile Hamburger */}
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
@@ -194,10 +204,10 @@ export function Navbar() {
                     </Link>
                   ))}
                   <div className="mt-4 pt-4 border-t border-gray-200">
-                    <div className="flex gap-2">
+                    <div className="grid grid-cols-2 gap-2">
                       <Button
                         asChild
-                        className="flex-1 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl font-semibold"
+                        className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl font-semibold"
                       >
                         <Link href="/live" onClick={() => setMobileOpen(false)}>
                           <Radio className="size-4" />
@@ -206,11 +216,20 @@ export function Navbar() {
                       </Button>
                       <Button
                         asChild
-                        className="flex-1 bg-[#E65100] hover:bg-[#BF360C] text-white rounded-xl font-semibold"
+                        className="bg-[#E65100] hover:bg-[#BF360C] text-white rounded-xl font-semibold"
                       >
                         <Link href="/social" onClick={() => setMobileOpen(false)}>
                           <Heart className="size-4" />
                           Social
+                        </Link>
+                      </Button>
+                      <Button
+                        asChild
+                        className="col-span-2 bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl font-semibold"
+                      >
+                        <Link href="/go-a-fishing" onClick={() => setMobileOpen(false)}>
+                          <Fish className="size-4" />
+                          Go-A-Fishing
                         </Link>
                       </Button>
                     </div>

@@ -1,0 +1,144 @@
+"use client";
+
+/**
+ * ReferralCard — shows the member their personal referral link + QR code
+ * with copy / share / download buttons.
+ *
+ * Stage 4 of Go-A-Fishing.
+ */
+import { useMemo } from "react";
+import { QRCodeSVG } from "qrcode.react";
+import { Download, Link2 } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ShareButton } from "./share-button";
+
+interface ReferralCardProps {
+  /** The member's referral code, e.g. "REH-AB1234". */
+  referralCode: string;
+  /** The base URL for link generation (without trailing slash). */
+  baseUrl: string;
+  /** Member's name for the share text. */
+  memberName: string;
+}
+
+export function ReferralCard({
+  referralCode,
+  baseUrl,
+  memberName,
+}: ReferralCardProps) {
+  const fullUrl = useMemo(() => {
+    // Strip trailing slash from base URL.
+    const base = baseUrl.replace(/\/$/, "");
+    return `${base}/r/${referralCode}`;
+  }, [baseUrl, referralCode]);
+
+  const handleDownload = () => {
+    // Find the rendered SVG and convert to PNG via canvas.
+    const svg = document.querySelector<SVGSVGElement>('[data-gaf-qr="true"]');
+    if (!svg) return;
+
+    const svgData = new XMLSerializer().serializeToString(svg);
+    const svgBlob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+    const url = URL.createObjectURL(svgBlob);
+
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      const size = 512;
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, size, size);
+      ctx.drawImage(img, 0, 0, size, size);
+      URL.revokeObjectURL(url);
+
+      canvas.toBlob((blob) => {
+        if (!blob) return;
+        const pngUrl = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = pngUrl;
+        a.download = `rccg-rehoboth-referral-${referralCode}.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(pngUrl);
+      }, "image/png");
+    };
+    img.src = url;
+  };
+
+  return (
+    <Card className="overflow-hidden border-[#1A237E]/20">
+      <CardHeader className="bg-gradient-to-br from-[#1A237E] to-[#0D1557] text-white">
+        <CardTitle className="flex items-center gap-2 text-lg">
+          <Link2 className="size-5" />
+          Your Referral Link
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="p-6 space-y-5">
+        {/* QR Code */}
+        <div className="flex justify-center">
+          <div className="bg-white p-4 rounded-2xl border-2 border-[#1A237E]/10 shadow-sm">
+            <QRCodeSVG
+              data-gaf-qr="true"
+              value={fullUrl}
+              size={200}
+              level="M"
+              bgColor="#ffffff"
+              fgColor="#1A237E"
+              marginSize={2}
+            />
+          </div>
+        </div>
+
+        {/* Link display */}
+        <div className="bg-[#F0F4FF] rounded-xl p-3 border border-[#1A237E]/10">
+          <p className="text-xs text-gray-500 mb-1 uppercase tracking-wide font-medium">
+            Your link
+          </p>
+          <p className="text-sm font-mono text-[#1A237E] break-all leading-relaxed">
+            {fullUrl}
+          </p>
+        </div>
+
+        {/* Action buttons */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <ShareButton
+            url={fullUrl}
+            title="Join me at RCCG Rehoboth Assembly"
+            text={`Hi! ${memberName} invites you to worship with us at RCCG Rehoboth Assembly, Abuja. Tap the link to learn more:`}
+            label="Share"
+            variant="default"
+            className="bg-[#1A237E] hover:bg-[#0D1557] text-white w-full"
+          />
+          <Button
+            type="button"
+            variant="outline"
+            onClick={handleDownload}
+            className="gap-2 w-full"
+          >
+            <Download className="size-4" />
+            <span>QR PNG</span>
+          </Button>
+          <ShareButton
+            url={fullUrl}
+            label="WhatsApp"
+            showLabel
+            variant="outline"
+            className="w-full border-[#25D366] text-[#1A8E3B] hover:bg-[#25D366]/10"
+            title="Join me at RCCG Rehoboth Assembly"
+            text={`Hi! ${memberName} invites you to worship with us at RCCG Rehoboth Assembly, Abuja. Tap: ${fullUrl}`}
+          />
+        </div>
+
+        <p className="text-xs text-gray-500 text-center leading-relaxed">
+          Share this link or QR code with someone you&apos;re fishing for Christ.
+          When they visit and attend a service, you&apos;ll be credited.
+        </p>
+      </CardContent>
+    </Card>
+  );
+}

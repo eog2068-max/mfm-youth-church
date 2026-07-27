@@ -541,3 +541,56 @@ Stage Summary:
   * Existing SQLite db/custom.db is now unused (datasource switched to postgresql)
 
 Awaiting user "Go for 4" to begin Stage 4 — member-facing UI (login page, dashboard, referral card with QR, my-referrals list). Stage 4 will install qrcode.react dep + create first /go-a-fishing/* routes + first /r/[code] landing route.
+
+---
+Task ID: GAF-S4
+Agent: Main Agent
+Task: Go-A-Fishing Stage 4 — Member-facing UI (login, dashboard, referrals, QR, share, referral landing)
+
+Work Log:
+- Installed qrcode.react@4.2.0 (verified QRCodeSVG + QRCodeCanvas exports)
+- Created src/middleware.ts — Supabase Auth session refresh for all routes (excluded: _next, static, /api/social/*). Gracefully skips if env vars unset (pre-provisioning safe).
+- Created src/components/gaf/share-button.tsx — reusable ShareButton using Web Share API with clipboard fallback (fixes Stage 1 finding #7)
+- Created src/components/gaf/referral-card.tsx — member's personal referral link + QRCodeSVG + ShareButton + PNG download (SVG→Canvas→Blob)
+- Created src/components/gaf/gaf-landing.tsx — public landing page (scripture, 4 pillars, stats, CTA)
+- Created src/components/gaf/gaf-login.tsx — magic-link sign-in form (idle/sending/sent/error states)
+- Created src/components/gaf/gaf-dashboard.tsx — member dashboard (stats grid, referral card, recent referrals, commendations, sign-out)
+- Created src/components/gaf/gaf-my-referrals.tsx — full referral list with filter pills + create-manual-referral dialog
+- Created src/app/go-a-fishing/page.tsx — public landing route (handles ?ref=invalid_code)
+- Created src/app/go-a-fishing/login/page.tsx — magic-link login route
+- Created src/app/go-a-fishing/dashboard/page.tsx — server component, redirects to /login if not authed, fetches member
+- Created src/app/go-a-fishing/my-referrals/page.tsx — server component, fetches full referral list
+- Created src/app/r/[code]/route.ts — referral landing route (case-insensitive lookup, sets attribution cookie, creates ReferralEvent with status:invited on first visit)
+- Created src/app/api/gaf/auth/magic-link/route.ts — POST email → sends Supabase OTP
+- Created src/app/api/gaf/auth/callback/route.ts — GET handles OTP exchange, auto-creates Member on first login (with collision-safe referralCode generation), redirects to /dashboard
+- Created src/app/api/gaf/auth/signout/route.ts — POST clears Supabase session
+- Created src/app/api/gaf/members/me/route.ts — GET (returns member) + PATCH (updates fullName, phone, whatsapp, avatarUrl with validation)
+- Created src/app/api/gaf/referrals/route.ts — GET (paginated list with status filter) + POST (create manual referral with full validation)
+- Updated src/components/layout/navbar.tsx — added "Go-A-Fishing" link to navItems array + added Fish icon button next to RehobothSocial in desktop view + added Go-A-Fishing button to mobile menu grid
+- Ran npm run build — ✓ Compiled successfully in 19.0s, 55 pages generated (was 46; +9 new GAF routes), zero errors, middleware active
+
+Stage Summary:
+- All Stage 4 routes registered: 4 page routes (/go-a-fishing/*) + 1 referral landing (/r/[code]) + 5 API routes (/api/gaf/auth/magic-link, /api/gaf/auth/callback, /api/gaf/auth/signout, /api/gaf/members/me, /api/gaf/referrals)
+- Middleware: Supabase Auth session refresh on all non-static routes
+- Member onboarding is automatic: first magic-link login creates a Member record with auto-generated referralCode (collision-safe)
+- Referral attribution: /r/[code] sets 30-day cookie + creates ReferralEvent with status:invited (idempotent per cookie session)
+- All existing public routes preserved (preservation rules honored)
+- social-store.ts, supabase/types.ts, db.ts, admin-data.ts all untouched
+- /api/social/admin/* auth-key checks untouched (middleware excludes /api/social/*)
+- Build PASS with zero errors
+
+BLOCKERS for live deployment (user must action):
+1. Provision Supabase project at https://supabase.com
+2. Set 5 env vars in Vercel + locally in .env:
+   - NEXT_PUBLIC_SUPABASE_URL
+   - NEXT_PUBLIC_SUPABASE_ANON_KEY
+   - SUPABASE_SERVICE_ROLE_KEY
+   - DATABASE_URL (Supabase Postgres pooled connection, port 6543)
+   - NEXT_PUBLIC_GAF_BASE_URL (production URL)
+3. Run `npx prisma db push` once to create 8 new tables in Supabase Postgres
+4. In Supabase dashboard → Authentication → URL Configuration:
+   - Set Site URL to production URL
+   - Add Redirect URLs: https://your-domain.vercel.app/api/gaf/auth/callback
+5. (Optional) Set first user's role to admin: Supabase dashboard → Authentication → Users → edit user → app_metadata: {"role": "admin"}
+
+Awaiting user "Go for 5" to begin Stage 5 — public leaderboard page + /api/gaf/leaderboard route + ranking calculation engine.
