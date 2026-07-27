@@ -26,6 +26,7 @@ import {
   Award,
   BarChart3,
   MapPin,
+  Bell,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -45,6 +46,7 @@ const NAV_ITEMS = [
   { label: "Cycles", icon: Trophy, href: "/admin/gaf/cycles" },
   { label: "Commendations", icon: Award, href: "/admin/gaf/commendations" },
   { label: "Reports", icon: BarChart3, href: "/admin/gaf/reports" },
+  { label: "Notifications", icon: Bell, href: "/admin/gaf/notifications" },
   { label: "Configuration", icon: Settings, href: "/admin/gaf/config" },
   { label: "Audit Log", icon: Shield, href: "/admin/gaf/audit-log" },
 ];

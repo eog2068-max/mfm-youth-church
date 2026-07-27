@@ -1,0 +1,789 @@
+     1→# RCCG Rehoboth Assembly - Worklog
+     2→
+     3→---
+     4→Task ID: 5
+     5→Agent: Main Agent
+     6→Task: Prompt #5 - PWA Requirements
+     7→
+     8→Work Log:
+     9→- Initialized fullstack dev environment (Next.js 16 + Turbopack on port 3000)
+    10→- Copied RCCG logo to public folder
+    11→- Generated PWA app icons (72x72 through 512x512) using Sharp from RCCG logo
+    12→- Generated apple-touch-icon (180x180) and favicon-32x32
+    13→- Configured Tailwind CSS globals.css with RCCG brand color system (Blue #1A237E, Red #D32F2F, Green #2E7D32, White)
+    14→- Created manifest.json with full PWA metadata, icons, shortcuts (Watch Live, Prayer, Give)
+    15→- Created service worker (sw.js) with network-first caching for pages, cache-first for static assets
+    16→- Updated Next.js layout with PWA metadata (manifest, theme-color, apple-mobile-web-app tags, OpenGraph, Twitter cards, SEO)
+    17→- Built PWAProvider component with: service worker registration, install prompt dialog, offline detection banner
+    18→- Fixed React lint errors (replaced setState in effects with useSyncExternalStore)
+    19→- Browser-verified: page renders, manifest link present, theme-color correct, apple-mobile-web-app-capable set, no console errors
+    20→
+    21→Stage Summary:
+    22→- PWA foundation is fully functional
+    23→- All icons generated from RCCG logo
+    24→- Service worker ready (will activate on HTTPS/production)
+    25→- Install-to-homescreen prompt working
+    26→- Offline detection with banner notification
+    27→- RCCG brand colors configured in Tailwind theme
+    28→- Note: Service worker does not register in dev mode (expected — works on production/HTTPS)
+    29→
+    30→---
+    31→Task ID: 6
+    32→Agent: Main Agent
+    33→Task: Prompt #6 - Homepage Build (All Sections)
+    34→
+    35→Work Log:
+    36→- Created directory structure: `src/components/layout/` and `src/components/home/`
+    37→- Built section animation wrapper utility (`section-wrapper.tsx`) with Framer Motion fade-in-up and reusable SectionTitle component with red underline
+    38→- Built Navbar (`layout/navbar.tsx`): sticky, glassmorphism backdrop-blur, desktop nav links with active state via usePathname, mobile Sheet menu, "Watch Live" red CTA button, RCCG logo
+    39→- Built Footer (`layout/footer.tsx`): 4-column grid (About, Quick Links, Service Times, Connect), dark blue background (#0D1557), social icons, WhatsApp, service times, copyright bar
+    40→- Built Hero Section (`hero-section.tsx`): full-screen, blue gradient background with decorative patterns/light beams, inverted logo, church name with mobile `<br />` break, tagline "A Place of Destiny Fulfillment", 4 CTA buttons (2x2 grid on mobile), animated scroll-down indicator
+    41→- Built Countdown Section (`countdown-section.tsx`): real-time countdown to next Sunday 9:00 AM WAT using useSyncExternalStore (hydration-safe), styled countdown boxes, service time info bar
+    42→- Built Latest Sermon (`latest-sermon.tsx`): horizontal card with gradient thumbnail placeholder, Play overlay, sermon title/pastor/date/description, "Watch Now" button
+    43→- Built Pastor's Welcome (`pastors-welcome.tsx`): two-column layout, circular photo placeholder with "SP" initials, 3 paragraphs of professional welcome text, "Read More" link
+    44→- Built Upcoming Events (`upcoming-events.tsx`): 3 event cards with colored top banners (blue/green/red), date/time/venue details, "Register" buttons, "View All Events" link
+    45→- Built Departments Preview (`departments-preview.tsx`): 6 department cards (Choir, Ushering, Children Church, Youth Church, Media, Evangelism) with Lucide icons and colored icon backgrounds
+    46→- Built Devotional Preview (`devotional-preview.tsx`): card with date, title "Walking in God's Purpose", scripture verse, excerpt, "Read Full Devotional" button
+    47→- Built Announcement Preview (`announcement-preview.tsx`): 3 announcement items with icons, titles, dates, excerpts
+    48→- Built Photo Gallery Preview (`photo-gallery-preview.tsx`): 6 placeholder photo slots (2x3 grid) with gradient backgrounds and Camera icons
+    49→- Built Video Gallery Preview (`video-gallery-preview.tsx`): 3 video cards with gradient thumbnails, Play overlays, duration badges, view counts
+    50→- Built Testimonies (`testimonies.tsx`): 3 testimonial cards with Quote icon decoration, left red border accent, member names
+    51→- Built Giving Section (`giving-section.tsx`): warm background (#FFF8F0), 3 cards (Bank Transfer with placeholder details, Online Giving with CTA, QR Code placeholder)
+    52→- Built Location Map (`location-map.tsx`): Google Maps iframe + contact info card (address, phone, email, WhatsApp, office hours)
+    53→- Updated `src/app/page.tsx` to compose all 15 components in specified order with `<main>` semantic tag
+    54→- Applied alternating section backgrounds for visual rhythm (white, #F0F4FF, #F5F7FF, #FFF8F0)
+    55→- All components use TypeScript, shadcn/ui (Button, Card, Sheet, Badge), Lucide icons, Framer Motion animations
+    56→- Fixed ESLint error in countdown-section by replacing useState+useEffect with useSyncExternalStore pattern
+    57→- Only pre-existing lint error remains (pwa-provider.tsx — outside scope of this task)
+    58→- Verified: dev server compiles successfully, page renders at 200 status
+    59→
+    60→Stage Summary:
+    61→- Complete homepage built with 15 sections + navbar + footer
+    62→- 17 component files created (15 home sections + section-wrapper utility + navbar + footer)
+    63→- Mobile-first responsive design with generous spacing and rounded cards
+    64→- RCCG brand colors consistently applied throughout
+    65→- All navigation links point to correct routes
+    66→- Professional placeholder content (no lorem ipsum)
+    67→- Pre-existing pwa-provider.tsx lint error not modified (per instructions)---
+    68→Task ID: 12
+    69→Agent: Main Agent
+    70→Task: Build Members Gallery page (Prompt #12)
+    71→
+    72→Work Log:
+    73→- Read existing patterns from departments page, page-banner, section-wrapper
+    74→- Created /src/components/members/member-card.tsx — card with photo area, role/department badges, admin hover overlay with Edit/Remove buttons
+    75→- Created /src/components/members/members-gallery.tsx — main gallery with 12 mock members, search bar, department filter dropdown, grid/list view toggle, results count, empty state
+    76→- Created /src/components/members/add-member-modal.tsx — admin-only modal with photo upload placeholder, name, role select, department select, bio textarea, form validation
+    77→- Created /src/components/members/members-cta.tsx — dark CTA section "You Belong Here" with Join Our Family + Visit Us buttons
+    78→- Created /src/app/members/page.tsx — page entry with PageBanner, MembersGallery, MembersCTA
+    79→- Admin controls are gated behind `isAdmin` state (false by default, will wire to Supabase auth)
+    80→- Production build passed clean, /members route statically generated
+    81→- No hydration issues — no conditional className switching
+    82→
+    83→Stage Summary:
+    84→- Members Gallery fully built at /members
+    85→- 12 mock members across 10 departments with search, filter, grid/list views
+    86→- Admin-only Add Member modal ready (gated, will connect to Supabase auth)
+    87→- All files: page.tsx, members-gallery.tsx, member-card.tsx, add-member-modal.tsx, members-cta.tsx
+    88→---
+    89→Task ID: 13
+    90→Agent: Main Agent
+    91→Task: Build Media Center page (Prompt #13)
+    92→
+    93→Work Log:
+    94→- Created /src/components/media/media-center.tsx — main hub with shadcn Tabs (Live Stream, Videos, Photos, Audio), reads ?tab= from URL for direct linking
+    95→- Created /src/components/media/live-stream-section.tsx — 16:9 video player placeholder, live/offline indicator, 3 service schedule cards (Sunday, Wednesday Bible Study, Friday Prayer), info bar
+    96→- Created /src/components/media/video-gallery.tsx — 9 mock sermon videos, search bar, category filter pills (Sunday Service, Bible Study, Friday Prayer, Special Programme), video cards with play button/duration/category badge, click-to-open modal player
+    97→- Created /src/components/media/photo-gallery.tsx — 12 mock photos, masonry grid layout (varying aspect ratios), search + category filter (Services, Events, Ministry, Outreach), hover overlays with title/date, lightbox with left/right navigation
+    98→- Created /src/components/media/audio-gallery.tsx — 10 mock audio tracks (sermons, worship, prayer), table-style track list with play/pause, type filter pills, mini player bar (fixed bottom) with controls and volume slider
+    99→- Created /src/components/media/media-cta.tsx — dark CTA "Never Miss a Moment" linking to Sermon Library and Contact
+   100→- Created /src/app/media/page.tsx — page entry with Suspense boundary (needed for useSearchParams), PageBanner, MediaCenter, MediaCTA
+   101→- Navbar "Watch Live" button links to /media?tab=livestream which auto-opens the Live Stream tab
+   102→- Production build clean, all routes statically generated
+   103→
+   104→Stage Summary:
+   105→- Media Center fully built at /media with 4 tabs
+   106→- Live Stream: player placeholder + 3 service schedule cards
+   107→- Videos: 9 mock videos with search, filter, modal player
+   108→- Photos: 12 mock photos in masonry grid with lightbox
+   109→- Audio: 10 mock tracks with play controls, mini player bar
+   110→- Zero hydration errors
+   111→---
+   112→Task ID: 14
+   113→Agent: Main Agent
+   114→Task: Build Photo Gallery page (Prompt #14)
+   115→
+   116→Work Log:
+   117→- Created /src/components/gallery/gallery-data.ts — 9 mock albums, 35 mock photos across 4 categories (Services, Events, Ministry, Outreach)
+   118→- Created /src/components/gallery/album-card.tsx — album cover card with category tag, photo count badge, hover "View Album" overlay, description, date
+   119→- Created /src/components/gallery/full-lightbox.tsx — full-screen lightbox with: keyboard nav (arrow keys, Esc, I for info, Z for zoom), touch/swipe support, zoom toggle, download button, right-sliding info panel with photo details, thumbnail strip, progress dots in bottom bar, back-to-albums button
+   120→- Created /src/components/gallery/gallery-main.tsx — main gallery with 3 views: Albums grid (default), All Photos masonry, Inside Album square grid. Search bar, category filter dropdown, Albums/All Photos toggle, back breadcrumb when inside album, empty state
+   121→- Created /src/components/gallery/gallery-cta.tsx — dark CTA "Share Your Moments With Us" linking to Contact and Media Center
+   122→- Created /src/app/gallery/page.tsx — page entry with PageBanner, GalleryMain, GalleryCTA
+   123→- Fixed Turbopack JSX parsing error with section header comments (removed 3 comment lines)
+   124→- Production build clean, /gallery route statically generated
+   125→
+   126→Stage Summary:
+   127→- Photo Gallery fully built at /gallery
+   128→- 9 albums with 35 photos across Services, Events, Ministry, Outreach
+   129→- Full-screen lightbox with keyboard nav, touch swipe, zoom, info panel, thumbnails
+   130→- Albums view + All Photos masonry view + inside-album square grid
+   131→- Search, category filter, view mode toggle
+   132→- Zero hydration errors
+   133→---
+   134→Task ID: 15
+   135→Agent: Main Agent
+   136→Task: Build Video Gallery page (Prompt #15)
+   137→
+   138→Work Log:
+   139→- Created /src/components/videos/video-data.ts — 6 sermon series, 26 mock videos across Sermon/Service/Special categories with full metadata
+   140→- Created /src/components/videos/featured-video.tsx — 21:9 cinematic hero with featured badge, title, meta (speaker, date, duration, views), play button, decorative gradients
+   141→- Created /src/components/videos/video-card.tsx — VideoCard (thumbnail with duration/category badge, hover overlay) + SeriesCard (gradient cover with video count, active border state)
+   142→- Created /src/components/videos/video-player-modal.tsx — full modal with 16:9 player, keyboard nav (arrows, Esc, P for playlist), Like/Share buttons, slide-out playlist sidebar with now-playing indicator, video description
+   143→- Created /src/components/videos/video-gallery-main.tsx — 3 views: Featured hero + Series grid (default), Inside Series, All Videos flat grid. Search, category filter pills, results count, empty state
+   144→- Created /src/components/videos/video-cta.tsx — dark CTA "Watch Us Live Every Sunday" linking to Live Stream and Sermon Library
+   145→- Created /src/app/videos/page.tsx — page entry with PageBanner, VideoGalleryMain, VideoCTA
+   146→- Production build clean, /videos route statically generated
+   147→
+   148→Stage Summary:
+   149→- Video Gallery fully built at /videos
+   150→- 6 sermon series with 26 videos (Walking in Destiny, Prayer, Grace Life, Family, Spiritual Warfare, Sunday Services)
+   151→- Featured video hero (21:9 cinematic), series cards with gradient covers
+   152→- Full video player modal with playlist sidebar, keyboard nav, like/share
+   153→- Search + category filter + series drill-down + flat all-videos view
+   154→- Zero hydration errors
+   155→---
+   156→Task ID: 16
+   157→Agent: Main Agent
+   158→Task: Build Sermon Library page (Prompt #16)
+   159→
+   160→Work Log:
+   161→- Created /src/components/sermons/sermon-data.ts — 5 sermon series, 24 mock sermons with full metadata (title, speaker, date, duration, category, description, scriptures, tags, notes, hasAudio/hasVideo/hasNotes flags). 6 categories (Sunday Service, Bible Study, Special Programme, Friday Prayer, Midweek Service). 4 sort options. allSpeakers derived array.
+   162→- Created /src/components/sermons/featured-sermon.tsx — hero card with gradient visual area + play button, series badge, title, meta (speaker, date, duration), description, scripture reference chips, 3 action buttons (Watch Video, Listen Audio, Read Notes) conditionally shown based on available formats.
+   163→- Created /src/components/sermons/sermon-series-grid.tsx — responsive grid of series cards with gradient covers, sermon count, date range, hover effects.
+   164→- Created /src/components/sermons/sermon-card.tsx — sermon card with category badge, format badges (Audio/Video/Notes), title, meta row, description (2-line clamp), scripture chips (max 3 + overflow count), series tag, active state ring.
+   165→- Created /src/components/sermons/sermon-player-modal.tsx — full modal with: audio progress bar with scrubbing, play/pause/skip controls, volume control with mute toggle, keyboard shortcuts (Space, arrows, Esc), sermon info with scripture chips, format badges with toggleable notes panel (animated expand/collapse), full sermon notes display with Download/Share actions, playlist/up-next list with current indicator, auto-advance timer simulation.
+   166→- Created /src/components/sermons/sermon-library.tsx — 3-view orchestrator: Home (featured + series grid + quick stats), Series (series header + filtered sermons), All Sermons (flat list). Search by title/speaker/scripture/tags. Category filter pills, expandable filters panel (sort by, speaker dropdown), results count, active filter badge count, clear all filters, empty state.
+   167→- Created /src/components/sermons/sermon-cta.tsx — dark CTA "The Word of God is Living and Powerful" linking to Live Service and Contact.
+   168→- Created /src/app/sermons/page.tsx — page entry with PageBanner, SermonLibrary, SermonCTA.
+   169→- Fixed build error: reordered filteredSermons before playlistSermons to avoid temporal dead zone reference.
+   170→- Production build clean, /sermons route statically generated.
+   171→
+   172→Stage Summary:
+   173→- Sermon Library fully built at /sermons
+   174→- 24 sermons across 5 series with full metadata, 11 with detailed notes
+   175→- 3 views: Library Home (featured + series), Series drill-down, All Sermons flat list
+   176→- Rich search (title, speaker, scripture, topic) + category filter + sort + speaker filter
+   177→- Full audio player modal with progress, controls, notes toggle, playlist navigation
+   178→- Quick stats bar (total sermons, series, speakers, with-notes count)
+   179→- Zero hydration/parse errors
+   180→---
+   181→Task ID: 17
+   182→Agent: Main Agent
+   183→Task: Build Live Stream Page (Prompt #17)
+   184→
+   185→Work Log:
+   186→- Created /src/components/live/live-data.ts — 4 service schedules (2 Sunday, 1 Wednesday, 1 Friday) with time/endtime/description, 6 past streams, getNextService() and isCurrentlyLive() helper functions, getLiveViewers() mock.
+   187→- Created /src/components/live/live-player.tsx — full-featured video player with live/offline state detection, viewer count, LIVE badge with pulse animation, share/fullscreen/mute controls, expandable details panel (status, viewers, location), offline placeholder state, fullscreen mode toggle.
+   188→- Created /src/components/live/service-schedule.tsx — next service highlight card with real-time countdown timer (days/hours/min/sec updating every second), full weekly schedule grid with "Up Next" badge, per-service reminder toggle (Bell/BellRing), service description, time range, video/audio type badge.
+   189→- Created /src/components/live/live-prayer.tsx — live prayer request form with name field, anonymous toggle, request textarea, submit with loading state, success confirmation animation, privacy note with shield icon.
+   190→- Created /src/components/live/past-streams.tsx — 6 recent service replay cards with gradient thumbnails, play overlay, duration badge, type badge, date, view count, link to full video gallery.
+   191→- Created /src/components/live/live-faq.tsx — 6 FAQs in accordion (timing, account, mobile, buffering, sharing, recordings) with animated expand/collapse.
+   192→- Created /src/components/live/live-cta.tsx — dark CTA "Never Miss a Live Service".
+   193→- Created /src/app/live/page.tsx — 2-column layout: main (player + schedule + replays), sidebar (prayer request + streaming tips + FAQ).
+   194→- Production build clean, /live route statically generated (13 routes total).
+   195→
+   196→Stage Summary:
+   197→- Live Stream page fully built at /live
+   198→- Full video player with live/offline auto-detection and viewer count
+   199→- Real-time countdown to next service
+   200→- 4 weekly services with reminder toggle
+   201→- Live prayer request form with anonymous option
+   202→- 6 past service replays
+   203→- FAQ accordion + streaming tips sidebar
+   204→- Zero hydration/parse errors
+   205→
+   206→## Task ID: 23 — Announcements Page
+   207→
+   208→### Files Created:
+   209→1. **`src/components/announcements/announcements-data.ts`** — TypeScript types (`Announcement`, `AnnouncementCategory`, `AnnouncementPriority`), 17 realistic Nigerian RCCG church announcements with full body text, helper functions (`getActiveAnnouncements`, `getPinnedAnnouncements`, `getAnnouncementsByCategory`), and `categoryColors`/`priorityConfig` maps for visual distinction.
+   210→2. **`src/components/announcements/announcement-card.tsx`** — Client component with 3 card variants: `default` (grid card with colored left priority border, pinned badge, category badge, title, body line-clamp-3, date, author, attachment count, tags), `featured` (large horizontal card for pinned announcements with gradient top bar, full details), and `compact` (list row with priority dot, truncated info).
+   211→3. **`src/components/announcements/announcements-main.tsx`** — Client orchestrator with: pinned announcements in highlighted gradient section at top, horizontal scrollable category filter pills (All/General/Service/Event/Ministry/Youth/Children/Community/Admin), priority filter pills, search bar (title/body/tags), sort toggle (Newest/Oldest/Priority), grid/list view toggle, responsive 3-col grid layout, empty state, "Load More" pagination, and a sticky desktop sidebar with quick stats (total active, urgent count, this week's count), pinned count card, and category breakdown.
+   212→4. **`src/components/announcements/announcements-cta.tsx`** — Dark CTA section with "Stay Informed, Stay Connected" theme, glassmorphism bell icon, subscribe and browse events buttons.
+   213→5. **`src/app/announcements/page.tsx`** — Route page with PageBanner, AnnouncementsMain, and AnnouncementsCTA following the established pattern.
+   214→
+   215→### Files Modified:
+   216→- **`src/app/globals.css`** — Added `.no-scrollbar` utility class for horizontal scrollable filter pills.
+   217→
+   218→### Key Decisions:
+   219→- All 17 announcements feature realistic Nigerian RCCG Abuja church context (transport routes, Naira fees, Abuja locations, Nigerian names, local church activities).
+   220→- Priority indicated via colored left border (red=urgent, amber=high, blue=normal, gray=low).
+   221→- Framer Motion staggered reveal animations on all card variants.
+   222→- AnimatePresence for smooth grid/list view transitions.
+   223→- "Load More" pagination with 6 items per page.
+   224→- No `styled-jsx` — scrollbar-hiding CSS moved to globals.css to avoid extra dependencies.
+   225→- Build passed successfully with 0 errors.
+   226→
+   227→## Task ID: 24 — Build the Testimonies Page for RCCG Rehoboth Assembly Parish PWA
+   228→
+   229→### Files Created:
+   230→1. **`src/components/testimonies/testimonies-data.ts`** — Testimony interface, 10 categories, categoryIcons, categoryColors, categoryLabels maps, 12 realistic Nigerian church testimonies (healing, job provision, safe delivery, visa approval, business breakthrough, marriage restoration, academic success, armed robbery protection, divine guidance for spouse, car accident miracle, salvation, housing provision), helper functions.
+   231→2. **`src/components/testimonies/testimony-card.tsx`** — TestimonyCard component with "default" and "featured" variants. Featured variant has gradient dark background with quote marks. Like button with Framer Motion spring animation (heart fills/unfills, count increments locally). Share button (mock). Tags display, avatar with colored initials.
+   232→3. **`src/components/testimonies/testimony-form.tsx`** — TestimonyForm client component with visual category grid selector (10 categories with icons), title field, body textarea (min 50 char validation), predefined tag chips (max 5), name/email/phone fields (disabled when anonymous toggle active), anonymous checkbox, privacy note, loading/success states. Success state shows Revelation 12:11 scripture in dark card.
+   233→4. **`src/components/testimonies/testimonies-main.tsx`** — Main orchestrator with: featured testimony (highest likes), stats section (4 cards), category filter pills with icons, search input, sort dropdown (newest/most liked/oldest), responsive 3-column grid of testimony cards with AnimatePresence, empty state, scripture encouragement section (Psalm 107:1-2), testimony form section with scroll-to behavior.
+   234→5. **`src/components/testimonies/testimonies-cta.tsx`** — Dark CTA section with "Your Testimony is Powerful" theme, Revelation 12:11 quote in glassmorphism card, scroll-to-form button.
+   235→6. **`src/app/testimonies/page.tsx`** — Route page with PageBanner, TestimoniesMain, TestimoniesCTA. Metadata with SEO description.
+   236→
+   237→### Build Result: ✅ Success — zero errors
+   238→
+   239→## Task ID: 22
+   240→## Agent: full-stack-developer
+   241→## Summary: Built the Devotionals Page for RCCG Rehoboth Assembly Parish PWA
+   242→
+   243→### What was done:
+   244→1. **Created `/src/components/devotionals/devotionals-data.ts`** — Comprehensive mock data file with:
+   245→   - `Devotional` interface and `DevotionalCategory` type
+   246→   - 14 daily devotionals with realistic, meaningful Bible-based content (200+ words each)
+   247→   - 4 weekly devotionals (longer form studies on worship, spiritual gifts, faith in trials, fruit of the Spirit)
+   248→   - Categories: daily, weekly, youth, family, marriage
+   249→   - Authors: Pastor Adebayo, Pastor Mrs. Funke, Minister Chukwu
+   250→   - Helper functions: `getDevotionalByDate`, `getDevotionalsByRange`, `getAllCategories`
+   251→   - 4 reading plans (30 Days of Grace, 21 Days of Prayer, 7-Day Family Devotional, 14-Day Youth Challenge)
+   252→   - Category configuration for styling
+   253→
+   254→2. **Created `/src/components/devotionals/devotional-card.tsx`** — Card component with three variants:
+   255→   - `default`: Standard card with color bar, date, title, bible verse, body preview, author, "Read More" link
+   256→   - `featured`: Larger card with full details and hover effects
+   257→   - `compact`: Minimal list-style card for sidebar display
+   258→   - Framer Motion animations, hover lift effects, category badges
+   259→
+   260→3. **Created `/src/components/devotionals/devotional-reader.tsx`** — Full devotional reader with:
+   261→   - Animated transitions between devotionals (AnimatePresence)
+   262→   - Bible verse section with gradient background and decorative quotation marks
+   263→   - Full body text with paragraph-by-paragraph animations
+   264→   - Collapsible reflection questions section
+   265→   - Styled prayer section
+   266→   - Share (copy link) and Bookmark toggle buttons
+   267→   - Previous/Next day navigation
+   268→   - Toast notifications for user actions
+   269→
+   270→4. **Created `/src/components/devotionals/devotional-calendar.tsx`** — Mini calendar with:
+   271→   - Current month display with prev/next month navigation
+   272→   - Blue dot indicators for dates with devotionals
+   273→   - Selected date highlighting
+   274→   - Today indicator (red underline)
+   275→   - "Jump to Today" button
+   276→   - Click to navigate to devotional
+   277→
+   278→5. **Created `/src/components/devotionals/devotional-main.tsx`** — Main orchestrator with:
+   279→   - Two views: "Today" (reader + sidebar) and "All" (filterable grid)
+   280→   - View toggle tabs with icons
+   281→   - Today view: DevotionalReader + sidebar with calendar, quick stats, reading plans
+   282→   - All view: Category filter pills, search across title/verse/body/tags/author, responsive grid
+   283→   - Empty state with clear filters option
+   284→   - Animated view transitions
+   285→   - Search with clear button
+   286→
+   287→6. **Created `/src/components/devotionals/devotional-cta.tsx`** — Dark CTA section with:
+   288→   - "Start Your Day with God's Word" theme
+   289→   - Stats: 14 Daily Devotionals, 4 Weekly Studies, 4 Reading Plans
+   290→   - Two CTA buttons (scroll to top, prayer page link)
+   291→   - Consistent dark gradient pattern with brand colors
+   292→
+   293→7. **Created `/src/app/devotionals/page.tsx`** — Page entry with:
+   294→   - PageBanner with title, subtitle, breadcrumbs
+   295→   - DevotionalMain component
+   296→   - DevotionalCTA component
+   297→   - SEO metadata
+   298→
+   299→### Build result: ✅ Clean build — no errors
+   300→
+   301→---
+   302→Task ID: 26
+   303→Agent: Main Agent
+   304→Date: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+   305→
+   306→### Summary: Built the Contact Page for RCCG Rehoboth Assembly Parish PWA
+   307→
+   308→### Files Created:
+   309→- `src/components/contact/contact-data.ts` — Church info, service times, social links, office hours, `getUpcomingService()` helper
+   310→- `src/components/contact/contact-form.tsx` — Full contact form with validation, loading/success states, shadcn Input/Textarea/native select
+   311→- `src/components/contact/service-times-card.tsx` — Service times organized by day with next upcoming service highlighted
+   312→- `src/components/contact/contact-main.tsx` — Two-column layout: form + map placeholder (left), info cards + service times + social + office hours (right)
+   313→- `src/components/contact/contact-cta.tsx` — Dark CTA section with "Send Us a Message" (scroll) and "Join Us This Sunday" buttons
+   314→- `src/app/contact/page.tsx` — Contact page with PageBanner, ContactMain, ContactCTA, SEO metadata
+   315→
+   316→### Key Design Decisions:
+   317→- Map placeholder uses dark gradient with SVG grid overlay and animated pin icon for professional look
+   318→- "Get Directions" links to Google Maps with the actual church address
+   319→- Service times card highlights the next upcoming service with green banner
+   320→- Contact form uses native styled select for subject dropdown (avoids hydration issues)
+   321→- Social media icons with hover-to-brand-color transition
+   322→- Info cards are clickable (tel:, mailto:, external links)
+   323→- Follows existing project patterns: SectionWrapper, PageBanner, brand colors, motion animations
+   324→
+   325→### Build result: ✅ Clean build — no errors
+   326→
+   327→---
+   328→Task ID: 28
+   329→Agent: Main Agent
+   330→Task: Build the Global Search Page for RCCG Rehoboth Assembly Parish PWA
+   331→
+   332→Work Log:
+   333→- Created `/src/components/search/search-data.ts` — Search data layer with 40+ mock results across 9 types (sermons, events, announcements, devotionals, testimonies, pages, leaders, ministries, media), typeConfig map with per-type icons/colors, searchAll() with debounced filtering, getPopularSearches(), getSuggestedResults()
+   334→- Created `/src/components/search/search-result-card.tsx` — Individual result card with type-colored icon, badge, title, description (line-clamp-2), date, meta info, Framer Motion fade-in animation, hover arrow reveal
+   335→- Created `/src/components/search/search-main.tsx` — Main search interface with large auto-focused search input, debounced client-side filtering, default state (recent searches, popular search chips, quick links grid, suggested content cards), results state (category filter pills with counts, results grouped by type with headers, no-results state with suggestions), AnimatePresence transitions
+   336→- Created `/src/components/search/search-cta.tsx` — Dark CTA section with "Can't Find What You're Looking For?" theme, buttons for prayer request and contact page
+   337→- Created `/src/app/search/page.tsx` — Search route with PageBanner, SearchMain, and SearchCTA wrapped in bg-[#F8FAFF]
+   338→- Follows existing project patterns: PageBanner → Main component → Dark CTA section, brand colors, Framer Motion animations, shadcn/ui components
+   339→- Mobile-first responsive design, consistent type badge colors (sermons=blue, events=green, announcements=amber, etc.)
+   340→
+   341→### Build result: ✅ Clean build — no errors
+   342→
+   343→---
+   344→
+   345→## Task ID: 29 — Admin Dashboard Page
+   346→
+   347→### Files Created:
+   348→- `src/components/admin/admin-data.ts` — Mock dashboard data (stats, activities, quick actions, chart data, pending items)
+   349→- `src/components/admin/admin-sidebar.tsx` — Collapsible sidebar navigation with icon mapping, mobile overlay, user section
+   350→- `src/components/admin/admin-topbar.tsx` — Top bar with breadcrumb, search, notification dropdown, user avatar dropdown
+   351→- `src/components/admin/stats-cards.tsx` — 6 stat cards with staggered Framer Motion animations, change indicators
+   352→- `src/components/admin/recent-activity.tsx` — Activity feed/timeline with 10 items, type icons, status badges, relative timestamps
+   353→- `src/components/admin/pending-items.tsx` — 8 pending items with priority badges, approve/reject actions with animation
+   354→- `src/components/admin/quick-actions.tsx` — 8 quick action cards in 2-col grid with hover effects
+   355→- `src/components/admin/attendance-chart.tsx` — Pure CSS/Tailwind bar chart with 8 weeks data, hover tooltips, summary stats
+   356→- `src/components/admin/admin-dashboard.tsx` — Main dashboard layout with sidebar + topbar, responsive grid sections
+   357→- `src/app/admin/page.tsx` — Admin route page with metadata
+   358→
+   359→### Key Design Decisions:
+   360→- Dashboard uses `fixed inset-0 z-50` to overlay on top of the main site Navbar/Footer from root layout
+   361→- Sidebar has desktop fixed mode + mobile slide-in overlay with Framer Motion spring animation
+   362→- Icon string mapping pattern: objects at top of components map string names to imported lucide components
+   363→- All class names are static (no conditional className switching) to avoid hydration errors
+   364→- Brand colors applied consistently: Blue #1A237E for primary, Red #D32F2F for alerts/priority, Green #2E7D32 for positive
+   365→- Backgrounds use the specified palette: #F0F4FF, #F5F7FF, #EBF0FA, #F8FAFF
+   366→- Responsive: 2-col stats on mobile, 6-col on xl; 5-col grid sections on lg, single col on mobile
+   367→- Pending items have interactive approve/reject with animated state changes
+   368→- Attendance chart uses pure CSS bars with animated height on mount, hover tooltips with peak indicator
+   369→
+   370→### Build result: ✅ Clean build — no errors
+   371→
+   372→---
+   373→Task ID: GAF-S1
+   374→Agent: Main Agent
+   375→Task: Go-A-Fishing Stage 1 — Codebase Audit & Integration Map (read-only, no code changes)
+   376→
+   377→Work Log:
+   378→- Launched 4 parallel Explore subagents to audit: (1) routes/pages, (2) auth/member structures, (3) database/admin, (4) social/share/UI components
+   379→- Consolidated findings into Stage 1 Integration Map (delivered to user in chat)
+   380→- No code modified. Read-only inspection only.
+   381→
+   382→Stage Summary — CRITICAL FINDINGS for future stages:
+   383→1. NO AUTH SYSTEM EXISTS. `next-auth@^4.24.11` is a dead dependency (never imported). No middleware.ts, no /api/auth/* routes, no SessionProvider, no login/signup pages, no useSession/getServerSession usage anywhere.
+   384→2. ADMIN PAGES ARE PUBLICLY REACHABLE. /admin and /admin/social have NO auth gate (no layout.tsx, no middleware). Only /api/social/admin* endpoints have a header-key check (SOCIAL_ADMIN_KEY env var).
+   385→3. TWO DIFFERENT DEFAULT ADMIN KEYS committed to repo: "admin_placeholder_key" (in admin/route.ts) and "rccg-rehoboth-admin-2024" (in admin/chat/route.ts). Both are weak public strings.
+   386→4. SUPABASE IS NOT WIRED. `@supabase/supabase-js` is NOT installed. `src/lib/supabase/` contains only `types.ts` (interfaces) and `social-store.ts` (in-memory mock using Maps/arrays). All social data resets on server restart.
+   387→5. PRISMA IS DEAD CODE. `prisma/schema.prisma` has only boilerplate `User` + `Post` models with no relations. `src/lib/db.ts` exports a Prisma client singleton but NO file in src/ imports it. DATABASE_URL points to local SQLite file.
+   388→6. SOCIAL FEATURES USE ANONYMOUS SESSIONS. FamilyChat generates `user_${Date.now()}` stored in `sessionStorage["rs_session"]`. Other features (whos-coming, im-here) use `session_${Date.now()}_${random}`. No real identity anywhere.
+   389→7. NO QR CODE LIBRARY installed. No Web Share API (`navigator.share`) usage. Only 2 raw `navigator.clipboard.writeText` calls (devotional URL copy, bank account copy). No reusable share component.
+   390→8. ADMIN SIDEBAR ADVERTISES 11 SECTIONS but only /admin (Dashboard) and /admin/social exist. The other 9 nav items (Members, Sermons, Events, Announcements, Devotionals, Testimonies, Prayer Requests, Media, Ministries, Settings) are dead `href="#"` links.
+   391→9. ALL ADMIN DATA IS HARDCODED MOCK in `src/components/admin/admin-data.ts` (dashboardStats, recentActivities, quickActions, dashboardChartData, pendingItems).
+   392→10. 3 ORPHAN SOCIAL COMPONENTS: `whos-coming.tsx`, `im-here.tsx`, `weekly-challenge.tsx` exist as components but their routes redirect to /social (effectively dead).
+   393→11. ENV VARS: Only `SOCIAL_ADMIN_KEY` and `NODE_ENV` are actually read in src/. `.env.example` lists NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, NEXTAUTH_SECRET, NEXTAUTH_URL — all UNSET.
+   394→12. NO SEED SCRIPT. No prisma/seed.ts, no db:seed in package.json.
+   395→
+   396→REUSABLE ASSETS for Go-A-Fishing:
+   397→- shadcn/ui: 46 primitives in src/components/ui/ (Button, Card, Input, Dialog, Sheet, Tabs, Avatar, Badge, Progress, Table, Tooltip, etc.)
+   398→- Layout: navbar.tsx, footer.tsx, page-banner.tsx
+   399→- Home utilities: SectionWrapper + SectionTitle (src/components/home/section-wrapper.tsx)
+   400→- Social patterns: FeatureLandingPage (gate shell), SocialFeatureNav (bottom bar), BackToSocial (top link)
+   401→- Recharts installed (used in admin attendance-chart.tsx)
+   402→- Framer Motion installed
+   403→- Zustand installed (but not used yet)
+   404→
+   405→ROUTE PROTECTION GAP — Stage 3 must address:
+   406→- Public browsing MUST stay open (homepage, about, sermons, events, etc.)
+   407→- /admin/* needs auth gate (currently wide open)
+   408→- /social/* currently anonymous — Go-A-Fishing member dashboard will need real identity
+   409→- Member account system must coexist with anonymous social features (don't break FamilyChat's anon session pattern)
+   410→
+   411→PRESERVATION RULES for future stages:
+   412→- DO NOT remove or rewrite social-store.ts (it powers all 5 live social features)
+   413→- DO NOT break the sessionStorage rs_session pattern (FamilyChat depends on it)
+   414→- DO NOT change public route access (homepage, sermons, events, prayer, etc. stay open)
+   415→- DO NOT remove the 3 redirect stubs (whos-coming, im-here, weekly-challenge) without explicit permission
+   416→- DO NOT alter admin-data.ts mock structure (existing admin dashboard depends on it)
+   417→
+   418→
+   419→---
+   420→Task ID: GAF-S2
+   421→Agent: Main Agent
+   422→Task: Go-A-Fishing Stage 2 — Architecture Plan and Data Model (design-only, no code changes)
+   423→
+   424→Work Log:
+   425→- Re-read worklog GAF-S1 section to confirm Stage 1 findings and preservation list
+   426→- Read current prisma/schema.prisma (confirmed: User + Post are dead boilerplate, no relations between them, both use cuid() string IDs)
+   427→- Read src/lib/db.ts (confirmed: PrismaClient singleton ready to reuse, no changes needed)
+   428→- Read .env / .env.example (confirmed: DATABASE_URL=file:...SQLite, 5 Supabase/NextAuth vars declared but unset)
+   429→- Read package.json (confirmed: next-auth@4.24.11 + prisma@6.11.1 + @prisma/client@6.11.1 installed; @supabase/supabase-js NOT installed; zustand installed but unused)
+   430→- Read src/lib/supabase/types.ts (confirmed: 16 anonymous-session interfaces, no Member type)
+   431→- Produced Stage 2 Architecture Plan covering: 3 auth options + recommendation, 3 persistence options + recommendation, 8 new Prisma models (additive), referral link format + attribution flow, integration approach honoring all preservation rules
+   432→- NO code modified. Design-only deliverable. Schema additions proposed for Stage 3 review.
+   433→
+   434→Stage Summary — DECISIONS PROPOSED for Stage 3 approval:
+   435→
+   436→AUTH RECOMMENDATION: Option B — Supabase Auth
+   437→- Replaces dead next-auth dependency with the actually-intended Supabase stack
+   438→- Magic-link auth perfect for church members (no password to forget)
+   439→- RLS enables per-member data isolation without per-query auth checks
+   440→- Requires: install @supabase/supabase-js, set NEXT_PUBLIC_SUPABASE_URL + NEXT_PUBLIC_SUPABASE_ANON_KEY + SUPABASE_SERVICE_ROLE_KEY in Vercel
+   441→- next-auth@4.24.11 dependency can be removed in a later cleanup stage (not Stage 3)
+   442→
+   443→PERSISTENCE RECOMMENDATION: Option C — Hybrid (Prisma for relational data + Supabase for auth + future real-time)
+   444→- Prisma already wired in src/lib/db.ts — leverage for 8 new relational models (members, referrals, cycles, winners, commendations, audit logs, etc.)
+   445→- Supabase Auth handles identity (per auth recommendation)
+   446→- Supabase real-time reserved for future live leaderboard (NOT Stage 3 scope)
+   447→- DATABASE_URL switched from SQLite to Supabase Postgres connection string (user must set in Vercel)
+   448→- social-store.ts in-memory mock PRESERVED UNTOUCHED — Go-A-Fishing data lives in its own Prisma tables, no migration of existing anon social data
+   449→
+   450→DATA MODEL — 8 new Prisma models (additive to schema.prisma, BELOW existing User/Post boilerplate):
+   451→1. Member — registered Go-A-Fishing participant (links to Supabase Auth user via supabaseUserId)
+   452→2. ReferralEvent — single "soul fished" event with status progression (invited → attended → saved → baptized → member)
+   453→3. RewardCategory — award category definitions (soul winner, top inviter, etc.)
+   454→4. RewardCycle — quarterly award period per category
+   455→5. RewardWinner — member ranked in a cycle (rank 1/2/3 with score + breakdown)
+   456→6. PastoralCommendation — pastor's public praise outside cycle system
+   457→7. AdminConfig — singleton config row (link base URL, leaderboard settings, scoring weights, feature flags)
+   458→8. AuditLog — admin action accountability trail
+   459→
+   460→REFERRAL LINK FORMAT: {NEXT_PUBLIC_GAF_BASE_URL}/r/{referralCode}
+   461→- referralCode pattern: "REH-{6-char-base32}" (e.g. REH-AB1234)
+   462→- Case-insensitive lookup, unique per member, generated on Member creation
+   463→- 30-day attribution cookie: gaf_referrer={memberId}; path=/; max-age=2592000
+   464→- Channel tracking: link, qr, whatsapp, manual, flyer, other
+   465→
+   466→ATTRIBUTION FLOW:
+   467→1. Member generates link/QR from dashboard
+   468→2. Visitor lands on /r/[code] → cookie set → redirect to homepage
+   469→3. Visitor attends service → status: invited → attended (via /social/im-here or admin manual entry)
+   470→4. Status progression: invited(1pt) → attended(5pt) → saved(10pt) → baptized(25pt) → member(50pt)
+   471→5. Quarterly cycle closes → top N members per category become RewardWinner entries
+   472→6. Pastor can issue PastoralCommendation outside cycle system anytime
+   473→
+   474→SCORING WEIGHTS (configurable via AdminConfig.featureFlags JSON):
+   475→- invited=1, attended=5, saved=10, baptized=25, member=50
+   476→- Lost-contact auto-flag: no status progression in 90 days → status: lost_contact (0pt forward, historical pts retained)
+   477→
+   478→INTEGRATION APPROACH (honoring Stage 1 preservation rules):
+   479→- New routes: /go-a-fishing/* (dashboard, leaderboard, my-referrals, pastoral) — additive
+   480→- New API routes: /api/gaf/* — additive
+   481→- New component dir: src/components/gaf/ — additive
+   482→- New lib dir: src/lib/gaf/ — additive (referral-code gen, scoring engine, attribution cookie helper)
+   483→- shadcn/ui primitives reused (no new deps for Stage 2/3)
+   484→- schema.prisma: 8 new models appended BELOW User/Post, boilerplate untouched
+   485→- src/lib/db.ts: reused as-is (PrismaClient singleton)
+   486→- social-store.ts: UNTOUCHED (anon social features stay anon)
+   487→- sessionStorage rs_session pattern: UNTOUCHED (FamilyChat continues working)
+   488→- admin-data.ts: UNTOUCHED (existing dashboard mock stays)
+   489→- Existing public routes: UNTOUCHED (no auth gate added in Stage 2)
+   490→- Stage 4 (NOT Stage 3) will add: qrcode.react dep, ShareButton component using navigator.share
+   491→
+   492→ENV VARS — additions to .env.example:
+   493→- NEXT_PUBLIC_GAF_BASE_URL (e.g. https://rccg-rehoboth.app)
+   494→- GAF_ATTRIBUTION_COOKIE_NAME (optional, default: gaf_referrer)
+   495→- GAF_ATTRIBUTION_WINDOW_DAYS (optional, default: 30)
+   496→- GAF_SCORING_WEIGHTS_JSON (optional, default: {"invited":1,"attended":5,"saved":10,"baptized":25,"member":50})
+   497→
+   498→NEXT STEP: Awaiting user "Go for 3" to implement Stage 3 — apply schema additions to prisma/schema.prisma, run prisma generate + db push, install @supabase/supabase-js, set up Supabase Auth client wrapper, create src/lib/gaf/ utilities (referral-code gen, scoring engine, attribution cookie). NO UI in Stage 3.
+   499→
+   500→---
+   501→Task ID: GAF-S3
+   502→Agent: Main Agent
+   503→Task: Go-A-Fishing Stage 3 — Foundation (auth + data model + utility libs, no UI)
+   504→
+   505→Work Log:
+   506→- Clarified Stage 2 situation with user: prior session's GAF-S2 was design-only (no code changes), this session re-delivered the same design doc + appended formal GAF-S2 entry to worklog (was missing). No code duplication occurred.
+   507→- Installed @supabase/supabase-js@2.110.8 and @supabase/ssr@0.5.2 (verified loadable, createServerClient + createBrowserClient both present)
+   508→- Updated prisma/schema.prisma: switched datasource from sqlite → postgresql; preserved User + Post boilerplate verbatim; appended 8 new GAF models (Member, ReferralEvent, RewardCategory, RewardCycle, RewardWinner, PastoralCommendation, AdminConfig, AuditLog) with full indexes and relations
+   509→- Ran `npx prisma generate` — successful, Prisma Client v6.19.2 regenerated with new models
+   510→- Created src/lib/gaf/database-types.ts — minimal Database type stub (Supabase CLI codegen will replace later)
+   511→- Created src/lib/gaf/supabase-server.ts — getSupabaseServer() (RLS-enforced, cookie session) + getSupabaseAdmin() (service-role, RLS bypass)
+   512→- Created src/lib/gaf/supabase-client.ts — getSupabaseBrowser() singleton (anon key, RLS-enforced)
+   513→- Created src/lib/gaf/referral-code.ts — generateReferralCode() (REH-XXXXXX base32, no ambiguous chars), generateUniqueReferralCode() (collision-safe retry), normalizeReferralCode(), isValidReferralCode(), uses Web Crypto API
+   514→- Created src/lib/gaf/scoring.ts — REFERRAL_STATUSES, DEFAULT_SCORING_WEIGHTS (invited:1, attended:5, saved:10, baptized:25, member:50, lost_contact:0), parseScoringWeights(), computeMemberScore() (total + breakdown + counts), validateStatusTransition() (forward-only, lost_contact handling), serializeScoreBreakdown()
+   515→- Created src/lib/gaf/attribution.ts — setAttributionCookie() (30-day, httpOnly, sameSite=lax, secure in prod), getReferrerFromCookie() (server), getReferrerFromRequest() (middleware), clearAttributionCookie(), env-var-configurable name + window
+   516→- Created src/lib/gaf/auth.ts — getCurrentSupabaseUser(), getCurrentMember() (Supabase auth → Prisma member join, includes referrals + winners + commendations), getCurrentMemberId() (lightweight), hasRole() / requireRole() / requireMember() / isAdminOrPastor() (roles via app_metadata.role)
+   517→- Updated .env.example with new GAF section: NEXT_PUBLIC_GAF_BASE_URL, GAF_ATTRIBUTION_COOKIE_NAME (optional), GAF_ATTRIBUTION_WINDOW_DAYS (optional). Preserved all existing entries.
+   518→- Ran `npm run build` — ✓ Compiled successfully in 15.7s, all 46 pages generated, zero errors/warnings
+   519→- NO existing code modified (preservation rules honored):
+   520→  * src/lib/supabase/social-store.ts: untouched
+   521→  * src/lib/supabase/types.ts: untouched
+   522→  * src/lib/db.ts: untouched (reused as-is)
+   523→  * src/components/admin/admin-data.ts: untouched
+   524→  * Existing public routes: untouched
+   525→  * /api/social/admin/* auth-key checks: untouched
+   526→- SKIPPED: `prisma db push` (requires Supabase Postgres DATABASE_URL — user must provision Supabase project first). Will run when user provides connection string.
+   527→
+   528→Stage Summary:
+   529→- All 8 GAF models exist in schema.prisma and Prisma Client types are generated
+   530→- All 5 lib files created and compile cleanly
+   531→- Build passes with zero errors
+   532→- Foundation ready for Stage 4 (UI) — but BLOCKED on user provisioning Supabase:
+   533→  * User must create Supabase project at https://supabase.com
+   534→  * Set 4 env vars in Vercel + locally in .env:
+   535→    1. NEXT_PUBLIC_SUPABASE_URL
+   536→    2. NEXT_PUBLIC_SUPABASE_ANON_KEY
+   537→    3. SUPABASE_SERVICE_ROLE_KEY
+   538→    4. DATABASE_URL (Supabase Postgres pooled connection string, port 6543)
+   539→  * Set NEXT_PUBLIC_GAF_BASE_URL to production URL
+   540→  * Run `npx prisma db push` once to create the 8 new tables in Supabase Postgres
+   541→  * Existing SQLite db/custom.db is now unused (datasource switched to postgresql)
+   542→
+   543→Awaiting user "Go for 4" to begin Stage 4 — member-facing UI (login page, dashboard, referral card with QR, my-referrals list). Stage 4 will install qrcode.react dep + create first /go-a-fishing/* routes + first /r/[code] landing route.
+   544→
+   545→---
+   546→Task ID: GAF-S4
+   547→Agent: Main Agent
+   548→Task: Go-A-Fishing Stage 4 — Member-facing UI (login, dashboard, referrals, QR, share, referral landing)
+   549→
+   550→Work Log:
+   551→- Installed qrcode.react@4.2.0 (verified QRCodeSVG + QRCodeCanvas exports)
+   552→- Created src/middleware.ts — Supabase Auth session refresh for all routes (excluded: _next, static, /api/social/*). Gracefully skips if env vars unset (pre-provisioning safe).
+   553→- Created src/components/gaf/share-button.tsx — reusable ShareButton using Web Share API with clipboard fallback (fixes Stage 1 finding #7)
+   554→- Created src/components/gaf/referral-card.tsx — member's personal referral link + QRCodeSVG + ShareButton + PNG download (SVG→Canvas→Blob)
+   555→- Created src/components/gaf/gaf-landing.tsx — public landing page (scripture, 4 pillars, stats, CTA)
+   556→- Created src/components/gaf/gaf-login.tsx — magic-link sign-in form (idle/sending/sent/error states)
+   557→- Created src/components/gaf/gaf-dashboard.tsx — member dashboard (stats grid, referral card, recent referrals, commendations, sign-out)
+   558→- Created src/components/gaf/gaf-my-referrals.tsx — full referral list with filter pills + create-manual-referral dialog
+   559→- Created src/app/go-a-fishing/page.tsx — public landing route (handles ?ref=invalid_code)
+   560→- Created src/app/go-a-fishing/login/page.tsx — magic-link login route
+   561→- Created src/app/go-a-fishing/dashboard/page.tsx — server component, redirects to /login if not authed, fetches member
+   562→- Created src/app/go-a-fishing/my-referrals/page.tsx — server component, fetches full referral list
+   563→- Created src/app/r/[code]/route.ts — referral landing route (case-insensitive lookup, sets attribution cookie, creates ReferralEvent with status:invited on first visit)
+   564→- Created src/app/api/gaf/auth/magic-link/route.ts — POST email → sends Supabase OTP
+   565→- Created src/app/api/gaf/auth/callback/route.ts — GET handles OTP exchange, auto-creates Member on first login (with collision-safe referralCode generation), redirects to /dashboard
+   566→- Created src/app/api/gaf/auth/signout/route.ts — POST clears Supabase session
+   567→- Created src/app/api/gaf/members/me/route.ts — GET (returns member) + PATCH (updates fullName, phone, whatsapp, avatarUrl with validation)
+   568→- Created src/app/api/gaf/referrals/route.ts — GET (paginated list with status filter) + POST (create manual referral with full validation)
+   569→- Updated src/components/layout/navbar.tsx — added "Go-A-Fishing" link to navItems array + added Fish icon button next to RehobothSocial in desktop view + added Go-A-Fishing button to mobile menu grid
+   570→- Ran npm run build — ✓ Compiled successfully in 19.0s, 55 pages generated (was 46; +9 new GAF routes), zero errors, middleware active
+   571→
+   572→Stage Summary:
+   573→- All Stage 4 routes registered: 4 page routes (/go-a-fishing/*) + 1 referral landing (/r/[code]) + 5 API routes (/api/gaf/auth/magic-link, /api/gaf/auth/callback, /api/gaf/auth/signout, /api/gaf/members/me, /api/gaf/referrals)
+   574→- Middleware: Supabase Auth session refresh on all non-static routes
+   575→- Member onboarding is automatic: first magic-link login creates a Member record with auto-generated referralCode (collision-safe)
+   576→- Referral attribution: /r/[code] sets 30-day cookie + creates ReferralEvent with status:invited (idempotent per cookie session)
+   577→- All existing public routes preserved (preservation rules honored)
+   578→- social-store.ts, supabase/types.ts, db.ts, admin-data.ts all untouched
+   579→- /api/social/admin/* auth-key checks untouched (middleware excludes /api/social/*)
+   580→- Build PASS with zero errors
+   581→
+   582→BLOCKERS for live deployment (user must action):
+   583→1. Provision Supabase project at https://supabase.com
+   584→2. Set 5 env vars in Vercel + locally in .env:
+   585→   - NEXT_PUBLIC_SUPABASE_URL
+   586→   - NEXT_PUBLIC_SUPABASE_ANON_KEY
+   587→   - SUPABASE_SERVICE_ROLE_KEY
+   588→   - DATABASE_URL (Supabase Postgres pooled connection, port 6543)
+   589→   - NEXT_PUBLIC_GAF_BASE_URL (production URL)
+   590→3. Run `npx prisma db push` once to create 8 new tables in Supabase Postgres
+   591→4. In Supabase dashboard → Authentication → URL Configuration:
+   592→   - Set Site URL to production URL
+   593→   - Add Redirect URLs: https://your-domain.vercel.app/api/gaf/auth/callback
+   594→5. (Optional) Set first user's role to admin: Supabase dashboard → Authentication → Users → edit user → app_metadata: {"role": "admin"}
+   595→
+   596→Awaiting user "Go for 5" to begin Stage 5 — public leaderboard page + /api/gaf/leaderboard route + ranking calculation engine.
+   597→
+   598→---
+   599→Task ID: GAF-S5
+   600→Agent: Main Agent
+   601→Task: Go-A-Fishing Stage 5 — Public leaderboard (ranking engine + UI + auto-refresh)
+   602→
+   603→Work Log:
+   604→- Created src/lib/gaf/leaderboard.ts — ranking engine
+   605→  * computeLeaderboard(period, limit, offset) — main entry point
+   606→  * getMemberRank(memberId, period) — for "Your rank: #5" badges
+   607→  * Period helpers: getQuarter(), getPreviousQuarter(), getQuarterRange(), getYtdRange(), getAllTimeRange()
+   608→  * Scoring: referrals counted toward a cycle if updatedAt falls in window (so progression during cycle counts at latest status)
+   609→  * Tiebreakers: (1) count of "member" referrals, (2) "baptized", (3) "saved", (4) "attended", (5) oldest joinDate
+   610→  * Rank assignment with proper tie handling (tied entries share rank, next entry skips)
+   611→  * Loads scoring weights from AdminConfig (Stage 6 will add admin UI to edit)
+   612→- Created src/app/api/gaf/leaderboard/route.ts — GET endpoint (period=current|previous|ytd|all, limit 1-100, offset 0+)
+   613→  * Public endpoint — no auth required (leaderboard is a public celebration)
+   614→  * Strips sensitive fields (only exposes fullName, avatarUrl, referralCode, totalScore, counts)
+   615→- Created src/components/gaf/gaf-leaderboard.tsx — public leaderboard UI
+   616→  * Period toggle (Current Quarter / Previous Quarter / YTD / All Time)
+   617→  * Top 3 podium with gold/silver/bronze styling (Crown/Medal icons)
+   618→  * Remaining ranks as list with status chips (invited/attended/saved/baptized/member)
+   619→  * Cycle info banner (name, participants, status badge: open/tallying/closed)
+   620→  * Auto-refresh polling (5 min default, matches AdminConfig.leaderboardRefreshIntervalSec)
+   621→  * Manual refresh button
+   622→  * Loading / error / empty states
+   623→  * Highlights current member with amber background + "You" badge
+   624→- Created src/app/go-a-fishing/leaderboard/page.tsx — server component, public, passes currentMemberId (if logged in) to highlight own row
+   625→- Ran npm run build — ✓ Compiled successfully in 17.4s, 57 pages generated (was 55; +2 new leaderboard routes), zero errors
+   626→
+   627→Stage Summary:
+   628→- Public leaderboard live at /go-a-fishing/leaderboard
+   629→- API at /api/gaf/leaderboard?period=current&limit=50
+   630→- Supports 4 period views: current quarter, previous quarter, year-to-date, all-time
+   631→- Top 3 get podium treatment; ranks 4+ render as list with full status breakdown chips
+   632→- Auto-refreshes every 5 minutes; manual refresh button available
+   633→- Public — no auth required (unauthenticated visitors still see full standings)
+   634→- If logged in, your row is highlighted with amber background + "You" badge
+   635→- Cycle status badge (OPEN/TALLYING/CLOSED) reflects the matching RewardCycle row from DB (Stage 6 will add cycle management UI)
+   636→- Build PASS, zero errors
+   637→
+   638→Awaiting user "Go for 6" to begin Stage 6 — admin/pastoral UI (member management, referral moderation, cycle management, AdminConfig editor, audit log viewer). Stage 6 will also add auth-gated /admin/gaf/* routes and /api/gaf/admin/* endpoints.
+   639→
+   640→---
+   641→Task ID: GAF-S6
+   642→Agent: Main Agent
+   643→Task: Go-A-Fishing Stage 6 — Admin/Pastoral UI (members, referrals, cycles, config, audit log)
+   644→
+   645→Work Log:
+   646→- Created src/app/admin/gaf/layout.tsx — auth-gated layout: redirects unauthenticated to /go-a-fishing/login, non-admin/pastor to /go-a-fishing, shows config-needed message if Supabase not connected
+   647→- Created src/components/gaf/admin/gaf-admin-shell.tsx — shared admin sidebar (dark navy #1A237E) with 6 nav items (Overview, Members, Referrals, Cycles, Configuration, Audit Log) + General Admin link + mobile responsive overlay sidebar
+   648→- Created src/app/api/gaf/admin/setup/route.ts — POST: first-time setup, upserts AdminConfig singleton + seeds 3 default RewardCategories (Soul Winner of the Quarter, Top Inviter, Faithful Follow-Up). Idempotent.
+   649→- Created src/app/api/gaf/admin/config/route.ts — GET (auto-creates singleton if missing) + PATCH (admin-only, updates all config fields with validation). Validates scoringWeights + featureFlags JSON.
+   650→- Created src/app/api/gaf/admin/members/route.ts — GET: paginated member list with search (name/email/phone/code) + status filter + referral/winner counts
+   651→- Created src/app/api/gaf/admin/members/[id]/route.ts — PATCH: update member status (suspend/reactivate) + profile fields. Writes audit log.
+   652→- Created src/app/api/gaf/admin/referrals/route.ts — GET: all referrals across members, filterable by status/channel/referrerId
+   653→- Created src/app/api/gaf/admin/referrals/[id]/route.ts — PATCH: update referral status with forward-only transition validation (admin can override with force=true). Auto-sets firstVisitDate on attended. Writes audit log.
+   654→- Created src/app/api/gaf/admin/cycles/route.ts — GET: all cycles with category info + winner counts. POST: create new cycle (validates category + quarter, checks duplicates)
+   655→- Created src/app/api/gaf/admin/cycles/[id]/route.ts — PATCH: update cycle status (open/tallying/closed). POST: close cycle + compute top-3 winners (scores all active members' referrals within cycle window, deletes existing winners, creates RewardWinner rows). Writes audit log.
+   656→- Created src/app/api/gaf/admin/audit-log/route.ts — GET: paginated audit trail with entityType/action filters
+   657→- Created src/app/admin/gaf/page.tsx + src/components/gaf/admin/gaf-admin-overview.tsx — admin overview with 4 stat cards, 5 quick-action tiles, recent activity feed
+   658→- Created src/app/admin/gaf/members/page.tsx + src/components/gaf/admin/gaf-admin-members.tsx — member management with search + suspend/reactivate buttons
+   659→- Created src/app/admin/gaf/referrals/page.tsx + src/components/gaf/admin/gaf-admin-referrals.tsx — all-referrals view with filter pills + one-click status progression buttons
+   660→- Created src/app/admin/gaf/cycles/page.tsx + src/components/gaf/admin/gaf-admin-cycles.tsx — cycle management with create dialog + close-and-compute-winners button
+   661→- Created src/app/admin/gaf/config/page.tsx + src/components/gaf/admin/gaf-admin-config.tsx — config editor for scoring weights, referral link settings, leaderboard settings, feature flags
+   662→- Created src/app/admin/gaf/audit-log/page.tsx + src/components/gaf/admin/gaf-admin-audit-log.tsx — audit trail viewer with refresh
+   663→- Ran npm run build — ✓ Compiled successfully in 16.4s, 69 pages generated (was 57; +12 new admin routes), zero errors
+   664→
+   665→Stage Summary:
+   666→- 6 admin pages: Overview, Members, Referrals, Cycles, Configuration, Audit Log
+   667→- 9 admin API endpoints: setup, config (GET+PATCH), members (GET), members/[id] (PATCH), referrals (GET), referrals/[id] (PATCH), cycles (GET+POST), cycles/[id] (PATCH+POST close), audit-log (GET)
+   668→- Auth gate: layout.tsx checks Supabase auth + app_metadata.role (admin/pastor). Non-authorized users redirected away.
+   669→- Graceful degradation: if Supabase env vars unset, shows config-needed message instead of crashing
+   670→- Cycle close engine: computes per-member scores for all referrals within cycle window, takes top 3, creates RewardWinner rows, marks cycle as closed
+   671→- All admin actions write to AuditLog (actor, action, entity, before/after, IP, user-agent)
+   672→- First-time setup seeds 3 RewardCategories automatically
+   673→- Build PASS, zero errors, 69 pages total
+   674→
+   675→BLOCKERS still apply from Stage 4:
+   676→1. Supabase project provisioning (env vars)
+   677→2. Run `npx prisma db push` to create tables
+   678→3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
+   679→
+   680→---
+   681→Task ID: GAF-S7
+   682→Agent: Main Agent
+   683→Task: Go-A-Fishing Stage 7 — Awards & Commendations (public awards page + admin commendation management)
+   684→
+   685→Work Log:
+   686→- Created src/app/api/gaf/awards/route.ts — GET: public endpoint returning closed cycle winners (with category + member info), recent public commendations, and active/tallying cycles for context. Paginatable via limit + commendLimit params.
+   687→- Created src/app/api/gaf/commendations/route.ts — GET: public endpoint for commendations list. Visibility filtering: unauthenticated users see only "public"; authenticated members see "public" + "members_only". Supports cursor pagination + memberId filter.
+   688→- Created src/app/api/gaf/admin/commendations/route.ts — POST: admin/pastor create commendation (validates recipient memberId, title, message, optional visibility/scripture/givenBy, verifies target member exists and is active). GET: admin endpoint returning ALL commendations (including private), with visibility/memberId filters.
+   689→- Created src/app/api/gaf/admin/commendations/[id]/route.ts — PATCH: update commendation fields (title, message, visibility, scriptureReference) with audit trail diff tracking. DELETE: remove commendation with audit log. Both admin/pastor only.
+   690→- Created src/components/gaf/gaf-awards.tsx — public awards showcase: hero section with scripture (Matt 25:21), active competitions banner (open/tallying cycles with status badges), closed cycle winners with podium display (gold/silver/bronze for up to 3, extended list for 4+), score breakdown chips, pastoral commendations wall (2-column grid with amber gradient cards, scripture references, giver attribution), load-more pagination for both sections, empty states, loading/error states, 1 Cor 15:58 scripture footer.
+   691→- Created src/app/go-a-fishing/awards/page.tsx — server component with PageBanner, renders GafAwards.
+   692→- Created src/components/gaf/admin/gaf-admin-commendations.tsx — admin commendation management: full list with visibility badges (public/members_only/private), search by member/title/giver, filter by visibility, create dialog with debounced member search (reuses /api/gaf/admin/members endpoint), form fields (recipient, title, message, scripture, givenBy, visibility toggle), delete with confirmation dialog, stats bar (total/public/members-only counts), cursor pagination.
+   693→- Created src/app/admin/gaf/commendations/page.tsx — admin page route.
+   694→- Updated src/components/gaf/admin/gaf-admin-shell.tsx — added "Commendations" nav item (Award icon) between Cycles and Configuration in both desktop sidebar and mobile overlay.
+   695→- Ran npm run build — ✓ Compiled successfully in 18.0s, 74 pages generated (was 69; +5 new routes), zero errors
+   696→
+   697→Stage Summary:
+   698→- Public awards page live at /go-a-fishing/awards
+   699→  * Hero with scripture (Matt 25:21)
+   700→  * Active competitions banner (shows open/tallying cycles with countdown context)
+   701→  * Closed cycle winners — podium display (gold/silver/bronze) per cycle with score breakdown
+   702→  * Pastoral commendations wall — 2-column cards with scripture refs + giver attribution
+   703→  * Load-more pagination for both sections
+   704→- 4 new API endpoints:
+   705→  * GET /api/gaf/awards — public (closed cycles + public commendations + active cycles)
+   706→  * GET /api/gaf/commendations — public (commendations with auth-aware visibility filtering)
+   707→  * POST /api/gaf/admin/commendations — admin (create commendation)
+   708→  * PATCH /api/gaf/admin/commendations/[id] — admin (update commendation)
+   709→  * DELETE /api/gaf/admin/commendations/[id] — admin (delete commendation)
+   710→- Admin commendation management at /admin/gaf/commendations
+   711→  * Full list with visibility filter pills + search
+   712→  * Create dialog with member search, form validation, visibility toggle
+   713→  * Delete with confirmation
+   714→- Admin sidebar updated: "Commendations" nav item added (7 items now)
+   715→- Dashboard quick-link to awards page already existed from Stage 4 (link to /go-a-fishing/awards)
+   716→- Build PASS, zero errors, 74 pages total
+   717→
+   718→BLOCKERS still apply from Stage 4:
+   719→1. Supabase project provisioning (env vars)
+   720→2. Run `npx prisma db push` to create tables
+   721→3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
+   722→
+   723→Awaiting user "Go for 9" to begin Stage 9.
+   724→
+   725→---
+   726→Task ID: GAF-S8
+   727→Agent: Main Agent
+   728→Task: Go-A-Fishing Stage 8 — Reports & Analytics (pastoral insights dashboard with recharts)
+   729→
+   730→Work Log:
+   731→- Created src/lib/gaf/analytics.ts — analytics engine: computeAnalytics() function returning comprehensive outreach data. Includes: referral funnel (6 statuses with counts + percentages), monthly trend (last 12 months — referrals, conversions, new members), top performers (up to 20 by score with conversion rate + avg days to convert), channel distribution (link/qr/whatsapp/manual/flyer/other), quarter-over-quarter growth calculation, overall conversion rate (attended+ percentage), lost contact count, inactive member count. All queries in parallel for performance.
+   732→- Created src/app/api/gaf/admin/analytics/route.ts — GET: admin/pastor endpoint. Supports section param (overview|funnel|trends|performers|all) for partial loads. Full analytics is heavy but admin-only and infrequent.
+   733→- Created src/components/gaf/admin/gaf-admin-reports.tsx — pastoral analytics dashboard using recharts (already installed): 4 KPI cards (total members, total referrals, conversion rate, quarter growth with trend arrow + lost contact/inactive alerts), referral funnel bar chart (color-coded per status), channel distribution (horizontal progress bars), monthly trend line chart (3 lines: referrals, conversions, new members), top performers table (rank badge, name, referral code, score, conversion rate pill with color coding, avg days to convert). All sections with loading/error states.
+   734→- Created src/app/admin/gaf/reports/page.tsx — admin page route.
+   735→- Updated src/components/gaf/admin/gaf-admin-shell.tsx — added "Reports" nav item (BarChart3 icon) between Commendations and Configuration in both desktop sidebar and mobile overlay (8 items total).
+   736→- Ran npm run build — ✓ Compiled successfully in 22.5s, 76 pages generated (was 74; +2 new routes), zero errors
+   737→
+   738→Stage Summary:
+   739→- Admin reports page live at /admin/gaf/reports
+   740→  * 4 KPI summary cards with quarter-over-quarter growth indicator
+   741→  * Referral funnel bar chart (color-coded: invited→member→lost_contact)
+   742→  * Channel distribution visualization (link, QR, WhatsApp, manual, flyer)
+   743→  * Monthly trend line chart (12 months — referrals, conversions, new members)
+   744→  * Top performers table (ranked by score, up to 15 shown, conversion rate color-coded)
+   745→  * Lost contact + inactive member alert badges
+   746→  * Refresh button for live data reload
+   747→- Analytics engine in src/lib/gaf/analytics.ts
+   748→  * All queries parallelized via Promise.all
+   749→  * Scoring weights loaded from AdminConfig (same as leaderboard)
+   750→  * Conversion rate = referrals reaching "attended" or beyond
+   751→  * Avg days to convert = mean time from referral creation to first status advancement
+   752→- API at GET /api/gaf/admin/analytics (supports section param for partial loads)
+   753→- Admin sidebar: 8 nav items now (Overview, Members, Referrals, Cycles, Commendations, Reports, Configuration, Audit Log)
+   754→- Build PASS, zero errors, 76 pages total
+   755→
+   756→BLOCKERS still apply from Stage 4:
+   757→1. Supabase project provisioning (env vars)
+   758→2. Run `npx prisma db push` to create tables (now 9 GAF tables)
+   759→3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
+   760→
+   761→---
+   762→Task ID: GAF-S9
+   763→Agent: Main Agent
+   764→Task: Go-A-Fishing Stage 9 — Outreach Activity Self-Reporting (member outreach log + admin moderation)
+   765→
+   766→Work Log:
+   767→- Added OutreachActivity model to prisma/schema.prisma — 9th GAF model. Fields: type (10 outreach types), title, description, activityDate, location, contacts, decisions, notes, status (confirmed/flagged/disputed). Indexed on memberId+activityDate, type+activityDate, status.
+   768→- Added outreachActivities relation to Member model.
+   769→- Ran npx prisma generate — Prisma Client v6.19.2 regenerated.
+   770→- Created src/lib/gaf/outreach-types.ts — shared constants (VALID_TYPES, TYPE_LABELS, TYPE_COLORS).
+   771→- Created src/app/api/gaf/outreach/route.ts — GET (member's activities + stats with weekly streak) + POST (create activity, validates AdminConfig.outreachActivitySelfReportAllowed).
+   772→- Created src/app/api/gaf/admin/outreach/route.ts — GET (all members' activities + aggregate summary) + PATCH (status moderation) + DELETE (with audit trail).
+   773→- Created src/components/gaf/gaf-my-outreach.tsx — member outreach page: 4 stat cards, 10-type filter pills, activity log, create dialog with type picker grid, Matt 28:19 footer.
+   774→- Created src/app/go-a-fishing/my-outreach/page.tsx — auth-guarded server component.
+   775→- Created src/components/gaf/admin/gaf-admin-outreach.tsx — admin outreach viewer with summary stats, type+status filters, Flag/Confirm/Dispute/Delete actions.
+   776→- Created src/app/admin/gaf/outreach/page.tsx — admin page route.
+   777→- Updated gaf-dashboard.tsx — added "My Outreach" quick-link, expanded grid to 4 columns.
+   778→- Updated gaf-admin-shell.tsx — added "Outreach" nav item (9 items total).
+   779→- Ran npm run build — ✓ 80 pages, zero errors
+   780→
+   781→Stage Summary:
+   782→- Member outreach page at /go-a-fishing/my-outreach (10 outreach types, stats, streak tracking)
+   783→- Admin outreach viewer at /admin/gaf/outreach (moderation: flag/confirm/dispute/delete)
+   784→- 9th Prisma model: OutreachActivity
+   785→- Dashboard: 4 quick-links, Admin sidebar: 9 nav items
+   786→- Build PASS, zero errors, 80 pages total
+   787→
+   788→Awaiting user "Go for 10" to begin Stage 10.
+   789→

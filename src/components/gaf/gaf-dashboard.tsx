@@ -22,7 +22,9 @@ import {
   Sparkles,
   Award,
   MapPin,
+  Bell,
 } from "lucide-react";
+import { NotificationBell } from "./notification-bell";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { SectionWrapper } from "@/components/home/section-wrapper";
@@ -125,15 +127,18 @@ export function GafDashboard({ member, baseUrl }: GafDashboardProps) {
               })}
             </p>
           </div>
-          <Button
-            variant="outline"
-            onClick={handleSignOut}
-            disabled={isSigningOut}
-            className="gap-2 rounded-xl"
-          >
-            <LogOut className="size-4" />
-            {isSigningOut ? "Signing out..." : "Sign out"}
-          </Button>
+          <div className="flex items-center gap-2">
+            <NotificationBell />
+            <Button
+              variant="outline"
+              onClick={handleSignOut}
+              disabled={isSigningOut}
+              className="gap-2 rounded-xl"
+            >
+              <LogOut className="size-4" />
+              {isSigningOut ? "Signing out..." : "Sign out"}
+            </Button>
+          </div>
         </SectionWrapper>
 
         {/* Stats grid */}
@@ -279,7 +284,7 @@ export function GafDashboard({ member, baseUrl }: GafDashboardProps) {
 
         {/* Quick links */}
         <SectionWrapper>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
             <Button
               asChild
               variant="outline"
@@ -318,6 +323,16 @@ export function GafDashboard({ member, baseUrl }: GafDashboardProps) {
               <Link href="/go-a-fishing/awards">
                 <Award className="size-6 text-rose-600" />
                 <span className="text-[#1A237E]">Awards</span>
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="h-auto py-6 flex-col gap-2 rounded-xl border-[#1A237E]/20 hover:bg-[#1A237E]/5"
+            >
+              <Link href="/go-a-fishing/notifications">
+                <Bell className="size-6 text-indigo-600" />
+                <span className="text-[#1A237E]">Notifications</span>
               </Link>
             </Button>
           </div>

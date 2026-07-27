@@ -785,4 +785,35 @@ Stage Summary:
 - Dashboard: 4 quick-links, Admin sidebar: 9 nav items
 - Build PASS, zero errors, 80 pages total
 
-Awaiting user "Go for 10" to begin Stage 10.
+Awaiting user "Go for 11" to begin Stage 11.
+
+---
+Task ID: GAF-S10
+Agent: Main Agent
+Task: Go-A-Fishing Stage 10 — In-App Notifications & Activity Feed (member notification center + admin broadcast)
+
+Work Log:
+- Added Notification model to prisma/schema.prisma — 10th GAF model. Fields: type (8 notification types), title, message, data (JSON), read boolean, readAt. Indexed on memberId+read+createdAt, memberId+type, read+createdAt.
+- Added notifications relation to Member model.
+- Ran npx prisma generate — Prisma Client v6.19.2 regenerated.
+- Created src/lib/gaf/notification-engine.ts — notification engine with: createNotification(), createBulkNotifications(), getUnreadCount(), convenience helpers for all event types (notifyReferralStatusChange, notifyCommendation, notifyAwardWin, notifyOutreachModeration, notifyCycleClosed, broadcastToAllMembers).
+- Created src/app/api/gaf/notifications/route.ts — GET (member's notifications + unreadCount, cursor pagination, type/unread filters) + PATCH (mark single read + mark all read).
+- Created src/app/api/gaf/notifications/unread-count/route.ts — GET lightweight endpoint for bell badge polling.
+- Created src/app/api/gaf/admin/notifications/route.ts — GET (all members' notifications + aggregate stats + per-type breakdown, type/memberId filters) + POST (broadcast to all active members or targeted set, validates member IDs, max 500, writes audit log) + DELETE (with audit log).
+- Created src/components/gaf/notification-bell.tsx — bell dropdown component: polls unread count every 60s, shows latest 10 notifications in dropdown, mark-read/mark-all-read, time-ago labels, type-colored icons, outside-click close.
+- Created src/components/gaf/gaf-notifications.tsx — full notifications page: 8 type filter pills, grouped-by-date activity feed, mark-read on click, mark-all-read button, load-more pagination, empty/loading/error states, Hebrews 10:24 footer.
+- Created src/app/go-a-fishing/notifications/page.tsx — auth-guarded server component.
+- Created src/components/gaf/admin/gaf-admin-notifications.tsx — admin notification management: broadcast dialog (type picker, title, message, char counters, validation, send result), notification log viewer (type filter pills, member ID search, per-notification type badges, delete with audit trail), stats bar (total, unread, top 2 type breakdown).
+- Created src/app/admin/gaf/notifications/page.tsx — admin page route.
+- Updated gaf-dashboard.tsx — added NotificationBell in header, added Notifications quick-link (5th item in grid).
+- Updated gaf-admin-shell.tsx — added Bell icon import, added "Notifications" nav item (10 items total).
+- Ran npm run build — ✓ 85 pages, zero errors
+
+Stage Summary:
+- Member notifications page at /go-a-fishing/notifications (8 notification types, date-grouped activity feed, filters, mark-read)
+- Admin notification manager at /admin/gaf/notifications (broadcast composer, notification log, stats, delete)
+- Notification bell dropdown on member dashboard (polls every 60s, shows latest 10)
+- 10th Prisma model: Notification
+- 3 new API routes: /api/gaf/notifications (GET+PATCH), /api/gaf/notifications/unread-count (GET), /api/gaf/admin/notifications (GET+POST+DELETE)
+- Dashboard: 5 quick-links, Admin sidebar: 10 nav items
+- Build PASS, zero errors, 85 pages total
