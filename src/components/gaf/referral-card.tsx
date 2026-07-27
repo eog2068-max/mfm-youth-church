@@ -4,14 +4,14 @@
  * ReferralCard — shows the member their personal referral link + QR code
  * with copy / share / download buttons.
  *
- * Stage 4 of Go-A-Fishing.
+ * Stage 4 of Go-A-Fishing. Updated in Stage 11 to use EnhancedShareDialog.
  */
 import { useMemo } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { Download, Link2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { ShareButton } from "./share-button";
+import { EnhancedShareDialog } from "./enhanced-share-dialog";
 
 interface ReferralCardProps {
   /** The member's referral code, e.g. "REH-AB1234". */
@@ -104,31 +104,33 @@ export function ReferralCard({
           </p>
         </div>
 
-        {/* Action buttons */}
+        {/* Action buttons — EnhancedShareDialog replaces old share row */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-          <ShareButton
-            url={fullUrl}
-            title="Join me at RCCG Rehoboth Assembly"
-            text={`Hi! ${memberName} invites you to worship with us at RCCG Rehoboth Assembly, Abuja. Tap the link to learn more:`}
-            label="Share"
-            variant="default"
-            className="bg-[#1A237E] hover:bg-[#0D1557] text-white w-full"
+          <EnhancedShareDialog
+            referralCode={referralCode}
+            baseUrl={baseUrl}
+            memberName={memberName}
+            trigger={
+              <button className="w-full flex items-center justify-center gap-2 h-10 rounded-xl bg-[#1A237E] hover:bg-[#0D1557] text-white text-sm font-medium transition-colors">
+                <Link2 className="size-4" />
+                Share
+              </button>
+            }
           />
-          <Button
+          <button
             type="button"
-            variant="outline"
             onClick={handleDownload}
-            className="gap-2 w-full"
+            className="flex items-center justify-center gap-2 h-10 rounded-xl border border-gray-200 hover:bg-gray-50 text-sm font-medium transition-colors w-full"
           >
             <Download className="size-4" />
             <span>QR PNG</span>
-          </Button>
+          </button>
           <ShareButton
             url={fullUrl}
             label="WhatsApp"
             showLabel
             variant="outline"
-            className="w-full border-[#25D366] text-[#1A8E3B] hover:bg-[#25D366]/10"
+            className="w-full border-[#25D366] text-[#1A8E3B] hover:bg-[#25D366]/10 rounded-xl"
             title="Join me at RCCG Rehoboth Assembly"
             text={`Hi! ${memberName} invites you to worship with us at RCCG Rehoboth Assembly, Abuja. Tap: ${fullUrl}`}
           />

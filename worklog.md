@@ -817,3 +817,28 @@ Stage Summary:
 - 3 new API routes: /api/gaf/notifications (GET+PATCH), /api/gaf/notifications/unread-count (GET), /api/gaf/admin/notifications (GET+POST+DELETE)
 - Dashboard: 5 quick-links, Admin sidebar: 10 nav items
 - Build PASS, zero errors, 85 pages total
+
+Awaiting user "Go for 12" to begin Stage 12 (final stage).
+
+---
+Task ID: GAF-S11
+Agent: Main Agent
+Task: Go-A-Fishing Stage 11 — Member Profile & Enhanced Sharing (profile page, share dialog, e-invite, activity timeline)
+
+Work Log:
+- Created src/components/gaf/enhanced-share-dialog.tsx — rich share dialog with 5 channels (WhatsApp, Email, Facebook, X/Twitter, Telegram), copy link, download QR, custom message editor (500 chars), QR color picker (6 presets + custom hex), live QR preview. Generates per-platform share URLs.
+- Created src/components/gaf/e-invite-card.tsx — shareable e-invitation card with church branding, QR code, referral code, service times, personal note, save-as-image (SVG-to-PNG canvas), native share API support.
+- Created src/components/gaf/gaf-profile.tsx — member profile page with: profile header (avatar, name, join date, referral code, assembly, phone badges), 5-stat summary row (score/referrals/outreach/awards/commendations), inline profile editor (name/phone/WhatsApp via PATCH /api/gaf/members/me), 3-tab layout: Overview (score breakdown per status, outreach summary, awards list, quick-links), Share & Invite (EnhancedShareDialog + EInviteCard), Activity (consolidated timeline merging referrals + outreach + commendations + awards, chronological with animated entries, type badges, time-ago labels).
+- Created src/app/go-a-fishing/profile/page.tsx — auth-guarded server component, fetches full member data (up to 50 referrals, all outreach, notifications, awards, commendations).
+- Updated src/components/gaf/referral-card.tsx — replaced old "Share" button row with EnhancedShareDialog trigger (keeps QR PNG download + WhatsApp ShareButton).
+- Updated src/components/gaf/gaf-dashboard.tsx — added User icon import, added "Profile" quick-link (6th item), expanded grid to 6 columns.
+- Ran npm run build — ✓ 86 pages, zero errors
+
+Stage Summary:
+- Member profile page at /go-a-fishing/profile (editable name/phone/WhatsApp, stats overview, score breakdown, outreach summary, awards list)
+- Share & Invite tab with EnhancedShareDialog (5 channels + copy + QR download + message customization + QR color picker)
+- E-Invitation Card (branded card with QR, service times, save as image)
+- Consolidated Activity Timeline (referrals + outreach + commendations + awards, chronological)
+- Dashboard: 6 quick-links (added Profile)
+- ReferralCard: now uses EnhancedShareDialog for richer sharing
+- Build PASS, zero errors, 86 pages total

@@ -23,6 +23,7 @@ import {
   Award,
   MapPin,
   Bell,
+  User,
 } from "lucide-react";
 import { NotificationBell } from "./notification-bell";
 import { Button } from "@/components/ui/button";
@@ -284,7 +285,7 @@ export function GafDashboard({ member, baseUrl }: GafDashboardProps) {
 
         {/* Quick links */}
         <SectionWrapper>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             <Button
               asChild
               variant="outline"
@@ -333,6 +334,16 @@ export function GafDashboard({ member, baseUrl }: GafDashboardProps) {
               <Link href="/go-a-fishing/notifications">
                 <Bell className="size-6 text-indigo-600" />
                 <span className="text-[#1A237E]">Notifications</span>
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="h-auto py-6 flex-col gap-2 rounded-xl border-[#1A237E]/20 hover:bg-[#1A237E]/5"
+            >
+              <Link href="/go-a-fishing/profile">
+                <User className="size-6 text-gray-600" />
+                <span className="text-[#1A237E]">Profile</span>
               </Link>
             </Button>
           </div>
