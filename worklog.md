@@ -415,3 +415,84 @@ PRESERVATION RULES for future stages:
 - DO NOT remove the 3 redirect stubs (whos-coming, im-here, weekly-challenge) without explicit permission
 - DO NOT alter admin-data.ts mock structure (existing admin dashboard depends on it)
 
+
+---
+Task ID: GAF-S2
+Agent: Main Agent
+Task: Go-A-Fishing Stage 2 — Architecture Plan and Data Model (design-only, no code changes)
+
+Work Log:
+- Re-read worklog GAF-S1 section to confirm Stage 1 findings and preservation list
+- Read current prisma/schema.prisma (confirmed: User + Post are dead boilerplate, no relations between them, both use cuid() string IDs)
+- Read src/lib/db.ts (confirmed: PrismaClient singleton ready to reuse, no changes needed)
+- Read .env / .env.example (confirmed: DATABASE_URL=file:...SQLite, 5 Supabase/NextAuth vars declared but unset)
+- Read package.json (confirmed: next-auth@4.24.11 + prisma@6.11.1 + @prisma/client@6.11.1 installed; @supabase/supabase-js NOT installed; zustand installed but unused)
+- Read src/lib/supabase/types.ts (confirmed: 16 anonymous-session interfaces, no Member type)
+- Produced Stage 2 Architecture Plan covering: 3 auth options + recommendation, 3 persistence options + recommendation, 8 new Prisma models (additive), referral link format + attribution flow, integration approach honoring all preservation rules
+- NO code modified. Design-only deliverable. Schema additions proposed for Stage 3 review.
+
+Stage Summary — DECISIONS PROPOSED for Stage 3 approval:
+
+AUTH RECOMMENDATION: Option B — Supabase Auth
+- Replaces dead next-auth dependency with the actually-intended Supabase stack
+- Magic-link auth perfect for church members (no password to forget)
+- RLS enables per-member data isolation without per-query auth checks
+- Requires: install @supabase/supabase-js, set NEXT_PUBLIC_SUPABASE_URL + NEXT_PUBLIC_SUPABASE_ANON_KEY + SUPABASE_SERVICE_ROLE_KEY in Vercel
+- next-auth@4.24.11 dependency can be removed in a later cleanup stage (not Stage 3)
+
+PERSISTENCE RECOMMENDATION: Option C — Hybrid (Prisma for relational data + Supabase for auth + future real-time)
+- Prisma already wired in src/lib/db.ts — leverage for 8 new relational models (members, referrals, cycles, winners, commendations, audit logs, etc.)
+- Supabase Auth handles identity (per auth recommendation)
+- Supabase real-time reserved for future live leaderboard (NOT Stage 3 scope)
+- DATABASE_URL switched from SQLite to Supabase Postgres connection string (user must set in Vercel)
+- social-store.ts in-memory mock PRESERVED UNTOUCHED — Go-A-Fishing data lives in its own Prisma tables, no migration of existing anon social data
+
+DATA MODEL — 8 new Prisma models (additive to schema.prisma, BELOW existing User/Post boilerplate):
+1. Member — registered Go-A-Fishing participant (links to Supabase Auth user via supabaseUserId)
+2. ReferralEvent — single "soul fished" event with status progression (invited → attended → saved → baptized → member)
+3. RewardCategory — award category definitions (soul winner, top inviter, etc.)
+4. RewardCycle — quarterly award period per category
+5. RewardWinner — member ranked in a cycle (rank 1/2/3 with score + breakdown)
+6. PastoralCommendation — pastor's public praise outside cycle system
+7. AdminConfig — singleton config row (link base URL, leaderboard settings, scoring weights, feature flags)
+8. AuditLog — admin action accountability trail
+
+REFERRAL LINK FORMAT: {NEXT_PUBLIC_GAF_BASE_URL}/r/{referralCode}
+- referralCode pattern: "REH-{6-char-base32}" (e.g. REH-AB1234)
+- Case-insensitive lookup, unique per member, generated on Member creation
+- 30-day attribution cookie: gaf_referrer={memberId}; path=/; max-age=2592000
+- Channel tracking: link, qr, whatsapp, manual, flyer, other
+
+ATTRIBUTION FLOW:
+1. Member generates link/QR from dashboard
+2. Visitor lands on /r/[code] → cookie set → redirect to homepage
+3. Visitor attends service → status: invited → attended (via /social/im-here or admin manual entry)
+4. Status progression: invited(1pt) → attended(5pt) → saved(10pt) → baptized(25pt) → member(50pt)
+5. Quarterly cycle closes → top N members per category become RewardWinner entries
+6. Pastor can issue PastoralCommendation outside cycle system anytime
+
+SCORING WEIGHTS (configurable via AdminConfig.featureFlags JSON):
+- invited=1, attended=5, saved=10, baptized=25, member=50
+- Lost-contact auto-flag: no status progression in 90 days → status: lost_contact (0pt forward, historical pts retained)
+
+INTEGRATION APPROACH (honoring Stage 1 preservation rules):
+- New routes: /go-a-fishing/* (dashboard, leaderboard, my-referrals, pastoral) — additive
+- New API routes: /api/gaf/* — additive
+- New component dir: src/components/gaf/ — additive
+- New lib dir: src/lib/gaf/ — additive (referral-code gen, scoring engine, attribution cookie helper)
+- shadcn/ui primitives reused (no new deps for Stage 2/3)
+- schema.prisma: 8 new models appended BELOW User/Post, boilerplate untouched
+- src/lib/db.ts: reused as-is (PrismaClient singleton)
+- social-store.ts: UNTOUCHED (anon social features stay anon)
+- sessionStorage rs_session pattern: UNTOUCHED (FamilyChat continues working)
+- admin-data.ts: UNTOUCHED (existing dashboard mock stays)
+- Existing public routes: UNTOUCHED (no auth gate added in Stage 2)
+- Stage 4 (NOT Stage 3) will add: qrcode.react dep, ShareButton component using navigator.share
+
+ENV VARS — additions to .env.example:
+- NEXT_PUBLIC_GAF_BASE_URL (e.g. https://rccg-rehoboth.app)
+- GAF_ATTRIBUTION_COOKIE_NAME (optional, default: gaf_referrer)
+- GAF_ATTRIBUTION_WINDOW_DAYS (optional, default: 30)
+- GAF_SCORING_WEIGHTS_JSON (optional, default: {"invited":1,"attended":5,"saved":10,"baptized":25,"member":50})
+
+NEXT STEP: Awaiting user "Go for 3" to implement Stage 3 — apply schema additions to prisma/schema.prisma, run prisma generate + db push, install @supabase/supabase-js, set up Supabase Auth client wrapper, create src/lib/gaf/ utilities (referral-code gen, scoring engine, attribution cookie). NO UI in Stage 3.
