@@ -636,3 +636,45 @@ Stage Summary:
 - Build PASS, zero errors
 
 Awaiting user "Go for 6" to begin Stage 6 — admin/pastoral UI (member management, referral moderation, cycle management, AdminConfig editor, audit log viewer). Stage 6 will also add auth-gated /admin/gaf/* routes and /api/gaf/admin/* endpoints.
+
+---
+Task ID: GAF-S6
+Agent: Main Agent
+Task: Go-A-Fishing Stage 6 — Admin/Pastoral UI (members, referrals, cycles, config, audit log)
+
+Work Log:
+- Created src/app/admin/gaf/layout.tsx — auth-gated layout: redirects unauthenticated to /go-a-fishing/login, non-admin/pastor to /go-a-fishing, shows config-needed message if Supabase not connected
+- Created src/components/gaf/admin/gaf-admin-shell.tsx — shared admin sidebar (dark navy #1A237E) with 6 nav items (Overview, Members, Referrals, Cycles, Configuration, Audit Log) + General Admin link + mobile responsive overlay sidebar
+- Created src/app/api/gaf/admin/setup/route.ts — POST: first-time setup, upserts AdminConfig singleton + seeds 3 default RewardCategories (Soul Winner of the Quarter, Top Inviter, Faithful Follow-Up). Idempotent.
+- Created src/app/api/gaf/admin/config/route.ts — GET (auto-creates singleton if missing) + PATCH (admin-only, updates all config fields with validation). Validates scoringWeights + featureFlags JSON.
+- Created src/app/api/gaf/admin/members/route.ts — GET: paginated member list with search (name/email/phone/code) + status filter + referral/winner counts
+- Created src/app/api/gaf/admin/members/[id]/route.ts — PATCH: update member status (suspend/reactivate) + profile fields. Writes audit log.
+- Created src/app/api/gaf/admin/referrals/route.ts — GET: all referrals across members, filterable by status/channel/referrerId
+- Created src/app/api/gaf/admin/referrals/[id]/route.ts — PATCH: update referral status with forward-only transition validation (admin can override with force=true). Auto-sets firstVisitDate on attended. Writes audit log.
+- Created src/app/api/gaf/admin/cycles/route.ts — GET: all cycles with category info + winner counts. POST: create new cycle (validates category + quarter, checks duplicates)
+- Created src/app/api/gaf/admin/cycles/[id]/route.ts — PATCH: update cycle status (open/tallying/closed). POST: close cycle + compute top-3 winners (scores all active members' referrals within cycle window, deletes existing winners, creates RewardWinner rows). Writes audit log.
+- Created src/app/api/gaf/admin/audit-log/route.ts — GET: paginated audit trail with entityType/action filters
+- Created src/app/admin/gaf/page.tsx + src/components/gaf/admin/gaf-admin-overview.tsx — admin overview with 4 stat cards, 5 quick-action tiles, recent activity feed
+- Created src/app/admin/gaf/members/page.tsx + src/components/gaf/admin/gaf-admin-members.tsx — member management with search + suspend/reactivate buttons
+- Created src/app/admin/gaf/referrals/page.tsx + src/components/gaf/admin/gaf-admin-referrals.tsx — all-referrals view with filter pills + one-click status progression buttons
+- Created src/app/admin/gaf/cycles/page.tsx + src/components/gaf/admin/gaf-admin-cycles.tsx — cycle management with create dialog + close-and-compute-winners button
+- Created src/app/admin/gaf/config/page.tsx + src/components/gaf/admin/gaf-admin-config.tsx — config editor for scoring weights, referral link settings, leaderboard settings, feature flags
+- Created src/app/admin/gaf/audit-log/page.tsx + src/components/gaf/admin/gaf-admin-audit-log.tsx — audit trail viewer with refresh
+- Ran npm run build — ✓ Compiled successfully in 16.4s, 69 pages generated (was 57; +12 new admin routes), zero errors
+
+Stage Summary:
+- 6 admin pages: Overview, Members, Referrals, Cycles, Configuration, Audit Log
+- 9 admin API endpoints: setup, config (GET+PATCH), members (GET), members/[id] (PATCH), referrals (GET), referrals/[id] (PATCH), cycles (GET+POST), cycles/[id] (PATCH+POST close), audit-log (GET)
+- Auth gate: layout.tsx checks Supabase auth + app_metadata.role (admin/pastor). Non-authorized users redirected away.
+- Graceful degradation: if Supabase env vars unset, shows config-needed message instead of crashing
+- Cycle close engine: computes per-member scores for all referrals within cycle window, takes top 3, creates RewardWinner rows, marks cycle as closed
+- All admin actions write to AuditLog (actor, action, entity, before/after, IP, user-agent)
+- First-time setup seeds 3 RewardCategories automatically
+- Build PASS, zero errors, 69 pages total
+
+BLOCKERS still apply from Stage 4:
+1. Supabase project provisioning (env vars)
+2. Run `npx prisma db push` to create tables
+3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
+
+Awaiting user "Go for 7" to begin Stage 7 — Awards & Commendations display (public /go-a-fishing/awards page + pastoral commendation issuance API + UI).
