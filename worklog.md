@@ -368,3 +368,50 @@ Work Log:
 - Attendance chart uses pure CSS bars with animated height on mount, hover tooltips with peak indicator
 
 ### Build result: ✅ Clean build — no errors
+
+---
+Task ID: GAF-S1
+Agent: Main Agent
+Task: Go-A-Fishing Stage 1 — Codebase Audit & Integration Map (read-only, no code changes)
+
+Work Log:
+- Launched 4 parallel Explore subagents to audit: (1) routes/pages, (2) auth/member structures, (3) database/admin, (4) social/share/UI components
+- Consolidated findings into Stage 1 Integration Map (delivered to user in chat)
+- No code modified. Read-only inspection only.
+
+Stage Summary — CRITICAL FINDINGS for future stages:
+1. NO AUTH SYSTEM EXISTS. `next-auth@^4.24.11` is a dead dependency (never imported). No middleware.ts, no /api/auth/* routes, no SessionProvider, no login/signup pages, no useSession/getServerSession usage anywhere.
+2. ADMIN PAGES ARE PUBLICLY REACHABLE. /admin and /admin/social have NO auth gate (no layout.tsx, no middleware). Only /api/social/admin* endpoints have a header-key check (SOCIAL_ADMIN_KEY env var).
+3. TWO DIFFERENT DEFAULT ADMIN KEYS committed to repo: "admin_placeholder_key" (in admin/route.ts) and "rccg-rehoboth-admin-2024" (in admin/chat/route.ts). Both are weak public strings.
+4. SUPABASE IS NOT WIRED. `@supabase/supabase-js` is NOT installed. `src/lib/supabase/` contains only `types.ts` (interfaces) and `social-store.ts` (in-memory mock using Maps/arrays). All social data resets on server restart.
+5. PRISMA IS DEAD CODE. `prisma/schema.prisma` has only boilerplate `User` + `Post` models with no relations. `src/lib/db.ts` exports a Prisma client singleton but NO file in src/ imports it. DATABASE_URL points to local SQLite file.
+6. SOCIAL FEATURES USE ANONYMOUS SESSIONS. FamilyChat generates `user_${Date.now()}` stored in `sessionStorage["rs_session"]`. Other features (whos-coming, im-here) use `session_${Date.now()}_${random}`. No real identity anywhere.
+7. NO QR CODE LIBRARY installed. No Web Share API (`navigator.share`) usage. Only 2 raw `navigator.clipboard.writeText` calls (devotional URL copy, bank account copy). No reusable share component.
+8. ADMIN SIDEBAR ADVERTISES 11 SECTIONS but only /admin (Dashboard) and /admin/social exist. The other 9 nav items (Members, Sermons, Events, Announcements, Devotionals, Testimonies, Prayer Requests, Media, Ministries, Settings) are dead `href="#"` links.
+9. ALL ADMIN DATA IS HARDCODED MOCK in `src/components/admin/admin-data.ts` (dashboardStats, recentActivities, quickActions, dashboardChartData, pendingItems).
+10. 3 ORPHAN SOCIAL COMPONENTS: `whos-coming.tsx`, `im-here.tsx`, `weekly-challenge.tsx` exist as components but their routes redirect to /social (effectively dead).
+11. ENV VARS: Only `SOCIAL_ADMIN_KEY` and `NODE_ENV` are actually read in src/. `.env.example` lists NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, NEXTAUTH_SECRET, NEXTAUTH_URL — all UNSET.
+12. NO SEED SCRIPT. No prisma/seed.ts, no db:seed in package.json.
+
+REUSABLE ASSETS for Go-A-Fishing:
+- shadcn/ui: 46 primitives in src/components/ui/ (Button, Card, Input, Dialog, Sheet, Tabs, Avatar, Badge, Progress, Table, Tooltip, etc.)
+- Layout: navbar.tsx, footer.tsx, page-banner.tsx
+- Home utilities: SectionWrapper + SectionTitle (src/components/home/section-wrapper.tsx)
+- Social patterns: FeatureLandingPage (gate shell), SocialFeatureNav (bottom bar), BackToSocial (top link)
+- Recharts installed (used in admin attendance-chart.tsx)
+- Framer Motion installed
+- Zustand installed (but not used yet)
+
+ROUTE PROTECTION GAP — Stage 3 must address:
+- Public browsing MUST stay open (homepage, about, sermons, events, etc.)
+- /admin/* needs auth gate (currently wide open)
+- /social/* currently anonymous — Go-A-Fishing member dashboard will need real identity
+- Member account system must coexist with anonymous social features (don't break FamilyChat's anon session pattern)
+
+PRESERVATION RULES for future stages:
+- DO NOT remove or rewrite social-store.ts (it powers all 5 live social features)
+- DO NOT break the sessionStorage rs_session pattern (FamilyChat depends on it)
+- DO NOT change public route access (homepage, sermons, events, prayer, etc. stay open)
+- DO NOT remove the 3 redirect stubs (whos-coming, im-here, weekly-challenge) without explicit permission
+- DO NOT alter admin-data.ts mock structure (existing admin dashboard depends on it)
+
