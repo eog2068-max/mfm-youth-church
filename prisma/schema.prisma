@@ -9,9 +9,14 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// ============================================================================
+// EXISTING BOILERPLATE — preserved verbatim per Stage 1 preservation rule.
+// (Currently unused by any feature; will be cleaned up in a post-Stage-12 pass.)
+// ============================================================================
 
 model User {
   id        String   @id @default(cuid())
@@ -29,4 +34,175 @@ model Post {
   authorId  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+// ============================================================================
+// Go-A-Fishing Models — Stage 2 design, Stage 3 implementation.
+// All 8 models are additive. None of the existing User/Post models above were
+// modified. See worklog GAF-S2 for the full design rationale.
+// ============================================================================
+
+model Member {
+  id             String   @id @default(cuid())
+  supabaseUserId String   @unique // links to auth.users in Supabase
+  fullName       String
+  email          String   @unique
+  phone          String? // Nigerian format: +234...
+  whatsapp       String? // separate for WhatsApp link generation
+  referralCode   String   @unique // e.g. "REH-AB1234"
+  avatarUrl      String?
+  assembly       String? // parish name (multi-campus future)
+  joinDate       DateTime @default(now())
+  status         String   @default("active") // active | suspended | inactive
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  referralsMade      ReferralEvent[]        @relation("ReferrerReferrals")
+  referralsReceived  ReferralEvent[]        @relation("InviteeMemberReferrals")
+  rewardWinners      RewardWinner[]
+  commendations      PastoralCommendation[] @relation("CommendationRecipient")
+  commendationsGiven PastoralCommendation[] @relation("CommendationGiver")
+  auditLogs          AuditLog[]
+
+  @@index([status])
+  @@index([referralCode])
+}
+
+model ReferralEvent {
+  id              String   @id @default(cuid())
+  referrerId      String // FK to Member (the fisher)
+  referralCode    String // snapshot (survives code reissue)
+  inviteeName     String
+  inviteePhone    String?
+  inviteeEmail    String?
+  inviteeMemberId String? // FK to Member if they later register
+  channel         String   @default("link") // link | qr | whatsapp | manual | flyer | other
+  linkSlug        String? // for QR/link attribution
+  status          String   @default("invited") // invited | attended | saved | baptized | member | lost_contact
+  firstVisitDate  DateTime?
+  prayerPoint     String? // for pastoral follow-up
+  notes           String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  referrer      Member  @relation("ReferrerReferrals", fields: [referrerId], references: [id], onDelete: Cascade)
+  inviteeMember Member? @relation("InviteeMemberReferrals", fields: [inviteeMemberId], references: [id], onDelete: SetNull)
+
+  @@index([referrerId, status])
+  @@index([status, createdAt])
+  @@index([channel])
+}
+
+model RewardCategory {
+  id           String   @id @default(cuid())
+  slug         String   @unique // e.g. "soul-winner-quarterly"
+  name         String // "Soul Winner of the Quarter"
+  description  String
+  icon         String // emoji or lucide name
+  color        String // hex / tailwind color
+  criteria     String // human-readable criterion
+  scoringRule  String // JSON: {metric, status, window, topN}
+  active       Boolean  @default(true)
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  cycles RewardCycle[]
+
+  @@index([active, displayOrder])
+}
+
+model RewardCycle {
+  id        String   @id @default(cuid())
+  categoryId String
+  name      String // "Q1 2026 — Soul Winner"
+  year      Int
+  quarter   Int // 1-4
+  startDate DateTime
+  endDate   DateTime
+  status    String   @default("open") // open | tallying | closed
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  category RewardCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  winners  RewardWinner[]
+
+  @@unique([categoryId, year, quarter])
+  @@index([status, endDate])
+}
+
+model RewardWinner {
+  id             String   @id @default(cuid())
+  cycleId        String
+  memberId       String
+  rank           Int // 1, 2, 3
+  score          Float
+  scoreBreakdown String // JSON: {referralsAttended:5, saved:2, ...}
+  awardedAt      DateTime @default(now())
+  awardNotes     String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  cycle  RewardCycle @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+  member Member      @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@unique([cycleId, memberId])
+  @@index([cycleId, rank])
+}
+
+model PastoralCommendation {
+  id                 String   @id @default(cuid())
+  memberId           String
+  title              String
+  message            String
+  givenBy            String // pastor's name (denormalized)
+  givenByMemberId    String? // FK if pastor is also a Member
+  visibility         String   @default("public") // public | members_only | private
+  scriptureReference String? // e.g. "Matthew 4:19"
+  awardedAt          DateTime @default(now())
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  member Member @relation("CommendationRecipient", fields: [memberId], references: [id], onDelete: Cascade)
+  giver  Member? @relation("CommendationGiver", fields: [givenByMemberId], references: [id], onDelete: SetNull)
+
+  @@index([memberId, awardedAt])
+  @@index([visibility, awardedAt])
+}
+
+model AdminConfig {
+  id                                String   @id @default("singleton")
+  referralLinkBaseUrl               String // e.g. "https://rccg-rehoboth.app/r/"
+  qrCodeDefaultColor                String   @default("#1A237E")
+  qrCodeDefaultSize                 Int      @default(512)
+  leaderboardRefreshIntervalSec     Int      @default(300)
+  leaderboardShowRealNames          Boolean  @default(true)
+  leaderboardShowPhotos             Boolean  @default(true)
+  leaderboardTopN                   Int      @default(10)
+  defaultRewardCycleQuarters        Int      @default(4)
+  outreachActivitySelfReportAllowed Boolean  @default(true)
+  requireAdminApprovalForReferral   Boolean  @default(false)
+  scoringWeights                    String   @default("{\"invited\":1,\"attended\":5,\"saved\":10,\"baptized\":25,\"member\":50}")
+  featureFlags                      String   @default("{}") // JSON
+  createdAt                         DateTime @default(now())
+  updatedAt                         DateTime @updatedAt
+}
+
+model AuditLog {
+  id             String   @id @default(cuid())
+  actorMemberId  String? // FK to Member (admin who acted)
+  actorSessionId String? // anon session ID fallback
+  action         String // e.g. "referral.create", "member.suspend"
+  entityType     String // referral | member | cycle | category | config | commendation
+  entityId       String?
+  metadata       String // JSON: before/after diff
+  ipAddress      String?
+  userAgent      String?
+  createdAt      DateTime @default(now())
+
+  actorMember Member? @relation(fields: [actorMemberId], references: [id], onDelete: SetNull)
+
+  @@index([entityType, entityId])
+  @@index([actorMemberId, createdAt])
+  @@index([action, createdAt])
 }

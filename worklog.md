@@ -496,3 +496,48 @@ ENV VARS — additions to .env.example:
 - GAF_SCORING_WEIGHTS_JSON (optional, default: {"invited":1,"attended":5,"saved":10,"baptized":25,"member":50})
 
 NEXT STEP: Awaiting user "Go for 3" to implement Stage 3 — apply schema additions to prisma/schema.prisma, run prisma generate + db push, install @supabase/supabase-js, set up Supabase Auth client wrapper, create src/lib/gaf/ utilities (referral-code gen, scoring engine, attribution cookie). NO UI in Stage 3.
+
+---
+Task ID: GAF-S3
+Agent: Main Agent
+Task: Go-A-Fishing Stage 3 — Foundation (auth + data model + utility libs, no UI)
+
+Work Log:
+- Clarified Stage 2 situation with user: prior session's GAF-S2 was design-only (no code changes), this session re-delivered the same design doc + appended formal GAF-S2 entry to worklog (was missing). No code duplication occurred.
+- Installed @supabase/supabase-js@2.110.8 and @supabase/ssr@0.5.2 (verified loadable, createServerClient + createBrowserClient both present)
+- Updated prisma/schema.prisma: switched datasource from sqlite → postgresql; preserved User + Post boilerplate verbatim; appended 8 new GAF models (Member, ReferralEvent, RewardCategory, RewardCycle, RewardWinner, PastoralCommendation, AdminConfig, AuditLog) with full indexes and relations
+- Ran `npx prisma generate` — successful, Prisma Client v6.19.2 regenerated with new models
+- Created src/lib/gaf/database-types.ts — minimal Database type stub (Supabase CLI codegen will replace later)
+- Created src/lib/gaf/supabase-server.ts — getSupabaseServer() (RLS-enforced, cookie session) + getSupabaseAdmin() (service-role, RLS bypass)
+- Created src/lib/gaf/supabase-client.ts — getSupabaseBrowser() singleton (anon key, RLS-enforced)
+- Created src/lib/gaf/referral-code.ts — generateReferralCode() (REH-XXXXXX base32, no ambiguous chars), generateUniqueReferralCode() (collision-safe retry), normalizeReferralCode(), isValidReferralCode(), uses Web Crypto API
+- Created src/lib/gaf/scoring.ts — REFERRAL_STATUSES, DEFAULT_SCORING_WEIGHTS (invited:1, attended:5, saved:10, baptized:25, member:50, lost_contact:0), parseScoringWeights(), computeMemberScore() (total + breakdown + counts), validateStatusTransition() (forward-only, lost_contact handling), serializeScoreBreakdown()
+- Created src/lib/gaf/attribution.ts — setAttributionCookie() (30-day, httpOnly, sameSite=lax, secure in prod), getReferrerFromCookie() (server), getReferrerFromRequest() (middleware), clearAttributionCookie(), env-var-configurable name + window
+- Created src/lib/gaf/auth.ts — getCurrentSupabaseUser(), getCurrentMember() (Supabase auth → Prisma member join, includes referrals + winners + commendations), getCurrentMemberId() (lightweight), hasRole() / requireRole() / requireMember() / isAdminOrPastor() (roles via app_metadata.role)
+- Updated .env.example with new GAF section: NEXT_PUBLIC_GAF_BASE_URL, GAF_ATTRIBUTION_COOKIE_NAME (optional), GAF_ATTRIBUTION_WINDOW_DAYS (optional). Preserved all existing entries.
+- Ran `npm run build` — ✓ Compiled successfully in 15.7s, all 46 pages generated, zero errors/warnings
+- NO existing code modified (preservation rules honored):
+  * src/lib/supabase/social-store.ts: untouched
+  * src/lib/supabase/types.ts: untouched
+  * src/lib/db.ts: untouched (reused as-is)
+  * src/components/admin/admin-data.ts: untouched
+  * Existing public routes: untouched
+  * /api/social/admin/* auth-key checks: untouched
+- SKIPPED: `prisma db push` (requires Supabase Postgres DATABASE_URL — user must provision Supabase project first). Will run when user provides connection string.
+
+Stage Summary:
+- All 8 GAF models exist in schema.prisma and Prisma Client types are generated
+- All 5 lib files created and compile cleanly
+- Build passes with zero errors
+- Foundation ready for Stage 4 (UI) — but BLOCKED on user provisioning Supabase:
+  * User must create Supabase project at https://supabase.com
+  * Set 4 env vars in Vercel + locally in .env:
+    1. NEXT_PUBLIC_SUPABASE_URL
+    2. NEXT_PUBLIC_SUPABASE_ANON_KEY
+    3. SUPABASE_SERVICE_ROLE_KEY
+    4. DATABASE_URL (Supabase Postgres pooled connection string, port 6543)
+  * Set NEXT_PUBLIC_GAF_BASE_URL to production URL
+  * Run `npx prisma db push` once to create the 8 new tables in Supabase Postgres
+  * Existing SQLite db/custom.db is now unused (datasource switched to postgresql)
+
+Awaiting user "Go for 4" to begin Stage 4 — member-facing UI (login page, dashboard, referral card with QR, my-referrals list). Stage 4 will install qrcode.react dep + create first /go-a-fishing/* routes + first /r/[code] landing route.
