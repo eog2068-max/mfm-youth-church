@@ -18,6 +18,7 @@ const quickLinksLeft = [
   { label: "Watch Live", href: "/live" },
   { label: "Events", href: "/events" },
   { label: "Devotionals", href: "/devotionals" },
+  { label: "RehobothSocial", href: "/social" },
 ];
 
 const quickLinksRight = [
@@ -28,6 +29,7 @@ const quickLinksRight = [
   { label: "Announcements", href: "/announcements" },
   { label: "Giving", href: "/giving" },
   { label: "Contact", href: "/contact" },
+  { label: "Go-A-Fishing", href: "/go-a-fishing" },
 ];
 
 export function Footer() {

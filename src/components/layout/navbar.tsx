@@ -4,7 +4,40 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, Radio, Heart, Fish } from "lucide-react";
+import {
+  Menu,
+  Radio,
+  Heart,
+  Fish,
+  MessageCircle,
+  HandHeart,
+  HelpCircle,
+  Sparkles,
+  MonitorPlay,
+  Megaphone,
+  CalendarDays,
+  BookOpen,
+  Mic,
+  Music,
+  Building2,
+  Film,
+  Camera,
+  Users,
+  Gift,
+  Star,
+  Mail,
+  Info,
+  UserCog,
+  Tv,
+  LayoutDashboard,
+  Link2,
+  MapPin,
+  User,
+  Bell,
+  Trophy,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -15,29 +48,302 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
-const navItems = [
+// ──────────────────────────────────────────────────────────────
+// Desktop top-level nav (kept lean — detailed nav lives in hamburger)
+// ──────────────────────────────────────────────────────────────
+const desktopNavItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Leadership", href: "/leadership" },
   { label: "Sermons", href: "/sermons" },
-  { label: "Live", href: "/live" },
   { label: "Events", href: "/events" },
   { label: "Devotionals", href: "/devotionals" },
-  { label: "Testimonies", href: "/testimonies" },
-  { label: "Prayer", href: "/prayer" },
-  { label: "Join a Ministry", href: "/join-ministry" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Announcements", href: "/announcements" },
-  { label: "Giving", href: "/giving" },
-  { label: "Contact", href: "/contact" },
-  { label: "RehobothSocial", href: "/social" },
-  { label: "Go-A-Fishing", href: "/go-a-fishing" },
 ];
 
+// ──────────────────────────────────────────────────────────────
+// Hamburger menu — four categorized sections
+// ──────────────────────────────────────────────────────────────
+
+interface MenuItem {
+  label: string;
+  href: string;
+  icon: React.ElementType;
+}
+
+interface MenuCategory {
+  id: string;
+  title: string;
+  subtitle: string;
+  purposeTag?: string;
+  quote?: string;
+  color: {
+    headerBg: string;
+    accentBar: string;
+    accentText: string;
+    ctaBg: string;
+    ctaHover: string;
+    iconBg: string;
+    iconText: string;
+    itemActiveBg: string;
+    itemActiveText: string;
+  };
+  items: MenuItem[];
+  cta?: { label: string; href: string };
+}
+
+const menuCategories: MenuCategory[] = [
+  // ── REHOBOTHSOCIAL ──
+  {
+    id: "rehoboth-social",
+    title: "REHOBOTHSOCIAL",
+    subtitle: "Customized Social Media Platform",
+    purposeTag: "CONNECT",
+    color: {
+      headerBg: "bg-orange-50",
+      accentBar: "bg-[#E65100]",
+      accentText: "text-[#E65100]",
+      ctaBg: "bg-[#E65100]",
+      ctaHover: "hover:bg-[#BF360C]",
+      iconBg: "bg-orange-100",
+      iconText: "text-[#E65100]",
+      itemActiveBg: "bg-orange-50",
+      itemActiveText: "text-[#E65100]",
+    },
+    items: [
+      { label: "FamilyChat", href: "/social/family-chat", icon: MessageCircle },
+      { label: "Prayer Circle", href: "/social/prayer-circle", icon: HandHeart },
+      { label: "Today's Question", href: "/social/todays-question", icon: HelpCircle },
+      { label: "Amen Wall", href: "/social/amen-wall", icon: Sparkles },
+      { label: "Live Together", href: "/social/live-together", icon: MonitorPlay },
+    ],
+    cta: { label: "ENTER REHOBOTHSOCIAL", href: "/social" },
+  },
+
+  // ── CHURCH MANAGEMENT SYSTEM ──
+  {
+    id: "church-management",
+    title: "CHURCH MANAGEMENT",
+    subtitle: "CMS — ORGANIZE",
+    color: {
+      headerBg: "bg-blue-50",
+      accentBar: "bg-[#1A237E]",
+      accentText: "text-[#1A237E]",
+      ctaBg: "bg-[#1A237E]",
+      ctaHover: "hover:bg-[#0D1557]",
+      iconBg: "bg-blue-100",
+      iconText: "text-[#1A237E]",
+      itemActiveBg: "bg-blue-50",
+      itemActiveText: "text-[#1A237E]",
+    },
+    items: [
+      { label: "Announcements", href: "/announcements", icon: Megaphone },
+      { label: "Events & Registration", href: "/events", icon: CalendarDays },
+      { label: "Devotionals", href: "/devotionals", icon: BookOpen },
+      { label: "Sermons", href: "/sermons", icon: Mic },
+      { label: "Prayer Requests", href: "/prayer", icon: HandHeart },
+      { label: "Ministries", href: "/join-ministry", icon: Music },
+      { label: "Departments", href: "/departments", icon: Building2 },
+      { label: "Church Media", href: "/media", icon: Film },
+      { label: "Photo Gallery", href: "/gallery", icon: Camera },
+      { label: "Member Gallery", href: "/members", icon: Users },
+      { label: "Giving", href: "/giving", icon: Gift },
+      { label: "Testimonies", href: "/testimonies", icon: Star },
+      { label: "Contact", href: "/contact", icon: Mail },
+    ],
+    cta: { label: "EXPLORE CMS", href: "/announcements" },
+  },
+
+  // ── GO-A-FISHING ──
+  {
+    id: "go-a-fishing",
+    title: "GO-A-FISHING",
+    subtitle: "Digital Evangelism System — REACH",
+    quote: "I'll make you fishers of men.",
+    color: {
+      headerBg: "bg-indigo-50",
+      accentBar: "bg-[#3949AB]",
+      accentText: "text-[#3949AB]",
+      ctaBg: "bg-[#3949AB]",
+      ctaHover: "hover:bg-[#1A237E]",
+      iconBg: "bg-indigo-100",
+      iconText: "text-[#3949AB]",
+      itemActiveBg: "bg-indigo-50",
+      itemActiveText: "text-[#3949AB]",
+    },
+    items: [
+      { label: "My Dashboard", href: "/go-a-fishing/dashboard", icon: LayoutDashboard },
+      { label: "My Referrals", href: "/go-a-fishing/my-referrals", icon: Link2 },
+      { label: "My Outreach", href: "/go-a-fishing/my-outreach", icon: MapPin },
+      { label: "Leaderboard", href: "/go-a-fishing/leaderboard", icon: Trophy },
+      { label: "Awards & Recognition", href: "/go-a-fishing/awards", icon: Star },
+      { label: "Profile", href: "/go-a-fishing/profile", icon: User },
+      { label: "Notifications", href: "/go-a-fishing/notifications", icon: Bell },
+    ],
+    cta: { label: "GO-A-FISHING", href: "/go-a-fishing" },
+  },
+
+  // ── CHURCH INFORMATION ──
+  {
+    id: "general",
+    title: "CHURCH INFORMATION",
+    subtitle: "About Us",
+    color: {
+      headerBg: "bg-gray-50",
+      accentBar: "bg-[#4B5563]",
+      accentText: "text-[#4B5563]",
+      ctaBg: "bg-[#4B5563]",
+      ctaHover: "hover:bg-[#374151]",
+      iconBg: "bg-gray-100",
+      iconText: "text-[#4B5563]",
+      itemActiveBg: "bg-gray-50",
+      itemActiveText: "text-[#4B5563]",
+    },
+    items: [
+      { label: "About Us", href: "/about", icon: Info },
+      { label: "Leadership", href: "/leadership", icon: UserCog },
+      { label: "Watch Live", href: "/live", icon: Tv },
+    ],
+    // No CTA for General — items are sufficient
+  },
+];
+
+// ──────────────────────────────────────────────────────────────
+// Collapsible category component for the hamburger menu
+// ──────────────────────────────────────────────────────────────
+function MenuCategorySection({
+  category,
+  pathname,
+  onClose,
+  defaultOpen = false,
+}: {
+  category: MenuCategory;
+  pathname: string;
+  onClose: () => void;
+  defaultOpen?: boolean;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  const isAnyItemActive = category.items.some(
+    (item) => pathname === item.href
+  );
+
+  return (
+    <div className="rounded-xl overflow-hidden border border-gray-100">
+      {/* Category header — clickable to collapse/expand */}
+      <button
+        onClick={() => setOpen(!open)}
+        className={cn(
+          "w-full flex items-center justify-between px-3 py-2.5 text-left transition-colors",
+          category.color.headerBg
+        )}
+      >
+        <div className="min-w-0">
+          <div className="flex items-center gap-2">
+            <div
+              className={cn("h-0.5 w-4 rounded-full", category.color.accentBar)}
+            />
+            <span
+              className={cn(
+                "text-xs font-bold tracking-wider",
+                category.color.accentText
+              )}
+            >
+              {category.title}
+            </span>
+            {isAnyItemActive && (
+              <span className="h-1.5 w-1.5 rounded-full bg-[#D32F2F]" />
+            )}
+          </div>
+          <p className="text-[10px] text-gray-500 mt-0.5 ml-6 truncate">
+            {category.subtitle}
+          </p>
+          {category.quote && (
+            <p className="text-[10px] italic text-gray-400 mt-0.5 ml-6 truncate">
+              &ldquo;{category.quote}&rdquo;
+            </p>
+          )}
+        </div>
+        {open ? (
+          <ChevronUp className="size-4 text-gray-400 shrink-0" />
+        ) : (
+          <ChevronDown className="size-4 text-gray-400 shrink-0" />
+        )}
+      </button>
+
+      {/* Category items */}
+      {open && (
+        <div className="bg-white">
+          <div className={cn("h-0.5 w-full", category.color.accentBar)} />
+          <div className="flex flex-col">
+            {category.items.map((item) => {
+              const Icon = item.icon;
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={onClose}
+                  className={cn(
+                    "flex items-center gap-3 px-4 py-2.5 text-sm transition-colors",
+                    isActive
+                      ? cn(
+                          "font-semibold",
+                          category.color.itemActiveBg,
+                          category.color.itemActiveText
+                        )
+                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                  )}
+                >
+                  <div
+                    className={cn(
+                      "w-7 h-7 rounded-lg flex items-center justify-center shrink-0",
+                      isActive
+                        ? cn(category.color.iconBg)
+                        : "bg-gray-50"
+                    )}
+                  >
+                    <Icon
+                      className={cn(
+                        "size-3.5",
+                        isActive
+                          ? category.color.iconText
+                          : "text-gray-400"
+                      )}
+                    />
+                  </div>
+                  <span>{item.label}</span>
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Category CTA */}
+          {category.cta && (
+            <div className="px-3 pb-3 pt-2">
+              <Button
+                asChild
+                className={cn(
+                  "w-full text-white rounded-xl text-xs font-bold tracking-wide py-2.5",
+                  category.color.ctaBg,
+                  category.color.ctaHover
+                )}
+              >
+                <Link href={category.cta.href} onClick={onClose}>
+                  {category.cta.label}
+                </Link>
+              </Button>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────
+// Main Navbar component
+// ──────────────────────────────────────────────────────────────
 export function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
-  // Start as NOT scrolled to match SSR output; only flip after client mount
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -56,6 +362,8 @@ export function Navbar() {
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
+
+  const closeMobile = useCallback(() => setMobileOpen(false), []);
 
   return (
     <header
@@ -105,9 +413,9 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Nav Links */}
+          {/* Desktop Nav Links — lean set, detailed nav in hamburger */}
           <div className="hidden xl:flex items-center gap-1">
-            {navItems.map((item) => (
+            {desktopNavItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -127,7 +435,7 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Right side: Watch Live + Mobile Menu */}
+          {/* Right side: CTA buttons + Mobile Menu */}
           <div className="flex items-center gap-3">
             <Button
               asChild
@@ -157,7 +465,7 @@ export function Navbar() {
               </Link>
             </Button>
 
-            {/* Mobile Hamburger */}
+            {/* Mobile Hamburger — categorized four-section menu */}
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
               <SheetTrigger asChild>
                 <button
@@ -172,8 +480,9 @@ export function Navbar() {
                   <Menu className="size-6" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80 overflow-y-auto">
-                <SheetHeader className="mb-4 mt-2">
+              <SheetContent side="right" className="w-80 overflow-y-auto p-0">
+                {/* Sheet header */}
+                <SheetHeader className="px-4 pt-6 pb-4 bg-gradient-to-b from-[#EBF3FF] to-white">
                   <SheetTitle className="text-[#1A237E] flex items-center gap-3">
                     <div className="relative h-8 w-8 rounded-full bg-[#F0F4FF] p-0.5">
                       <Image
@@ -187,53 +496,31 @@ export function Navbar() {
                     Rehoboth Assembly Parish
                   </SheetTitle>
                 </SheetHeader>
-                <div className="flex flex-col gap-1">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setMobileOpen(false)}
-                      className={cn(
-                        "px-4 py-3 text-sm font-medium rounded-xl transition-colors",
-                        pathname === item.href
-                          ? "text-[#1A237E] bg-[#F0F4FF] font-semibold"
-                          : "text-gray-600 hover:text-[#1A237E] hover:bg-gray-50"
-                      )}
-                    >
-                      {item.label}
-                    </Link>
+
+                {/* Categorized menu sections */}
+                <div className="flex flex-col gap-3 px-3 pb-4">
+                  {menuCategories.map((category, idx) => (
+                    <MenuCategorySection
+                      key={category.id}
+                      category={category}
+                      pathname={pathname}
+                      onClose={closeMobile}
+                      defaultOpen={idx === 0}
+                    />
                   ))}
-                  <div className="mt-4 pt-4 border-t border-gray-200">
-                    <div className="grid grid-cols-2 gap-2">
-                      <Button
-                        asChild
-                        className="bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl font-semibold"
-                      >
-                        <Link href="/live" onClick={() => setMobileOpen(false)}>
-                          <Radio className="size-4" />
-                          Watch Live
-                        </Link>
-                      </Button>
-                      <Button
-                        asChild
-                        className="bg-[#E65100] hover:bg-[#BF360C] text-white rounded-xl font-semibold"
-                      >
-                        <Link href="/social" onClick={() => setMobileOpen(false)}>
-                          <Heart className="size-4" />
-                          Social
-                        </Link>
-                      </Button>
-                      <Button
-                        asChild
-                        className="col-span-2 bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl font-semibold"
-                      >
-                        <Link href="/go-a-fishing" onClick={() => setMobileOpen(false)}>
-                          <Fish className="size-4" />
-                          Go-A-Fishing
-                        </Link>
-                      </Button>
-                    </div>
-                  </div>
+                </div>
+
+                {/* Persistent Watch Live CTA at bottom */}
+                <div className="px-3 pb-6">
+                  <Button
+                    asChild
+                    className="w-full bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl font-semibold py-3"
+                  >
+                    <Link href="/live" onClick={closeMobile}>
+                      <Radio className="size-4" />
+                      Watch Live
+                    </Link>
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>
