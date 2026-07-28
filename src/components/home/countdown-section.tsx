@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Clock } from "lucide-react";
+import { Clock, Heart, Megaphone, Fish } from "lucide-react";
+import Link from "next/link";
 import { SectionWrapper, SectionTitle } from "./section-wrapper";
 
 interface TimeLeft {
@@ -144,6 +145,22 @@ export function CountdownSection() {
           <span>
             <strong className="text-[#1A237E]">Thu 5:30 PM</strong> — Faith Clinic
           </span>
+        </div>
+
+        {/* Quick Access — Three Pillars */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <Link href="/social" className="inline-flex items-center gap-1.5 bg-[#E65100]/10 text-[#E65100] rounded-full px-4 py-2 text-xs font-semibold hover:bg-[#E65100]/20 transition-colors">
+            <Heart className="size-3.5" />
+            RehobothSocial
+          </Link>
+          <Link href="/announcements" className="inline-flex items-center gap-1.5 bg-[#1A237E]/10 text-[#1A237E] rounded-full px-4 py-2 text-xs font-semibold hover:bg-[#1A237E]/20 transition-colors">
+            <Megaphone className="size-3.5" />
+            Announcements
+          </Link>
+          <Link href="/go-a-fishing" className="inline-flex items-center gap-1.5 bg-[#3949AB]/10 text-[#3949AB] rounded-full px-4 py-2 text-xs font-semibold hover:bg-[#3949AB]/20 transition-colors">
+            <Fish className="size-3.5" />
+            Go-A-Fishing
+          </Link>
         </div>
       </div>
     </SectionWrapper>

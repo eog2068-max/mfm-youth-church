@@ -22,20 +22,30 @@ export default function Home() {
       <HeroSection />
       <ThreePillarsSection />
       <CountdownSection />
-      <LatestSermon />
+      <div className="bg-white">
+        <LatestSermon />
+      </div>
       <PastorsWelcome />
-      <UpcomingEvents />
+      <div className="bg-white">
+        <UpcomingEvents />
+      </div>
       <DepartmentsPreview />
       <DevotionalPreview />
-      <AnnouncementPreview />
+      <div className="bg-[#F8FAFF]">
+        <AnnouncementPreview />
+      </div>
       <PhotoGalleryPreview />
-      <VideoGalleryPreview />
+      <div className="bg-[#F8FAFF]">
+        <VideoGalleryPreview />
+      </div>
       <Testimonies />
       <GivingSection />
       <GafCta />
       <SocialPromise />
       <SocialCTA />
-      <LocationMap />
+      <div className="bg-white">
+        <LocationMap />
+      </div>
     </>
   );
 }

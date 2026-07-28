@@ -40,7 +40,7 @@ const departments = [
   },
   {
     name: "Evangelism",
-    description: "Taking the message of salvation beyond the church walls and reaching our community with God's love.",
+    description: "Taking the message of salvation beyond the church walls. Join our Go-A-Fishing digital evangelism program to track referrals and earn awards.",
     icon: Megaphone,
     color: "text-[#00695C]",
     bg: "bg-[#E0F2F1]",
@@ -64,6 +64,14 @@ export function DepartmentsPreview() {
               </div>
               <h3 className="text-lg font-bold text-[#1A237E] mb-2">{dept.name}</h3>
               <p className="text-sm text-gray-600 leading-relaxed">{dept.description}</p>
+              {dept.name === "Evangelism" && (
+                <Link
+                  href="/go-a-fishing"
+                  className="inline-flex items-center gap-1 mt-2 text-[#3949AB] text-xs font-semibold hover:gap-2 transition-all"
+                >
+                  Go-A-Fishing →
+                </Link>
+              )}
             </div>
           ))}
         </div>

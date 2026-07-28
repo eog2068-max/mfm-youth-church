@@ -106,6 +106,27 @@ export function HeroSection() {
             </span>
           </Link>
         </motion.div>
+
+        {/* Three Pillar Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="mt-10 flex items-center justify-center gap-6"
+        >
+          <div className="flex flex-col items-center gap-1.5">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#E65100]" />
+            <span className="text-[10px] text-white/50 tracking-wider uppercase">Connect</span>
+          </div>
+          <div className="flex flex-col items-center gap-1.5">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#3949AB]" />
+            <span className="text-[10px] text-white/50 tracking-wider uppercase">Organize</span>
+          </div>
+          <div className="flex flex-col items-center gap-1.5">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#5C6BC0]" />
+            <span className="text-[10px] text-white/50 tracking-wider uppercase">Reach</span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

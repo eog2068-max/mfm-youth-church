@@ -934,3 +934,30 @@ DECISIONS IMPLEMENTED:
 5. Footer reorganization → 3-pillar platforms + general links + Watch Live CTA ✅
 
 NEXT: Stages 4-11 batch implementation (visual polish, section refinements), then Stage 12 regression
+
+---
+Task ID: REORG-S5-S11
+Agent: Main Agent
+Task: Three-Pillar Reorganization — Stages 5–11 Polish & Refinements
+
+Work Log:
+- Stage 5: Hero section — added three-pillar color indicator bar below CTA buttons (orange/indigo/indigo dots with Connect/Organize/Reach labels, 1.2s delay fade-in)
+- Stage 6: Visual rhythm — added alternating section background wrapper divs in page.tsx (LatestSermon→white, UpcomingEvents→white, AnnouncementPreview→#F8FAFF, VideoGalleryPreview→#F8FAFF, LocationMap→white)
+- Stage 7: Section CTAs — added secondary links to LatestSermon ("Browse Sermon Library →") and DevotionalPreview ("View All Devotionals →")
+- Stage 8: Countdown section — added three-pillar micro-nav row (RehobothSocial/Announcements/Go-A-Fishing pill links in pillar colors with icons)
+- Stage 9: Departments preview — updated Evangelism card description to mention Go-A-Fishing, added conditional "Go-A-Fishing →" CTA link
+- Stage 10: Footer mobile polish — pillar grid now stacks on mobile (grid-cols-1 → sm:grid-cols-3), added space-y-8 for mobile column separation, Watch Live CTA my-6 for mobile spacing
+- Stage 11: Navbar dropdown polish — added sideOffset={8} + alignOffset={-10}, added fade-in/zoom-in animation data attributes
+- Production build: 88 pages, zero errors
+- Lint: 17 errors (all pre-existing, none from our changes)
+
+Stage Summary:
+- 7 files modified: hero-section.tsx, countdown-section.tsx, departments-preview.tsx, latest-sermon.tsx, devotional-preview.tsx, footer.tsx, navbar.tsx + page.tsx
+- Hero now visually previews the three pillars via color dots
+- Countdown section provides quick-access nav to all three platforms
+- Consistent alternating visual rhythm across all 17 homepage sections
+- Footer responsive on mobile (pillar columns stack properly)
+- Navbar Explore dropdown has smooth open animation
+- All brand colors consistent throughout
+
+ALL STAGES 2–11 COMPLETE. Ready for Stage 12 regression.

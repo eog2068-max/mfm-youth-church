@@ -49,6 +49,11 @@ export function DevotionalPreview() {
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
+            <div className="mt-3">
+              <Link href="/devotionals" className="text-xs text-gray-400 hover:text-[#1A237E] transition-colors">
+                View All Devotionals →
+              </Link>
+            </div>
           </div>
         </div>
       </div>

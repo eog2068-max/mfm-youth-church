@@ -64,7 +64,7 @@ export function Footer() {
     <footer className="bg-[#0D1557] text-white">
       {/* Main Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 space-y-8 lg:space-y-0">
           {/* Column 1 — About */}
           <div>
             <h3 className="text-lg font-bold leading-tight">The Redeemed Christian Church of God</h3>
@@ -84,7 +84,7 @@ export function Footer() {
               Our Platforms
             </h4>
             {/* Pillars side-by-side on sm+, stacked on mobile */}
-            <div className="grid grid-cols-3 gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
               {pillarLinks.map((pillar) => (
                 <div key={pillar.title} className="sm:col-span-1">
                   <h5 className={`text-xs font-bold ${pillar.color} tracking-wide`}>
@@ -229,7 +229,7 @@ export function Footer() {
       </div>
 
       {/* Watch Live CTA Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6 lg:my-4">
         <a
           href="/live"
           className="flex items-center justify-center gap-2 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl py-3 font-semibold transition-colors w-full max-w-md mx-auto"

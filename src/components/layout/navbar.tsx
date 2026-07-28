@@ -471,8 +471,10 @@ export function Navbar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align="start"
+                sideOffset={8}
+                alignOffset={-10}
                 className={cn(
-                  "w-56 rounded-xl p-1.5",
+                  "w-56 rounded-xl p-1.5 data-[side=bottom]:animate-in data-[side=bottom]:fade-in-0 data-[side=bottom]:zoom-in-95",
                   mounted && scrolled
                     ? "bg-[#0D1557]/95 backdrop-blur-xl border-white/10"
                     : "bg-white border-gray-200 shadow-lg"

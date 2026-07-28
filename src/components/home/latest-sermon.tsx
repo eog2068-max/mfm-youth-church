@@ -63,6 +63,11 @@ export function LatestSermon() {
                   </Link>
                 </Button>
               </div>
+              <div className="mt-3">
+                <Link href="/sermons" className="text-xs text-gray-400 hover:text-[#1A237E] transition-colors">
+                  Browse Sermon Library →
+                </Link>
+              </div>
             </div>
           </div>
         </div>
