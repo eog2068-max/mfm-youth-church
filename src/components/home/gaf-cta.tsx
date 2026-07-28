@@ -89,6 +89,24 @@ export function GafCta() {
           })}
         </motion.div>
 
+        {/* Conceptual Flow */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10 text-xs sm:text-sm font-semibold tracking-wider"
+        >
+          {["INVITE", "REACH", "CONNECT", "ENGAGE", "IMPACT"].map((step, i) => (
+            <span key={step} className="flex items-center gap-2 sm:gap-3">
+              <span className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-3 sm:px-4 py-1.5 text-white/90">
+                {step}
+              </span>
+              {i < 4 && <ArrowRight className="w-3 h-3 text-white/30 hidden sm:block" />}
+            </span>
+          ))}
+        </motion.div>
+
         {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

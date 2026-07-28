@@ -141,7 +141,7 @@ const menuCategories: MenuCategory[] = [
   // ── CHURCH MANAGEMENT SYSTEM ──
   {
     id: "church-management",
-    title: "CHURCH MANAGEMENT",
+    title: "CHURCH MANAGEMENT SYSTEM",
     subtitle: "CMS — ORGANIZE",
     color: {
       headerBg: "bg-blue-50",
@@ -488,7 +488,7 @@ export function Navbar() {
                       : "text-gray-500"
                   )}
                 >
-                  <div className="text-xs font-bold tracking-wider">Church Management</div>
+                  <div className="text-xs font-bold tracking-wider">Church Management System</div>
                   <div className="text-[10px] font-normal mt-0.5">Everything in one place</div>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator

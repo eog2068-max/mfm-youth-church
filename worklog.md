@@ -987,3 +987,40 @@ Stage Summary:
 - Zero broken links across navbar (36) + footer (24) + homepage (17 imports)
 - Build clean: 88 pages, 0 errors, 0 warnings
 
+---
+Task ID: missing-sections
+Agent: Main Agent
+Task: Master Prompt Compliance — Build 5 Missing Landing Page Sections + 2 Enhancements + CMS Naming Fix
+
+Work Log:
+- Full audit revealed 5 of 8 master prompt landing page sections were never implemented (previous session substituted cosmetic polish instead of actual content sections)
+- Created 5 new homepage components:
+  1. church-vision.tsx (56 lines) — Section 3: "THE CHURCH IS MORE THAN A BUILDING. THE CHURCH IS A FAMILY." + "You Don't Have To Wait..." with dark gradient + staggered animations
+  2. mission-section.tsx (119 lines) — Section 4: CONNECT/ORGANIZE/REACH mission cards with exact prompt copy, pillar-colored accent bars, typed Variants
+  3. quick-access.tsx (92 lines) — Section 5: 9-item consolidated grid (Announcements, Events, Devotionals, Prayer, Ministries, Livestream, Media, Gallery, Contact) with responsive breakpoints
+  4. social-showcase.tsx (123 lines) — Section 6: Rebuilt with slogan "I REMAIN CONNECTED TO MY CHURCH FAMILY THROUGHOUT THE WEEK." + 5 named features (FamilyChat, Prayer Circle, Today's Question, Amen Wall, Live Together)
+  5. final-cta.tsx (132 lines) — Section 8: "YOUR CHURCH. YOUR FAMILY. YOUR DIGITAL HOME." + "CONNECT. ORGANIZE. REACH." + 3 pillar CTA buttons + Watch Live link
+- Enhanced 2 existing components:
+  1. hero-section.tsx — Added "MORE THAN A CHURCH. A CONNECTED FAMILY." headline above church name
+  2. gaf-cta.tsx — Added INVITE→REACH→CONNECT→ENGAGE→IMPACT conceptual flow pills with arrow separators
+- Fixed CMS naming inconsistency:
+  - navbar.tsx: "CHURCH MANAGEMENT" → "CHURCH MANAGEMENT SYSTEM"
+  - navbar.tsx: Desktop Explore dropdown "Church Management" → "Church Management System"
+  - footer.tsx: "Church Management" → "Church Management System"
+- Reordered page.tsx with new narrative section flow (22 sections total)
+- Production build: 88 pages, 0 errors, 0 warnings
+
+Stage Summary:
+- ALL 8 MASTER PROMPT LANDING PAGE SECTIONS NOW IMPLEMENTED
+- Section 1 (Hero): ✅ Enhanced with "MORE THAN A CHURCH. A CONNECTED FAMILY."
+- Section 2 (Three Pillars): ✅ Existed previously
+- Section 3 (Church Vision): ✅ NEW — Built
+- Section 4 (Missions): ✅ NEW — Built
+- Section 5 (Quick Access): ✅ NEW — Built
+- Section 6 (Social Showcase): ✅ REBUILT — With slogan + 5 features
+- Section 7 (GAF Showcase): ✅ ENHANCED — Added INVITE→REACH→CONNECT→ENGAGE→IMPACT flow
+- Section 8 (Final CTA): ✅ NEW — Built
+- CMS naming unified to "Church Management System" across all locations
+- Build clean: 88 pages, 0 errors, 0 warnings
+
+

@@ -25,7 +25,7 @@ const pillarLinks = [
   },
   {
     title: "ORGANIZE",
-    subtitle: "Church Management",
+    subtitle: "Church Management System",
     color: "text-[#1A237E]",
     links: [
       { label: "Announcements", href: "/announcements" },
