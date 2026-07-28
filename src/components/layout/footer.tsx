@@ -8,36 +8,64 @@ import {
   Mail,
   MapPin,
   Clock,
+  Radio,
 } from "lucide-react";
 
-const quickLinksLeft = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Leadership", href: "/leadership" },
-  { label: "Sermons", href: "/sermons" },
-  { label: "Watch Live", href: "/live" },
-  { label: "Events", href: "/events" },
-  { label: "Devotionals", href: "/devotionals" },
-  { label: "RehobothSocial", href: "/social" },
+const pillarLinks = [
+  {
+    title: "CONNECT",
+    subtitle: "RehobothSocial",
+    color: "text-[#E65100]",
+    links: [
+      { label: "FamilyChat", href: "/social/family-chat" },
+      { label: "Prayer Circle", href: "/social/prayer-circle" },
+      { label: "Today's Question", href: "/social/todays-question" },
+      { label: "Amen Wall", href: "/social/amen-wall" },
+    ],
+  },
+  {
+    title: "ORGANIZE",
+    subtitle: "Church Management",
+    color: "text-[#1A237E]",
+    links: [
+      { label: "Announcements", href: "/announcements" },
+      { label: "Events", href: "/events" },
+      { label: "Devotionals", href: "/devotionals" },
+      { label: "Sermons", href: "/sermons" },
+    ],
+  },
+  {
+    title: "REACH",
+    subtitle: "Go-A-Fishing",
+    color: "text-[#3949AB]",
+    links: [
+      { label: "Dashboard", href: "/go-a-fishing/dashboard" },
+      { label: "Leaderboard", href: "/go-a-fishing/leaderboard" },
+      { label: "Awards", href: "/go-a-fishing/awards" },
+    ],
+  },
 ];
 
-const quickLinksRight = [
+const generalLinks = [
+  { label: "About Us", href: "/about" },
+  { label: "Leadership", href: "/leadership" },
   { label: "Testimonies", href: "/testimonies" },
   { label: "Prayer", href: "/prayer" },
-  { label: "Join a Ministry", href: "/join-ministry" },
-  { label: "Photo Gallery", href: "/gallery" },
-  { label: "Announcements", href: "/announcements" },
   { label: "Giving", href: "/giving" },
   { label: "Contact", href: "/contact" },
-  { label: "Go-A-Fishing", href: "/go-a-fishing" },
+  { label: "Photo Gallery", href: "/gallery" },
+  { label: "Departments", href: "/departments" },
+  { label: "Members", href: "/members" },
+  { label: "Join Ministry", href: "/join-ministry" },
 ];
 
 export function Footer() {
   return (
     <footer className="bg-[#0D1557] text-white">
+      {/* Main Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          {/* About Column */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+          {/* Column 1 — About */}
           <div>
             <h3 className="text-lg font-bold leading-tight">The Redeemed Christian Church of God</h3>
             <p className="text-sm text-blue-200/70 mt-0.5">(Rehoboth Assembly Parish)</p>
@@ -50,40 +78,56 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links Column — 2 columns side by side */}
+          {/* Column 2 — Our Platforms (Three Pillars) */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-blue-200/50 mb-4 text-center">
-              Quick Links
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-blue-200/50 mb-4">
+              Our Platforms
             </h4>
-            <div className="grid grid-cols-2 gap-x-4">
-              <ul className="space-y-2">
-                {quickLinksLeft.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-blue-100/70 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <ul className="space-y-2">
-                {quickLinksRight.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-blue-100/70 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            {/* Pillars side-by-side on sm+, stacked on mobile */}
+            <div className="grid grid-cols-3 gap-4 sm:grid-cols-3">
+              {pillarLinks.map((pillar) => (
+                <div key={pillar.title} className="sm:col-span-1">
+                  <h5 className={`text-xs font-bold ${pillar.color} tracking-wide`}>
+                    {pillar.title}
+                  </h5>
+                  <p className="text-[10px] text-blue-200/40 mb-2">{pillar.subtitle}</p>
+                  <ul className="space-y-1.5">
+                    {pillar.links.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="text-xs text-blue-100/70 hover:text-white transition-colors"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Service Times Column — 2 column layout */}
+          {/* Column 3 — Quick Links (General) */}
+          <div>
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-blue-200/50 mb-4">
+              Quick Links
+            </h4>
+            <ul className="space-y-2">
+              {generalLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-blue-100/70 hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4 — Service Times */}
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider text-blue-200/50 mb-4">
               Service Times
@@ -117,7 +161,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Connect Column */}
+          {/* Column 5 — Connect With Us */}
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider text-blue-200/50 mb-4">
               Connect With Us
@@ -182,6 +226,17 @@ export function Footer() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Watch Live CTA Bar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <a
+          href="/live"
+          className="flex items-center justify-center gap-2 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl py-3 font-semibold transition-colors w-full max-w-md mx-auto"
+        >
+          <Radio className="size-4" />
+          Watch Live Service
+        </a>
       </div>
 
       {/* Bottom Bar */}

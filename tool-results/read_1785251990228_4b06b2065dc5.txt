@@ -1,0 +1,394 @@
+     1→   499→   499→
+     2→   500→   500→---
+     3→   501→   501→Task ID: GAF-S3
+     4→   502→   502→Agent: Main Agent
+     5→   503→   503→Task: Go-A-Fishing Stage 3 — Foundation (auth + data model + utility libs, no UI)
+     6→   504→   504→
+     7→   505→   505→Work Log:
+     8→   506→   506→- Clarified Stage 2 situation with user: prior session's GAF-S2 was design-only (no code changes), this session re-delivered the same design doc + appended formal GAF-S2 entry to worklog (was missing). No code duplication occurred.
+     9→   507→   507→- Installed @supabase/supabase-js@2.110.8 and @supabase/ssr@0.5.2 (verified loadable, createServerClient + createBrowserClient both present)
+    10→   508→   508→- Updated prisma/schema.prisma: switched datasource from sqlite → postgresql; preserved User + Post boilerplate verbatim; appended 8 new GAF models (Member, ReferralEvent, RewardCategory, RewardCycle, RewardWinner, PastoralCommendation, AdminConfig, AuditLog) with full indexes and relations
+    11→   509→   509→- Ran `npx prisma generate` — successful, Prisma Client v6.19.2 regenerated with new models
+    12→   510→   510→- Created src/lib/gaf/database-types.ts — minimal Database type stub (Supabase CLI codegen will replace later)
+    13→   511→   511→- Created src/lib/gaf/supabase-server.ts — getSupabaseServer() (RLS-enforced, cookie session) + getSupabaseAdmin() (service-role, RLS bypass)
+    14→   512→   512→- Created src/lib/gaf/supabase-client.ts — getSupabaseBrowser() singleton (anon key, RLS-enforced)
+    15→   513→   513→- Created src/lib/gaf/referral-code.ts — generateReferralCode() (REH-XXXXXX base32, no ambiguous chars), generateUniqueReferralCode() (collision-safe retry), normalizeReferralCode(), isValidReferralCode(), uses Web Crypto API
+    16→   514→   514→- Created src/lib/gaf/scoring.ts — REFERRAL_STATUSES, DEFAULT_SCORING_WEIGHTS (invited:1, attended:5, saved:10, baptized:25, member:50, lost_contact:0), parseScoringWeights(), computeMemberScore() (total + breakdown + counts), validateStatusTransition() (forward-only, lost_contact handling), serializeScoreBreakdown()
+    17→   515→   515→- Created src/lib/gaf/attribution.ts — setAttributionCookie() (30-day, httpOnly, sameSite=lax, secure in prod), getReferrerFromCookie() (server), getReferrerFromRequest() (middleware), clearAttributionCookie(), env-var-configurable name + window
+    18→   516→   516→- Created src/lib/gaf/auth.ts — getCurrentSupabaseUser(), getCurrentMember() (Supabase auth → Prisma member join, includes referrals + winners + commendations), getCurrentMemberId() (lightweight), hasRole() / requireRole() / requireMember() / isAdminOrPastor() (roles via app_metadata.role)
+    19→   517→   517→- Updated .env.example with new GAF section: NEXT_PUBLIC_GAF_BASE_URL, GAF_ATTRIBUTION_COOKIE_NAME (optional), GAF_ATTRIBUTION_WINDOW_DAYS (optional). Preserved all existing entries.
+    20→   518→   518→- Ran `npm run build` — ✓ Compiled successfully in 15.7s, all 46 pages generated, zero errors/warnings
+    21→   519→   519→- NO existing code modified (preservation rules honored):
+    22→   520→   520→  * src/lib/supabase/social-store.ts: untouched
+    23→   521→   521→  * src/lib/supabase/types.ts: untouched
+    24→   522→   522→  * src/lib/db.ts: untouched (reused as-is)
+    25→   523→   523→  * src/components/admin/admin-data.ts: untouched
+    26→   524→   524→  * Existing public routes: untouched
+    27→   525→   525→  * /api/social/admin/* auth-key checks: untouched
+    28→   526→   526→- SKIPPED: `prisma db push` (requires Supabase Postgres DATABASE_URL — user must provision Supabase project first). Will run when user provides connection string.
+    29→   527→   527→
+    30→   528→   528→Stage Summary:
+    31→   529→   529→- All 8 GAF models exist in schema.prisma and Prisma Client types are generated
+    32→   530→   530→- All 5 lib files created and compile cleanly
+    33→   531→   531→- Build passes with zero errors
+    34→   532→   532→- Foundation ready for Stage 4 (UI) — but BLOCKED on user provisioning Supabase:
+    35→   533→   533→  * User must create Supabase project at https://supabase.com
+    36→   534→   534→  * Set 4 env vars in Vercel + locally in .env:
+    37→   535→   535→    1. NEXT_PUBLIC_SUPABASE_URL
+    38→   536→   536→    2. NEXT_PUBLIC_SUPABASE_ANON_KEY
+    39→   537→   537→    3. SUPABASE_SERVICE_ROLE_KEY
+    40→   538→   538→    4. DATABASE_URL (Supabase Postgres pooled connection string, port 6543)
+    41→   539→   539→  * Set NEXT_PUBLIC_GAF_BASE_URL to production URL
+    42→   540→   540→  * Run `npx prisma db push` once to create the 8 new tables in Supabase Postgres
+    43→   541→   541→  * Existing SQLite db/custom.db is now unused (datasource switched to postgresql)
+    44→   542→   542→
+    45→   543→   543→Awaiting user "Go for 4" to begin Stage 4 — member-facing UI (login page, dashboard, referral card with QR, my-referrals list). Stage 4 will install qrcode.react dep + create first /go-a-fishing/* routes + first /r/[code] landing route.
+    46→   544→   544→
+    47→   545→   545→---
+    48→   546→   546→Task ID: GAF-S4
+    49→   547→   547→Agent: Main Agent
+    50→   548→   548→Task: Go-A-Fishing Stage 4 — Member-facing UI (login, dashboard, referrals, QR, share, referral landing)
+    51→   549→   549→
+    52→   550→   550→Work Log:
+    53→   551→   551→- Installed qrcode.react@4.2.0 (verified QRCodeSVG + QRCodeCanvas exports)
+    54→   552→   552→- Created src/middleware.ts — Supabase Auth session refresh for all routes (excluded: _next, static, /api/social/*). Gracefully skips if env vars unset (pre-provisioning safe).
+    55→   553→   553→- Created src/components/gaf/share-button.tsx — reusable ShareButton using Web Share API with clipboard fallback (fixes Stage 1 finding #7)
+    56→   554→   554→- Created src/components/gaf/referral-card.tsx — member's personal referral link + QRCodeSVG + ShareButton + PNG download (SVG→Canvas→Blob)
+    57→   555→   555→- Created src/components/gaf/gaf-landing.tsx — public landing page (scripture, 4 pillars, stats, CTA)
+    58→   556→   556→- Created src/components/gaf/gaf-login.tsx — magic-link sign-in form (idle/sending/sent/error states)
+    59→   557→   557→- Created src/components/gaf/gaf-dashboard.tsx — member dashboard (stats grid, referral card, recent referrals, commendations, sign-out)
+    60→   558→   558→- Created src/components/gaf/gaf-my-referrals.tsx — full referral list with filter pills + create-manual-referral dialog
+    61→   559→   559→- Created src/app/go-a-fishing/page.tsx — public landing route (handles ?ref=invalid_code)
+    62→   560→   560→- Created src/app/go-a-fishing/login/page.tsx — magic-link login route
+    63→   561→   561→- Created src/app/go-a-fishing/dashboard/page.tsx — server component, redirects to /login if not authed, fetches member
+    64→   562→   562→- Created src/app/go-a-fishing/my-referrals/page.tsx — server component, fetches full referral list
+    65→   563→   563→- Created src/app/r/[code]/route.ts — referral landing route (case-insensitive lookup, sets attribution cookie, creates ReferralEvent with status:invited on first visit)
+    66→   564→   564→- Created src/app/api/gaf/auth/magic-link/route.ts — POST email → sends Supabase OTP
+    67→   565→   565→- Created src/app/api/gaf/auth/callback/route.ts — GET handles OTP exchange, auto-creates Member on first login (with collision-safe referralCode generation), redirects to /dashboard
+    68→   566→   566→- Created src/app/api/gaf/auth/signout/route.ts — POST clears Supabase session
+    69→   567→   567→- Created src/app/api/gaf/members/me/route.ts — GET (returns member) + PATCH (updates fullName, phone, whatsapp, avatarUrl with validation)
+    70→   568→   568→- Created src/app/api/gaf/referrals/route.ts — GET (paginated list with status filter) + POST (create manual referral with full validation)
+    71→   569→   569→- Updated src/components/layout/navbar.tsx — added "Go-A-Fishing" link to navItems array + added Fish icon button next to RehobothSocial in desktop view + added Go-A-Fishing button to mobile menu grid
+    72→   570→   570→- Ran npm run build — ✓ Compiled successfully in 19.0s, 55 pages generated (was 46; +9 new GAF routes), zero errors, middleware active
+    73→   571→   571→
+    74→   572→   572→Stage Summary:
+    75→   573→   573→- All Stage 4 routes registered: 4 page routes (/go-a-fishing/*) + 1 referral landing (/r/[code]) + 5 API routes (/api/gaf/auth/magic-link, /api/gaf/auth/callback, /api/gaf/auth/signout, /api/gaf/members/me, /api/gaf/referrals)
+    76→   574→   574→- Middleware: Supabase Auth session refresh on all non-static routes
+    77→   575→   575→- Member onboarding is automatic: first magic-link login creates a Member record with auto-generated referralCode (collision-safe)
+    78→   576→   576→- Referral attribution: /r/[code] sets 30-day cookie + creates ReferralEvent with status:invited (idempotent per cookie session)
+    79→   577→   577→- All existing public routes preserved (preservation rules honored)
+    80→   578→   578→- social-store.ts, supabase/types.ts, db.ts, admin-data.ts all untouched
+    81→   579→   579→- /api/social/admin/* auth-key checks untouched (middleware excludes /api/social/*)
+    82→   580→   580→- Build PASS with zero errors
+    83→   581→   581→
+    84→   582→   582→BLOCKERS for live deployment (user must action):
+    85→   583→   583→1. Provision Supabase project at https://supabase.com
+    86→   584→   584→2. Set 5 env vars in Vercel + locally in .env:
+    87→   585→   585→   - NEXT_PUBLIC_SUPABASE_URL
+    88→   586→   586→   - NEXT_PUBLIC_SUPABASE_ANON_KEY
+    89→   587→   587→   - SUPABASE_SERVICE_ROLE_KEY
+    90→   588→   588→   - DATABASE_URL (Supabase Postgres pooled connection, port 6543)
+    91→   589→   589→   - NEXT_PUBLIC_GAF_BASE_URL (production URL)
+    92→   590→   590→3. Run `npx prisma db push` once to create 8 new tables in Supabase Postgres
+    93→   591→   591→4. In Supabase dashboard → Authentication → URL Configuration:
+    94→   592→   592→   - Set Site URL to production URL
+    95→   593→   593→   - Add Redirect URLs: https://your-domain.vercel.app/api/gaf/auth/callback
+    96→   594→   594→5. (Optional) Set first user's role to admin: Supabase dashboard → Authentication → Users → edit user → app_metadata: {"role": "admin"}
+    97→   595→   595→
+    98→   596→   596→Awaiting user "Go for 5" to begin Stage 5 — public leaderboard page + /api/gaf/leaderboard route + ranking calculation engine.
+    99→   597→   597→
+   100→   598→   598→---
+   101→   599→   599→Task ID: GAF-S5
+   102→   600→   600→Agent: Main Agent
+   103→   601→   601→Task: Go-A-Fishing Stage 5 — Public leaderboard (ranking engine + UI + auto-refresh)
+   104→   602→   602→
+   105→   603→   603→Work Log:
+   106→   604→   604→- Created src/lib/gaf/leaderboard.ts — ranking engine
+   107→   605→   605→  * computeLeaderboard(period, limit, offset) — main entry point
+   108→   606→   606→  * getMemberRank(memberId, period) — for "Your rank: #5" badges
+   109→   607→   607→  * Period helpers: getQuarter(), getPreviousQuarter(), getQuarterRange(), getYtdRange(), getAllTimeRange()
+   110→   608→   608→  * Scoring: referrals counted toward a cycle if updatedAt falls in window (so progression during cycle counts at latest status)
+   111→   609→   609→  * Tiebreakers: (1) count of "member" referrals, (2) "baptized", (3) "saved", (4) "attended", (5) oldest joinDate
+   112→   610→   610→  * Rank assignment with proper tie handling (tied entries share rank, next entry skips)
+   113→   611→   611→  * Loads scoring weights from AdminConfig (Stage 6 will add admin UI to edit)
+   114→   612→   612→- Created src/app/api/gaf/leaderboard/route.ts — GET endpoint (period=current|previous|ytd|all, limit 1-100, offset 0+)
+   115→   613→   613→  * Public endpoint — no auth required (leaderboard is a public celebration)
+   116→   614→   614→  * Strips sensitive fields (only exposes fullName, avatarUrl, referralCode, totalScore, counts)
+   117→   615→   615→- Created src/components/gaf/gaf-leaderboard.tsx — public leaderboard UI
+   118→   616→   616→  * Period toggle (Current Quarter / Previous Quarter / YTD / All Time)
+   119→   617→   617→  * Top 3 podium with gold/silver/bronze styling (Crown/Medal icons)
+   120→   618→   618→  * Remaining ranks as list with status chips (invited/attended/saved/baptized/member)
+   121→   619→   619→  * Cycle info banner (name, participants, status badge: open/tallying/closed)
+   122→   620→   620→  * Auto-refresh polling (5 min default, matches AdminConfig.leaderboardRefreshIntervalSec)
+   123→   621→   621→  * Manual refresh button
+   124→   622→   622→  * Loading / error / empty states
+   125→   623→   623→  * Highlights current member with amber background + "You" badge
+   126→   624→   624→- Created src/app/go-a-fishing/leaderboard/page.tsx — server component, public, passes currentMemberId (if logged in) to highlight own row
+   127→   625→   625→- Ran npm run build — ✓ Compiled successfully in 17.4s, 57 pages generated (was 55; +2 new leaderboard routes), zero errors
+   128→   626→   626→
+   129→   627→   627→Stage Summary:
+   130→   628→   628→- Public leaderboard live at /go-a-fishing/leaderboard
+   131→   629→   629→- API at /api/gaf/leaderboard?period=current&limit=50
+   132→   630→   630→- Supports 4 period views: current quarter, previous quarter, year-to-date, all-time
+   133→   631→   631→- Top 3 get podium treatment; ranks 4+ render as list with full status breakdown chips
+   134→   632→   632→- Auto-refreshes every 5 minutes; manual refresh button available
+   135→   633→   633→- Public — no auth required (unauthenticated visitors still see full standings)
+   136→   634→   634→- If logged in, your row is highlighted with amber background + "You" badge
+   137→   635→   635→- Cycle status badge (OPEN/TALLYING/CLOSED) reflects the matching RewardCycle row from DB (Stage 6 will add cycle management UI)
+   138→   636→   636→- Build PASS, zero errors
+   139→   637→   637→
+   140→   638→   638→Awaiting user "Go for 6" to begin Stage 6 — admin/pastoral UI (member management, referral moderation, cycle management, AdminConfig editor, audit log viewer). Stage 6 will also add auth-gated /admin/gaf/* routes and /api/gaf/admin/* endpoints.
+   141→   639→   639→
+   142→   640→   640→---
+   143→   641→   641→Task ID: GAF-S6
+   144→   642→   642→Agent: Main Agent
+   145→   643→   643→Task: Go-A-Fishing Stage 6 — Admin/Pastoral UI (members, referrals, cycles, config, audit log)
+   146→   644→   644→
+   147→   645→   645→Work Log:
+   148→   646→   646→- Created src/app/admin/gaf/layout.tsx — auth-gated layout: redirects unauthenticated to /go-a-fishing/login, non-admin/pastor to /go-a-fishing, shows config-needed message if Supabase not connected
+   149→   647→   647→- Created src/components/gaf/admin/gaf-admin-shell.tsx — shared admin sidebar (dark navy #1A237E) with 6 nav items (Overview, Members, Referrals, Cycles, Configuration, Audit Log) + General Admin link + mobile responsive overlay sidebar
+   150→   648→   648→- Created src/app/api/gaf/admin/setup/route.ts — POST: first-time setup, upserts AdminConfig singleton + seeds 3 default RewardCategories (Soul Winner of the Quarter, Top Inviter, Faithful Follow-Up). Idempotent.
+   151→   649→   649→- Created src/app/api/gaf/admin/config/route.ts — GET (auto-creates singleton if missing) + PATCH (admin-only, updates all config fields with validation). Validates scoringWeights + featureFlags JSON.
+   152→   650→   650→- Created src/app/api/gaf/admin/members/route.ts — GET: paginated member list with search (name/email/phone/code) + status filter + referral/winner counts
+   153→   651→   651→- Created src/app/api/gaf/admin/members/[id]/route.ts — PATCH: update member status (suspend/reactivate) + profile fields. Writes audit log.
+   154→   652→   652→- Created src/app/api/gaf/admin/referrals/route.ts — GET: all referrals across members, filterable by status/channel/referrerId
+   155→   653→   653→- Created src/app/api/gaf/admin/referrals/[id]/route.ts — PATCH: update referral status with forward-only transition validation (admin can override with force=true). Auto-sets firstVisitDate on attended. Writes audit log.
+   156→   654→   654→- Created src/app/api/gaf/admin/cycles/route.ts — GET: all cycles with category info + winner counts. POST: create new cycle (validates category + quarter, checks duplicates)
+   157→   655→   655→- Created src/app/api/gaf/admin/cycles/[id]/route.ts — PATCH: update cycle status (open/tallying/closed). POST: close cycle + compute top-3 winners (scores all active members' referrals within cycle window, deletes existing winners, creates RewardWinner rows). Writes audit log.
+   158→   656→   656→- Created src/app/api/gaf/admin/audit-log/route.ts — GET: paginated audit trail with entityType/action filters
+   159→   657→   657→- Created src/app/admin/gaf/page.tsx + src/components/gaf/admin/gaf-admin-overview.tsx — admin overview with 4 stat cards, 5 quick-action tiles, recent activity feed
+   160→   658→   658→- Created src/app/admin/gaf/members/page.tsx + src/components/gaf/admin/gaf-admin-members.tsx — member management with search + suspend/reactivate buttons
+   161→   659→   659→- Created src/app/admin/gaf/referrals/page.tsx + src/components/gaf/admin/gaf-admin-referrals.tsx — all-referrals view with filter pills + one-click status progression buttons
+   162→   660→   660→- Created src/app/admin/gaf/cycles/page.tsx + src/components/gaf/admin/gaf-admin-cycles.tsx — cycle management with create dialog + close-and-compute-winners button
+   163→   661→   661→- Created src/app/admin/gaf/config/page.tsx + src/components/gaf/admin/gaf-admin-config.tsx — config editor for scoring weights, referral link settings, leaderboard settings, feature flags
+   164→   662→   662→- Created src/app/admin/gaf/audit-log/page.tsx + src/components/gaf/admin/gaf-admin-audit-log.tsx — audit trail viewer with refresh
+   165→   663→   663→- Ran npm run build — ✓ Compiled successfully in 16.4s, 69 pages generated (was 57; +12 new admin routes), zero errors
+   166→   664→   664→
+   167→   665→   665→Stage Summary:
+   168→   666→   666→- 6 admin pages: Overview, Members, Referrals, Cycles, Configuration, Audit Log
+   169→   667→   667→- 9 admin API endpoints: setup, config (GET+PATCH), members (GET), members/[id] (PATCH), referrals (GET), referrals/[id] (PATCH), cycles (GET+POST), cycles/[id] (PATCH+POST close), audit-log (GET)
+   170→   668→   668→- Auth gate: layout.tsx checks Supabase auth + app_metadata.role (admin/pastor). Non-authorized users redirected away.
+   171→   669→   669→- Graceful degradation: if Supabase env vars unset, shows config-needed message instead of crashing
+   172→   670→   670→- Cycle close engine: computes per-member scores for all referrals within cycle window, takes top 3, creates RewardWinner rows, marks cycle as closed
+   173→   671→   671→- All admin actions write to AuditLog (actor, action, entity, before/after, IP, user-agent)
+   174→   672→   672→- First-time setup seeds 3 RewardCategories automatically
+   175→   673→   673→- Build PASS, zero errors, 69 pages total
+   176→   674→   674→
+   177→   675→   675→BLOCKERS still apply from Stage 4:
+   178→   676→   676→1. Supabase project provisioning (env vars)
+   179→   677→   677→2. Run `npx prisma db push` to create tables
+   180→   678→   678→3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
+   181→   679→   679→
+   182→   680→   680→---
+   183→   681→   681→Task ID: GAF-S7
+   184→   682→   682→Agent: Main Agent
+   185→   683→   683→Task: Go-A-Fishing Stage 7 — Awards & Commendations (public awards page + admin commendation management)
+   186→   684→   684→
+   187→   685→   685→Work Log:
+   188→   686→   686→- Created src/app/api/gaf/awards/route.ts — GET: public endpoint returning closed cycle winners (with category + member info), recent public commendations, and active/tallying cycles for context. Paginatable via limit + commendLimit params.
+   189→   687→   687→- Created src/app/api/gaf/commendations/route.ts — GET: public endpoint for commendations list. Visibility filtering: unauthenticated users see only "public"; authenticated members see "public" + "members_only". Supports cursor pagination + memberId filter.
+   190→   688→   688→- Created src/app/api/gaf/admin/commendations/route.ts — POST: admin/pastor create commendation (validates recipient memberId, title, message, optional visibility/scripture/givenBy, verifies target member exists and is active). GET: admin endpoint returning ALL commendations (including private), with visibility/memberId filters.
+   191→   689→   689→- Created src/app/api/gaf/admin/commendations/[id]/route.ts — PATCH: update commendation fields (title, message, visibility, scriptureReference) with audit trail diff tracking. DELETE: remove commendation with audit log. Both admin/pastor only.
+   192→   690→   690→- Created src/components/gaf/gaf-awards.tsx — public awards showcase: hero section with scripture (Matt 25:21), active competitions banner (open/tallying cycles with status badges), closed cycle winners with podium display (gold/silver/bronze for up to 3, extended list for 4+), score breakdown chips, pastoral commendations wall (2-column grid with amber gradient cards, scripture references, giver attribution), load-more pagination for both sections, empty states, loading/error states, 1 Cor 15:58 scripture footer.
+   193→   691→   691→- Created src/app/go-a-fishing/awards/page.tsx — server component with PageBanner, renders GafAwards.
+   194→   692→   692→- Created src/components/gaf/admin/gaf-admin-commendations.tsx — admin commendation management: full list with visibility badges (public/members_only/private), search by member/title/giver, filter by visibility, create dialog with debounced member search (reuses /api/gaf/admin/members endpoint), form fields (recipient, title, message, scripture, givenBy, visibility toggle), delete with confirmation dialog, stats bar (total/public/members-only counts), cursor pagination.
+   195→   693→   693→- Created src/app/admin/gaf/commendations/page.tsx — admin page route.
+   196→   694→   694→- Updated src/components/gaf/admin/gaf-admin-shell.tsx — added "Commendations" nav item (Award icon) between Cycles and Configuration in both desktop sidebar and mobile overlay.
+   197→   695→   695→- Ran npm run build — ✓ Compiled successfully in 18.0s, 74 pages generated (was 69; +5 new routes), zero errors
+   198→   696→   696→
+   199→   697→   697→Stage Summary:
+   200→   698→   698→- Public awards page live at /go-a-fishing/awards
+   201→   699→   699→  * Hero with scripture (Matt 25:21)
+   202→   700→   700→  * Active competitions banner (shows open/tallying cycles with countdown context)
+   203→   701→   701→  * Closed cycle winners — podium display (gold/silver/bronze) per cycle with score breakdown
+   204→   702→   702→  * Pastoral commendations wall — 2-column cards with scripture refs + giver attribution
+   205→   703→   703→  * Load-more pagination for both sections
+   206→   704→   704→- 4 new API endpoints:
+   207→   705→   705→  * GET /api/gaf/awards — public (closed cycles + public commendations + active cycles)
+   208→   706→   706→  * GET /api/gaf/commendations — public (commendations with auth-aware visibility filtering)
+   209→   707→   707→  * POST /api/gaf/admin/commendations — admin (create commendation)
+   210→   708→   708→  * PATCH /api/gaf/admin/commendations/[id] — admin (update commendation)
+   211→   709→   709→  * DELETE /api/gaf/admin/commendations/[id] — admin (delete commendation)
+   212→   710→   710→- Admin commendation management at /admin/gaf/commendations
+   213→   711→   711→  * Full list with visibility filter pills + search
+   214→   712→   712→  * Create dialog with member search, form validation, visibility toggle
+   215→   713→   713→  * Delete with confirmation
+   216→   714→   714→- Admin sidebar updated: "Commendations" nav item added (7 items now)
+   217→   715→   715→- Dashboard quick-link to awards page already existed from Stage 4 (link to /go-a-fishing/awards)
+   218→   716→   716→- Build PASS, zero errors, 74 pages total
+   219→   717→   717→
+   220→   718→   718→BLOCKERS still apply from Stage 4:
+   221→   719→   719→1. Supabase project provisioning (env vars)
+   222→   720→   720→2. Run `npx prisma db push` to create tables
+   223→   721→   721→3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
+   224→   722→   722→
+   225→   723→   723→Awaiting user "Go for 9" to begin Stage 9.
+   226→   724→   724→
+   227→   725→   725→---
+   228→   726→   726→Task ID: GAF-S8
+   229→   727→   727→Agent: Main Agent
+   230→   728→   728→Task: Go-A-Fishing Stage 8 — Reports & Analytics (pastoral insights dashboard with recharts)
+   231→   729→   729→
+   232→   730→   730→Work Log:
+   233→   731→   731→- Created src/lib/gaf/analytics.ts — analytics engine: computeAnalytics() function returning comprehensive outreach data. Includes: referral funnel (6 statuses with counts + percentages), monthly trend (last 12 months — referrals, conversions, new members), top performers (up to 20 by score with conversion rate + avg days to convert), channel distribution (link/qr/whatsapp/manual/flyer/other), quarter-over-quarter growth calculation, overall conversion rate (attended+ percentage), lost contact count, inactive member count. All queries in parallel for performance.
+   234→   732→   732→- Created src/app/api/gaf/admin/analytics/route.ts — GET: admin/pastor endpoint. Supports section param (overview|funnel|trends|performers|all) for partial loads. Full analytics is heavy but admin-only and infrequent.
+   235→   733→   733→- Created src/components/gaf/admin/gaf-admin-reports.tsx — pastoral analytics dashboard using recharts (already installed): 4 KPI cards (total members, total referrals, conversion rate, quarter growth with trend arrow + lost contact/inactive alerts), referral funnel bar chart (color-coded per status), channel distribution (horizontal progress bars), monthly trend line chart (3 lines: referrals, conversions, new members), top performers table (rank badge, name, referral code, score, conversion rate pill with color coding, avg days to convert). All sections with loading/error states.
+   236→   734→   734→- Created src/app/admin/gaf/reports/page.tsx — admin page route.
+   237→   735→   735→- Updated src/components/gaf/admin/gaf-admin-shell.tsx — added "Reports" nav item (BarChart3 icon) between Commendations and Configuration in both desktop sidebar and mobile overlay (8 items total).
+   238→   736→   736→- Ran npm run build — ✓ Compiled successfully in 22.5s, 76 pages generated (was 74; +2 new routes), zero errors
+   239→   737→   737→
+   240→   738→   738→Stage Summary:
+   241→   739→   739→- Admin reports page live at /admin/gaf/reports
+   242→   740→   740→  * 4 KPI summary cards with quarter-over-quarter growth indicator
+   243→   741→   741→  * Referral funnel bar chart (color-coded: invited→member→lost_contact)
+   244→   742→   742→  * Channel distribution visualization (link, QR, WhatsApp, manual, flyer)
+   245→   743→   743→  * Monthly trend line chart (12 months — referrals, conversions, new members)
+   246→   744→   744→  * Top performers table (ranked by score, up to 15 shown, conversion rate color-coded)
+   247→   745→   745→  * Lost contact + inactive member alert badges
+   248→   746→   746→  * Refresh button for live data reload
+   249→   747→   747→- Analytics engine in src/lib/gaf/analytics.ts
+   250→   748→   748→  * All queries parallelized via Promise.all
+   251→   749→   749→  * Scoring weights loaded from AdminConfig (same as leaderboard)
+   252→   750→   750→  * Conversion rate = referrals reaching "attended" or beyond
+   253→   751→   751→  * Avg days to convert = mean time from referral creation to first status advancement
+   254→   752→   752→- API at GET /api/gaf/admin/analytics (supports section param for partial loads)
+   255→   753→   753→- Admin sidebar: 8 nav items now (Overview, Members, Referrals, Cycles, Commendations, Reports, Configuration, Audit Log)
+   256→   754→   754→- Build PASS, zero errors, 76 pages total
+   257→   755→   755→
+   258→   756→   756→BLOCKERS still apply from Stage 4:
+   259→   757→   757→1. Supabase project provisioning (env vars)
+   260→   758→   758→2. Run `npx prisma db push` to create tables (now 9 GAF tables)
+   261→   759→   759→3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
+   262→   760→   760→
+   263→   761→   761→---
+   264→   762→   762→Task ID: GAF-S9
+   265→   763→   763→Agent: Main Agent
+   266→   764→   764→Task: Go-A-Fishing Stage 9 — Outreach Activity Self-Reporting (member outreach log + admin moderation)
+   267→   765→   765→
+   268→   766→   766→Work Log:
+   269→   767→   767→- Added OutreachActivity model to prisma/schema.prisma — 9th GAF model. Fields: type (10 outreach types), title, description, activityDate, location, contacts, decisions, notes, status (confirmed/flagged/disputed). Indexed on memberId+activityDate, type+activityDate, status.
+   270→   768→   768→- Added outreachActivities relation to Member model.
+   271→   769→   769→- Ran npx prisma generate — Prisma Client v6.19.2 regenerated.
+   272→   770→   770→- Created src/lib/gaf/outreach-types.ts — shared constants (VALID_TYPES, TYPE_LABELS, TYPE_COLORS).
+   273→   771→   771→- Created src/app/api/gaf/outreach/route.ts — GET (member's activities + stats with weekly streak) + POST (create activity, validates AdminConfig.outreachActivitySelfReportAllowed).
+   274→   772→   772→- Created src/app/api/gaf/admin/outreach/route.ts — GET (all members' activities + aggregate summary) + PATCH (status moderation) + DELETE (with audit trail).
+   275→   773→   773→- Created src/components/gaf/gaf-my-outreach.tsx — member outreach page: 4 stat cards, 10-type filter pills, activity log, create dialog with type picker grid, Matt 28:19 footer.
+   276→   774→   774→- Created src/app/go-a-fishing/my-outreach/page.tsx — auth-guarded server component.
+   277→   775→   775→- Created src/components/gaf/admin/gaf-admin-outreach.tsx — admin outreach viewer with summary stats, type+status filters, Flag/Confirm/Dispute/Delete actions.
+   278→   776→   776→- Created src/app/admin/gaf/outreach/page.tsx — admin page route.
+   279→   777→   777→- Updated gaf-dashboard.tsx — added "My Outreach" quick-link, expanded grid to 4 columns.
+   280→   778→   778→- Updated gaf-admin-shell.tsx — added "Outreach" nav item (9 items total).
+   281→   779→   779→- Ran npm run build — ✓ 80 pages, zero errors
+   282→   780→   780→
+   283→   781→   781→Stage Summary:
+   284→   782→   782→- Member outreach page at /go-a-fishing/my-outreach (10 outreach types, stats, streak tracking)
+   285→   783→   783→- Admin outreach viewer at /admin/gaf/outreach (moderation: flag/confirm/dispute/delete)
+   286→   784→   784→- 9th Prisma model: OutreachActivity
+   287→   785→   785→- Dashboard: 4 quick-links, Admin sidebar: 9 nav items
+   288→   786→   786→- Build PASS, zero errors, 80 pages total
+   289→   787→   787→
+   290→   788→   788→Awaiting user "Go for 11" to begin Stage 11.
+   291→   789→   789→
+   292→   790→   790→---
+   293→   791→   791→Task ID: GAF-S10
+   294→   792→   792→Agent: Main Agent
+   295→   793→   793→Task: Go-A-Fishing Stage 10 — In-App Notifications & Activity Feed (member notification center + admin broadcast)
+   296→   794→   794→
+   297→   795→   795→Work Log:
+   298→   796→   796→- Added Notification model to prisma/schema.prisma — 10th GAF model. Fields: type (8 notification types), title, message, data (JSON), read boolean, readAt. Indexed on memberId+read+createdAt, memberId+type, read+createdAt.
+   299→   797→   797→- Added notifications relation to Member model.
+   300→   798→   798→- Ran npx prisma generate — Prisma Client v6.19.2 regenerated.
+   301→   799→   799→- Created src/lib/gaf/notification-engine.ts — notification engine with: createNotification(), createBulkNotifications(), getUnreadCount(), convenience helpers for all event types (notifyReferralStatusChange, notifyCommendation, notifyAwardWin, notifyOutreachModeration, notifyCycleClosed, broadcastToAllMembers).
+   302→   800→   800→- Created src/app/api/gaf/notifications/route.ts — GET (member's notifications + unreadCount, cursor pagination, type/unread filters) + PATCH (mark single read + mark all read).
+   303→   801→   801→- Created src/app/api/gaf/notifications/unread-count/route.ts — GET lightweight endpoint for bell badge polling.
+   304→   802→   802→- Created src/app/api/gaf/admin/notifications/route.ts — GET (all members' notifications + aggregate stats + per-type breakdown, type/memberId filters) + POST (broadcast to all active members or targeted set, validates member IDs, max 500, writes audit log) + DELETE (with audit log).
+   305→   803→   803→- Created src/components/gaf/notification-bell.tsx — bell dropdown component: polls unread count every 60s, shows latest 10 notifications in dropdown, mark-read/mark-all-read, time-ago labels, type-colored icons, outside-click close.
+   306→   804→   804→- Created src/components/gaf/gaf-notifications.tsx — full notifications page: 8 type filter pills, grouped-by-date activity feed, mark-read on click, mark-all-read button, load-more pagination, empty/loading/error states, Hebrews 10:24 footer.
+   307→   805→   805→- Created src/app/go-a-fishing/notifications/page.tsx — auth-guarded server component.
+   308→   806→   806→- Created src/components/gaf/admin/gaf-admin-notifications.tsx — admin notification management: broadcast dialog (type picker, title, message, char counters, validation, send result), notification log viewer (type filter pills, member ID search, per-notification type badges, delete with audit trail), stats bar (total, unread, top 2 type breakdown).
+   309→   807→   807→- Created src/app/admin/gaf/notifications/page.tsx — admin page route.
+   310→   808→   808→- Updated gaf-dashboard.tsx — added NotificationBell in header, added Notifications quick-link (5th item in grid).
+   311→   809→   809→- Updated gaf-admin-shell.tsx — added Bell icon import, added "Notifications" nav item (10 items total).
+   312→   810→   810→- Ran npm run build — ✓ 85 pages, zero errors
+   313→   811→   811→
+   314→   812→   812→Stage Summary:
+   315→   813→   813→- Member notifications page at /go-a-fishing/notifications (8 notification types, date-grouped activity feed, filters, mark-read)
+   316→   814→   814→- Admin notification manager at /admin/gaf/notifications (broadcast composer, notification log, stats, delete)
+   317→   815→   815→- Notification bell dropdown on member dashboard (polls every 60s, shows latest 10)
+   318→   816→   816→- 10th Prisma model: Notification
+   319→   817→   817→- 3 new API routes: /api/gaf/notifications (GET+PATCH), /api/gaf/notifications/unread-count (GET), /api/gaf/admin/notifications (GET+POST+DELETE)
+   320→   818→   818→- Dashboard: 5 quick-links, Admin sidebar: 10 nav items
+   321→   819→   819→- Build PASS, zero errors, 85 pages total
+   322→   820→   820→
+   323→   821→   821→Awaiting user "Go for 12" to begin Stage 12 (final stage).
+   324→   822→   822→
+   325→   823→   823→---
+   326→   824→   824→Task ID: GAF-S11
+   327→   825→   825→Agent: Main Agent
+   328→   826→   826→Task: Go-A-Fishing Stage 11 — Member Profile & Enhanced Sharing (profile page, share dialog, e-invite, activity timeline)
+   329→   827→   827→
+   330→   828→   828→Work Log:
+   331→   829→   829→- Created src/components/gaf/enhanced-share-dialog.tsx — rich share dialog with 5 channels (WhatsApp, Email, Facebook, X/Twitter, Telegram), copy link, download QR, custom message editor (500 chars), QR color picker (6 presets + custom hex), live QR preview. Generates per-platform share URLs.
+   332→   830→   830→- Created src/components/gaf/e-invite-card.tsx — shareable e-invitation card with church branding, QR code, referral code, service times, personal note, save-as-image (SVG-to-PNG canvas), native share API support.
+   333→   831→   831→- Created src/components/gaf/gaf-profile.tsx — member profile page with: profile header (avatar, name, join date, referral code, assembly, phone badges), 5-stat summary row (score/referrals/outreach/awards/commendations), inline profile editor (name/phone/WhatsApp via PATCH /api/gaf/members/me), 3-tab layout: Overview (score breakdown per status, outreach summary, awards list, quick-links), Share & Invite (EnhancedShareDialog + EInviteCard), Activity (consolidated timeline merging referrals + outreach + commendations + awards, chronological with animated entries, type badges, time-ago labels).
+   334→   832→   832→- Created src/app/go-a-fishing/profile/page.tsx — auth-guarded server component, fetches full member data (up to 50 referrals, all outreach, notifications, awards, commendations).
+   335→   833→   833→- Updated src/components/gaf/referral-card.tsx — replaced old "Share" button row with EnhancedShareDialog trigger (keeps QR PNG download + WhatsApp ShareButton).
+   336→   834→   834→- Updated src/components/gaf/gaf-dashboard.tsx — added User icon import, added "Profile" quick-link (6th item), expanded grid to 6 columns.
+   337→   835→   835→- Ran npm run build — ✓ 86 pages, zero errors
+   338→   836→   836→
+   339→   837→   837→Stage Summary:
+   340→   838→   838→- Member profile page at /go-a-fishing/profile (editable name/phone/WhatsApp, stats overview, score breakdown, outreach summary, awards list)
+   341→   839→   839→- Share & Invite tab with EnhancedShareDialog (5 channels + copy + QR download + message customization + QR color picker)
+   342→   840→   840→- E-Invitation Card (branded card with QR, service times, save as image)
+   343→   841→   841→- Consolidated Activity Timeline (referrals + outreach + commendations + awards, chronological)
+   344→   842→   842→- Dashboard: 6 quick-links (added Profile)
+   345→   843→   843→- ReferralCard: now uses EnhancedShareDialog for richer sharing
+   346→   844→   844→- Build PASS, zero errors, 86 pages total
+   347→   845→   845→
+   348→   846→   846→---
+   349→   847→   847→Task ID: GAF-S12
+   350→   848→   848→Agent: Main Agent
+   351→   849→   849→Task: Go-A-Fishing Stage 12 — Final Polish & Deploy Prep (cleanup, SEO, onboarding, dependency removal)
+   352→   850→   850→
+   353→   851→   851→Work Log:
+   354→   852→   852→- Removed dead next-auth@4.24.11 dependency (npm uninstall — 23 packages removed). No src/ files imported next-auth; confirmed via grep.
+   355→   853→   853→- Updated .env.example — removed legacy NEXTAUTH_SECRET/NEXTAUTH_URL vars, added GAF_SCORING_WEIGHTS_JSON documentation, consolidated into clean sections (Supabase, GAF Config, Social Features).
+   356→   854→   854→- Added metadataBase to root layout (src/app/layout.tsx) — resolves "metadataBase not set" build warning. Uses NEXT_PUBLIC_GAF_BASE_URL with fallback.
+   357→   855→   855→- Created src/app/sitemap.ts — dynamic sitemap generator covering all 31 public routes (static pages, social features, GAF public pages). GAF pages get priority 0.8, social 0.5, static 0.6.
+   358→   856→   856→- Created src/app/robots.txt (src/app/robots.ts) — allows all crawlers on public routes, blocks /admin/ /api/ /r/, links to sitemap.xml.
+   359→   857→   857→- Created src/components/gaf/gaf-onboarding-guide.tsx — 4-step onboarding card for new members (Share Your Link → Track Referrals → Log Outreach → Earn Awards). Shown only when member has 0 referrals. Dismissible with localStorage persistence. Animated step transitions, per-step action links, progress dots.
+   360→   858→   858→- Updated gaf-dashboard.tsx — integrated GafOnboardingGuide between stats grid and referral card.
+   361→   859→   859→- Updated prisma/schema.prisma comments — marked 10 GAF models, updated boilerplate comment (next-auth removed), noted User/Post safe for future deletion.
+   362→   860→   860→- Scanned all GAF components for console.log/TODO/FIXME — zero instances found (clean).
+   363→   861→   861→- Verified all GAF pages have Metadata exports — confirmed (all 8 member pages + admin layout).
+   364→   862→   862→- Ran npm run build — ✓ 88 pages, zero errors, no warnings
+   365→   863→   863→
+   366→   864→   864→Stage Summary — ALL 12 STAGES COMPLETE:
+   367→   865→   865→- Dead dependency removed: next-auth (23 packages)
+   368→   866→   866→- SEO: sitemap.xml + robots.txt + metadataBase fix
+   369→   867→   867→- Onboarding: 4-step guide for new members
+   370→   868→   868→- .env.example: cleaned up, documented
+   371→   869→   869→- Schema comments: updated for 10 models
+   372→   870→   870→- Build PASS: 88 pages, zero errors, zero warnings
+   373→   871→   871→
+   374→   872→   872→FULL GO-A-FISHING BUILD SUMMARY (Stages 1-12):
+   375→   873→   873→├── 10 Prisma models (Member, ReferralEvent, RewardCategory, RewardCycle, RewardWinner, PastoralCommendation, AdminConfig, AuditLog, OutreachActivity, Notification)
+   376→   874→   874→├── 22 GAF components (8 member-facing, 10 admin, 4 shared utilities)
+   377→   875→   875→├── 6 member pages: /dashboard, /login, /my-referrals, /my-outreach, /leaderboard, /awards, /notifications, /profile (8 total)
+   378→   876→   876→├── 10 admin pages: /overview, /members, /referrals, /outreach, /cycles, /commendations, /reports, /notifications, /config, /audit-log
+   379→   877→   877→├── 15+ API routes: auth (3), members (1+admin 2), referrals (1+admin 3), leaderboard (1), awards (1), commendations (2+admin 2), analytics (1), outreach (1+admin 1), notifications (2+admin 1), config (1), audit-log (1), setup (1)
+   380→   878→   878→├── Referral landing: /r/[code]
+   381→   879→   879→├── Public landing: /go-a-fishing (4-pillar program overview)
+   382→   880→   880→├── Sharing: EnhancedShareDialog (5 channels + QR customization), E-Invite Card, ShareButton
+   383→   881→   881→├── Notifications: bell dropdown (60s polling), full page, admin broadcast
+   384→   882→   882→├── Onboarding: 4-step guide for new members
+   385→   883→   883→├── SEO: sitemap.xml, robots.txt, metadataBase
+   386→   884→   884→└── Build: 88 pages, zero errors, zero warnings
+   387→   885→   885→
+   388→   886→   886→BLOCKERS (from Stage 4, still apply):
+   389→   887→   887→1. Supabase project provisioning (env vars)
+   390→   888→   888→2. Run `npx prisma db push` to create tables
+   391→   889→   889→3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
+   392→   890→   890→
+   393→   891→   891→READY FOR: git push to eog2068-max/rccg-rehoboth-assembly (awaiting user authorization)
+   394→   892→   892→

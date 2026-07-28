@@ -889,3 +889,48 @@ BLOCKERS (from Stage 4, still apply):
 3. Set first user's role to admin in Supabase dashboard (app_metadata.role = "admin")
 
 READY FOR: git push to eog2068-max/rccg-rehoboth-assembly (awaiting user authorization)
+
+---
+Task ID: REORG-S2
+Agent: Main Agent
+Task: Three-Pillar Reorganization — Stage 2 Decisions Finalized (design-only, no code changes)
+
+Work Log:
+- Reviewed 5 pending decisions from previous session's Stage 2 planning
+- User approved all 5 recommendations: (1) Announcements at /announcements with CTA, (2) "Church Information" label, (3) Watch Live in hamburger + footer, (4) Explore dropdown for CMS on desktop, (5) Footer reorg folded into Stage 3
+- No code modified in this step — decisions only
+
+Stage Summary:
+- All 5 Stage 2 decisions locked in
+- Ready to proceed to implementation stages
+
+---
+Task ID: REORG-S3
+Agent: Main Agent
+Task: Three-Pillar Reorganization — Landing Page Redesign + Navigation Restructuring (implementation)
+
+Work Log:
+- Created src/components/home/three-pillars-section.tsx — Three Pillars Showcase with 3 cards (CONNECT/orange, ORGANIZE/blue, REACH/indigo), gradient accent bars, feature pills, CTA buttons, staggered Framer Motion animation, Matthew 4:19 scripture
+- Created src/components/home/gaf-cta.tsx — Go-A-Fishing CTA section with dark gradient background, animated Fish icon, 3 stat pills, dual CTA buttons, decorative pattern overlay
+- Updated src/app/page.tsx — Added ThreePillarsSection after Hero, GafCta after GivingSection (17 sections total, ordered: Hero → Three Pillars → Countdown → Sermon → Pastor → Events → Departments → Devotional → Announcements → Photo → Video → Testimonies → Giving → GAF CTA → Social Promise → Social CTA → Location Map)
+- Updated src/components/layout/navbar.tsx — Added "Explore" CMS dropdown using shadcn DropdownMenu with 8 CMS items (Announcements, Events, Devotionals, Sermons, Prayer, Giving, Testimonies, Contact), "View All" link, responsive to scrolled/not-scrolled state, reduced desktopNavItems to Home + About
+- Updated src/components/layout/footer.tsx — Reorganized around 3 pillars (CONNECT/ORANGE, ORGANIZE/blue, REACH/indigo) + General Quick Links column, added Watch Live red CTA button bar between grid and copyright, 5-column grid layout (About, Our Platforms, Quick Links, Service Times, Connect With Us)
+- Production build: 88 pages, zero errors, zero warnings
+- Lint: zero new errors (17 pre-existing errors in unrelated files)
+
+Stage Summary:
+- Hamburger menu: already had perfect 4-category organization (no changes needed)
+- Desktop nav: reduced from 5 flat items to Home + About + Explore dropdown + 3 CTA buttons
+- Footer: 5-column grid with 3-pillar platform section + Watch Live CTA bar
+- Homepage: 2 new sections (Three Pillars Showcase + Go-A-Fishing CTA), 17 total sections
+- All brand colors consistent across pillars (CONNECT #E65100, ORGANIZE #1A237E, REACH #3949AB)
+- Build PASS: 88 pages, zero errors
+
+DECISIONS IMPLEMENTED:
+1. Announcements placement → /announcements with CTA button in CMS menu ✅
+2. "Church Information" label → used in hamburger menu General section ✅
+3. Watch Live → in hamburger bottom CTA + footer CTA bar + navbar red button ✅
+4. Explore dropdown → added to desktop nav with 8 CMS items ✅
+5. Footer reorganization → 3-pillar platforms + general links + Watch Live CTA ✅
+
+NEXT: Stages 4-11 batch implementation (visual polish, section refinements), then Stage 12 regression

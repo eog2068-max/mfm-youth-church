@@ -37,6 +37,7 @@ import {
   Trophy,
   ChevronDown,
   ChevronUp,
+  ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -46,6 +47,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
 // ──────────────────────────────────────────────────────────────
@@ -54,9 +63,20 @@ import { cn } from "@/lib/utils";
 const desktopNavItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Sermons", href: "/sermons" },
-  { label: "Events", href: "/events" },
-  { label: "Devotionals", href: "/devotionals" },
+];
+
+// ──────────────────────────────────────────────────────────────
+// Explore dropdown items (CMS / ORGANIZE)
+// ──────────────────────────────────────────────────────────────
+const exploreDropdownItems = [
+  { label: "Announcements", href: "/announcements", icon: Megaphone },
+  { label: "Events", href: "/events", icon: CalendarDays },
+  { label: "Devotionals", href: "/devotionals", icon: BookOpen },
+  { label: "Sermons", href: "/sermons", icon: Mic },
+  { label: "Prayer Requests", href: "/prayer", icon: HandHeart },
+  { label: "Giving", href: "/giving", icon: Gift },
+  { label: "Testimonies", href: "/testimonies", icon: Star },
+  { label: "Contact", href: "/contact", icon: Mail },
 ];
 
 // ──────────────────────────────────────────────────────────────
@@ -433,6 +453,95 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
+
+            {/* Explore dropdown (CMS / ORGANIZE) */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  className={cn(
+                    "flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors outline-none",
+                    mounted && scrolled
+                      ? "text-blue-100/80 hover:text-white hover:bg-white/10"
+                      : "text-gray-600 hover:text-[#1A237E] hover:bg-[#1A237E]/5"
+                  )}
+                >
+                  Explore
+                  <ChevronDown className="size-3.5" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="start"
+                className={cn(
+                  "w-56 rounded-xl p-1.5",
+                  mounted && scrolled
+                    ? "bg-[#0D1557]/95 backdrop-blur-xl border-white/10"
+                    : "bg-white border-gray-200 shadow-lg"
+                )}
+              >
+                <DropdownMenuLabel
+                  className={cn(
+                    "px-2.5 py-2",
+                    mounted && scrolled
+                      ? "text-blue-100/80"
+                      : "text-gray-500"
+                  )}
+                >
+                  <div className="text-xs font-bold tracking-wider">Church Management</div>
+                  <div className="text-[10px] font-normal mt-0.5">Everything in one place</div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator
+                  className={cn(
+                    mounted && scrolled ? "bg-white/10" : "bg-gray-100"
+                  )}
+                />
+                {exploreDropdownItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <DropdownMenuItem key={item.href} asChild>
+                      <Link
+                        href={item.href}
+                        className={cn(
+                          "flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm cursor-pointer transition-colors",
+                          mounted && scrolled
+                            ? cn(
+                                pathname === item.href
+                                  ? "text-white bg-white/15 font-semibold"
+                                  : "text-blue-100/80 hover:text-white hover:bg-white/10"
+                              )
+                            : cn(
+                                pathname === item.href
+                                  ? "text-[#1A237E] bg-[#1A237E]/10 font-semibold"
+                                  : "text-gray-600 hover:text-[#1A237E] hover:bg-[#1A237E]/5"
+                              )
+                        )}
+                      >
+                        <Icon className="size-4 shrink-0" />
+                        {item.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  );
+                })}
+                <DropdownMenuSeparator
+                  className={cn(
+                    mounted && scrolled ? "bg-white/10" : "bg-gray-100"
+                  )}
+                />
+                <DropdownMenuItem asChild>
+                  <Link
+                    href="/announcements"
+                    className={cn(
+                      "flex items-center justify-between gap-2.5 px-2.5 py-2 rounded-lg text-sm cursor-pointer transition-colors",
+                      mounted && scrolled
+                        ? "text-[#90CAF9] hover:text-white hover:bg-white/10"
+                        : "text-[#1A237E] hover:text-[#0D1557] hover:bg-[#1A237E]/5"
+                    )}
+                  >
+                    View All
+                    <ArrowRight className="size-3.5" />
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Right side: CTA buttons + Mobile Menu */}

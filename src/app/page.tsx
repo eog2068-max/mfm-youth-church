@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/home/hero-section";
+import { ThreePillarsSection } from "@/components/home/three-pillars-section";
 import { CountdownSection } from "@/components/home/countdown-section";
 import { LatestSermon } from "@/components/home/latest-sermon";
 import { PastorsWelcome } from "@/components/home/pastors-welcome";
@@ -10,13 +11,16 @@ import { PhotoGalleryPreview } from "@/components/home/photo-gallery-preview";
 import { VideoGalleryPreview } from "@/components/home/video-gallery-preview";
 import { Testimonies } from "@/components/home/testimonies";
 import { GivingSection } from "@/components/home/giving-section";
-import { LocationMap } from "@/components/home/location-map";
+import { GafCta } from "@/components/home/gaf-cta";
 import { SocialPromise } from "@/components/home/social-promise";
+import { SocialCTA } from "@/components/home/social-cta";
+import { LocationMap } from "@/components/home/location-map";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
+      <ThreePillarsSection />
       <CountdownSection />
       <LatestSermon />
       <PastorsWelcome />
@@ -28,7 +32,9 @@ export default function Home() {
       <VideoGalleryPreview />
       <Testimonies />
       <GivingSection />
+      <GafCta />
       <SocialPromise />
+      <SocialCTA />
       <LocationMap />
     </>
   );
