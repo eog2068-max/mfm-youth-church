@@ -1,15 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+import { isAdminOrPastor } from "@/lib/gaf/auth";
 
-const ADMIN_API_KEY = process.env.SOCIAL_ADMIN_KEY || "rccg-rehoboth-admin-2024";
-
-function verifyAdmin(req: NextRequest): boolean {
-  const key = req.headers.get("x-admin-key");
-  return key === ADMIN_API_KEY;
+async function verifyAdmin(): Promise<boolean> {
+  return isAdminOrPastor();
 }
 
 // GET /api/social/admin/chat — chat overview for admin
 export async function GET(req: NextRequest) {
-  if (!verifyAdmin(req)) {
+  if (!(await verifyAdmin())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   try {
@@ -29,7 +27,7 @@ export async function GET(req: NextRequest) {
 
 // POST /api/social/admin/chat — create a new channel
 export async function POST(req: NextRequest) {
-  if (!verifyAdmin(req)) {
+  if (!(await verifyAdmin())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   try {

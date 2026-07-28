@@ -250,3 +250,27 @@ model Notification {
   @@index([memberId, type])
   @@index([read, createdAt])
 }
+
+// ============================================================================
+// CMS Content Blocks — Church-managed editable content sections.
+// Allows admins to update homepage section text, announcements, and other
+// church content without code changes.
+// ============================================================================
+
+model ContentBlock {
+  id          String    @id @default(cuid())
+  key         String    @unique // e.g. "hero-headline", "church-vision", "pastor-welcome"
+  section     String    // which section/page: homepage | announcements | events | sermons | devotionals | general
+  title       String?   // optional human-readable label
+  content     String    @db.Text // the actual content (HTML, plain text, or JSON)
+  contentType String    @default("text") // text | html | json
+  status      String    @default("draft") // draft | published | archived
+  publishedAt DateTime?
+  authoredBy  String?   // who last edited (email or name)
+  version     Int       @default(1) // simple version counter
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([section, status])
+  @@index([key])
+}

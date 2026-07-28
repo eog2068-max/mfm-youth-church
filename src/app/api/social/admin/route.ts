@@ -7,19 +7,15 @@ import {
   approveModerationItem,
   hideModerationItem,
 } from "@/lib/supabase/social-store";
+import { isAdminOrPastor } from "@/lib/gaf/auth";
 
-// Simple admin API key check (replace with proper auth when Supabase is connected)
-const ADMIN_API_KEY = process.env.SOCIAL_ADMIN_KEY || "admin_placeholder_key";
-
-function verifyAdmin(request: NextRequest): boolean {
-  const authHeader = request.headers.get("authorization");
-  const apiKey = request.headers.get("x-admin-key");
-  return apiKey === ADMIN_API_KEY || authHeader === `Bearer ${ADMIN_API_KEY}`;
+async function verifyAdmin(): Promise<boolean> {
+  return isAdminOrPastor();
 }
 
 // GET /api/social/admin — Overview stats
 export async function GET(request: NextRequest) {
-  if (!verifyAdmin(request)) {
+  if (!(await verifyAdmin())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -48,7 +44,7 @@ export async function GET(request: NextRequest) {
 
 // POST /api/social/admin — Moderation actions
 export async function POST(request: NextRequest) {
-  if (!verifyAdmin(request)) {
+  if (!(await verifyAdmin())) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

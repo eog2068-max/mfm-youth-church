@@ -40,14 +40,13 @@ export function SocialAdminDashboard() {
   const [privatePrayers, setPrivatePrayers] = useState<PrivatePrayer[]>([]);
   const [activeTab, setActiveTab] = useState<"overview" | "prayers" | "moderation">("overview");
   const [loading, setLoading] = useState(true);
-  const [adminKey, setAdminKey] = useState("");
 
   const fetchWithAuth = async (url: string, options?: RequestInit) => {
     return fetch(url, {
       ...options,
       headers: {
         ...options?.headers,
-        "x-admin-key": adminKey || "admin_placeholder_key",
+        "Content-Type": "application/json",
       },
     });
   };

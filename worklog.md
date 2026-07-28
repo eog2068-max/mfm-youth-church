@@ -1023,4 +1023,34 @@ Stage Summary:
 - CMS naming unified to "Church Management System" across all locations
 - Build clean: 88 pages, 0 errors, 0 warnings
 
+---
+Task ID: cms-auth
+Agent: Main Agent
+Task: CMS Admin (Prisma Content Blocks) + Auth Unification
+
+Work Log:
+- CMS Admin — Added ContentBlock model to Prisma schema (key, section, title, content, contentType, status, publishedAt, authoredBy, version)
+- CMS Admin — Ran prisma generate to regenerate client with new model
+- CMS Admin — Created content-reader.ts utility (getContentBlock, getContentBlocksBySection, seedContentBlocks with 13 seed blocks)
+- CMS Admin — Created API routes: GET/POST /api/admin/cms/blocks + GET/PUT/DELETE /api/admin/cms/blocks/[id] — all gated with isAdminOrPastor()
+- CMS Admin — Created admin layout at /admin/cms/layout.tsx with Supabase auth gate + config check
+- CMS Admin — Created cms-admin-shell.tsx client component (dark sidebar, topbar, mobile responsive, navigation)
+- CMS Admin — Created dashboard page (/admin/cms) with stats cards + recent blocks
+- CMS Admin — Created content blocks list page (/admin/cms/blocks) with table + create button
+- CMS Admin — Created new block form (/admin/cms/blocks/new)
+- CMS Admin — Created edit block form (/admin/cms/blocks/[id]/edit)
+- Auth Unification — Replaced SOCIAL_ADMIN_KEY in /api/social/admin/route.ts with isAdminOrPastor()
+- Auth Unification — Replaced SOCIAL_ADMIN_KEY in /api/social/admin/chat/route.ts with isAdminOrPastor()
+- Auth Unification — Removed adminKey state and x-admin-key header from social-admin-dashboard.tsx
+- Auth Unification — Verified zero remaining references to SOCIAL_ADMIN_KEY or x-admin-key in codebase
+- Production build: 90 pages, 0 errors, 0 warnings (up from 88)
+
+Stage Summary:
+- CMS Admin: 9 new files (845 lines total), Prisma ContentBlock model, 13 seed blocks, full CRUD
+- Auth Unification: 3 files modified, SOCIAL_ADMIN_KEY completely phased out
+- All admin routes now use unified Supabase role-based auth (isAdminOrPastor)
+- Build clean: 90 pages, 0 errors, 0 warnings
+
+
+
 
