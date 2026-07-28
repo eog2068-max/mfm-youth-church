@@ -93,10 +93,10 @@ export function HeroSection() {
             <span>Watch Live</span>
           </a>
 
-          {/* RehobothSocial — Same red, taller, two-level messaging */}
+          {/* RehobothSocial — CONNECT orange, taller, two-level messaging */}
           <Link
             href="/social"
-            className="flex flex-col items-center justify-center gap-1.5 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl py-4 px-8 transition-colors"
+            className="flex flex-col items-center justify-center gap-1.5 bg-[#E65100] hover:bg-[#BF360C] text-white rounded-xl py-4 px-8 transition-colors"
           >
             <span className="text-lg md:text-xl font-bold tracking-wide">
               RehobothSocial
@@ -119,11 +119,11 @@ export function HeroSection() {
             <span className="text-[10px] text-white/50 tracking-wider uppercase">Connect</span>
           </div>
           <div className="flex flex-col items-center gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#3949AB]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#1A237E]" />
             <span className="text-[10px] text-white/50 tracking-wider uppercase">Organize</span>
           </div>
           <div className="flex flex-col items-center gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#5C6BC0]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[#3949AB]" />
             <span className="text-[10px] text-white/50 tracking-wider uppercase">Reach</span>
           </div>
         </motion.div>

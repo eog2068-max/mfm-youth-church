@@ -568,7 +568,7 @@ export function Navbar() {
             </Button>
             <Button
               asChild
-              className="hidden md:inline-flex bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl px-4 font-semibold shadow-md"
+              className="hidden md:inline-flex bg-[#3949AB] hover:bg-[#1A237E] text-white rounded-xl px-4 font-semibold shadow-md"
             >
               <Link href="/go-a-fishing">
                 <Fish className="size-4" />
