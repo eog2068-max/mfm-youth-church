@@ -2,13 +2,12 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Radio } from "lucide-react";
 import Link from "next/link";
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-28">
-      {/* Background gradient placeholder */}
+      {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
 
       {/* Decorative overlay pattern */}
@@ -26,19 +25,19 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
-        {/* Logo */}
+        {/* Logo — slightly reduced */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-4"
+          className="mb-3"
         >
-          <div className="relative h-32 w-32 md:h-40 md:w-40 lg:h-48 lg:w-48 mx-auto rounded-full bg-white p-2 shadow-2xl shadow-black/30">
+          <div className="relative h-28 w-28 sm:h-32 sm:w-32 md:h-36 md:w-36 lg:h-40 lg:w-40 mx-auto rounded-full bg-white p-2 shadow-2xl shadow-black/30">
             <Image
               src="/rccg-logo.png"
               alt="The Redeemed Christian Church of God Logo"
               fill
-              sizes="192px"
+              sizes="160px"
               className="object-contain"
               priority
             />
@@ -51,9 +50,6 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          <p className="text-lg sm:text-xl md:text-2xl font-medium text-blue-100/70 tracking-wide mb-2">
-            MORE THAN A CHURCH. A CONNECTED FAMILY.
-          </p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
             The Redeemed Christian Church of God
           </h1>
@@ -67,45 +63,62 @@ export function HeroSection() {
           initial={{ width: 0 }}
           animate={{ width: 80 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="h-1 bg-[#D32F2F] mx-auto rounded-full mt-5"
+          className="h-1 bg-[#D32F2F] mx-auto rounded-full mt-4"
         />
 
-        {/* Tagline — shortened to complement new social positioning */}
+        {/* Tagline — the sole narrative on the hero */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-6 max-w-2xl mx-auto text-base md:text-lg text-blue-100/80 leading-relaxed font-light"
+          className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-blue-100/90 leading-relaxed font-medium italic"
         >
-          Experience God&rsquo;s presence in our live services, and stay connected to your church family all week long through RehobothSocial.
+          More Than A Church, It&rsquo;s A Connected Family.
         </motion.p>
 
-        {/* CTA Buttons — Watch Live + RehobothSocial */}
+        {/* ── 3-Pillar Feature Buttons ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-6 flex flex-col gap-3 max-w-xl mx-auto"
+          className="mt-6 flex flex-col gap-3 max-w-sm mx-auto"
         >
-          {/* Watch Live — Red, unchanged */}
-          <a
-            href="/live"
-            className="flex items-center justify-center gap-2 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl h-12 text-base font-semibold transition-colors"
-          >
-            <Radio className="size-4 shrink-0" />
-            <span>Watch Live</span>
-          </a>
-
-          {/* RehobothSocial — CONNECT orange, taller, two-level messaging */}
+          {/* 1. RehobothSocial — Red, compact, better font */}
           <Link
             href="/social"
-            className="flex flex-col items-center justify-center gap-1.5 bg-[#E65100] hover:bg-[#BF360C] text-white rounded-xl py-4 px-8 transition-colors"
+            className="flex flex-col items-center justify-center bg-[#E65100] hover:bg-[#BF360C] text-white rounded-xl py-2.5 px-6 transition-all hover:shadow-lg hover:shadow-orange-500/20"
           >
-            <span className="text-lg md:text-xl font-bold tracking-wide">
+            <span className="text-lg md:text-xl font-bold tracking-wide" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
               RehobothSocial
             </span>
-            <span className="text-xs md:text-sm text-white/90 font-medium leading-snug max-w-xs text-center">
-              I Remain Connected To My Church Family Throughout The Week.
+            <span className="text-xs md:text-sm text-white/90 font-medium leading-tight mt-0.5">
+              I Remain Connected To My Church Family Throughout The Week
+            </span>
+          </Link>
+
+          {/* 2. Go-A-Fishing — Sky blue, floating card style */}
+          <Link
+            href="/go-a-fishing"
+            className="flex flex-col items-center justify-center bg-[#EBF3FF] hover:bg-[#D6EAFF] rounded-xl py-2.5 px-6 transition-all hover:shadow-lg hover:shadow-blue-300/30 border border-white/20 shadow-md shadow-black/10"
+          >
+            <span className="text-sm md:text-base font-bold text-[#1A237E] tracking-wide">
+              Go-A-Fishing - (Digital Evangelism)
+            </span>
+            <span className="text-xs text-[#3949AB] font-medium mt-0.5">
+              Engage, Be rewarded
+            </span>
+          </Link>
+
+          {/* 3. Church Management System — Sky blue, identical floating style */}
+          <Link
+            href="/announcements"
+            className="flex flex-col items-center justify-center bg-[#EBF3FF] hover:bg-[#D6EAFF] rounded-xl py-2.5 px-6 transition-all hover:shadow-lg hover:shadow-blue-300/30 border border-white/20 shadow-md shadow-black/10"
+          >
+            <span className="text-sm md:text-base font-bold text-[#1A237E] tracking-wide">
+              Church Management System
+            </span>
+            <span className="text-xs text-[#3949AB] font-medium mt-0.5">
+              CMS - Well organized
             </span>
           </Link>
         </motion.div>
@@ -115,7 +128,7 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="mt-10 flex items-center justify-center gap-6"
+          className="mt-8 flex items-center justify-center gap-6"
         >
           <div className="flex flex-col items-center gap-1.5">
             <div className="w-2.5 h-2.5 rounded-full bg-[#E65100]" />

@@ -546,33 +546,16 @@ export function Navbar() {
             </DropdownMenu>
           </div>
 
-          {/* Right side: CTA buttons + Mobile Menu */}
+          {/* Right side: Mobile Hamburger + Watch Live before it */}
           <div className="flex items-center gap-3">
+            {/* Watch Live — always visible, right before hamburger */}
             <Button
               asChild
-              className="hidden sm:inline-flex bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl px-4 font-semibold shadow-md"
+              className="inline-flex bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl px-3 sm:px-4 font-semibold shadow-md text-xs sm:text-sm"
             >
               <Link href="/live">
-                <Radio className="size-4" />
-                Watch Live
-              </Link>
-            </Button>
-            <Button
-              asChild
-              className="hidden md:inline-flex bg-[#E65100] hover:bg-[#BF360C] text-white rounded-xl px-4 font-semibold shadow-md"
-            >
-              <Link href="/social">
-                <Heart className="size-4" />
-                RehobothSocial
-              </Link>
-            </Button>
-            <Button
-              asChild
-              className="hidden md:inline-flex bg-[#3949AB] hover:bg-[#1A237E] text-white rounded-xl px-4 font-semibold shadow-md"
-            >
-              <Link href="/go-a-fishing">
-                <Fish className="size-4" />
-                Go-A-Fishing
+                <Radio className="size-3.5 sm:size-4" />
+                <span className="hidden sm:inline">Watch Live</span>
               </Link>
             </Button>
 
