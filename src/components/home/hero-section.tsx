@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-28">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 sm:pt-32 md:pt-36 pb-6">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
 
@@ -53,7 +53,7 @@ export function HeroSection() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
             The Redeemed Christian Church of God
           </h1>
-          <p className="text-lg md:text-2xl text-blue-100/80 font-medium mt-2 md:mt-3">
+          <p className="text-base md:text-xl text-blue-100/80 font-light mt-1 md:mt-2">
             (Rehoboth Assembly Parish)
           </p>
         </motion.div>
@@ -66,14 +66,14 @@ export function HeroSection() {
           className="h-1 bg-[#D32F2F] mx-auto rounded-full mt-4"
         />
 
-        {/* Tagline — the sole narrative on the hero */}
+        {/* Tagline — normal sentence case, pure white, regular (not italic) */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-blue-100/90 leading-relaxed font-medium italic"
+          className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-white leading-relaxed font-normal"
         >
-          More Than A Church, It&rsquo;s A Connected Family.
+          More than a Church, its a connected family.
         </motion.p>
 
         {/* ── 3-Pillar Feature Buttons ── */}
@@ -81,12 +81,12 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-6 flex flex-col gap-3 max-w-sm mx-auto"
+          className="mt-6 flex flex-col gap-2.5 max-w-sm mx-auto"
         >
-          {/* 1. RehobothSocial — Red, compact, better font */}
+          {/* 1. RehobothSocial — Same red as Watch Now, compact, barely rounded */}
           <Link
             href="/social"
-            className="flex flex-col items-center justify-center bg-[#E65100] hover:bg-[#BF360C] text-white rounded-xl py-2.5 px-6 transition-all hover:shadow-lg hover:shadow-orange-500/20"
+            className="flex flex-col items-center justify-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-red-500/20"
           >
             <span className="text-lg md:text-xl font-bold tracking-wide" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
               RehobothSocial
@@ -96,10 +96,10 @@ export function HeroSection() {
             </span>
           </Link>
 
-          {/* 2. Go-A-Fishing — Sky blue, floating card style */}
+          {/* 2. Go-A-Fishing — Sky blue, floating card style, barely rounded */}
           <Link
             href="/go-a-fishing"
-            className="flex flex-col items-center justify-center bg-[#EBF3FF] hover:bg-[#D6EAFF] rounded-xl py-2.5 px-6 transition-all hover:shadow-lg hover:shadow-blue-300/30 border border-white/20 shadow-md shadow-black/10"
+            className="flex flex-col items-center justify-center bg-[#EBF3FF] hover:bg-[#D6EAFF] rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-blue-300/30 border border-white/20 shadow-md shadow-black/10"
           >
             <span className="text-sm md:text-base font-bold text-[#1A237E] tracking-wide">
               Go-A-Fishing - (Digital Evangelism)
@@ -109,10 +109,10 @@ export function HeroSection() {
             </span>
           </Link>
 
-          {/* 3. Church Management System — Sky blue, identical floating style */}
+          {/* 3. Church Management System — Sky blue, identical floating style, barely rounded */}
           <Link
             href="/announcements"
-            className="flex flex-col items-center justify-center bg-[#EBF3FF] hover:bg-[#D6EAFF] rounded-xl py-2.5 px-6 transition-all hover:shadow-lg hover:shadow-blue-300/30 border border-white/20 shadow-md shadow-black/10"
+            className="flex flex-col items-center justify-center bg-[#EBF3FF] hover:bg-[#D6EAFF] rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-blue-300/30 border border-white/20 shadow-md shadow-black/10"
           >
             <span className="text-sm md:text-base font-bold text-[#1A237E] tracking-wide">
               Church Management System
@@ -121,27 +121,6 @@ export function HeroSection() {
               CMS - Well organized
             </span>
           </Link>
-        </motion.div>
-
-        {/* Three Pillar Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="mt-8 flex items-center justify-center gap-6"
-        >
-          <div className="flex flex-col items-center gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#E65100]" />
-            <span className="text-[10px] text-white/50 tracking-wider uppercase">Connect</span>
-          </div>
-          <div className="flex flex-col items-center gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#1A237E]" />
-            <span className="text-[10px] text-white/50 tracking-wider uppercase">Organize</span>
-          </div>
-          <div className="flex flex-col items-center gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#3949AB]" />
-            <span className="text-[10px] text-white/50 tracking-wider uppercase">Reach</span>
-          </div>
         </motion.div>
       </div>
     </section>

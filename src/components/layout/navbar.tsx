@@ -548,14 +548,14 @@ export function Navbar() {
 
           {/* Right side: Mobile Hamburger + Watch Live before it */}
           <div className="flex items-center gap-3">
-            {/* Watch Live — always visible, right before hamburger */}
+            {/* Watch Live — icon + text always visible together, shorter height */}
             <Button
               asChild
-              className="inline-flex bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-xl px-3 sm:px-4 font-semibold shadow-md text-xs sm:text-sm"
+              className="inline-flex items-center gap-1.5 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg px-2.5 py-1 h-8 sm:h-9 font-semibold shadow-md text-xs"
             >
-              <Link href="/live">
-                <Radio className="size-3.5 sm:size-4" />
-                <span className="hidden sm:inline">Watch Live</span>
+              <Link href="/live" className="flex items-center gap-1.5">
+                <Radio className="size-3.5" />
+                <span>Watch Now</span>
               </Link>
             </Button>
 
