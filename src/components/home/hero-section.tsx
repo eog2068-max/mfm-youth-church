@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 sm:pt-32 md:pt-36 pb-6">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 sm:pt-32 md:pt-36 pb-3">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
 
@@ -63,7 +63,7 @@ export function HeroSection() {
           initial={{ width: 0 }}
           animate={{ width: 80 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="h-1 bg-[#D32F2F] mx-auto rounded-full mt-4"
+          className="h-1 bg-[#D32F2F] mx-auto rounded-full mt-5"
         />
 
         {/* Tagline — normal sentence case, pure white, regular (not italic) */}
@@ -71,7 +71,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-4 max-w-2xl mx-auto text-base md:text-lg text-white leading-relaxed font-normal"
+          className="mt-5 max-w-2xl mx-auto text-base md:text-lg text-white leading-relaxed font-normal"
         >
           More than a Church, its a connected family.
         </motion.p>
@@ -102,10 +102,10 @@ export function HeroSection() {
             className="flex flex-col items-center justify-center bg-[#EBF3FF] hover:bg-[#D6EAFF] rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-blue-300/30 border border-white/20 shadow-md shadow-black/10"
           >
             <span className="text-sm md:text-base font-bold text-[#1A237E] tracking-wide">
-              Go-A-Fishing - (Digital Evangelism)
+              Digital Evangelism System - DES
             </span>
-            <span className="text-xs text-[#3949AB] font-medium mt-0.5">
-              Engage, Be rewarded
+            <span className="text-xs text-[#3949AB] font-light mt-0.5">
+              Go-A-Fishing & get rewarded
             </span>
           </Link>
 

@@ -555,7 +555,7 @@ export function Navbar() {
             >
               <Link href="/live" className="flex items-center gap-1.5">
                 <Radio className="size-3.5" />
-                <span>Watch Now</span>
+                <span>Watch Live</span>
               </Link>
             </Button>
 
