@@ -169,7 +169,7 @@ const menuCategories: MenuCategory[] = [
       { label: "Testimonies", href: "/testimonies", icon: Star },
       { label: "Contact", href: "/contact", icon: Mail },
     ],
-    cta: { label: "EXPLORE CMS", href: "/announcements" },
+    cta: { label: "EXPLORE CMS", href: "/cms" },
   },
 
   // ── GO-A-FISHING ──

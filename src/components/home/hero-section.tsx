@@ -111,7 +111,7 @@ export function HeroSection() {
 
           {/* 3. Church Management System — Sky blue, identical floating style, barely rounded */}
           <Link
-            href="/announcements"
+            href="/cms"
             className="flex flex-col items-center justify-center bg-[#EBF3FF] hover:bg-[#D6EAFF] rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-blue-300/30 border border-white/20 shadow-md shadow-black/10"
           >
             <span className="text-sm md:text-base font-bold text-[#1A237E] tracking-wide">

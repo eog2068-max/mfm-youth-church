@@ -30,7 +30,7 @@ const pillars = [
     pillBg: "bg-blue-50 text-[#1A237E] border border-blue-200/50",
     features: ["Announcements", "Events", "Devotionals", "Sermons", "Giving", "Testimonies"],
     cta: "EXPLORE CMS",
-    link: "/announcements",
+    link: "/cms",
   },
   {
     badge: "REACH",
