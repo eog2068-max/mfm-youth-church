@@ -104,8 +104,8 @@ export function HeroSection() {
             <span className="text-sm md:text-base font-bold text-[#1A237E] tracking-wide">
               Digital Evangelism System - DES
             </span>
-            <span className="text-xs text-[#3949AB] font-light mt-0.5">
-              Go-A-Fishing & get rewarded
+            <span className="text-xs text-[#3949AB] font-normal mt-0.5">
+              Go-A-Fishing & Get Rewarded
             </span>
           </Link>
 
@@ -115,10 +115,10 @@ export function HeroSection() {
             className="flex flex-col items-center justify-center bg-[#EBF3FF] hover:bg-[#D6EAFF] rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-blue-300/30 border border-white/20 shadow-md shadow-black/10"
           >
             <span className="text-sm md:text-base font-bold text-[#1A237E] tracking-wide">
-              Church Management System
+              Church Management System - CMS
             </span>
-            <span className="text-xs text-[#3949AB] font-medium mt-0.5">
-              CMS - Well organized
+            <span className="text-xs text-[#3949AB] font-normal mt-0.5">
+              We're Well Organized.
             </span>
           </Link>
         </motion.div>
