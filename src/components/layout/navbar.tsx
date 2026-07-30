@@ -116,7 +116,7 @@ const menuCategories: MenuCategory[] = [
   {
     id: "rehoboth-social",
     title: "RehobothSocial",
-    subtitle: "Go To Rehoboth Home Page",
+    subtitle: "To Rehoboth Home",
     headerLink: "/social",
     color: {
       headerBg: "bg-[#E65100]",
@@ -273,7 +273,7 @@ function MenuCategorySection({
               onClick={onClose}
               className="text-[10px] text-white/70 mt-0.5 shrink-0"
             >
-              To App Home Page
+              To App Home
             </Link>
           </div>
         </div>
