@@ -95,6 +95,7 @@ interface MenuCategory {
   subtitle: string;
   purposeTag?: string;
   quote?: string;
+  headerLink?: string;
   color: {
     headerBg: string;
     accentBar: string;
@@ -114,13 +115,13 @@ const menuCategories: MenuCategory[] = [
   // ── REHOBOTHSOCIAL ──
   {
     id: "rehoboth-social",
-    title: "REHOBOTHSOCIAL",
-    subtitle: "Customized Social Media Platform",
-    purposeTag: "CONNECT",
+    title: "RehobothSocial",
+    subtitle: "Go To Rehoboth Home Page",
+    headerLink: "/social",
     color: {
-      headerBg: "bg-orange-50",
+      headerBg: "bg-[#E65100]",
       accentBar: "bg-[#E65100]",
-      accentText: "text-[#E65100]",
+      accentText: "text-white",
       ctaBg: "bg-[#E65100]",
       ctaHover: "hover:bg-[#BF360C]",
       iconBg: "bg-orange-100",
@@ -135,7 +136,6 @@ const menuCategories: MenuCategory[] = [
       { label: "Amen Wall", href: "/social/amen-wall", icon: Sparkles },
       { label: "Live Together", href: "/social/live-together", icon: MonitorPlay },
     ],
-    cta: { label: "ENTER REHOBOTHSOCIAL", href: "/social" },
   },
 
   // ── CHURCH MANAGEMENT SYSTEM ──
@@ -247,51 +247,79 @@ function MenuCategorySection({
 
   return (
     <div className="rounded-xl overflow-hidden border border-gray-100">
-      {/* Category header — clickable to collapse/expand */}
-      <button
-        onClick={() => setOpen(!open)}
-        className={cn(
-          "w-full flex items-center justify-between px-3 py-2.5 text-left transition-colors",
-          category.color.headerBg
-        )}
-      >
-        <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <div
-              className={cn("h-0.5 w-4 rounded-full", category.color.accentBar)}
-            />
+      {/* Category header */}
+      {category.headerLink ? (
+        <Link
+          href={category.headerLink}
+          onClick={onClose}
+          className={cn(
+            "flex items-center justify-between px-4 py-3 text-left transition-colors",
+            category.color.headerBg
+          )}
+        >
+          <div className="min-w-0">
             <span
               className={cn(
-                "text-xs font-bold tracking-wider",
+                "text-sm font-bold",
                 category.color.accentText
               )}
             >
               {category.title}
             </span>
-            {isAnyItemActive && (
-              <span className="h-1.5 w-1.5 rounded-full bg-[#D32F2F]" />
+            <p className="text-[10px] text-white/70 mt-0.5 truncate">
+              {category.subtitle}
+            </p>
+          </div>
+          <ArrowRight className={cn("size-4 shrink-0", category.color.accentText, "opacity-60")} />
+        </Link>
+      ) : (
+        <button
+          onClick={() => setOpen(!open)}
+          className={cn(
+            "w-full flex items-center justify-between px-3 py-2.5 text-left transition-colors",
+            category.color.headerBg
+          )}
+        >
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <div
+                className={cn("h-0.5 w-4 rounded-full", category.color.accentBar)}
+              />
+              <span
+                className={cn(
+                  "text-xs font-bold tracking-wider",
+                  category.color.accentText
+                )}
+              >
+                {category.title}
+              </span>
+              {isAnyItemActive && (
+                <span className="h-1.5 w-1.5 rounded-full bg-[#D32F2F]" />
+              )}
+            </div>
+            <p className="text-[10px] text-gray-500 mt-0.5 ml-6 truncate">
+              {category.subtitle}
+            </p>
+            {category.quote && (
+              <p className="text-[10px] italic text-gray-400 mt-0.5 ml-6 truncate">
+                &ldquo;{category.quote}&rdquo;
+              </p>
             )}
           </div>
-          <p className="text-[10px] text-gray-500 mt-0.5 ml-6 truncate">
-            {category.subtitle}
-          </p>
-          {category.quote && (
-            <p className="text-[10px] italic text-gray-400 mt-0.5 ml-6 truncate">
-              &ldquo;{category.quote}&rdquo;
-            </p>
+          {open ? (
+            <ChevronUp className="size-4 text-gray-400 shrink-0" />
+          ) : (
+            <ChevronDown className="size-4 text-gray-400 shrink-0" />
           )}
-        </div>
-        {open ? (
-          <ChevronUp className="size-4 text-gray-400 shrink-0" />
-        ) : (
-          <ChevronDown className="size-4 text-gray-400 shrink-0" />
-        )}
-      </button>
+        </button>
+      )}
 
       {/* Category items */}
       {open && (
         <div className="bg-white">
-          <div className={cn("h-0.5 w-full", category.color.accentBar)} />
+          {category.headerLink ? null : (
+            <div className={cn("h-0.5 w-full", category.color.accentBar)} />
+          )}
           <div className="flex flex-col">
             {category.items.map((item) => {
               const Icon = item.icon;
@@ -599,7 +627,7 @@ export function Navbar() {
                       category={category}
                       pathname={pathname}
                       onClose={closeMobile}
-                      defaultOpen={idx === 0}
+                      defaultOpen={category.headerLink ? true : idx === 0}
                     />
                   ))}
                 </div>
