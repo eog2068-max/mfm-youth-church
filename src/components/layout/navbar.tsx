@@ -250,28 +250,21 @@ function MenuCategorySection({
       {/* Category header */}
       {category.headerLink ? (
         <div className={cn("px-4 py-3", category.color.headerBg)}>
-          <div className="flex items-start justify-between">
+          <p className={cn("text-sm font-bold text-center", category.color.accentText)}>
+            {category.title}
+          </p>
+          <div className="flex items-center justify-between mt-0.5">
             <Link
               href={category.headerLink}
               onClick={onClose}
-              className="min-w-0"
+              className="text-[10px] text-white/70 truncate"
             >
-              <span
-                className={cn(
-                  "text-sm font-bold",
-                  category.color.accentText
-                )}
-              >
-                {category.title}
-              </span>
-              <p className="text-[10px] text-white/70 mt-0.5 truncate">
-                {category.subtitle}
-              </p>
+              {category.subtitle}
             </Link>
             <Link
               href="/"
               onClick={onClose}
-              className="text-[10px] text-white/70 mt-0.5 shrink-0"
+              className="text-[10px] text-white/70 shrink-0"
             >
               To App Home
             </Link>
