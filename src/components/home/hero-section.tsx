@@ -88,11 +88,14 @@ export function HeroSection() {
             href="/social"
             className="flex flex-col items-center justify-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-red-500/20"
           >
-            <span className="text-lg md:text-xl font-bold tracking-wide" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+            <span className="text-sm md:text-base font-bold tracking-wide">
+              Church Connect System - CCS
+            </span>
+            <span className="text-xs md:text-sm font-medium leading-tight">
               RehobothSocial
             </span>
-            <span className="text-xs md:text-sm text-white/90 font-medium leading-tight mt-0.5">
-              I Remain Connected To My Church Family Throughout The Week
+            <span className="text-xs font-normal leading-tight text-white/90">
+              Connecting members 24/7 round the week
             </span>
           </Link>
 
