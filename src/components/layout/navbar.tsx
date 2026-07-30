@@ -249,29 +249,34 @@ function MenuCategorySection({
     <div className="rounded-xl overflow-hidden border border-gray-100">
       {/* Category header */}
       {category.headerLink ? (
-        <Link
-          href={category.headerLink}
-          onClick={onClose}
-          className={cn(
-            "flex items-center justify-between px-4 py-3 text-left transition-colors",
-            category.color.headerBg
-          )}
-        >
-          <div className="min-w-0">
-            <span
-              className={cn(
-                "text-sm font-bold",
-                category.color.accentText
-              )}
+        <div className={cn("px-4 py-3", category.color.headerBg)}>
+          <div className="flex items-start justify-between">
+            <Link
+              href={category.headerLink}
+              onClick={onClose}
+              className="min-w-0"
             >
-              {category.title}
-            </span>
-            <p className="text-[10px] text-white/70 mt-0.5 truncate">
-              {category.subtitle}
-            </p>
+              <span
+                className={cn(
+                  "text-sm font-bold",
+                  category.color.accentText
+                )}
+              >
+                {category.title}
+              </span>
+              <p className="text-[10px] text-white/70 mt-0.5 truncate">
+                {category.subtitle}
+              </p>
+            </Link>
+            <Link
+              href="/"
+              onClick={onClose}
+              className="text-[10px] text-white/70 mt-0.5 shrink-0"
+            >
+              To App Home Page
+            </Link>
           </div>
-          <ArrowRight className={cn("size-4 shrink-0", category.color.accentText, "opacity-60")} />
-        </Link>
+        </div>
       ) : (
         <button
           onClick={() => setOpen(!open)}
