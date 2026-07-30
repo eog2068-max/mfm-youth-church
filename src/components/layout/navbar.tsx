@@ -253,7 +253,7 @@ function MenuCategorySection({
           <p className={cn("text-sm font-bold text-center", category.color.accentText)}>
             {category.title}
           </p>
-          <div className="flex items-center justify-between mt-0.5">
+          <div className="flex items-center justify-center gap-2 mt-0.5">
             <Link
               href={category.headerLink}
               onClick={onClose}
@@ -261,6 +261,7 @@ function MenuCategorySection({
             >
               {category.subtitle}
             </Link>
+            <span className="text-[10px] text-white/40">|</span>
             <Link
               href="/"
               onClick={onClose}
