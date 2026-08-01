@@ -618,7 +618,7 @@ export function Navbar() {
                 </SheetHeader>
 
                 {/* Categorized menu sections */}
-                <div className="flex flex-col gap-5 px-3 pb-4">
+                <div className="flex flex-col gap-10 px-3 pb-4">
                   {menuCategories.map((category, idx) => (
                     <MenuCategorySection
                       key={category.id}

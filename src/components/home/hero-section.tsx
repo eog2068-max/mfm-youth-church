@@ -91,11 +91,11 @@ export function HeroSection() {
             <span className="text-sm md:text-base font-bold tracking-wide">
               RehobothSocial
             </span>
-            <span className="text-xs md:text-sm font-medium leading-tight">
-              Church Connect System - CCS
+            <span className="text-xs font-medium leading-tight">
+              Connecting Members 24/7 Round The Week
             </span>
-            <span className="text-xs font-normal leading-tight text-white/90">
-              Connecting members 24/7 round the week
+            <span className="text-[10px] font-normal leading-tight text-white/80">
+              Church Connect System - CCS
             </span>
           </Link>
 
@@ -105,10 +105,13 @@ export function HeroSection() {
             className="flex flex-col items-center justify-center bg-[#3949AB] hover:bg-[#303F9F] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-indigo-500/20 border border-white/20 shadow-md shadow-black/10"
           >
             <span className="text-sm md:text-base font-bold tracking-wide">
-              Digital Evangelism System - DES
+              Go-A-Fishing
             </span>
-            <span className="text-xs font-normal mt-0.5 text-white/90">
-              Go-A-Fishing & Get Rewarded
+            <span className="text-xs font-medium leading-tight">
+              Engage & Get Rewarded
+            </span>
+            <span className="text-[10px] font-normal leading-tight text-white/80">
+              Digital Evangelism System - DES
             </span>
           </Link>
 
@@ -118,10 +121,13 @@ export function HeroSection() {
             className="flex flex-col items-center justify-center bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-blue-900/20 border border-white/20 shadow-md shadow-black/10"
           >
             <span className="text-sm md:text-base font-bold tracking-wide">
-              Church Management System - CMS
+              Organa
             </span>
-            <span className="text-xs font-normal mt-0.5 text-white/90">
-              We're Well Organized.
+            <span className="text-xs font-medium leading-tight">
+              We're Well Organized
+            </span>
+            <span className="text-[10px] font-normal leading-tight text-white/80">
+              Church Management System - CMS
             </span>
           </Link>
         </motion.div>
