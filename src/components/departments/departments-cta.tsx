@@ -47,7 +47,7 @@ export function DepartmentsCTA() {
               variant="outline"
               className="border-white/20 text-white hover:bg-white/10 rounded-xl px-8 font-semibold text-base"
             >
-              <a href="tel:+2341234567890">
+              <a href="tel:+2349050017238">
                 <Phone className="size-4 mr-2" />
                 Speak to Us
               </a>

@@ -183,7 +183,7 @@ export function AdminSidebar({ activeItem, isOpen, onClose }: AdminSidebarProps)
               >
                 <div className="min-w-0">
                   <p className="truncate text-sm font-medium text-white">Admin User</p>
-                  <p className="truncate text-xs text-white/50">admin@mfmyouthchurch.org</p>
+                  <p className="truncate text-xs text-white/50">admin@mfmannexyouth.org</p>
                 </div>
                 <Button
                   variant="ghost"

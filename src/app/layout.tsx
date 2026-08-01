@@ -30,7 +30,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_GAF_BASE_URL || "https://mfm-youthchurch.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_GAF_BASE_URL || "https://www.mfmannexyouth.org"),
   title: {
     default: "Mountain of Fire and Miracles Ministries | Youth Church",
     template: "%s | Mountain of Fire and Miracles Ministries",

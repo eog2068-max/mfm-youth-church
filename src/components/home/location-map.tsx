@@ -35,7 +35,7 @@ export function LocationMap() {
                 <div>
                   <p className="font-semibold text-gray-800 text-sm">Address</p>
                   <p className="text-sm text-gray-600 mt-0.5 leading-relaxed">
-                    Silla-Zeka Plaza, Adebayo Adedeji Street, Utako, FCT, Abuja, Nigeria
+                    14 Ekukinam Street, Opp. Chisco Motor Park Utako, Abuja.
                   </p>
                 </div>
               </div>
@@ -47,10 +47,10 @@ export function LocationMap() {
                 <div>
                   <p className="font-semibold text-gray-800 text-sm">Phone</p>
                   <a
-                    href="tel:+2341234567890"
+                    href="tel:+2349050017238"
                     className="text-sm text-[#D32F2F] hover:underline mt-0.5 block"
                   >
-                    +234 123 456 7890
+                    +234 905 001 7238
                   </a>
                 </div>
               </div>
@@ -62,10 +62,10 @@ export function LocationMap() {
                 <div>
                   <p className="font-semibold text-gray-800 text-sm">Email</p>
                   <a
-                    href="mailto:info@mfmyouthchurch.org"
+                    href="mailto:thecenaclemfmycr10@gmail.com"
                     className="text-sm text-[#D32F2F] hover:underline mt-0.5 block"
                   >
-                    info@mfmyouthchurch.org
+                    thecenaclemfmycr10@gmail.com
                   </a>
                 </div>
               </div>
@@ -77,12 +77,12 @@ export function LocationMap() {
                 <div>
                   <p className="font-semibold text-gray-800 text-sm">WhatsApp</p>
                   <a
-                    href="https://wa.me/2341234567890"
+                    href="https://wa.me/2349050017238"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-[#2E7D32] hover:underline mt-0.5 block"
                   >
-                    +234 123 456 7890
+                    +234 905 001 7238
                   </a>
                 </div>
               </div>

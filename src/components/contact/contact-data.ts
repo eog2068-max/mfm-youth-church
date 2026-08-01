@@ -1,35 +1,35 @@
 export const churchInfo = {
-  name: "Mountain of Fire and Miracles Ministries, Youth Church",
+  name: "MFM INT'L HQ ANNEX, Youth Church, Abuja",
   shortName: "MFM Youth Church",
-  address: "[Your Church Address]",
-  mapsQuery: "[Your+Church+Location]",
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=[Your+Church+Location]",
-  phone: "+234 812 345 6789",
-  phoneRaw: "+2348123456789",
-  email: "info@mfmyouthchurch.org",
-  website: "www.mfmyouthchurch.org",
-  websiteUrl: "https://www.mfmyouthchurch.org",
+  address: "14 Ekukinam Street, Opp. Chisco Motor Park Utako, Abuja.",
+  mapsQuery: "14+Ekukinam+Street+Opp+Chisco+Motor+Park+Utako+Abuja",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=14+Ekukinam+Street+Opp+Chisco+Motor+Park+Utako+Abuja",
+  phone: "+234 905 001 7238",
+  phoneRaw: "+2349050017238",
+  email: "thecenaclemfmycr10@gmail.com",
+  website: "www.mfmannexyouth.org",
+  websiteUrl: "https://www.mfmannexyouth.org/",
 };
 
 export const socialLinks = [
   {
     name: "Facebook",
-    url: "https://facebook.com/mfmyouthchurch",
+    url: "https://facebook.com/mfmannexyouth",
     icon: "facebook" as const,
   },
   {
     name: "Instagram",
-    url: "https://instagram.com/mfmyouthchurch",
+    url: "https://instagram.com/mfmannexyouth",
     icon: "instagram" as const,
   },
   {
     name: "YouTube",
-    url: "https://youtube.com/@mfmyouthchurch",
+    url: "https://youtube.com/@mfmannexyouth",
     icon: "youtube" as const,
   },
   {
     name: "X (Twitter)",
-    url: "https://x.com/mfmyouthchurch",
+    url: "https://x.com/mfmannexyouth",
     icon: "twitter" as const,
   },
 ];

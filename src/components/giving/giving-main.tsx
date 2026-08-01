@@ -230,7 +230,7 @@ export function GivingMain() {
                       Please use your name as the payment reference when making the transfer. Send
                       your payment confirmation to{" "}
                       <span className="font-semibold text-gray-600">
-                        info@mfmyouthchurch.org
+                        thecenaclemfmycr10@gmail.com
                       </span>{" "}
                       or via WhatsApp.
                     </p>

@@ -74,7 +74,7 @@ export function Footer() {
             </p>
             <div className="flex items-start gap-2 mt-4 text-sm text-purple-200/60">
               <MapPin className="size-4 shrink-0 mt-0.5" />
-              <span>[Your Church Address]</span>
+              <span>14 Ekukinam Street, Opp. Chisco Motor Park Utako, Abuja.</span>
             </div>
           </div>
 
@@ -168,21 +168,21 @@ export function Footer() {
             </h4>
             <div className="space-y-3 text-sm">
               <a
-                href="tel:+2341234567890"
+                href="tel:+2349050017238"
                 className="flex items-center gap-2 text-purple-100/70 hover:text-white transition-colors"
               >
                 <Phone className="size-4" />
-                <span>+234 123 456 7890</span>
+                <span>+234 905 001 7238</span>
               </a>
               <a
-                href="mailto:info@mfmyouthchurch.org"
+                href="mailto:thecenaclemfmycr10@gmail.com"
                 className="flex items-center gap-2 text-purple-100/70 hover:text-white transition-colors"
               >
                 <Mail className="size-4" />
-                <span>info@mfmyouthchurch.org</span>
+                <span>thecenaclemfmycr10@gmail.com</span>
               </a>
               <a
-                href="https://wa.me/2341234567890"
+                href="https://wa.me/2349050017238"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-purple-100/70 hover:text-white transition-colors"
@@ -196,28 +196,28 @@ export function Footer() {
             {/* Social Icons */}
             <div className="flex items-center gap-3 mt-6">
               <a
-                href="#"
+                href="https://facebook.com/mfmannexyouth"
                 aria-label="Facebook"
                 className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
               >
                 <Facebook className="size-4" />
               </a>
               <a
-                href="#"
+                href="https://instagram.com/mfmannexyouth"
                 aria-label="Instagram"
                 className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
               >
                 <Instagram className="size-4" />
               </a>
               <a
-                href="#"
+                href="https://x.com/mfmannexyouth"
                 aria-label="Twitter"
                 className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
               >
                 <Twitter className="size-4" />
               </a>
               <a
-                href="#"
+                href="https://youtube.com/@mfmannexyouth"
                 aria-label="YouTube"
                 className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
               >

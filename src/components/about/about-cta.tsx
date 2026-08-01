@@ -49,7 +49,7 @@ export function AboutCTA() {
               variant="outline"
               className="border-white/20 text-white hover:bg-white/10 rounded-xl px-8 font-semibold text-base"
             >
-              <a href="tel:+2341234567890">
+              <a href="tel:+2349050017238">
                 <Phone className="size-4 mr-2" />
                 Contact Us
               </a>
@@ -58,7 +58,7 @@ export function AboutCTA() {
 
           <div className="mt-10 flex items-center justify-center gap-2 text-purple-200/60 text-sm">
             <MapPin className="size-4" />
-            <span>Silla-Zeka Plaza, Adebayo Adedeji Street, Utako, FCT, Abuja</span>
+            <span>14 Ekukinam Street, Opp. Chisco Motor Park Utako, Abuja.</span>
           </div>
         </motion.div>
       </div>

@@ -125,7 +125,7 @@ export function EInviteCard({
         const pngUrl = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = pngUrl;
-        a.download = `rccg-einvite-${referralCode}.png`;
+        a.download = `mfm-einvite-${referralCode}.png`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);

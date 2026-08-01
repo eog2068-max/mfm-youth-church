@@ -134,7 +134,7 @@ export function AdminTopbar({ pageTitle, onMenuClick }: AdminTopbarProps) {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
             <DropdownMenuLabel className="text-sm font-normal text-[#4A148C]/60">
-              admin@mfmyouthchurch.org
+              admin@mfmannexyouth.org
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="text-sm">My Profile</DropdownMenuItem>

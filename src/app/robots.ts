@@ -8,7 +8,7 @@
 import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_GAF_BASE_URL || "https://mfm-youthchurch.app";
+  const baseUrl = process.env.NEXT_PUBLIC_GAF_BASE_URL || "https://www.mfmannexyouth.org";
 
   return {
     rules: [

@@ -51,11 +51,8 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
-            Mountain of Fire and Miracles Ministries
+            MFM INT&rsquo;L HQ ANNEX, Youth Church, Abuja
           </h1>
-          <p className="text-base md:text-xl text-purple-100/80 font-light mt-1 md:mt-2">
-            (Youth Church)
-          </p>
         </motion.div>
 
         {/* Red divider */}
@@ -73,7 +70,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-5 max-w-2xl mx-auto text-base md:text-lg text-white leading-relaxed font-normal"
         >
-          On Fire For God, Connected As One Family.
+          A place of spiritual fire, prayer, and destiny fulfilment.
         </motion.p>
 
         {/* ── 3-Pillar Feature Buttons ── */}

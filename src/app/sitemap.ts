@@ -13,7 +13,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_GAF_BASE_URL || "https://mfm-youthchurch.app";
+  const baseUrl = process.env.NEXT_PUBLIC_GAF_BASE_URL || "https://www.mfmannexyouth.org";
 
   // Static pages.
   const staticPages = [

@@ -27,7 +27,7 @@ export function ChurchVision() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0 }}
           className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight leading-relaxed"
         >
-          THE CHURCH IS MORE THAN A BUILDING.
+          PRAYER IS THE MASTER KEY.
         </motion.h2>
 
         <motion.h2
@@ -37,18 +37,30 @@ export function ChurchVision() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight leading-relaxed mt-2"
         >
-          THE CHURCH IS A FAMILY.
+          HOLINESS IS THE STANDARD.
+        </motion.h2>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+          className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight leading-relaxed mt-2"
+        >
+          POWER IS THE EVIDENCE.
         </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
           className="text-base md:text-lg text-white/90 leading-relaxed mt-6"
         >
-          You Don&rsquo;t Have To Wait Until The Next Church Service To Feel Connected
-          To Your Church Family.
+          We are a generation on fire — committed to prayer, spiritual warfare,
+          holiness, and the pursuit of destiny. At MFM INT&rsquo;L HQ ANNEX Youth Church,
+          we enforce the victory of Calvary, walk in power, and raise an army of
+          young people who will fulfil their God-given destiny.
         </motion.p>
       </div>
     </section>
