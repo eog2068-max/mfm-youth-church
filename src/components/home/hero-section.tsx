@@ -86,7 +86,7 @@ export function HeroSection() {
           {/* 1. RehobothSocial — Same red as Watch Now, compact, barely rounded */}
           <Link
             href="/social"
-            className="flex flex-col items-center justify-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-red-500/20"
+            className="flex flex-col items-center justify-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-red-500/20 border border-white/20"
           >
             <span className="text-sm md:text-base font-bold tracking-wide">
               RehobothSocial
