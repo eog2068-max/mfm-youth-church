@@ -10,7 +10,7 @@ const values = [
     title: "Word of God",
     description:
       "The Word of God is the foundation of everything we do. We are committed to studying, teaching, and living by the Bible as our supreme authority. Every sermon, program, and decision is anchored in Scripture.",
-    color: "bg-[#1A237E]/10 text-[#1A237E]",
+    color: "bg-[#4A148C]/10 text-[#4A148C]",
   },
   {
     icon: Sparkles,
@@ -31,7 +31,7 @@ const values = [
     title: "Fellowship & Unity",
     description:
       "We value authentic Christian community where every member belongs, contributes, and grows. We celebrate diversity within the body of Christ and pursue unity without compromise, knowing that together we are stronger.",
-    color: "bg-[#1A237E]/10 text-[#1A237E]",
+    color: "bg-[#4A148C]/10 text-[#4A148C]",
   },
   {
     icon: ShieldCheck,
@@ -51,11 +51,11 @@ const values = [
 
 export function AboutValues() {
   return (
-    <SectionWrapper className="py-16 md:py-24 bg-[#F5F7FF]">
+    <SectionWrapper className="py-16 md:py-24 bg-[#F3E5F5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Our Core Values"
-          subtitle="These timeless principles guide everything we do at Rehoboth Assembly Parish — from our worship services to our community outreach programs."
+          subtitle="These timeless principles guide everything we do at Youth Church — from our worship services to our community outreach programs."
         />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
@@ -66,14 +66,14 @@ export function AboutValues() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="group bg-white rounded-2xl p-7 hover:shadow-xl hover:shadow-[#1A237E]/8 border border-transparent hover:border-[#1A237E]/8 transition-all duration-300"
+              className="group bg-white rounded-2xl p-7 hover:shadow-xl hover:shadow-[#4A148C]/8 border border-transparent hover:border-[#4A148C]/8 transition-all duration-300"
             >
               <div
                 className={`w-14 h-14 rounded-2xl ${value.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}
               >
                 <value.icon className="size-7" />
               </div>
-              <h3 className="text-xl font-bold text-[#1A237E] mb-3">{value.title}</h3>
+              <h3 className="text-xl font-bold text-[#4A148C] mb-3">{value.title}</h3>
               <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
             </motion.div>
           ))}

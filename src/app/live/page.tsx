@@ -10,7 +10,7 @@ import { LiveCTA } from "@/components/live/live-cta";
 export const metadata: Metadata = {
   title: "Live Stream",
   description:
-    "Watch our services live online. The Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja — Sunday, Tuesday, and Thursday services streamed live.",
+    "Watch our services live online. Mountain of Fire and Miracles Ministries, Youth Church, Utako, Abuja — Sunday, Tuesday, and Thursday services streamed live.",
 };
 
 export default function LivePage() {
@@ -39,29 +39,29 @@ export default function LivePage() {
 
               {/* Quick info cards */}
               <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 space-y-4">
-                <h3 className="text-sm font-bold text-[#1A237E] mb-1">Streaming Tips</h3>
+                <h3 className="text-sm font-bold text-[#4A148C] mb-1">Streaming Tips</h3>
                 <div className="space-y-3 text-xs text-gray-500 leading-relaxed">
                   <div className="flex items-start gap-2.5">
-                    <div className="w-6 h-6 rounded-lg bg-[#F0F4FF] flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="text-[10px] font-bold text-[#1A237E]">1</span>
+                    <div className="w-6 h-6 rounded-lg bg-[#F3E5F5] flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="text-[10px] font-bold text-[#4A148C]">1</span>
                     </div>
                     <p>Use a stable WiFi or 4G/5G connection for the best streaming experience.</p>
                   </div>
                   <div className="flex items-start gap-2.5">
-                    <div className="w-6 h-6 rounded-lg bg-[#F0F4FF] flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="text-[10px] font-bold text-[#1A237E]">2</span>
+                    <div className="w-6 h-6 rounded-lg bg-[#F3E5F5] flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="text-[10px] font-bold text-[#4A148C]">2</span>
                     </div>
                     <p>If the stream buffers, refresh the page or reduce other bandwidth usage.</p>
                   </div>
                   <div className="flex items-start gap-2.5">
-                    <div className="w-6 h-6 rounded-lg bg-[#F0F4FF] flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="text-[10px] font-bold text-[#1A237E]">3</span>
+                    <div className="w-6 h-6 rounded-lg bg-[#F3E5F5] flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="text-[10px] font-bold text-[#4A148C]">3</span>
                     </div>
                     <p>Use the Share button to send the stream link to family and friends.</p>
                   </div>
                   <div className="flex items-start gap-2.5">
-                    <div className="w-6 h-6 rounded-lg bg-[#F0F4FF] flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="text-[10px] font-bold text-[#1A237E]">4</span>
+                    <div className="w-6 h-6 rounded-lg bg-[#F3E5F5] flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="text-[10px] font-bold text-[#4A148C]">4</span>
                     </div>
                     <p>Service recordings are available in the Video Gallery within 24-48 hours.</p>
                   </div>

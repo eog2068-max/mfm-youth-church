@@ -19,11 +19,11 @@ export function FeaturedVideo({ video, onPlay }: FeaturedVideoProps) {
       onClick={() => onPlay(video)}
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1A0033] via-[#4A148C] to-[#6A1B9A]" />
 
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#D32F2F]/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-400/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/3" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-400/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/3" />
 
       {/* Content overlay */}
       <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10 bg-gradient-to-t from-black/70 via-black/20 to-transparent">

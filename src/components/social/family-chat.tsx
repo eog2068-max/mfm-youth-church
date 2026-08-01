@@ -78,10 +78,10 @@ function formatTimeAgo(dateStr: string): string {
 
 function getAvatarColor(name: string): string {
   const colors = [
-    "from-[#1A237E] to-[#283593]",
+    "from-[#4A148C] to-[#6A1B9A]",
     "from-[#D32F2F] to-[#E53935]",
     "from-[#2E7D32] to-[#388E3C]",
-    "from-[#E65100] to-[#F57C00]",
+    "from-[#C62828] to-[#F57C00]",
     "from-[#6A1B9A] to-[#8E24AA]",
     "from-[#00695C] to-[#00897B]",
   ];
@@ -349,7 +349,7 @@ export function FamilyChat() {
         <BackToSocial />
         <div className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <Loader2 className="size-8 text-[#1A237E] animate-spin mx-auto mb-3" />
+            <Loader2 className="size-8 text-[#4A148C] animate-spin mx-auto mb-3" />
             <p className="text-sm text-gray-500">Loading FamilyChat...</p>
           </div>
         </div>
@@ -380,11 +380,11 @@ export function FamilyChat() {
               <div className="p-4 border-b border-gray-100 bg-gradient-to-br from-[#F8FAFF] to-white">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1A237E] to-[#283593] flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#4A148C] to-[#6A1B9A] flex items-center justify-center">
                       <MessageCircle className="size-4 text-white" />
                     </div>
                     <div>
-                      <h2 className="text-sm font-bold text-[#1A237E]">
+                      <h2 className="text-sm font-bold text-[#4A148C]">
                         FamilyChat
                       </h2>
                       <p className="text-[9px] text-gray-400 leading-tight mt-0.5">
@@ -413,7 +413,7 @@ export function FamilyChat() {
                     }}
                     className={`w-full text-left px-4 py-3 flex items-center gap-3 transition-all duration-150 ${
                       activeChannel?.id === ch.id
-                        ? "bg-[#1A237E]/5 border-l-[3px] border-[#1A237E]"
+                        ? "bg-[#4A148C]/5 border-l-[3px] border-[#4A148C]"
                         : "hover:bg-gray-50/80 border-l-[3px] border-transparent"
                     }`}
                   >
@@ -422,7 +422,7 @@ export function FamilyChat() {
                       <p
                         className={`text-[13px] font-medium truncate ${
                           activeChannel?.id === ch.id
-                            ? "text-[#1A237E]"
+                            ? "text-[#4A148C]"
                             : "text-gray-600"
                         }`}
                       >
@@ -465,15 +465,15 @@ export function FamilyChat() {
               className="flex flex-col items-center gap-0.5 hover:opacity-80 transition-opacity"
               aria-label="Open chat rooms"
             >
-              <span className="text-sm font-bold text-[#1A237E] leading-tight">Chat Rooms</span>
-              <ChevronLeft className="size-5 text-[#1A237E] stroke-[2.5]" />
+              <span className="text-sm font-bold text-[#4A148C] leading-tight">Chat Rooms</span>
+              <ChevronLeft className="size-5 text-[#4A148C] stroke-[2.5]" />
             </button>
 
             {/* Right: House icon + current channel name */}
             {activeChannel ? (
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#F0F4FF] to-[#E8EDFF] flex items-center justify-center">
-                  <Home className="size-4 text-[#1A237E]" />
+                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#F3E5F5] to-[#E8EDFF] flex items-center justify-center">
+                  <Home className="size-4 text-[#4A148C]" />
                 </div>
                 <div className="min-w-0 text-right">
                   <h3 className="text-sm font-bold text-gray-800 flex items-center gap-1.5 justify-end">
@@ -519,7 +519,7 @@ export function FamilyChat() {
             {/* Empty state */}
             {activeChannel && messages.length === 0 && !activeChannel.isAnnouncement && (
               <div className="text-center py-16">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F0F4FF] to-[#E8EDFF] flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#F3E5F5] to-[#E8EDFF] flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">{activeChannel.emoji}</span>
                 </div>
                 <p className="text-sm font-medium text-gray-600 mb-1">
@@ -542,12 +542,12 @@ export function FamilyChat() {
                   <div key={msg.id} className="group relative py-0.5">
                     {msg.isAnnouncement ? (
                       /* === ANNOUNCEMENT MESSAGE === */
-                      <div className="bg-gradient-to-r from-[#1A237E]/[0.04] to-[#283593]/[0.04] border border-[#1A237E]/10 rounded-xl p-3.5 my-1">
+                      <div className="bg-gradient-to-r from-[#4A148C]/[0.04] to-[#6A1B9A]/[0.04] border border-[#4A148C]/10 rounded-xl p-3.5 my-1">
                         <div className="flex items-center gap-2 mb-1.5">
-                          <div className="w-6 h-6 rounded-md bg-[#1A237E]/10 flex items-center justify-center">
-                            <Megaphone className="size-3 text-[#1A237E]/70" />
+                          <div className="w-6 h-6 rounded-md bg-[#4A148C]/10 flex items-center justify-center">
+                            <Megaphone className="size-3 text-[#4A148C]/70" />
                           </div>
-                          <span className="text-[11px] font-bold text-[#1A237E]">
+                          <span className="text-[11px] font-bold text-[#4A148C]">
                             {msg.displayName}
                           </span>
                           <span className="text-[10px] text-gray-400 ml-auto">
@@ -591,9 +591,9 @@ export function FamilyChat() {
 
                           {/* Reply reference */}
                           {msg.replyToId && (
-                            <div className="mt-1 bg-[#F0F4FF] border-l-2 border-[#1A237E]/25 rounded-r-lg px-2.5 py-1.5">
+                            <div className="mt-1 bg-[#F3E5F5] border-l-2 border-[#4A148C]/25 rounded-r-lg px-2.5 py-1.5">
                               {msg.replyToDisplayName && (
-                                <p className="text-[10px] font-semibold text-[#1A237E]/60">
+                                <p className="text-[10px] font-semibold text-[#4A148C]/60">
                                   {msg.replyToDisplayName}
                                 </p>
                               )}
@@ -624,14 +624,14 @@ export function FamilyChat() {
                           <div className="flex items-center gap-0.5 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
                             <button
                               onClick={() => setReplyingTo(msg)}
-                              className="p-1 hover:bg-gray-100 rounded-md text-gray-400 hover:text-[#1A237E] transition-colors"
+                              className="p-1 hover:bg-gray-100 rounded-md text-gray-400 hover:text-[#4A148C] transition-colors"
                               title="Reply"
                             >
                               <Reply className="size-3" />
                             </button>
                             <button
                               onClick={() => setShowReactions(showReactions === msg.id ? null : msg.id)}
-                              className="p-1 hover:bg-gray-100 rounded-md text-gray-400 hover:text-[#1A237E] transition-colors"
+                              className="p-1 hover:bg-gray-100 rounded-md text-gray-400 hover:text-[#4A148C] transition-colors"
                               title="React"
                             >
                               <SmilePlus className="size-3" />
@@ -687,10 +687,10 @@ export function FamilyChat() {
                     exit={{ opacity: 0, height: 0 }}
                     className="overflow-hidden"
                   >
-                    <div className="flex items-center gap-2 bg-[#F0F4FF] border border-[#1A237E]/10 rounded-lg px-3 py-2 mb-2">
-                      <Reply className="size-3 text-[#1A237E] shrink-0" />
+                    <div className="flex items-center gap-2 bg-[#F3E5F5] border border-[#4A148C]/10 rounded-lg px-3 py-2 mb-2">
+                      <Reply className="size-3 text-[#4A148C] shrink-0" />
                       <div className="min-w-0 flex-1">
-                        <p className="text-[10px] font-semibold text-[#1A237E]/60">
+                        <p className="text-[10px] font-semibold text-[#4A148C]/60">
                           Replying to {replyingTo.displayName}
                         </p>
                         <p className="text-[10px] text-gray-500 truncate">
@@ -723,7 +723,7 @@ export function FamilyChat() {
                     }
                     disabled={activeChannel.isAnnouncement}
                     rows={1}
-                    className="w-full resize-none rounded-xl border border-gray-200 bg-[#FAFBFF] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/15 focus:border-[#1A237E]/25 transition-all min-h-[42px] max-h-24 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full resize-none rounded-xl border border-gray-200 bg-[#FAFBFF] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/15 focus:border-[#4A148C]/25 transition-all min-h-[42px] max-h-24 disabled:opacity-50 disabled:cursor-not-allowed"
                     style={{ lineHeight: "1.5" }}
                   />
                   {/* Character counter */}
@@ -742,7 +742,7 @@ export function FamilyChat() {
                 <button
                   onClick={sendMessage}
                   disabled={!inputText.trim() || sending || activeChannel.isAnnouncement}
-                  className="shrink-0 w-10 h-[42px] rounded-xl bg-[#1A237E] hover:bg-[#283593] text-white flex items-center justify-center transition-colors disabled:opacity-30 disabled:cursor-not-allowed shadow-sm"
+                  className="shrink-0 w-10 h-[42px] rounded-xl bg-[#4A148C] hover:bg-[#6A1B9A] text-white flex items-center justify-center transition-colors disabled:opacity-30 disabled:cursor-not-allowed shadow-sm"
                 >
                   {sending ? (
                     <Loader2 className="size-4 animate-spin" />
@@ -810,19 +810,19 @@ export function FamilyChat() {
                       key={r.value}
                       className={`flex items-center gap-2.5 px-3 py-2 rounded-lg border cursor-pointer transition-colors ${
                         reportReason === r.value
-                          ? "border-[#1A237E] bg-[#1A237E]/5"
+                          ? "border-[#4A148C] bg-[#4A148C]/5"
                           : "border-gray-100 hover:bg-gray-50"
                       }`}
                     >
                       <div
                         className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors ${
                           reportReason === r.value
-                            ? "border-[#1A237E]"
+                            ? "border-[#4A148C]"
                             : "border-gray-300"
                         }`}
                       >
                         {reportReason === r.value && (
-                          <div className="w-2 h-2 rounded-full bg-[#1A237E]" />
+                          <div className="w-2 h-2 rounded-full bg-[#4A148C]" />
                         )}
                       </div>
                       <span className="text-xs text-gray-700">{r.label}</span>
@@ -842,7 +842,7 @@ export function FamilyChat() {
                     onChange={(e) => setReportExplanation(e.target.value)}
                     placeholder="Provide any helpful context..."
                     rows={2}
-                    className="w-full resize-none rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#1A237E]/15 focus:border-[#1A237E]/25 transition-colors"
+                    className="w-full resize-none rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#4A148C]/15 focus:border-[#4A148C]/25 transition-colors"
                   />
                 </div>
               )}
@@ -920,7 +920,7 @@ function MessageReactions({
         title="Add reaction"
       >
         <SmilePlus
-          className={`size-3 transition-colors ${showPicker ? "text-[#1A237E]" : "text-gray-400"}`}
+          className={`size-3 transition-colors ${showPicker ? "text-[#4A148C]" : "text-gray-400"}`}
         />
       </button>
 

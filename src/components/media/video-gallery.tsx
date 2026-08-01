@@ -125,7 +125,7 @@ export function VideoGallery() {
             placeholder="Search videos..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-10 rounded-xl border-gray-200 bg-white h-10 focus:border-[#1A237E]/30"
+            className="pl-10 rounded-xl border-gray-200 bg-white h-10 focus:border-[#4A148C]/30"
           />
         </div>
 
@@ -137,7 +137,7 @@ export function VideoGallery() {
               onClick={() => setCategory(cat)}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 category === cat
-                  ? "bg-[#1A237E] text-white"
+                  ? "bg-[#4A148C] text-white"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
@@ -160,7 +160,7 @@ export function VideoGallery() {
             className="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
           >
             {/* Thumbnail */}
-            <div className="relative aspect-video bg-gradient-to-br from-[#0D1557] to-[#283593] overflow-hidden">
+            <div className="relative aspect-video bg-gradient-to-br from-[#1A0033] to-[#6A1B9A] overflow-hidden">
               <div className="absolute inset-0 flex items-center justify-center">
                 <Play className="size-12 text-white/30 group-hover:text-white/60 transition-colors" />
               </div>
@@ -169,7 +169,7 @@ export function VideoGallery() {
                 {video.duration}
               </span>
               {/* Category tag */}
-              <span className="absolute top-2 left-2 bg-[#1A237E]/80 text-white text-[10px] px-2 py-0.5 rounded-md font-medium">
+              <span className="absolute top-2 left-2 bg-[#4A148C]/80 text-white text-[10px] px-2 py-0.5 rounded-md font-medium">
                 {video.category}
               </span>
               {/* Hover overlay */}
@@ -178,7 +178,7 @@ export function VideoGallery() {
 
             {/* Info */}
             <div className="p-4">
-              <h3 className="text-sm font-bold text-[#1A237E] leading-tight line-clamp-2 mb-2">
+              <h3 className="text-sm font-bold text-[#4A148C] leading-tight line-clamp-2 mb-2">
                 {video.title}
               </h3>
               <p className="text-xs text-gray-500 mb-2">{video.speaker}</p>
@@ -208,7 +208,7 @@ export function VideoGallery() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="relative bg-[#0D1557] rounded-2xl overflow-hidden w-full max-w-4xl shadow-2xl"
+              className="relative bg-[#1A0033] rounded-2xl overflow-hidden w-full max-w-4xl shadow-2xl"
             >
               {/* Player area */}
               <div className="aspect-video flex items-center justify-center">
@@ -219,7 +219,7 @@ export function VideoGallery() {
               </div>
               {/* Info bar */}
               <div className="p-5 bg-white">
-                <h3 className="text-lg font-bold text-[#1A237E]">{selectedVideo.title}</h3>
+                <h3 className="text-lg font-bold text-[#4A148C]">{selectedVideo.title}</h3>
                 <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
                   <span>{selectedVideo.speaker}</span>
                   <span className="flex items-center gap-1"><Clock className="size-3.5" />{selectedVideo.duration}</span>

@@ -64,7 +64,7 @@ export function SocialShowcase() {
     <SectionWrapper className="py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionTitle
-          title="RehobothSocial"
+          title="YouthConnect"
           subtitle="I REMAIN CONNECTED TO MY CHURCH FAMILY THROUGHOUT THE WEEK."
         />
 
@@ -81,10 +81,10 @@ export function SocialShowcase() {
               <motion.div key={feature.name} variants={item}>
                 <Link
                   href={feature.href}
-                  className="block bg-white rounded-xl border border-gray-100 p-5 hover:shadow-md hover:border-orange-100 transition-all group h-full"
+                  className="block bg-white rounded-xl border border-gray-100 p-5 hover:shadow-md hover:border-red-100 transition-all group h-full"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-[#E65100]" />
+                  <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-[#C62828]" />
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-1">
                     {feature.name}
@@ -92,7 +92,7 @@ export function SocialShowcase() {
                   <p className="text-xs text-gray-500 leading-relaxed mb-4">
                     {feature.description}
                   </p>
-                  <div className="inline-flex items-center gap-1 text-[#E65100] text-sm font-medium">
+                  <div className="inline-flex items-center gap-1 text-[#C62828] text-sm font-medium">
                     Explore
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </div>
@@ -111,9 +111,9 @@ export function SocialShowcase() {
         >
           <Link
             href="/social"
-            className="mt-10 inline-flex items-center gap-2 bg-[#E65100] hover:bg-[#BF360C] text-white px-8 py-3.5 rounded-xl font-semibold transition-colors"
+            className="mt-10 inline-flex items-center gap-2 bg-[#C62828] hover:bg-[#B71C1C] text-white px-8 py-3.5 rounded-xl font-semibold transition-colors"
           >
-            ENTER REHOBOTHSOCIAL
+            ENTER YOUTHCONNECT
             <ArrowRight className="w-4 h-4" />
           </Link>
         </motion.div>

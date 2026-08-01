@@ -1,5 +1,5 @@
 /**
- * Sitemap generator for the RCCG Rehoboth Assembly PWA.
+ * Sitemap generator for the MFM Youth Church PWA.
  *
  * Generates a complete XML sitemap including all public routes:
  * - Static pages (home, about, sermons, events, etc.)
@@ -13,7 +13,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_GAF_BASE_URL || "https://rccg-rehoboth.app";
+  const baseUrl = process.env.NEXT_PUBLIC_GAF_BASE_URL || "https://mfm-youthchurch.app";
 
   // Static pages.
   const staticPages = [

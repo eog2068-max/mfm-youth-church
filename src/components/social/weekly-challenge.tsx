@@ -50,7 +50,7 @@ export function WeeklyChallenge() {
           <BackToSocial />
           <div className="text-center py-20">
             <span className="text-5xl mb-4 block">🔥</span>
-            <h1 className="text-2xl font-bold text-[#1A237E] mb-2">No Active Challenge</h1>
+            <h1 className="text-2xl font-bold text-[#4A148C] mb-2">No Active Challenge</h1>
             <p className="text-gray-500">Check back soon for a new weekly challenge!</p>
           </div>
         </div>

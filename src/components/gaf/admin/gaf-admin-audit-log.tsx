@@ -49,7 +49,7 @@ export function GafAdminAuditLog() {
     <div className="p-4 lg:p-8 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl lg:text-3xl font-bold text-[#1A237E]">Audit Log</h1>
+          <h1 className="text-2xl lg:text-3xl font-bold text-[#4A148C]">Audit Log</h1>
           <p className="text-sm text-gray-500 mt-1">
             {total} {total === 1 ? "entry" : "entries"} — admin action trail
           </p>
@@ -70,7 +70,7 @@ export function GafAdminAuditLog() {
       {loading ? (
         <Card className="border-0 shadow-md">
           <CardContent className="py-16 flex justify-center">
-            <Loader2 className="size-8 text-[#1A237E] animate-spin" />
+            <Loader2 className="size-8 text-[#4A148C] animate-spin" />
           </CardContent>
         </Card>
       ) : logs.length === 0 ? (
@@ -89,7 +89,7 @@ export function GafAdminAuditLog() {
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div className="min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="px-2 py-0.5 bg-[#1A237E]/10 text-[#1A237E] rounded text-xs font-mono">
+                        <span className="px-2 py-0.5 bg-[#4A148C]/10 text-[#4A148C] rounded text-xs font-mono">
                           {log.action}
                         </span>
                         <span className="text-xs text-gray-400">

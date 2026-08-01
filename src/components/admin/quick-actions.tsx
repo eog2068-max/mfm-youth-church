@@ -48,7 +48,7 @@ export function QuickActions() {
   return (
     <Card className="border-[#EBF0FA] bg-white shadow-sm">
       <CardHeader className="pb-3">
-        <CardTitle className="text-base font-semibold text-[#1A237E]">
+        <CardTitle className="text-base font-semibold text-[#4A148C]">
           Quick Actions
         </CardTitle>
       </CardHeader>
@@ -82,10 +82,10 @@ export function QuickActions() {
                   )}
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-[#1A237E] sm:text-sm">
+                  <p className="text-xs font-semibold text-[#4A148C] sm:text-sm">
                     {action.label}
                   </p>
-                  <p className="mt-0.5 hidden text-[10px] leading-snug text-[#1A237E]/45 sm:block">
+                  <p className="mt-0.5 hidden text-[10px] leading-snug text-[#4A148C]/45 sm:block">
                     {action.description}
                   </p>
                 </div>

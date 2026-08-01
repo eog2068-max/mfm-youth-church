@@ -91,7 +91,7 @@ export function EventRegistrationForm() {
         <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-6">
           <CheckCircle2 className="size-10 text-[#2E7D32]" />
         </div>
-        <h2 className="text-2xl font-bold text-[#1A237E] mb-2">Registration Successful!</h2>
+        <h2 className="text-2xl font-bold text-[#4A148C] mb-2">Registration Successful!</h2>
         <p className="text-gray-500 mb-6">
           You have been registered for <span className="font-semibold text-gray-700">{selectedEvent.title}</span>.
           A confirmation has been sent to <span className="font-medium text-gray-700">{formData.email}</span>.
@@ -129,7 +129,7 @@ export function EventRegistrationForm() {
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button
             asChild
-            className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl px-6"
+            className="bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl px-6"
           >
             <Link href="/events">
               <ArrowLeft className="size-4 mr-1" />
@@ -159,9 +159,9 @@ export function EventRegistrationForm() {
         <div className="lg:col-span-3">
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#1A237E] to-[#283593] px-6 py-5">
+            <div className="bg-gradient-to-r from-[#4A148C] to-[#6A1B9A] px-6 py-5">
               <h2 className="text-lg font-bold text-white">Event Registration</h2>
-              <p className="text-sm text-blue-200/70 mt-1">Fill in your details to register for an upcoming event</p>
+              <p className="text-sm text-purple-200/70 mt-1">Fill in your details to register for an upcoming event</p>
             </div>
 
             <form onSubmit={handleSubmit} className="p-6 space-y-5">
@@ -185,7 +185,7 @@ export function EventRegistrationForm() {
                         }}
                         className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
                           isSelected
-                            ? "border-[#1A237E] bg-[#F0F4FF]"
+                            ? "border-[#4A148C] bg-[#F3E5F5]"
                             : "border-gray-100 bg-white hover:border-gray-200"
                         }`}
                       >
@@ -199,7 +199,7 @@ export function EventRegistrationForm() {
                                 <CheckCircle2 className="size-4 text-[#2E7D32]" />
                               )}
                             </div>
-                            <p className={`text-sm font-bold leading-snug ${isSelected ? "text-[#1A237E]" : "text-gray-800"}`}>
+                            <p className={`text-sm font-bold leading-snug ${isSelected ? "text-[#4A148C]" : "text-gray-800"}`}>
                               {event.title}
                             </p>
                             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5 text-xs text-gray-400">
@@ -224,7 +224,7 @@ export function EventRegistrationForm() {
                                 </div>
                                 <div className="w-full h-1 bg-gray-100 rounded-full overflow-hidden">
                                   <div
-                                    className="h-full bg-[#1A237E] rounded-full"
+                                    className="h-full bg-[#4A148C] rounded-full"
                                     style={{ width: `${Math.min(((event.registeredCount || 0) / event.capacity) * 100, 100)}%` }}
                                   />
                                 </div>
@@ -256,7 +256,7 @@ export function EventRegistrationForm() {
                   value={formData.fullName}
                   onChange={(e) => handleChange("fullName", e.target.value)}
                   placeholder="Enter your full name"
-                  className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+                  className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
                 />
                 {errors.fullName && <p className="text-xs text-[#D32F2F] mt-1">{errors.fullName}</p>}
               </div>
@@ -273,7 +273,7 @@ export function EventRegistrationForm() {
                     value={formData.email}
                     onChange={(e) => handleChange("email", e.target.value)}
                     placeholder="your@email.com"
-                    className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+                    className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
                   />
                   {errors.email && <p className="text-xs text-[#D32F2F] mt-1">{errors.email}</p>}
                 </div>
@@ -287,7 +287,7 @@ export function EventRegistrationForm() {
                     value={formData.phone}
                     onChange={(e) => handleChange("phone", e.target.value)}
                     placeholder="+234 800 000 0000"
-                    className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+                    className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
                   />
                   {errors.phone && <p className="text-xs text-[#D32F2F] mt-1">{errors.phone}</p>}
                 </div>
@@ -304,7 +304,7 @@ export function EventRegistrationForm() {
                     value={formData.church}
                     onChange={(e) => handleChange("church", e.target.value)}
                     placeholder="Your parish name"
-                    className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+                    className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
                   />
                 </div>
                 <div>
@@ -318,7 +318,7 @@ export function EventRegistrationForm() {
                     max="10"
                     value={formData.additionalGuests}
                     onChange={(e) => handleChange("additionalGuests", e.target.value)}
-                    className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+                    className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
                   />
                   <p className="text-[10px] text-gray-400 mt-1">Max 10 additional guests</p>
                 </div>
@@ -334,7 +334,7 @@ export function EventRegistrationForm() {
                   onChange={(e) => handleChange("specialNeeds", e.target.value)}
                   placeholder="E.g., wheelchair access, vegetarian meals, hearing impairment..."
                   rows={3}
-                  className="rounded-xl border-gray-200 focus:border-[#1A237E]/30 resize-none"
+                  className="rounded-xl border-gray-200 focus:border-[#4A148C]/30 resize-none"
                 />
               </div>
 
@@ -361,7 +361,7 @@ export function EventRegistrationForm() {
           {/* Selected event details */}
           {selectedEvent ? (
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 sticky top-28">
-              <h3 className="text-sm font-bold text-[#1A237E] mb-4">Event Details</h3>
+              <h3 className="text-sm font-bold text-[#4A148C] mb-4">Event Details</h3>
               <div className="space-y-3 text-sm">
                 <div>
                   <p className="font-bold text-gray-800 text-base mb-1">{selectedEvent.title}</p>
@@ -415,8 +415,8 @@ export function EventRegistrationForm() {
             </div>
           ) : (
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 text-center sticky top-28">
-              <div className="w-16 h-16 rounded-2xl bg-[#F0F4FF] flex items-center justify-center mx-auto mb-4">
-                <Calendar className="size-7 text-[#1A237E]/40" />
+              <div className="w-16 h-16 rounded-2xl bg-[#F3E5F5] flex items-center justify-center mx-auto mb-4">
+                <Calendar className="size-7 text-[#4A148C]/40" />
               </div>
               <h3 className="text-sm font-bold text-gray-700 mb-1">Select an Event</h3>
               <p className="text-xs text-gray-400">Choose an event from the list on the left to see its details here and complete your registration.</p>
@@ -425,11 +425,11 @@ export function EventRegistrationForm() {
 
           {/* Need help? */}
           <div className="bg-[#F8FAFF] rounded-xl p-5">
-            <h4 className="text-sm font-bold text-[#1A237E] mb-2">Need Help?</h4>
+            <h4 className="text-sm font-bold text-[#4A148C] mb-2">Need Help?</h4>
             <p className="text-xs text-gray-500 leading-relaxed mb-3">
               If you have any questions about an event or need assistance with registration, please contact us.
             </p>
-            <Button asChild variant="outline" size="sm" className="w-full border-[#1A237E]/20 text-[#1A237E] hover:bg-[#F0F4FF] rounded-lg text-xs">
+            <Button asChild variant="outline" size="sm" className="w-full border-[#4A148C]/20 text-[#4A148C] hover:bg-[#F3E5F5] rounded-lg text-xs">
               <Link href="/contact">Contact Us</Link>
             </Button>
           </div>

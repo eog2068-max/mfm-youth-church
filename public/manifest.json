@@ -1,11 +1,11 @@
 {
-  "name": "The Redeemed Christian Church of God - Rehoboth Assembly Parish",
-  "short_name": "RCCG Rehoboth",
-  "description": "The Redeemed Christian Church of God, Rehoboth Assembly Parish - Silla-Zeka Plaza, Adebayo Adedeji Street, Utako, FCT, Abuja, Nigeria",
+  "name": "Mountain of Fire and Miracles Ministries - Youth Church",
+  "short_name": "MFM Youth Church",
+  "description": "Mountain of Fire and Miracles Ministries, Youth Church - A place of spiritual fire, prayer, and destiny fulfilment. Connect, worship, and grow with us!",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1A237E",
-  "theme_color": "#1A237E",
+  "background_color": "#4A148C",
+  "theme_color": "#4A148C",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en",
@@ -80,7 +80,7 @@
     {
       "name": "Give",
       "short_name": "Give",
-      "description": "Give to RCCG Rehoboth Assembly",
+      "description": "Give to MFM Youth Church",
       "url": "/giving",
       "icons": [{ "src": "/icons/icon-96x96.png", "sizes": "96x96" }]
     }

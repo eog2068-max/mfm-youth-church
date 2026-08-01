@@ -65,7 +65,7 @@ export function GalleryMain() {
         <SectionWrapper>
           <SectionTitle
             title="Photo Gallery"
-            subtitle="Relive the beautiful moments and memories from our services, events, and community life at Rehoboth Assembly Parish"
+            subtitle="Relive the beautiful moments and memories from our services, events, and community life at Youth Church"
           />
         </SectionWrapper>
 
@@ -79,7 +79,7 @@ export function GalleryMain() {
                 placeholder="Search albums or photos..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-10 rounded-xl border-gray-200 bg-white h-11 focus:border-[#1A237E]/30"
+                className="pl-10 rounded-xl border-gray-200 bg-white h-11 focus:border-[#4A148C]/30"
               />
             </div>
 
@@ -90,7 +90,7 @@ export function GalleryMain() {
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="pl-10 pr-8 h-11 rounded-xl border border-gray-200 bg-white text-sm text-gray-700 appearance-none cursor-pointer focus:outline-none focus:border-[#1A237E]/30 focus:ring-2 focus:ring-[#1A237E]/10"
+                  className="pl-10 pr-8 h-11 rounded-xl border border-gray-200 bg-white text-sm text-gray-700 appearance-none cursor-pointer focus:outline-none focus:border-[#4A148C]/30 focus:ring-2 focus:ring-[#4A148C]/10"
                 >
                   {galleryCategories.map((cat) => (
                     <option key={cat} value={cat}>
@@ -106,7 +106,7 @@ export function GalleryMain() {
                   onClick={() => { setViewMode("albums"); setSelectedAlbum(null); }}
                   className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5 ${
                     viewMode === "albums" && !selectedAlbum
-                      ? "bg-[#1A237E] text-white"
+                      ? "bg-[#4A148C] text-white"
                       : "text-gray-500 hover:text-gray-700"
                   }`}
                 >
@@ -117,7 +117,7 @@ export function GalleryMain() {
                   onClick={() => { setViewMode("all"); setSelectedAlbum(null); }}
                   className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5 ${
                     viewMode === "all" && !selectedAlbum
-                      ? "bg-[#1A237E] text-white"
+                      ? "bg-[#4A148C] text-white"
                       : "text-gray-500 hover:text-gray-700"
                   }`}
                 >
@@ -140,12 +140,12 @@ export function GalleryMain() {
             >
               <button
                 onClick={() => setSelectedAlbum(null)}
-                className="inline-flex items-center gap-2 text-sm text-[#1A237E] hover:text-[#0D1557] font-medium transition-colors"
+                className="inline-flex items-center gap-2 text-sm text-[#4A148C] hover:text-[#1A0033] font-medium transition-colors"
               >
                 <ArrowLeft className="size-4" />
                 Back to Albums
               </button>
-              <h2 className="text-2xl md:text-3xl font-bold text-[#1A237E] mt-2">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#4A148C] mt-2">
                 {selectedAlbum.name}
               </h2>
               <p className="text-sm text-gray-500 mt-1">{selectedAlbum.description}</p>
@@ -181,7 +181,7 @@ export function GalleryMain() {
                 onClick={() => openPhotoLightbox(photo, i, filteredPhotos)}
                 className="group cursor-pointer break-inside-avoid"
               >
-                <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#E8EDFF] to-[#F0F4FF] shadow-sm hover:shadow-lg transition-all duration-300">
+                <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#E8EDFF] to-[#F3E5F5] shadow-sm hover:shadow-lg transition-all duration-300">
                   <div
                     className={`w-full flex items-center justify-center ${
                       i % 4 === 0
@@ -193,7 +193,7 @@ export function GalleryMain() {
                         : "aspect-[16/9]"
                     }`}
                   >
-                    <Camera className="size-8 text-[#1A237E]/10" />
+                    <Camera className="size-8 text-[#4A148C]/10" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-0 left-0 right-0 p-3">
@@ -218,9 +218,9 @@ export function GalleryMain() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: i * 0.03 }}
                 onClick={() => openPhotoLightbox(photo, i, albumPhotos)}
-                className="group cursor-pointer aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-[#E8EDFF] to-[#F0F4FF] relative"
+                className="group cursor-pointer aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-[#E8EDFF] to-[#F3E5F5] relative"
               >
-                <Camera className="size-6 text-[#1A237E]/10 absolute inset-0 m-auto" />
+                <Camera className="size-6 text-[#4A148C]/10 absolute inset-0 m-auto" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-200 flex items-center justify-center">
                   <span className="text-white text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
                     {photo.title}

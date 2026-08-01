@@ -9,7 +9,7 @@ const events = [
     date: "Every Sunday",
     time: "7:00 AM",
     venue: "Main Auditorium",
-    color: "bg-[#1A237E]",
+    color: "bg-[#4A148C]",
     colorLight: "bg-[#EBF0FA]",
   },
   {
@@ -54,19 +54,19 @@ export function UpcomingEvents() {
               <div className={`${event.color} h-2`} />
 
               <div className="p-6">
-                <h3 className="text-lg font-bold text-[#1A237E] mb-3">{event.title}</h3>
+                <h3 className="text-lg font-bold text-[#4A148C] mb-3">{event.title}</h3>
 
                 <div className="space-y-2 text-sm text-gray-600">
                   <div className="flex items-center gap-2">
-                    <Calendar className="size-4 text-[#1A237E]/50 shrink-0" />
+                    <Calendar className="size-4 text-[#4A148C]/50 shrink-0" />
                     <span>{event.date}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Clock className="size-4 text-[#1A237E]/50 shrink-0" />
+                    <Clock className="size-4 text-[#4A148C]/50 shrink-0" />
                     <span>{event.time}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <MapPin className="size-4 text-[#1A237E]/50 shrink-0" />
+                    <MapPin className="size-4 text-[#4A148C]/50 shrink-0" />
                     <span>{event.venue}</span>
                   </div>
                 </div>
@@ -75,7 +75,7 @@ export function UpcomingEvents() {
                   <Button
                     asChild
                     variant="outline"
-                    className={`rounded-xl w-full border-[#1A237E]/20 text-[#1A237E] hover:bg-[#EBF0FA]`}
+                    className={`rounded-xl w-full border-[#4A148C]/20 text-[#4A148C] hover:bg-[#EBF0FA]`}
                   >
                     <Link href="/events">
                       Register

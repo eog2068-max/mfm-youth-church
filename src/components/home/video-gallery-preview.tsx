@@ -7,7 +7,7 @@ const videos = [
     title: "The Power of Faith — Sunday Service",
     date: "Last Sunday",
     views: "1.2K views",
-    bg: "from-[#1A237E] to-[#283593]",
+    bg: "from-[#4A148C] to-[#6A1B9A]",
   },
   {
     title: "Walking in Divine Guidance — Bible Study",
@@ -49,7 +49,7 @@ export function VideoGalleryPreview() {
 
               {/* Info */}
               <div className="p-4">
-                <h3 className="font-bold text-[#1A237E] text-sm leading-snug mb-2 line-clamp-2">
+                <h3 className="font-bold text-[#4A148C] text-sm leading-snug mb-2 line-clamp-2">
                   {video.title}
                 </h3>
                 <div className="flex items-center gap-3 text-xs text-gray-500">

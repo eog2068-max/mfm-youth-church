@@ -132,11 +132,11 @@ export function PWAProvider({ children }: { children: React.ReactNode }) {
           <DialogContent className="sm:max-w-md">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2">
-                <Download className="h-5 w-5 text-[#1A237E]" />
-                Install Rehoboth Assembly App
+                <Download className="h-5 w-5 text-[#4A148C]" />
+                Install Youth Assembly App
               </DialogTitle>
               <DialogDescription>
-                Add Rehoboth Assembly Parish to your home screen for quick access
+                Add Youth Church to your home screen for quick access
                 and an app-like experience. You&apos;ll be able to access
                 content even offline.
               </DialogDescription>
@@ -144,7 +144,7 @@ export function PWAProvider({ children }: { children: React.ReactNode }) {
             <div className="flex items-center justify-center py-4">
               <img
                 src="/icons/icon-192x192.png"
-                alt="RCCG Rehoboth Assembly"
+                alt="MFM Youth Church"
                 className="w-24 h-24 rounded-2xl"
               />
             </div>
@@ -158,7 +158,7 @@ export function PWAProvider({ children }: { children: React.ReactNode }) {
               </Button>
               <Button
                 onClick={handleInstall}
-                className="w-full sm:w-auto bg-[#1A237E] hover:bg-[#0D1557] text-white"
+                className="w-full sm:w-auto bg-[#4A148C] hover:bg-[#1A0033] text-white"
               >
                 <Download className="mr-2 h-4 w-4" />
                 Install App

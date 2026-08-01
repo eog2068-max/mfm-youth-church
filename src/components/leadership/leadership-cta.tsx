@@ -8,11 +8,11 @@ import { Button } from "@/components/ui/button";
 
 export function LeadershipCTA() {
   return (
-    <SectionWrapper className="py-16 md:py-24 bg-gradient-to-br from-[#1A237E] to-[#0D1557] relative overflow-hidden">
+    <SectionWrapper className="py-16 md:py-24 bg-gradient-to-br from-[#4A148C] to-[#1A0033] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#D32F2F] rounded-full blur-[128px]" />
-        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-[#3949AB] rounded-full blur-[128px]" />
+        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-[#7B1FA2] rounded-full blur-[128px]" />
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -25,9 +25,9 @@ export function LeadershipCTA() {
           <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
             Serve With Us
           </h2>
-          <p className="mt-4 text-lg text-blue-200/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-4 text-lg text-purple-200/80 max-w-2xl mx-auto leading-relaxed">
             God has given every believer gifts and talents for the edification of the Church.
-            If you feel called to serve in any capacity at Rehoboth Assembly, we would love to
+            If you feel called to serve in any capacity at Youth Assembly, we would love to
             hear from you. There is a place for you in the body of Christ.
           </p>
 
@@ -55,7 +55,7 @@ export function LeadershipCTA() {
             </Button>
           </div>
 
-          <div className="mt-10 flex items-center justify-center gap-2 text-blue-200/60 text-sm">
+          <div className="mt-10 flex items-center justify-center gap-2 text-purple-200/60 text-sm">
             <Phone className="size-4" />
             <span>+234 123 456 7890</span>
           </div>

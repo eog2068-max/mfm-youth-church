@@ -54,7 +54,7 @@ export function WhosComing() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
           <div className="flex items-center gap-3 mb-3">
             <span className="text-4xl">🙋</span>
-            <h1 className="text-2xl md:text-3xl font-bold text-[#1A237E]">Who&apos;s Coming?</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-[#4A148C]">Who&apos;s Coming?</h1>
           </div>
           <p className="text-gray-500">Let us know if you&apos;re planning to attend.</p>
         </motion.div>

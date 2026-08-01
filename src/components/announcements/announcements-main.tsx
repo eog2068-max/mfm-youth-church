@@ -117,7 +117,7 @@ export function AnnouncementsMain() {
         <SectionWrapper>
           <SectionTitle
             title="Latest Announcements"
-            subtitle="Stay informed about everything happening at Rehoboth Assembly Parish, Utako, Abuja."
+            subtitle="Stay informed about everything happening at Youth Church, Utako, Abuja."
           />
         </SectionWrapper>
 
@@ -127,14 +127,14 @@ export function AnnouncementsMain() {
             <div className="mb-8">
               <div className="flex items-center gap-2 mb-4">
                 <Pin className="size-4 text-[#D32F2F]" />
-                <h3 className="text-base font-bold text-[#1A237E]">
+                <h3 className="text-base font-bold text-[#4A148C]">
                   Pinned Announcements
                 </h3>
                 <span className="text-xs text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">
                   {pinnedAnnouncements.length}
                 </span>
               </div>
-              <div className="bg-gradient-to-br from-[#F0F4FF] to-[#EBF0FA] rounded-2xl p-1">
+              <div className="bg-gradient-to-br from-[#F3E5F5] to-[#EBF0FA] rounded-2xl p-1">
                 <div className="space-y-4">
                   {pinnedAnnouncements.map((ann, i) => (
                     <AnnouncementCard
@@ -164,7 +164,7 @@ export function AnnouncementsMain() {
                     setSearch(e.target.value);
                     setVisibleCount(ITEMS_PER_PAGE);
                   }}
-                  className="pl-10 rounded-xl border-gray-200 bg-[#F8FAFF] h-10 focus:border-[#1A237E]/30"
+                  className="pl-10 rounded-xl border-gray-200 bg-[#F8FAFF] h-10 focus:border-[#4A148C]/30"
                 />
                 {search && (
                   <button
@@ -233,7 +233,7 @@ export function AnnouncementsMain() {
                   }}
                   className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap shrink-0 ${
                     category === "all"
-                      ? "bg-[#1A237E] text-white"
+                      ? "bg-[#4A148C] text-white"
                       : "bg-[#F8FAFF] text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50"
                   }`}
                 >
@@ -248,7 +248,7 @@ export function AnnouncementsMain() {
                     }}
                     className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap shrink-0 ${
                       category === cat
-                        ? "bg-[#1A237E] text-white"
+                        ? "bg-[#4A148C] text-white"
                         : "bg-[#F8FAFF] text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50"
                     }`}
                   >
@@ -273,7 +273,7 @@ export function AnnouncementsMain() {
                     }}
                     className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap ${
                       priorityFilter === p
-                        ? "bg-[#1A237E] text-white"
+                        ? "bg-[#4A148C] text-white"
                         : "bg-[#F8FAFF] text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50"
                     }`}
                   >
@@ -290,7 +290,7 @@ export function AnnouncementsMain() {
             <div className="flex items-center justify-between pt-3 border-t border-gray-50">
               <div className="flex items-center gap-3">
                 <span className="text-sm text-gray-500">
-                  <span className="font-semibold text-[#1A237E]">
+                  <span className="font-semibold text-[#4A148C]">
                     {sortedAnnouncements.length}
                   </span>{" "}
                   announcement{sortedAnnouncements.length !== 1 ? "s" : ""}
@@ -333,7 +333,7 @@ export function AnnouncementsMain() {
                   {hasActiveFilters && (
                     <button
                       onClick={clearAll}
-                      className="mt-4 text-sm text-[#1A237E] font-medium hover:underline"
+                      className="mt-4 text-sm text-[#4A148C] font-medium hover:underline"
                     >
                       Reset filters
                     </button>
@@ -382,7 +382,7 @@ export function AnnouncementsMain() {
                   onClick={() =>
                     setVisibleCount((prev) => prev + ITEMS_PER_PAGE)
                   }
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-600 hover:border-[#1A237E]/30 hover:text-[#1A237E] transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-600 hover:border-[#4A148C]/30 hover:text-[#4A148C] transition-colors shadow-sm"
                 >
                   <ChevronDown className="size-4" />
                   Load More ({sortedAnnouncements.length - visibleCount}{" "}
@@ -402,11 +402,11 @@ export function AnnouncementsMain() {
 
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#F0F4FF] flex items-center justify-center shrink-0">
-                      <Megaphone className="size-5 text-[#1A237E]" />
+                    <div className="w-10 h-10 rounded-xl bg-[#F3E5F5] flex items-center justify-center shrink-0">
+                      <Megaphone className="size-5 text-[#4A148C]" />
                     </div>
                     <div>
-                      <p className="text-xl font-bold text-[#1A237E]">
+                      <p className="text-xl font-bold text-[#4A148C]">
                         {getActiveAnnouncements().length}
                       </p>
                       <p className="text-[11px] text-gray-400">
@@ -446,14 +446,14 @@ export function AnnouncementsMain() {
               </div>
 
               {/* Pinned count card */}
-              <div className="bg-gradient-to-br from-[#F0F4FF] to-[#EBF0FA] rounded-2xl border border-blue-100 p-5">
+              <div className="bg-gradient-to-br from-[#F3E5F5] to-[#EBF0FA] rounded-2xl border border-purple-100 p-5">
                 <div className="flex items-center gap-2 mb-2">
                   <Pin className="size-4 text-[#D32F2F]" />
-                  <h4 className="text-xs font-semibold text-[#1A237E] uppercase tracking-wider">
+                  <h4 className="text-xs font-semibold text-[#4A148C] uppercase tracking-wider">
                     Pinned
                   </h4>
                 </div>
-                <p className="text-3xl font-bold text-[#1A237E]">
+                <p className="text-3xl font-bold text-[#4A148C]">
                   {pinnedAnnouncements.length}
                 </p>
                 <p className="text-[11px] text-gray-500 mt-1">
@@ -473,11 +473,11 @@ export function AnnouncementsMain() {
                     ).length;
                     if (count === 0) return null;
                     const colors: Record<string, string> = {
-                      general: "bg-blue-500",
+                      general: "bg-purple-500",
                       service: "bg-purple-500",
                       event: "bg-amber-500",
                       ministry: "bg-teal-500",
-                      youth: "bg-orange-500",
+                      youth: "bg-red-500",
                       children: "bg-pink-500",
                       community: "bg-green-500",
                       admin: "bg-gray-500",

@@ -7,13 +7,13 @@ import Link from "next/link";
 const testimonies = [
   {
     quote:
-      "Since joining Rehoboth Assembly, my life has taken a completely new direction. The teachings are deeply rooted in the Word of God, and the fellowship is genuine. I have experienced God's faithfulness in ways I never imagined.",
+      "Since joining Youth Assembly, my life has taken a completely new direction. The teachings are deeply rooted in the Word of God, and the fellowship is genuine. I have experienced God's faithfulness in ways I never imagined.",
     name: "Adebayo Johnson",
     status: "Member since 2019",
   },
   {
     quote:
-      "I came to this church during a very difficult season in my life. The love and support I received from the brethren, combined with powerful prayers, brought about my total healing. God is truly at work in Rehoboth Assembly.",
+      "I came to this church during a very difficult season in my life. The love and support I received from the brethren, combined with powerful prayers, brought about my total healing. God is truly at work in Youth Assembly.",
     name: "Chidinma Okafor",
     status: "Member since 2021",
   },
@@ -27,7 +27,7 @@ const testimonies = [
 
 export function Testimonies() {
   return (
-    <SectionWrapper className="bg-[#F5F7FF] py-16 md:py-24">
+    <SectionWrapper className="bg-[#F3E5F5] py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionTitle title="Testimonies" subtitle="What our members are saying about God's goodness" />
 
@@ -42,7 +42,7 @@ export function Testimonies() {
                 &ldquo;{item.quote}&rdquo;
               </p>
               <div className="border-t border-gray-100 pt-4">
-                <p className="font-bold text-[#1A237E] text-sm">{item.name}</p>
+                <p className="font-bold text-[#4A148C] text-sm">{item.name}</p>
                 <p className="text-xs text-gray-500 mt-0.5">{item.status}</p>
               </div>
             </div>
@@ -51,7 +51,7 @@ export function Testimonies() {
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/testimonies"
-            className="inline-flex items-center gap-1.5 text-[#1A237E] font-semibold hover:gap-2.5 transition-all text-sm"
+            className="inline-flex items-center gap-1.5 text-[#4A148C] font-semibold hover:gap-2.5 transition-all text-sm"
           >
             View All Testimonies
             <ArrowRight className="size-4" />

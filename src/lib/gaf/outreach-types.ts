@@ -35,14 +35,14 @@ export const TYPE_LABELS: Record<string, string> = {
 };
 
 export const TYPE_COLORS: Record<string, string> = {
-  door_to_door: "bg-blue-100 text-blue-700",
+  door_to_door: "bg-purple-100 text-purple-700",
   street_preaching: "bg-amber-100 text-amber-700",
   hospital_visit: "bg-rose-100 text-rose-700",
   prison_ministry: "bg-purple-100 text-purple-700",
   school_outreach: "bg-teal-100 text-teal-700",
-  market_evangelism: "bg-orange-100 text-orange-700",
+  market_evangelism: "bg-red-100 text-red-700",
   phone_call: "bg-green-100 text-green-700",
-  social_media: "bg-indigo-100 text-indigo-700",
+  social_media: "bg-purple-100 text-purple-700",
   personal_visit: "bg-cyan-100 text-cyan-700",
   other: "bg-gray-100 text-gray-600",
 };

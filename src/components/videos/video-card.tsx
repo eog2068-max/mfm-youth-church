@@ -22,7 +22,7 @@ export function VideoCard({ video, index, series, onPlay }: VideoCardProps) {
       className="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
     >
       {/* Thumbnail */}
-      <div className="relative aspect-video bg-gradient-to-br from-[#0D1557] to-[#283593] overflow-hidden">
+      <div className="relative aspect-video bg-gradient-to-br from-[#1A0033] to-[#6A1B9A] overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
           <Play className="size-10 text-white/25 group-hover:text-white/50 transition-colors" />
         </div>
@@ -34,14 +34,14 @@ export function VideoCard({ video, index, series, onPlay }: VideoCardProps) {
 
         {/* Series tag */}
         {series && (
-          <span className="absolute top-2 left-2 bg-white/90 text-[#1A237E] text-[10px] px-2 py-0.5 rounded-md font-semibold">
+          <span className="absolute top-2 left-2 bg-white/90 text-[#4A148C] text-[10px] px-2 py-0.5 rounded-md font-semibold">
             {series.name}
           </span>
         )}
 
         {/* Category tag (if no series) */}
         {!series && (
-          <span className="absolute top-2 left-2 bg-white/90 text-[#1A237E] text-[10px] px-2 py-0.5 rounded-md font-medium">
+          <span className="absolute top-2 left-2 bg-white/90 text-[#4A148C] text-[10px] px-2 py-0.5 rounded-md font-medium">
             {video.category}
           </span>
         )}
@@ -52,7 +52,7 @@ export function VideoCard({ video, index, series, onPlay }: VideoCardProps) {
 
       {/* Info */}
       <div className="p-4">
-        <h3 className="text-sm font-bold text-[#1A237E] leading-tight line-clamp-2 mb-1.5 group-hover:text-[#0D1557] transition-colors">
+        <h3 className="text-sm font-bold text-[#4A148C] leading-tight line-clamp-2 mb-1.5 group-hover:text-[#1A0033] transition-colors">
           {video.title}
         </h3>
         <p className="text-xs text-gray-500 mb-2">{video.speaker}</p>
@@ -90,7 +90,7 @@ export function SeriesCard({ series, index, onClick, isActive }: SeriesCardProps
       transition={{ duration: 0.4, delay: index * 0.06 }}
       onClick={() => onClick(series)}
       className={`cursor-pointer rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border-2 ${
-        isActive ? "border-[#1A237E] shadow-md" : "border-transparent"
+        isActive ? "border-[#4A148C] shadow-md" : "border-transparent"
       }`}
     >
       <div className={`relative h-36 bg-gradient-to-br ${series.coverGradient} p-5 flex flex-col justify-between`}>

@@ -112,22 +112,22 @@ interface MenuCategory {
 }
 
 const menuCategories: MenuCategory[] = [
-  // ── REHOBOTHSOCIAL ──
+  // ── YOUTHCONNECT SOCIAL ──
   {
-    id: "rehoboth-social",
-    title: "RehobothSocial",
-    subtitle: "To Rehoboth Home",
+    id: "youth-connect-social",
+    title: "YouthConnect",
+    subtitle: "To Youth Home",
     headerLink: "/social",
     color: {
-      headerBg: "bg-[#E65100]",
-      accentBar: "bg-[#E65100]",
+      headerBg: "bg-[#C62828]",
+      accentBar: "bg-[#C62828]",
       accentText: "text-white",
-      ctaBg: "bg-[#E65100]",
-      ctaHover: "hover:bg-[#BF360C]",
-      iconBg: "bg-orange-100",
-      iconText: "text-[#E65100]",
-      itemActiveBg: "bg-orange-50",
-      itemActiveText: "text-[#E65100]",
+      ctaBg: "bg-[#C62828]",
+      ctaHover: "hover:bg-[#B71C1C]",
+      iconBg: "bg-red-100",
+      iconText: "text-[#C62828]",
+      itemActiveBg: "bg-red-50",
+      itemActiveText: "text-[#C62828]",
     },
     items: [
       { label: "FamilyChat", href: "/social/family-chat", icon: MessageCircle },
@@ -145,15 +145,15 @@ const menuCategories: MenuCategory[] = [
     subtitle: "To CMS Home",
     headerLink: "/cms",
     color: {
-      headerBg: "bg-[#1A237E]",
-      accentBar: "bg-[#1A237E]",
+      headerBg: "bg-[#4A148C]",
+      accentBar: "bg-[#4A148C]",
       accentText: "text-white",
-      ctaBg: "bg-[#1A237E]",
-      ctaHover: "hover:bg-[#0D1557]",
-      iconBg: "bg-blue-100",
-      iconText: "text-[#1A237E]",
-      itemActiveBg: "bg-blue-50",
-      itemActiveText: "text-[#1A237E]",
+      ctaBg: "bg-[#4A148C]",
+      ctaHover: "hover:bg-[#1A0033]",
+      iconBg: "bg-purple-100",
+      iconText: "text-[#4A148C]",
+      itemActiveBg: "bg-purple-50",
+      itemActiveText: "text-[#4A148C]",
     },
     items: [
       { label: "Announcements", href: "/announcements", icon: Megaphone },
@@ -179,15 +179,15 @@ const menuCategories: MenuCategory[] = [
     subtitle: "To GAF Home",
     headerLink: "/go-a-fishing",
     color: {
-      headerBg: "bg-[#3949AB]",
-      accentBar: "bg-[#3949AB]",
+      headerBg: "bg-[#7B1FA2]",
+      accentBar: "bg-[#7B1FA2]",
       accentText: "text-white",
-      ctaBg: "bg-[#3949AB]",
-      ctaHover: "hover:bg-[#1A237E]",
-      iconBg: "bg-indigo-100",
-      iconText: "text-[#3949AB]",
-      itemActiveBg: "bg-indigo-50",
-      itemActiveText: "text-[#3949AB]",
+      ctaBg: "bg-[#7B1FA2]",
+      ctaHover: "hover:bg-[#4A148C]",
+      iconBg: "bg-purple-100",
+      iconText: "text-[#7B1FA2]",
+      itemActiveBg: "bg-purple-50",
+      itemActiveText: "text-[#7B1FA2]",
     },
     items: [
       { label: "My Dashboard", href: "/go-a-fishing/dashboard", icon: LayoutDashboard },
@@ -417,8 +417,8 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         mounted && scrolled
-          ? "bg-[#0D1557]/95 backdrop-blur-xl shadow-lg shadow-black/10 border-b border-white/10"
-          : "bg-[#EBF3FF]/70 backdrop-blur-md border-b border-white/30"
+          ? "bg-[#1A0033]/95 backdrop-blur-xl shadow-lg shadow-black/10 border-b border-white/10"
+          : "bg-[#F3E5F5]/70 backdrop-blur-md border-b border-white/30"
       )}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -427,8 +427,8 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <div className="relative h-10 w-10 md:h-12 md:w-12 rounded-full bg-white/90 p-0.5 shadow-md">
               <Image
-                src="/rccg-logo.png"
-                alt="The Redeemed Christian Church of God"
+                src="/mfm-logo.png"
+                alt="Mountain of Fire and Miracles Ministries"
                 fill
                 sizes="40px"
                 className="object-contain"
@@ -441,20 +441,20 @@ export function Navbar() {
                   "text-sm font-bold leading-tight transition-colors",
                   mounted && scrolled
                     ? "text-white"
-                    : "text-[#1A237E]/90"
+                    : "text-[#4A148C]/90"
                 )}
               >
-                The Redeemed Christian Church of God
+                Mountain of Fire and Miracles Ministries
               </p>
               <p
                 className={cn(
                   "text-xs leading-tight transition-colors",
                   mounted && scrolled
-                    ? "text-blue-200/80"
+                    ? "text-purple-200/80"
                     : "text-gray-600"
                 )}
               >
-                (Rehoboth Assembly Parish)
+                (Youth Church)
               </p>
             </div>
           </Link>
@@ -470,10 +470,10 @@ export function Navbar() {
                   mounted && scrolled
                     ? pathname === item.href
                       ? "text-white bg-white/20 font-semibold"
-                      : "text-blue-100/80 hover:text-white hover:bg-white/10"
+                      : "text-purple-100/80 hover:text-white hover:bg-white/10"
                     : pathname === item.href
-                      ? "text-[#1A237E] bg-[#1A237E]/10 font-semibold"
-                      : "text-gray-600 hover:text-[#1A237E] hover:bg-[#1A237E]/5"
+                      ? "text-[#4A148C] bg-[#4A148C]/10 font-semibold"
+                      : "text-gray-600 hover:text-[#4A148C] hover:bg-[#4A148C]/5"
                 )}
               >
                 {item.label}
@@ -487,8 +487,8 @@ export function Navbar() {
                   className={cn(
                     "flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-colors outline-none",
                     mounted && scrolled
-                      ? "text-blue-100/80 hover:text-white hover:bg-white/10"
-                      : "text-gray-600 hover:text-[#1A237E] hover:bg-[#1A237E]/5"
+                      ? "text-purple-100/80 hover:text-white hover:bg-white/10"
+                      : "text-gray-600 hover:text-[#4A148C] hover:bg-[#4A148C]/5"
                   )}
                 >
                   Explore
@@ -502,7 +502,7 @@ export function Navbar() {
                 className={cn(
                   "w-56 rounded-xl p-1.5 data-[side=bottom]:animate-in data-[side=bottom]:fade-in-0 data-[side=bottom]:zoom-in-95",
                   mounted && scrolled
-                    ? "bg-[#0D1557]/95 backdrop-blur-xl border-white/10"
+                    ? "bg-[#1A0033]/95 backdrop-blur-xl border-white/10"
                     : "bg-white border-gray-200 shadow-lg"
                 )}
               >
@@ -510,7 +510,7 @@ export function Navbar() {
                   className={cn(
                     "px-2.5 py-2",
                     mounted && scrolled
-                      ? "text-blue-100/80"
+                      ? "text-purple-100/80"
                       : "text-gray-500"
                   )}
                 >
@@ -534,12 +534,12 @@ export function Navbar() {
                             ? cn(
                                 pathname === item.href
                                   ? "text-white bg-white/15 font-semibold"
-                                  : "text-blue-100/80 hover:text-white hover:bg-white/10"
+                                  : "text-purple-100/80 hover:text-white hover:bg-white/10"
                               )
                             : cn(
                                 pathname === item.href
-                                  ? "text-[#1A237E] bg-[#1A237E]/10 font-semibold"
-                                  : "text-gray-600 hover:text-[#1A237E] hover:bg-[#1A237E]/5"
+                                  ? "text-[#4A148C] bg-[#4A148C]/10 font-semibold"
+                                  : "text-gray-600 hover:text-[#4A148C] hover:bg-[#4A148C]/5"
                               )
                         )}
                       >
@@ -560,8 +560,8 @@ export function Navbar() {
                     className={cn(
                       "flex items-center justify-between gap-2.5 px-2.5 py-2 rounded-lg text-sm cursor-pointer transition-colors",
                       mounted && scrolled
-                        ? "text-[#90CAF9] hover:text-white hover:bg-white/10"
-                        : "text-[#1A237E] hover:text-[#0D1557] hover:bg-[#1A237E]/5"
+                        ? "text-[#CE93D8] hover:text-white hover:bg-white/10"
+                        : "text-[#4A148C] hover:text-[#1A0033] hover:bg-[#4A148C]/5"
                     )}
                   >
                     View All
@@ -593,7 +593,7 @@ export function Navbar() {
                     "xl:hidden p-2 rounded-lg transition-colors",
                     mounted && scrolled
                       ? "text-white hover:bg-white/10"
-                      : "text-[#1A237E] hover:bg-[#1A237E]/5"
+                      : "text-[#4A148C] hover:bg-[#4A148C]/5"
                   )}
                   aria-label="Open menu"
                 >
@@ -602,18 +602,18 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent side="right" className="w-80 overflow-y-auto p-0">
                 {/* Sheet header */}
-                <SheetHeader className="px-4 pt-6 pb-4 bg-gradient-to-b from-[#EBF3FF] to-white">
-                  <SheetTitle className="text-[#1A237E] flex items-center gap-3">
-                    <div className="relative h-8 w-8 rounded-full bg-[#F0F4FF] p-0.5">
+                <SheetHeader className="px-4 pt-6 pb-4 bg-gradient-to-b from-[#F3E5F5] to-white">
+                  <SheetTitle className="text-[#4A148C] flex items-center gap-3">
+                    <div className="relative h-8 w-8 rounded-full bg-[#F3E5F5] p-0.5">
                       <Image
-                        src="/rccg-logo.png"
-                        alt="The Redeemed Christian Church of God"
+                        src="/mfm-logo.png"
+                        alt="Mountain of Fire and Miracles Ministries"
                         fill
                         sizes="32px"
                         className="object-contain"
                       />
                     </div>
-                    Rehoboth Assembly Parish
+                    Youth Church
                   </SheetTitle>
                 </SheetHeader>
 

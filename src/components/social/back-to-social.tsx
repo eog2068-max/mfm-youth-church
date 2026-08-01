@@ -13,10 +13,10 @@ export function BackToSocial() {
     >
       <Link
         href="/social"
-        className="inline-flex items-center gap-2 text-sm font-medium text-[#1A237E] hover:text-[#0D1557] transition-colors"
+        className="inline-flex items-center gap-2 text-sm font-medium text-[#4A148C] hover:text-[#1A0033] transition-colors"
       >
         <ArrowLeft className="size-4" />
-        Back to RehobothSocial
+        Back to YouthConnect
       </Link>
     </motion.div>
   );

@@ -62,11 +62,11 @@ const STATUS_LABELS: Record<ReferralStatus, string> = {
 };
 
 const STATUS_COLORS: Record<ReferralStatus, string> = {
-  invited: "bg-blue-100 text-blue-700 border-blue-200",
+  invited: "bg-purple-100 text-purple-700 border-purple-200",
   attended: "bg-amber-100 text-amber-700 border-amber-200",
   saved: "bg-emerald-100 text-emerald-700 border-emerald-200",
   baptized: "bg-purple-100 text-purple-700 border-purple-200",
-  member: "bg-[#1A237E] text-white border-[#1A237E]",
+  member: "bg-[#4A148C] text-white border-[#4A148C]",
   lost_contact: "bg-gray-100 text-gray-600 border-gray-200",
 };
 
@@ -160,12 +160,12 @@ export function GafMyReferrals({ referrals: initialReferrals }: GafMyReferralsPr
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-[#F0F4FF] min-h-screen">
+    <section className="py-12 md:py-16 bg-[#F3E5F5] min-h-screen">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         {/* Header + Add button */}
         <SectionWrapper className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1A237E]">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#4A148C]">
               My Referrals
             </h2>
             <p className="text-sm text-gray-600 mt-1">
@@ -175,21 +175,21 @@ export function GafMyReferrals({ referrals: initialReferrals }: GafMyReferralsPr
 
           <Dialog open={dialogOpen} onOpenChange={(open) => { setDialogOpen(open); if (!open) resetForm(); }}>
             <DialogTrigger asChild>
-              <Button className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl gap-2">
+              <Button className="bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl gap-2">
                 <Plus className="size-4" />
                 Add Referral
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
-                <DialogTitle className="flex items-center gap-2 text-[#1A237E]">
+                <DialogTitle className="flex items-center gap-2 text-[#4A148C]">
                   <Fish className="size-5" />
                   Log a New Referral
                 </DialogTitle>
               </DialogHeader>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="inviteeName" className="text-[#1A237E]">
+                  <Label htmlFor="inviteeName" className="text-[#4A148C]">
                     Invitee Name <span className="text-red-500">*</span>
                   </Label>
                   <Input
@@ -205,7 +205,7 @@ export function GafMyReferrals({ referrals: initialReferrals }: GafMyReferralsPr
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="inviteePhone" className="text-[#1A237E]">
+                    <Label htmlFor="inviteePhone" className="text-[#4A148C]">
                       Phone (optional)
                     </Label>
                     <Input
@@ -218,7 +218,7 @@ export function GafMyReferrals({ referrals: initialReferrals }: GafMyReferralsPr
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="inviteeEmail" className="text-[#1A237E]">
+                    <Label htmlFor="inviteeEmail" className="text-[#4A148C]">
                       Email (optional)
                     </Label>
                     <Input
@@ -233,7 +233,7 @@ export function GafMyReferrals({ referrals: initialReferrals }: GafMyReferralsPr
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="prayerPoint" className="text-[#1A237E]">
+                  <Label htmlFor="prayerPoint" className="text-[#4A148C]">
                     Prayer Point (optional)
                   </Label>
                   <Input
@@ -247,7 +247,7 @@ export function GafMyReferrals({ referrals: initialReferrals }: GafMyReferralsPr
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="notes" className="text-[#1A237E]">
+                  <Label htmlFor="notes" className="text-[#4A148C]">
                     Notes (optional)
                   </Label>
                   <Textarea
@@ -282,7 +282,7 @@ export function GafMyReferrals({ referrals: initialReferrals }: GafMyReferralsPr
                   <Button
                     type="submit"
                     disabled={submitting || !inviteeName.trim()}
-                    className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl gap-2"
+                    className="bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl gap-2"
                   >
                     {submitting ? (
                       <>
@@ -327,7 +327,7 @@ export function GafMyReferrals({ referrals: initialReferrals }: GafMyReferralsPr
                 onClick={() => setFilter(f.value)}
                 className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                   filter === f.value
-                    ? "bg-[#1A237E] text-white"
+                    ? "bg-[#4A148C] text-white"
                     : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
                 }`}
               >
@@ -370,7 +370,7 @@ export function GafMyReferrals({ referrals: initialReferrals }: GafMyReferralsPr
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-2 mb-1">
-                              <h3 className="font-semibold text-[#1A237E] truncate">
+                              <h3 className="font-semibold text-[#4A148C] truncate">
                                 {ref.inviteeName}
                               </h3>
                               <span

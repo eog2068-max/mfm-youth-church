@@ -65,7 +65,7 @@ export function PhotoGallery() {
             placeholder="Search photos..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-10 rounded-xl border-gray-200 bg-white h-10 focus:border-[#1A237E]/30"
+            className="pl-10 rounded-xl border-gray-200 bg-white h-10 focus:border-[#4A148C]/30"
           />
         </div>
 
@@ -76,7 +76,7 @@ export function PhotoGallery() {
               onClick={() => setCategory(cat)}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 category === cat
-                  ? "bg-[#1A237E] text-white"
+                  ? "bg-[#4A148C] text-white"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
@@ -98,14 +98,14 @@ export function PhotoGallery() {
             onClick={() => openPhoto(photo, i)}
             className="group cursor-pointer break-inside-avoid"
           >
-            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#E8EDFF] to-[#F0F4FF] shadow-sm hover:shadow-lg transition-all duration-300">
+            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#E8EDFF] to-[#F3E5F5] shadow-sm hover:shadow-lg transition-all duration-300">
               {/* Photo placeholder with varying heights for masonry effect */}
               <div
                 className={`w-full flex items-center justify-center relative ${
                   i % 3 === 0 ? "aspect-[4/3]" : i % 3 === 1 ? "aspect-square" : "aspect-[3/4]"
                 }`}
               >
-                <Camera className="size-10 text-[#1A237E]/10" />
+                <Camera className="size-10 text-[#4A148C]/10" />
               </div>
 
               {/* Hover overlay */}
@@ -120,7 +120,7 @@ export function PhotoGallery() {
               </div>
 
               {/* Category tag */}
-              <span className="absolute top-3 left-3 bg-white/90 text-[#1A237E] text-[10px] px-2 py-0.5 rounded-md font-medium">
+              <span className="absolute top-3 left-3 bg-white/90 text-[#4A148C] text-[10px] px-2 py-0.5 rounded-md font-medium">
                 {photo.category}
               </span>
             </div>
@@ -165,9 +165,9 @@ export function PhotoGallery() {
               className="relative z-10 max-w-4xl w-full mx-4"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="bg-gradient-to-br from-[#E8EDFF] to-[#F0F4FF] rounded-2xl aspect-video flex items-center justify-center relative">
-                <Camera className="size-16 text-[#1A237E]/15" />
-                <span className="absolute text-sm text-[#1A237E]/30 font-medium">Photo</span>
+              <div className="bg-gradient-to-br from-[#E8EDFF] to-[#F3E5F5] rounded-2xl aspect-video flex items-center justify-center relative">
+                <Camera className="size-16 text-[#4A148C]/15" />
+                <span className="absolute text-sm text-[#4A148C]/30 font-medium">Photo</span>
               </div>
               <div className="mt-3 text-center">
                 <p className="text-white font-semibold text-lg">{selectedPhoto.title}</p>

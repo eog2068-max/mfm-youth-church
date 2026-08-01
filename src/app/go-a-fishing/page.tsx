@@ -3,9 +3,9 @@ import { PageBanner } from "@/components/layout/page-banner";
 import { GafLanding } from "@/components/gaf/gaf-landing";
 
 export const metadata: Metadata = {
-  title: "Go-A-Fishing | RCCG Rehoboth Assembly",
+  title: "Go-A-Fishing | MFM Youth Church",
   description:
-    "Join the Go-A-Fishing evangelism movement at RCCG Rehoboth Assembly. Win souls, share Christ's love, and earn eternal rewards.",
+    "Join the Go-A-Fishing evangelism movement at MFM Youth Church. Win souls, share Christ's love, and earn eternal rewards.",
 };
 
 export default async function GoAFishingPage({

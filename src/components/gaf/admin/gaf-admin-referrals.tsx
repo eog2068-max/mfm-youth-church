@@ -19,11 +19,11 @@ import { Button } from "@/components/ui/button";
 
 const STATUSES = ["all", "invited", "attended", "saved", "baptized", "member", "lost_contact"];
 const STATUS_COLORS: Record<string, string> = {
-  invited: "bg-blue-100 text-blue-700",
+  invited: "bg-purple-100 text-purple-700",
   attended: "bg-amber-100 text-amber-700",
   saved: "bg-emerald-100 text-emerald-700",
   baptized: "bg-purple-100 text-purple-700",
-  member: "bg-[#1A237E] text-white",
+  member: "bg-[#4A148C] text-white",
   lost_contact: "bg-gray-100 text-gray-600",
 };
 
@@ -101,7 +101,7 @@ export function GafAdminReferrals() {
   return (
     <div className="p-4 lg:p-8 space-y-6">
       <div>
-        <h1 className="text-2xl lg:text-3xl font-bold text-[#1A237E]">
+        <h1 className="text-2xl lg:text-3xl font-bold text-[#4A148C]">
           All Referrals
         </h1>
         <p className="text-sm text-gray-500 mt-1">
@@ -118,7 +118,7 @@ export function GafAdminReferrals() {
             onClick={() => setFilter(s)}
             className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors capitalize ${
               filter === s
-                ? "bg-[#1A237E] text-white"
+                ? "bg-[#4A148C] text-white"
                 : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
             }`}
           >
@@ -137,7 +137,7 @@ export function GafAdminReferrals() {
       {loading ? (
         <Card className="border-0 shadow-md">
           <CardContent className="py-16 flex justify-center">
-            <Loader2 className="size-8 text-[#1A237E] animate-spin" />
+            <Loader2 className="size-8 text-[#4A148C] animate-spin" />
           </CardContent>
         </Card>
       ) : referrals.length === 0 ? (
@@ -164,7 +164,7 @@ export function GafAdminReferrals() {
                     <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <p className="font-semibold text-[#1A237E]">
+                          <p className="font-semibold text-[#4A148C]">
                             {ref.inviteeName}
                           </p>
                           <span

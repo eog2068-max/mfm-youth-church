@@ -8,11 +8,11 @@ import { Button } from "@/components/ui/button";
 
 export function AboutCTA() {
   return (
-    <SectionWrapper className="py-16 md:py-24 bg-gradient-to-br from-[#1A237E] to-[#0D1557] relative overflow-hidden">
+    <SectionWrapper className="py-16 md:py-24 bg-gradient-to-br from-[#4A148C] to-[#1A0033] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#D32F2F] rounded-full blur-[128px]" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#3949AB] rounded-full blur-[128px]" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#7B1FA2] rounded-full blur-[128px]" />
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -24,9 +24,9 @@ export function AboutCTA() {
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
             Ready to Experience the
-            <span className="text-[#D32F2F]"> Rehoboth</span> Difference?
+            <span className="text-[#D32F2F]"> Youth</span> Difference?
           </h2>
-          <p className="mt-6 text-lg text-blue-200/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 text-lg text-purple-200/80 max-w-2xl mx-auto leading-relaxed">
             We invite you to worship with us this Sunday and become part of a family where
             God&apos;s presence is real, His Word is power, and His love is unconditional.
             Your destiny finds fulfillment here.
@@ -56,7 +56,7 @@ export function AboutCTA() {
             </Button>
           </div>
 
-          <div className="mt-10 flex items-center justify-center gap-2 text-blue-200/60 text-sm">
+          <div className="mt-10 flex items-center justify-center gap-2 text-purple-200/60 text-sm">
             <MapPin className="size-4" />
             <span>Silla-Zeka Plaza, Adebayo Adedeji Street, Utako, FCT, Abuja</span>
           </div>

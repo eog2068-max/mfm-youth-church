@@ -6,7 +6,7 @@ import { MembersCTA } from "@/components/members/members-cta";
 export const metadata: Metadata = {
   title: "Members Gallery",
   description:
-    "Meet the wonderful members of The Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja. A family united in faith and service to God.",
+    "Meet the wonderful members of Mountain of Fire and Miracles Ministries, Youth Church, Utako, Abuja. A family united in faith and service to God.",
 };
 
 export default function MembersPage() {
@@ -14,7 +14,7 @@ export default function MembersPage() {
     <>
       <PageBanner
         title="Members Gallery"
-        subtitle="Meet the beautiful people who make up the Rehoboth Assembly family. Each member is a testament of God's grace and a vital part of our community."
+        subtitle="Meet the beautiful people who make up the Youth Assembly family. Each member is a testament of God's grace and a vital part of our community."
         breadcrumbs={[{ label: "Members Gallery" }]}
       />
       <MembersGallery />

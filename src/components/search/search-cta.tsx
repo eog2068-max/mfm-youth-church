@@ -8,7 +8,7 @@ import Link from "next/link";
 export function SearchCTA() {
   return (
     <section className="relative py-16 md:py-20 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1A0033] via-[#4A148C] to-[#6A1B9A]" />
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#D32F2F] rounded-full blur-[128px] -translate-y-1/2 translate-x-1/3" />
         <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-green-400/20 rounded-full blur-[128px] translate-y-1/2" />
@@ -27,7 +27,7 @@ export function SearchCTA() {
           <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
             Can&apos;t Find What You&apos;re Looking For?
           </h2>
-          <p className="mt-4 text-lg text-blue-200/80 max-w-xl mx-auto leading-relaxed">
+          <p className="mt-4 text-lg text-purple-200/80 max-w-xl mx-auto leading-relaxed">
             We&apos;re here to help! Whether you need information about our
             church, have a question, or need someone to pray with you, don&apos;t
             hesitate to reach out. We&apos;d love to hear from you.

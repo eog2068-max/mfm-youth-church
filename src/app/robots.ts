@@ -1,5 +1,5 @@
 /**
- * Robots.txt configuration for the RCCG Rehoboth Assembly PWA.
+ * Robots.txt configuration for the MFM Youth Church PWA.
  *
  * Allows all crawlers on public routes, blocks admin and API routes.
  *
@@ -8,7 +8,7 @@
 import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_GAF_BASE_URL || "https://rccg-rehoboth.app";
+  const baseUrl = process.env.NEXT_PUBLIC_GAF_BASE_URL || "https://mfm-youthchurch.app";
 
   return {
     rules: [

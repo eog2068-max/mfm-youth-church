@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 /** Fallback base URL when env var is not yet configured. */
-const DEFAULT_BASE_URL = "https://rccg-rehoboth.app";
+const DEFAULT_BASE_URL = "https://mfm-youthchurch.app";
 
 export default async function GafDashboardPage() {
   const member = await getCurrentMember();

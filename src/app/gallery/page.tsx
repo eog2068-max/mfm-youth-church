@@ -6,7 +6,7 @@ import { GalleryCTA } from "@/components/gallery/gallery-cta";
 export const metadata: Metadata = {
   title: "Photo Gallery",
   description:
-    "Browse beautiful photos from services, events, and community life at The Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja.",
+    "Browse beautiful photos from services, events, and community life at Mountain of Fire and Miracles Ministries, Youth Church, Utako, Abuja.",
 };
 
 export default function GalleryPage() {

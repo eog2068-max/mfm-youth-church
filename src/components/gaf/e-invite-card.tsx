@@ -59,14 +59,14 @@ export function EInviteCard({
       if (!ctx) return;
 
       // Background.
-      ctx.fillStyle = "#1A237E";
+      ctx.fillStyle = "#4A148C";
       ctx.fillRect(0, 0, w, h);
 
       // Simple text rendering (basic — for full rendering, html2canvas would be needed).
       ctx.fillStyle = "#ffffff";
       ctx.font = "bold 28px sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText("RCCG Rehoboth Assembly", w / 2, 60);
+      ctx.fillText("MFM Youth Church", w / 2, 60);
 
       ctx.font = "18px sans-serif";
       ctx.fillStyle = "#bbdefb";
@@ -139,8 +139,8 @@ export function EInviteCard({
     if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
       try {
         await navigator.share({
-          title: `Invitation from ${memberName} — RCCG Rehoboth Assembly`,
-          text: `${memberName} invites you to RCCG Rehoboth Assembly, Abuja. Scan the QR or tap the link to connect!`,
+          title: `Invitation from ${memberName} — MFM Youth Church`,
+          text: `${memberName} invites you to MFM Youth Church, Abuja. Scan the QR or tap the link to connect!`,
           url: fullUrl,
         });
       } catch (err) {
@@ -154,12 +154,12 @@ export function EInviteCard({
       {/* Card */}
       <div
         ref={cardRef}
-        className="bg-gradient-to-br from-[#1A237E] via-[#1A237E] to-[#0D1557] rounded-2xl p-8 text-white shadow-xl max-w-md mx-auto"
+        className="bg-gradient-to-br from-[#4A148C] via-[#4A148C] to-[#1A0033] rounded-2xl p-8 text-white shadow-xl max-w-md mx-auto"
       >
         {/* Header */}
         <div className="text-center mb-6">
-          <h3 className="text-xl font-bold">RCCG Rehoboth Assembly</h3>
-          <p className="text-blue-200 text-sm mt-1">Abuja, Nigeria</p>
+          <h3 className="text-xl font-bold">MFM Youth Church</h3>
+          <p className="text-purple-200 text-sm mt-1">Abuja, Nigeria</p>
           <div className="mt-3 inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5">
             <span className="text-amber-300 font-semibold text-sm">
               You&apos;re Invited!
@@ -170,10 +170,10 @@ export function EInviteCard({
         {/* Personal note */}
         {personalNote && (
           <div className="bg-white/10 rounded-xl p-3 mb-5 text-center">
-            <p className="text-sm italic text-blue-100">
+            <p className="text-sm italic text-purple-100">
               &ldquo;{personalNote}&rdquo;
             </p>
-            <p className="text-xs text-blue-200 mt-1">— {memberName}</p>
+            <p className="text-xs text-purple-200 mt-1">— {memberName}</p>
           </div>
         )}
 
@@ -186,7 +186,7 @@ export function EInviteCard({
               size={180}
               level="M"
               bgColor="#ffffff"
-              fgColor="#1A237E"
+              fgColor="#4A148C"
               marginSize={2}
             />
           </div>
@@ -194,7 +194,7 @@ export function EInviteCard({
 
         {/* Referral code */}
         <div className="text-center mb-5">
-          <p className="text-xs text-blue-300 uppercase tracking-wider mb-1">
+          <p className="text-xs text-purple-300 uppercase tracking-wider mb-1">
             Referral Code
           </p>
           <p className="text-lg font-mono font-bold text-amber-300">
@@ -204,7 +204,7 @@ export function EInviteCard({
 
         {/* Service times */}
         <div className="border-t border-white/10 pt-4 space-y-1.5">
-          <h4 className="text-xs font-bold uppercase tracking-wider text-blue-200 text-center">
+          <h4 className="text-xs font-bold uppercase tracking-wider text-purple-200 text-center">
             Service Times
           </h4>
           <div className="text-center text-sm space-y-0.5">
@@ -221,10 +221,10 @@ export function EInviteCard({
 
         {/* Footer */}
         <div className="mt-5 text-center">
-          <p className="text-xs text-blue-300">
+          <p className="text-xs text-purple-300">
             Scan the QR code or visit the link below
           </p>
-          <p className="text-xs font-mono text-blue-200 mt-1 break-all">
+          <p className="text-xs font-mono text-purple-200 mt-1 break-all">
             {fullUrl}
           </p>
         </div>

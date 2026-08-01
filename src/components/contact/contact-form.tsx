@@ -105,7 +105,7 @@ export function ContactForm() {
         <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-6">
           <CheckCircle2 className="size-10 text-[#2E7D32]" />
         </div>
-        <h3 className="text-2xl font-bold text-[#1A237E] mb-2">
+        <h3 className="text-2xl font-bold text-[#4A148C] mb-2">
           Message Sent Successfully!
         </h3>
         <p className="text-gray-500 leading-relaxed mb-2">
@@ -116,7 +116,7 @@ export function ContactForm() {
           We&apos;ll get back to you within 24-48 hours.
         </p>
         <Button
-          className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl px-8"
+          className="bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl px-8"
           onClick={() => {
             setSubmitted(false);
             setFormData({
@@ -137,14 +137,14 @@ export function ContactForm() {
   return (
     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
       {/* Form Header */}
-      <div className="bg-gradient-to-r from-[#1A237E] to-[#283593] px-6 py-5">
+      <div className="bg-gradient-to-r from-[#4A148C] to-[#6A1B9A] px-6 py-5">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center">
             <MessageSquare className="size-5 text-white" />
           </div>
           <div>
             <h2 className="text-lg font-bold text-white">Send Us a Message</h2>
-            <p className="text-sm text-blue-200/80">
+            <p className="text-sm text-purple-200/80">
               We&apos;d love to hear from you. Fill out the form below.
             </p>
           </div>
@@ -162,7 +162,7 @@ export function ContactForm() {
             value={formData.fullName}
             onChange={(e) => handleChange("fullName", e.target.value)}
             placeholder="Enter your full name"
-            className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+            className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
           />
           {errors.fullName && (
             <p className="text-xs text-[#D32F2F] mt-1">{errors.fullName}</p>
@@ -181,7 +181,7 @@ export function ContactForm() {
               value={formData.email}
               onChange={(e) => handleChange("email", e.target.value)}
               placeholder="your@email.com"
-              className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+              className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
             />
             {errors.email && (
               <p className="text-xs text-[#D32F2F] mt-1">{errors.email}</p>
@@ -197,7 +197,7 @@ export function ContactForm() {
               value={formData.phone}
               onChange={(e) => handleChange("phone", e.target.value)}
               placeholder="+234 800 000 0000"
-              className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+              className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
             />
             {errors.phone && (
               <p className="text-xs text-[#D32F2F] mt-1">{errors.phone}</p>
@@ -214,7 +214,7 @@ export function ContactForm() {
           <select
             value={formData.subject}
             onChange={(e) => handleChange("subject", e.target.value)}
-            className="w-full h-11 rounded-xl border border-gray-200 bg-white px-3 text-sm text-gray-700 focus:outline-none focus:border-[#1A237E]/30 focus:ring-2 focus:ring-[#1A237E]/10 transition-colors appearance-none cursor-pointer"
+            className="w-full h-11 rounded-xl border border-gray-200 bg-white px-3 text-sm text-gray-700 focus:outline-none focus:border-[#4A148C]/30 focus:ring-2 focus:ring-[#4A148C]/10 transition-colors appearance-none cursor-pointer"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
               backgroundPosition: "right 0.75rem center",
@@ -247,7 +247,7 @@ export function ContactForm() {
             onChange={(e) => handleChange("message", e.target.value)}
             placeholder="Tell us how we can help you..."
             rows={5}
-            className="rounded-xl border-gray-200 focus:border-[#1A237E]/30 resize-none"
+            className="rounded-xl border-gray-200 focus:border-[#4A148C]/30 resize-none"
           />
           {errors.message && (
             <p className="text-xs text-[#D32F2F] mt-1">{errors.message}</p>
@@ -267,7 +267,7 @@ export function ContactForm() {
         <Button
           type="submit"
           disabled={submitting}
-          className="w-full bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl h-12 text-base font-semibold"
+          className="w-full bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl h-12 text-base font-semibold"
         >
           {submitting ? (
             <>

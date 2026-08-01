@@ -1,11 +1,11 @@
-const CACHE_NAME = 'rccg-rehoboth-v1';
+const CACHE_NAME = 'mfm-youth-church-v1';
 const STATIC_ASSETS = [
   '/',
   '/manifest.json',
   '/icons/icon-192x192.png',
   '/icons/icon-512x512.png',
   '/apple-touch-icon.png',
-  '/rccg-logo.png',
+  '/mfm-logo.png',
 ];
 
 // Install: cache static assets

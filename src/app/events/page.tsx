@@ -6,7 +6,7 @@ import { EventsCTA } from "@/components/events/events-cta";
 export const metadata: Metadata = {
   title: "Events",
   description:
-    "Browse upcoming and past church events at The Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja. Register for conferences, programmes, and community events.",
+    "Browse upcoming and past church events at Mountain of Fire and Miracles Ministries, Youth Church, Utako, Abuja. Register for conferences, programmes, and community events.",
 };
 
 export default function EventsPage() {

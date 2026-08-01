@@ -1,4 +1,4 @@
-// RehobothSocial Database Types
+// YouthConnect Database Types
 // These types define the data structure for all social features
 // When Supabase is connected, these will map to actual database tables
 

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function AdminPage() {
   return (
-    <div className="min-h-screen bg-[#F5F7FF]">
+    <div className="min-h-screen bg-[#F3E5F5]">
       <AdminDashboard />
     </div>
   );

@@ -39,7 +39,7 @@ export function ImHere() {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1A0033] via-[#4A148C] to-[#6A1B9A]" />
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 25% 25%, rgba(255,255,255,0.15) 1px, transparent 1px),
@@ -47,7 +47,7 @@ export function ImHere() {
           backgroundSize: "60px 60px"
         }} />
       </div>
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl" />
+      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-400/10 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-red-400/5 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 pt-28 pb-16">
@@ -77,7 +77,7 @@ export function ImHere() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-blue-200/70 mb-10"
+            className="text-purple-200/70 mb-10"
           >
             Let the church family know you&apos;re here right now
           </motion.p>
@@ -91,13 +91,13 @@ export function ImHere() {
           >
             <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-8 py-5">
               <div className="flex -space-x-2">
-                {["bg-blue-400", "bg-green-400", "bg-yellow-400", "bg-pink-400", "bg-purple-400"].map((color, i) => (
+                {["bg-purple-400", "bg-green-400", "bg-yellow-400", "bg-pink-400", "bg-purple-400"].map((color, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.6 + i * 0.1 }}
-                    className={`w-8 h-8 rounded-full ${color} border-2 border-[#1A237E] flex items-center justify-center`}
+                    className={`w-8 h-8 rounded-full ${color} border-2 border-[#4A148C] flex items-center justify-center`}
                   >
                     <span className="text-[10px] font-bold text-white">
                       {["A", "B", "C", "D", "E"][i]}
@@ -128,7 +128,7 @@ export function ImHere() {
             className={`relative inline-flex items-center gap-3 px-10 py-4 rounded-2xl text-lg font-bold transition-all shadow-lg ${
               isHere
                 ? "bg-green-500 text-white shadow-green-500/30"
-                : "bg-white text-[#1A237E] shadow-white/20 hover:shadow-white/40"
+                : "bg-white text-[#4A148C] shadow-white/20 hover:shadow-white/40"
             }`}
           >
             {isHere ? (
@@ -155,7 +155,7 @@ export function ImHere() {
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-6 text-sm text-blue-200/60"
+                className="mt-6 text-sm text-purple-200/60"
               >
                 Welcome! You are now visible to the community.
               </motion.p>

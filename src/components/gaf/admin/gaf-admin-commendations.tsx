@@ -256,7 +256,7 @@ export function GafAdminCommendations() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl lg:text-3xl font-bold text-[#1A237E]">
+          <h1 className="text-2xl lg:text-3xl font-bold text-[#4A148C]">
             Pastoral Commendations
           </h1>
           <p className="text-sm text-gray-500 mt-1">
@@ -265,7 +265,7 @@ export function GafAdminCommendations() {
         </div>
         <Button
           onClick={() => setShowCreate(true)}
-          className="gap-2 bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl"
+          className="gap-2 bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl"
         >
           <Plus className="size-4" />
           Issue Commendation
@@ -282,7 +282,7 @@ export function GafAdminCommendations() {
               placeholder="Search by member name..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E]"
+              className="w-full pl-9 pr-4 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C]"
             />
           </div>
         </div>
@@ -297,7 +297,7 @@ export function GafAdminCommendations() {
                 className={cn(
                   "px-3 py-2 rounded-xl text-xs font-medium transition-colors border",
                   filterVisibility === v
-                    ? "bg-[#1A237E] text-white border-[#1A237E]"
+                    ? "bg-[#4A148C] text-white border-[#4A148C]"
                     : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
                 )}
               >
@@ -312,7 +312,7 @@ export function GafAdminCommendations() {
       <div className="grid grid-cols-3 gap-4">
         <Card className="border-0 shadow-sm">
           <CardContent className="p-4 text-center">
-            <div className="text-2xl font-bold text-[#1A237E]">{total}</div>
+            <div className="text-2xl font-bold text-[#4A148C]">{total}</div>
             <div className="text-xs text-gray-500">Total</div>
           </CardContent>
         </Card>
@@ -337,7 +337,7 @@ export function GafAdminCommendations() {
       {/* Commendations list */}
       <Card className="border-0 shadow-md">
         <CardHeader className="pb-3">
-          <CardTitle className="text-lg text-[#1A237E] flex items-center gap-2">
+          <CardTitle className="text-lg text-[#4A148C] flex items-center gap-2">
             <Award className="size-5 text-amber-500" />
             All Commendations
             <span className="text-sm font-normal text-gray-400">({total})</span>
@@ -346,7 +346,7 @@ export function GafAdminCommendations() {
         <CardContent>
           {loading && commendations.length === 0 ? (
             <div className="py-16 flex flex-col items-center gap-3">
-              <Loader2 className="size-8 text-[#1A237E] animate-spin" />
+              <Loader2 className="size-8 text-[#4A148C] animate-spin" />
               <p className="text-sm text-gray-500">Loading commendations...</p>
             </div>
           ) : commendations.length === 0 ? (
@@ -356,7 +356,7 @@ export function GafAdminCommendations() {
               <Button
                 onClick={() => setShowCreate(true)}
                 variant="outline"
-                className="gap-2 rounded-xl border-[#1A237E]/20 text-[#1A237E]"
+                className="gap-2 rounded-xl border-[#4A148C]/20 text-[#4A148C]"
               >
                 <Plus className="size-4" />
                 Issue the first one
@@ -395,14 +395,14 @@ export function GafAdminCommendations() {
                           <div className="min-w-0 flex-1">
                             <div className="flex items-start justify-between gap-2">
                               <div className="min-w-0">
-                                <p className="font-semibold text-[#1A237E] truncate">
+                                <p className="font-semibold text-[#4A148C] truncate">
                                   {c.title}
                                 </p>
                                 <p className="text-sm text-gray-600 line-clamp-2 mt-0.5">
                                   {c.message}
                                 </p>
                                 <div className="flex flex-wrap items-center gap-2 mt-2">
-                                  <span className="text-xs font-medium text-[#1A237E]">
+                                  <span className="text-xs font-medium text-[#4A148C]">
                                     {c.member.fullName}
                                   </span>
                                   <span className="text-gray-300">|</span>
@@ -493,7 +493,7 @@ export function GafAdminCommendations() {
               className="relative bg-white rounded-2xl shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto"
             >
               <div className="flex items-center justify-between p-5 border-b border-gray-100">
-                <h2 className="text-lg font-bold text-[#1A237E] flex items-center gap-2">
+                <h2 className="text-lg font-bold text-[#4A148C] flex items-center gap-2">
                   <Award className="size-5 text-amber-500" />
                   Issue Commendation
                 </h2>
@@ -533,7 +533,7 @@ export function GafAdminCommendations() {
                         setMemberSearch(e.target.value);
                       }
                     }}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E]"
+                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C]"
                   />
                   {selectedMember && (
                     <div className="mt-1 flex items-center gap-2 bg-emerald-50 text-emerald-700 text-xs px-3 py-1.5 rounded-lg">
@@ -562,7 +562,7 @@ export function GafAdminCommendations() {
                           className="w-full text-left px-3 py-2.5 hover:bg-gray-50 flex items-center gap-3 text-sm border-b border-gray-50 last:border-0"
                         >
                           <Users className="size-4 text-gray-400 shrink-0" />
-                          <span className="font-medium text-[#1A237E]">
+                          <span className="font-medium text-[#4A148C]">
                             {m.fullName}
                           </span>
                           <span className="text-xs text-gray-400 ml-auto">
@@ -585,7 +585,7 @@ export function GafAdminCommendations() {
                     value={formTitle}
                     onChange={(e) => setFormTitle(e.target.value)}
                     maxLength={200}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E]"
+                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C]"
                   />
                   <p className="text-xs text-gray-400 mt-0.5 text-right">
                     {formTitle.length}/200
@@ -603,7 +603,7 @@ export function GafAdminCommendations() {
                     onChange={(e) => setFormMessage(e.target.value)}
                     maxLength={2000}
                     rows={4}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E] resize-none"
+                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C] resize-none"
                   />
                   <p className="text-xs text-gray-400 mt-0.5 text-right">
                     {formMessage.length}/2000
@@ -620,7 +620,7 @@ export function GafAdminCommendations() {
                     placeholder="e.g. Matthew 4:19"
                     value={formScripture}
                     onChange={(e) => setFormScripture(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E]"
+                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C]"
                   />
                 </div>
 
@@ -634,7 +634,7 @@ export function GafAdminCommendations() {
                     placeholder="Defaults to your name"
                     value={formGivenBy}
                     onChange={(e) => setFormGivenBy(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E]"
+                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C]"
                   />
                 </div>
 
@@ -654,7 +654,7 @@ export function GafAdminCommendations() {
                           className={cn(
                             "flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium transition-colors border",
                             formVisibility === key
-                              ? "bg-[#1A237E] text-white border-[#1A237E]"
+                              ? "bg-[#4A148C] text-white border-[#4A148C]"
                               : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
                           )}
                         >
@@ -679,7 +679,7 @@ export function GafAdminCommendations() {
                 <Button
                   onClick={handleCreate}
                   disabled={creating}
-                  className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl gap-2"
+                  className="bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl gap-2"
                 >
                   {creating && <Loader2 className="size-4 animate-spin" />}
                   {creating ? "Issuing..." : "Issue Commendation"}
@@ -714,7 +714,7 @@ export function GafAdminCommendations() {
                   <AlertTriangle className="size-5 text-red-500" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#1A237E]">Delete Commendation</h3>
+                  <h3 className="font-bold text-[#4A148C]">Delete Commendation</h3>
                   <p className="text-sm text-gray-500">This action cannot be undone.</p>
                 </div>
               </div>

@@ -18,7 +18,7 @@ export function FeatureLandingPage({
 }: FeatureLandingPageProps) {
   return (
     <div className="min-h-screen bg-[#F8FAFF]">
-      {/* Back to RehobothSocial */}
+      {/* Back to YouthConnect */}
       <motion.div
         initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}
@@ -26,10 +26,10 @@ export function FeatureLandingPage({
       >
         <Link
           href="/social"
-          className="inline-flex items-center gap-2 text-sm font-medium text-[#1A237E] hover:text-[#0D1557] transition-colors"
+          className="inline-flex items-center gap-2 text-sm font-medium text-[#4A148C] hover:text-[#1A0033] transition-colors"
         >
           <ArrowLeft className="size-4" />
-          Back to RehobothSocial
+          Back to YouthConnect
         </Link>
       </motion.div>
 
@@ -100,7 +100,7 @@ export function FeatureLandingPage({
 
             {/* How to Use This Feature */}
             <div className="mt-8 border-t border-gray-100 pt-6">
-              <h3 className="text-sm font-bold text-[#1A237E] mb-4 uppercase tracking-wider">
+              <h3 className="text-sm font-bold text-[#4A148C] mb-4 uppercase tracking-wider">
                 How to Use {feature.title}
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -112,7 +112,7 @@ export function FeatureLandingPage({
                     transition={{ delay: 0.4 + i * 0.1 }}
                     className="text-center"
                   >
-                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#1A237E] to-[#283593] flex items-center justify-center mx-auto mb-2.5 text-lg">
+                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#4A148C] to-[#6A1B9A] flex items-center justify-center mx-auto mb-2.5 text-lg">
                       {step.emoji}
                     </div>
                     <h4 className="text-xs font-bold text-gray-800 mb-1">
@@ -161,8 +161,8 @@ export function FeatureLandingPage({
             },
           ].map((item) => (
             <div key={item.title} className="text-center">
-              <div className="w-10 h-10 rounded-xl bg-[#F0F4FF] flex items-center justify-center mx-auto mb-2">
-                <item.icon className="size-5 text-[#1A237E]" />
+              <div className="w-10 h-10 rounded-xl bg-[#F3E5F5] flex items-center justify-center mx-auto mb-2">
+                <item.icon className="size-5 text-[#4A148C]" />
               </div>
               <h3 className="text-xs font-bold text-gray-800 mb-0.5">
                 {item.title}

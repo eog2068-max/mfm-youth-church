@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#1A237E",
+  themeColor: "#4A148C",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -25,32 +25,31 @@ export const viewport: Viewport = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "RCCG Rehoboth",
+    title: "MFM Youth Church",
   },
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_GAF_BASE_URL || "https://rccg-rehoboth.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_GAF_BASE_URL || "https://mfm-youthchurch.app"),
   title: {
-    default: "The Redeemed Christian Church of God | Rehoboth Assembly Parish",
-    template: "%s | The Redeemed Christian Church of God",
+    default: "Mountain of Fire and Miracles Ministries | Youth Church",
+    template: "%s | Mountain of Fire and Miracles Ministries",
   },
   description:
-    "The Redeemed Christian Church of God, Rehoboth Assembly Parish - Silla-Zeka Plaza, Adebayo Adedeji Street, Utako, FCT, Abuja, Nigeria. Worship with us!",
+    "Mountain of Fire and Miracles Ministries, Youth Church - A place of spiritual fire, prayer, and destiny fulfilment. Connect, worship, and grow with us!",
   keywords: [
-    "The Redeemed Christian Church of God",
-    "RCCG",
-    "Rehoboth Assembly Parish",
-    "Church in Abuja",
-    "Church in Utako",
+    "Mountain of Fire and Miracles Ministries",
+    "MFM",
+    "Youth Church",
+    "MFM Youth Church",
     "Christian church Nigeria",
     "Worship",
     "Prayer",
     "Sermons",
   ],
-  authors: [{ name: "The Redeemed Christian Church of God, Rehoboth Assembly Parish" }],
-  creator: "The Redeemed Christian Church of God, Rehoboth Assembly Parish",
-  publisher: "The Redeemed Christian Church of God, Rehoboth Assembly Parish",
+  authors: [{ name: "Mountain of Fire and Miracles Ministries, Youth Church" }],
+  creator: "Mountain of Fire and Miracles Ministries, Youth Church",
+  publisher: "Mountain of Fire and Miracles Ministries, Youth Church",
   formatDetection: {
     telephone: true,
     email: true,
@@ -67,10 +66,10 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "The Redeemed Christian Church of God | Rehoboth Assembly Parish",
+    title: "Mountain of Fire and Miracles Ministries | Youth Church",
     description:
-      "The Redeemed Christian Church of God, Rehoboth Assembly Parish - Silla-Zeka Plaza, Adebayo Adedeji Street, Utako, Abuja. Worship with us.",
-    siteName: "The Redeemed Christian Church of God - Rehoboth Assembly",
+      "Mountain of Fire and Miracles Ministries, Youth Church - A place of spiritual fire, prayer, and destiny fulfilment. Connect with us!",
+    siteName: "Mountain of Fire and Miracles Ministries - Youth Church",
     type: "website",
     locale: "en_NG",
     images: [
@@ -78,15 +77,15 @@ export const metadata: Metadata = {
         url: "/icons/icon-512x512.png",
         width: 512,
         height: 512,
-        alt: "RCCG Rehoboth Assembly",
+        alt: "MFM Youth Church",
       },
     ],
   },
   twitter: {
     card: "summary",
-    title: "The Redeemed Christian Church of God - Rehoboth Assembly Parish",
+    title: "Mountain of Fire and Miracles Ministries - Youth Church",
     description:
-      "The Redeemed Christian Church of God, Rehoboth Assembly Parish - Utako, Abuja.",
+      "Mountain of Fire and Miracles Ministries, Youth Church - Connect, worship, and grow with us.",
     images: ["/icons/icon-192x192.png"],
   },
   robots: {
@@ -113,7 +112,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="RCCG Rehoboth" />
+        <meta name="apple-mobile-web-app-title" content="MFM Youth Church" />
         {/* Permanently disable browser scroll restoration BEFORE React hydrates.
             This must run synchronously in <head> so the browser never restores
             the previous scroll position when navigating between social features. */}

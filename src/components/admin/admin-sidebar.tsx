@@ -69,7 +69,7 @@ export function AdminSidebar({ activeItem, isOpen, onClose }: AdminSidebarProps)
   const sidebarContent = (
     <div
       className={cn(
-        "flex h-full flex-col bg-[#1A237E] text-white transition-all duration-300",
+        "flex h-full flex-col bg-[#4A148C] text-white transition-all duration-300",
         collapsed ? "w-[72px]" : "w-64"
       )}
     >
@@ -86,7 +86,7 @@ export function AdminSidebar({ activeItem, isOpen, onClose }: AdminSidebarProps)
               exit={{ opacity: 0, width: 0 }}
               className="overflow-hidden whitespace-nowrap"
             >
-              <span className="text-sm font-bold tracking-wide">Rehoboth Admin</span>
+              <span className="text-sm font-bold tracking-wide">Youth Admin</span>
             </motion.div>
           )}
         </AnimatePresence>
@@ -183,7 +183,7 @@ export function AdminSidebar({ activeItem, isOpen, onClose }: AdminSidebarProps)
               >
                 <div className="min-w-0">
                   <p className="truncate text-sm font-medium text-white">Admin User</p>
-                  <p className="truncate text-xs text-white/50">admin@rccgrehoboth.org</p>
+                  <p className="truncate text-xs text-white/50">admin@mfmyouthchurch.org</p>
                 </div>
                 <Button
                   variant="ghost"

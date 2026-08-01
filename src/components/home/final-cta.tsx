@@ -20,7 +20,7 @@ const item = {
 
 export function FinalCta() {
   return (
-    <section className="relative bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#3949AB] py-20 md:py-28 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-[#1A0033] via-[#4A148C] to-[#7B1FA2] py-20 md:py-28 overflow-hidden">
       {/* Decorative pattern overlay */}
       <div className="absolute inset-0 opacity-10">
         <div
@@ -34,9 +34,9 @@ export function FinalCta() {
       </div>
 
       {/* Ambient glow effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-400/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-indigo-400/10 rounded-full blur-3xl" />
-      <div className="absolute top-0 left-0 w-64 h-64 bg-orange-400/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-400/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-400/10 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-0 w-64 h-64 bg-red-400/5 rounded-full blur-3xl" />
 
       <motion.div
         variants={container}
@@ -82,7 +82,7 @@ export function FinalCta() {
         {/* Supporting text */}
         <motion.p
           variants={item}
-          className="text-blue-100/60 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-purple-100/60 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           Experience God&apos;s presence, stay connected to your church family,
           and reach beyond the walls &mdash; all from one place.
@@ -95,21 +95,21 @@ export function FinalCta() {
         >
           <Link
             href="/social"
-            className="inline-flex items-center justify-center gap-2 bg-[#E65100] hover:bg-[#BF360C] text-white px-8 py-3.5 rounded-xl font-semibold transition-colors shadow-lg text-sm"
+            className="inline-flex items-center justify-center gap-2 bg-[#C62828] hover:bg-[#B71C1C] text-white px-8 py-3.5 rounded-xl font-semibold transition-colors shadow-lg text-sm"
           >
-            ENTER REHOBOTHSOCIAL
+            ENTER YOUTHCONNECT
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
             href="/announcements"
-            className="inline-flex items-center justify-center gap-2 bg-white text-[#1A237E] hover:bg-gray-100 px-8 py-3.5 rounded-xl font-semibold transition-colors shadow-lg text-sm"
+            className="inline-flex items-center justify-center gap-2 bg-white text-[#4A148C] hover:bg-gray-100 px-8 py-3.5 rounded-xl font-semibold transition-colors shadow-lg text-sm"
           >
             EXPLORE CMS
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
             href="/go-a-fishing"
-            className="inline-flex items-center justify-center gap-2 bg-[#3949AB] hover:bg-[#1A237E] text-white px-8 py-3.5 rounded-xl font-semibold transition-colors shadow-lg text-sm"
+            className="inline-flex items-center justify-center gap-2 bg-[#7B1FA2] hover:bg-[#4A148C] text-white px-8 py-3.5 rounded-xl font-semibold transition-colors shadow-lg text-sm"
           >
             GO-A-FISHING
             <ArrowRight className="w-4 h-4" />

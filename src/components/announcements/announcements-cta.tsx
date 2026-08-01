@@ -8,10 +8,10 @@ import Link from "next/link";
 export function AnnouncementsCTA() {
   return (
     <section className="relative py-16 md:py-20 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1A0033] via-[#4A148C] to-[#6A1B9A]" />
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#D32F2F] rounded-full blur-[128px] -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-blue-400/20 rounded-full blur-[128px] translate-y-1/2" />
+        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-purple-400/20 rounded-full blur-[128px] translate-y-1/2" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -27,10 +27,10 @@ export function AnnouncementsCTA() {
           <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
             Stay Informed, Stay Connected
           </h2>
-          <p className="mt-4 text-lg text-blue-200/80 max-w-xl mx-auto leading-relaxed">
+          <p className="mt-4 text-lg text-purple-200/80 max-w-xl mx-auto leading-relaxed">
             Never miss an important announcement. Subscribe to our notification
             service and be the first to know about services, events, and
-            updates from Rehoboth Assembly Parish.
+            updates from Youth Church.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Button

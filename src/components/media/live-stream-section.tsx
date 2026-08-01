@@ -11,7 +11,7 @@ export function LiveStreamSection() {
   return (
     <div className="space-y-6">
       {/* Live Video Player Placeholder */}
-      <div className="relative w-full aspect-video bg-[#0D1557] rounded-2xl overflow-hidden shadow-xl">
+      <div className="relative w-full aspect-video bg-[#1A0033] rounded-2xl overflow-hidden shadow-xl">
         {/* Placeholder content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white/80">
           <div className="w-24 h-24 rounded-full bg-white/10 flex items-center justify-center mb-6">
@@ -20,10 +20,10 @@ export function LiveStreamSection() {
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
             {isLive ? "Service is Live Now" : "Next Live Service"}
           </h3>
-          <p className="text-blue-200/70 text-base md:text-lg mb-1">
+          <p className="text-purple-200/70 text-base md:text-lg mb-1">
             Sunday Worship Service
           </p>
-          <div className="flex items-center gap-4 mt-2 text-sm text-blue-200/60">
+          <div className="flex items-center gap-4 mt-2 text-sm text-purple-200/60">
             <span className="flex items-center gap-1.5">
               <Calendar className="size-4" />
               Every Sunday
@@ -87,7 +87,7 @@ export function LiveStreamSection() {
             className="bg-white rounded-xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
           >
             <div className="flex items-start justify-between mb-3">
-              <h4 className="text-sm font-bold text-[#1A237E]">{service.title}</h4>
+              <h4 className="text-sm font-bold text-[#4A148C]">{service.title}</h4>
               {service.active && (
                 <Badge className="bg-green-100 text-green-700 text-[10px] px-2 py-0.5">
                   Live Now
@@ -111,12 +111,12 @@ export function LiveStreamSection() {
 
       {/* Info bar */}
       <div className="flex flex-wrap gap-3 items-center justify-center text-sm text-gray-500">
-        <span className="flex items-center gap-1.5 bg-[#F0F4FF] px-4 py-2 rounded-xl">
-          <MessageSquare className="size-4 text-[#1A237E]/60" />
+        <span className="flex items-center gap-1.5 bg-[#F3E5F5] px-4 py-2 rounded-xl">
+          <MessageSquare className="size-4 text-[#4A148C]/60" />
           Live chat available during services
         </span>
-        <span className="flex items-center gap-1.5 bg-[#F0F4FF] px-4 py-2 rounded-xl">
-          <Share2 className="size-4 text-[#1A237E]/60" />
+        <span className="flex items-center gap-1.5 bg-[#F3E5F5] px-4 py-2 rounded-xl">
+          <Share2 className="size-4 text-[#4A148C]/60" />
           Share the stream with family &amp; friends
         </span>
       </div>

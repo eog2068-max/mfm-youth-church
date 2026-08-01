@@ -19,8 +19,8 @@ export async function GET() {
       update: {},
       create: {
         id: "singleton",
-        referralLinkBaseUrl: "https://rccg-rehoboth.app/r/",
-        qrCodeDefaultColor: "#1A237E",
+        referralLinkBaseUrl: "https://mfm-youthchurch.app/r/",
+        qrCodeDefaultColor: "#4A148C",
         qrCodeDefaultSize: 512,
         leaderboardRefreshIntervalSec: 300,
         leaderboardShowRealNames: true,

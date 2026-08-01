@@ -40,7 +40,7 @@ const STEPS = [
     title: "Share Your Link",
     description:
       "Your personal referral link is ready! Share it via WhatsApp, email, social media, or as a QR code. Every visitor who taps your link is automatically tracked to your account.",
-    color: "from-blue-500 to-blue-700",
+    color: "from-purple-500 to-purple-700",
     action: { label: "Go to Dashboard", href: "/go-a-fishing/dashboard" },
   },
   {
@@ -115,7 +115,7 @@ export function GafOnboardingGuide({
       >
         <Card className="border-0 shadow-lg overflow-hidden">
           {/* Header with gradient */}
-          <div className="bg-gradient-to-r from-[#1A237E] to-[#0D1557] px-6 py-4 flex items-center justify-between">
+          <div className="bg-gradient-to-r from-[#4A148C] to-[#1A0033] px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="flex items-center justify-center size-10 rounded-xl bg-white/15">
                 <Sparkles className="size-5 text-amber-300" />
@@ -124,7 +124,7 @@ export function GafOnboardingGuide({
                 <h3 className="text-white font-semibold">
                   Welcome to Go-A-Fishing, {memberName.split(" ")[0]}!
                 </h3>
-                <p className="text-blue-200 text-xs">
+                <p className="text-purple-200 text-xs">
                   Quick start guide — {currentStep + 1} of {STEPS.length}
                 </p>
               </div>
@@ -146,7 +146,7 @@ export function GafOnboardingGuide({
                 key={idx}
                 className={`h-1.5 flex-1 rounded-full transition-all ${
                   idx <= currentStep
-                    ? "bg-[#1A237E]"
+                    ? "bg-[#4A148C]"
                     : "bg-gray-200"
                 }`}
               />
@@ -160,7 +160,7 @@ export function GafOnboardingGuide({
             >
               <Icon className="size-8" />
             </div>
-            <h4 className="text-xl font-bold text-[#1A237E] mb-2">
+            <h4 className="text-xl font-bold text-[#4A148C] mb-2">
               {step.title}
             </h4>
             <p className="text-sm text-gray-600 leading-relaxed max-w-md mx-auto">
@@ -185,7 +185,7 @@ export function GafOnboardingGuide({
               {isLast ? (
                 <Button
                   onClick={handleDismiss}
-                  className="gap-2 bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl"
+                  className="gap-2 bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl"
                 >
                   <CheckCircle className="size-4" />
                   Get Started!
@@ -205,7 +205,7 @@ export function GafOnboardingGuide({
                     onClick={() =>
                       setCurrentStep(Math.min(STEPS.length - 1, currentStep + 1))
                     }
-                    className="gap-1 bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl"
+                    className="gap-1 bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl"
                   >
                     Next
                     <ChevronRight className="size-4" />

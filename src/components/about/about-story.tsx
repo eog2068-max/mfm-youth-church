@@ -25,26 +25,26 @@ export function AboutStory() {
             transition={{ duration: 0.7 }}
             className="relative"
           >
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-[#1A237E]/10">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#1A237E]/20 to-[#D32F2F]/10 flex items-center justify-center">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-[#4A148C]/10">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#4A148C]/20 to-[#D32F2F]/10 flex items-center justify-center">
                 <div className="text-center p-8">
                   <div className="relative h-24 w-24 mx-auto rounded-full bg-white/90 p-1 shadow-lg mb-4">
                     <Image
-                      src="/rccg-logo.png"
-                      alt="RCCG Logo"
+                      src="/mfm-logo.png"
+                      alt="MFM Youth Church Logo"
                       fill
                       sizes="96px"
                       className="object-contain"
                     />
                   </div>
-                  <p className="text-[#1A237E] font-bold text-lg">Rehoboth Assembly Parish</p>
+                  <p className="text-[#4A148C] font-bold text-lg">MFM Youth Church</p>
                   <p className="text-gray-500 text-sm mt-1">Est. 2015</p>
                 </div>
               </div>
             </div>
             {/* Decorative element */}
             <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#D32F2F]/10 rounded-2xl -z-10" />
-            <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#1A237E]/10 rounded-2xl -z-10" />
+            <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#4A148C]/10 rounded-2xl -z-10" />
           </motion.div>
 
           {/* Text Side */}
@@ -57,31 +57,31 @@ export function AboutStory() {
             <p className="text-[#D32F2F] font-semibold text-sm uppercase tracking-wider mb-2">
               Our Story
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1A237E] mb-6 leading-tight">
-              A Place Where Destiny Finds
-              <span className="text-[#D32F2F]"> Fulfillment</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#4A148C] mb-6 leading-tight">
+              On Fire For God,
+              <span className="text-[#D32F2F]"> Radiating His Glory</span>
             </h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                The Redeemed Christian Church of God, Rehoboth Assembly Parish, was established with a
-                divine mandate to be a beacon of hope and a place of spiritual rejuvenation in the
-                heart of Utako, Abuja. Founded under the leadership of The Redeemed Christian Church
-                of God, our parish began as a small gathering of believers united by a common
-                faith and an unwavering commitment to the Word of God.
+                MFM Youth Church was birthed from the vision of the Mountain of Fire and
+                Miracles Ministries, founded by Dr. D.K. Olukoya. Established with a divine
+                mandate to raise a generation of young people who are spiritually ignited,
+                thoroughly equipped in the Word of God, and empowered by the Holy Spirit to
+                fulfil their God-given destinies and enforce the victory of Calvary.
               </p>
               <p>
-                The name &ldquo;Rehoboth&rdquo; comes from Genesis 26:22, where Isaac declared,
-                &ldquo;The Lord has made room for us, and we shall be fruitful in the land.&rdquo;
-                This scripture has been the foundation of our journey — a testimony of God&apos;s
-                faithfulness in making room for His people to grow, thrive, and fulfill their
-                God-given destinies.
+                Rooted in the foundational pillars of MFM — prayer, the Word, holiness, and
+                spiritual warfare — our Youth Church exists to equip young believers to
+                stand firm against the wiles of the enemy, live victorious lives, and become
+                bold ambassadors of Christ in every sphere of influence. We are a people on
+                fire for God, committed to pursuing His presence and demonstrating His power.
               </p>
               <p>
-                From our humble beginnings as a house fellowship, Rehoboth Assembly has grown into a
-                vibrant, multi-generational church family. We have witnessed countless lives
-                transformed, families restored, and destinies fulfilled through the power of the
-                Holy Spirit, dynamic worship, and the undiluted preaching of the Gospel of Jesus
-                Christ.
+                From our humble beginnings, MFM Youth Church has grown into a vibrant,
+                Spirit-filled community of young believers. We have witnessed countless lives
+                transformed, strongholds broken, and destinies fulfilled through the power of
+                intense prayer, dynamic worship, and the undiluted preaching of the Gospel of
+                our Lord Jesus Christ.
               </p>
             </div>
           </motion.div>
@@ -98,10 +98,10 @@ export function AboutStory() {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="text-center p-6 rounded-2xl bg-[#F5F7FF] border border-[#1A237E]/5"
+              className="text-center p-6 rounded-2xl bg-[#F3E5F5] border border-[#4A148C]/5"
             >
               <stat.icon className="size-8 text-[#D32F2F] mx-auto mb-3" />
-              <p className="text-3xl md:text-4xl font-bold text-[#1A237E]">{stat.value}</p>
+              <p className="text-3xl md:text-4xl font-bold text-[#4A148C]">{stat.value}</p>
               <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
             </div>
           ))}

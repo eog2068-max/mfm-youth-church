@@ -8,7 +8,7 @@ export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 sm:pt-32 md:pt-36 pb-3">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1A0033] via-[#4A148C] to-[#6A1B9A]" />
 
       {/* Decorative overlay pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -20,7 +20,7 @@ export function HeroSection() {
       </div>
 
       {/* Light beam effects */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-red-400/5 rounded-full blur-3xl" />
 
       {/* Content */}
@@ -34,8 +34,8 @@ export function HeroSection() {
         >
           <div className="relative h-28 w-28 sm:h-32 sm:w-32 md:h-36 md:w-36 lg:h-40 lg:w-40 mx-auto rounded-full bg-white p-2 shadow-2xl shadow-black/30">
             <Image
-              src="/rccg-logo.png"
-              alt="The Redeemed Christian Church of God Logo"
+              src="/mfm-logo.png"
+              alt="Mountain of Fire and Miracles Ministries Logo"
               fill
               sizes="160px"
               className="object-contain"
@@ -51,10 +51,10 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
-            The Redeemed Christian Church of God
+            Mountain of Fire and Miracles Ministries
           </h1>
-          <p className="text-base md:text-xl text-blue-100/80 font-light mt-1 md:mt-2">
-            (Rehoboth Assembly Parish)
+          <p className="text-base md:text-xl text-purple-100/80 font-light mt-1 md:mt-2">
+            (Youth Church)
           </p>
         </motion.div>
 
@@ -73,7 +73,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-5 max-w-2xl mx-auto text-base md:text-lg text-white leading-relaxed font-normal"
         >
-          More than a Church, its a connected family.
+          On Fire For God, Connected As One Family.
         </motion.p>
 
         {/* ── 3-Pillar Feature Buttons ── */}
@@ -83,13 +83,13 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-6 flex flex-col gap-2.5 max-w-sm mx-auto"
         >
-          {/* 1. RehobothSocial — Same red as Watch Now, compact, barely rounded */}
+          {/* 1. YouthConnect — Same red as Watch Now, compact, barely rounded */}
           <Link
             href="/social"
             className="flex flex-col items-center justify-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-red-500/20 border border-white/20"
           >
             <span className="text-sm md:text-base font-bold tracking-wide">
-              RehobothSocial
+              YouthConnect
             </span>
             <span className="text-xs font-medium leading-tight">
               Connecting Members 24/7 Round The Week
@@ -102,7 +102,7 @@ export function HeroSection() {
           {/* 2. Go-A-Fishing — Indigo solid, matching section color */}
           <Link
             href="/go-a-fishing"
-            className="flex flex-col items-center justify-center bg-[#3949AB] hover:bg-[#303F9F] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-indigo-500/20 border border-white/20 shadow-md shadow-black/10"
+            className="flex flex-col items-center justify-center bg-[#7B1FA2] hover:bg-[#4A148C] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-purple-500/20 border border-white/20 shadow-md shadow-black/10"
           >
             <span className="text-sm md:text-base font-bold tracking-wide">
               Go-A-Fishing
@@ -118,7 +118,7 @@ export function HeroSection() {
           {/* 3. Church Management System — Deep navy, matching section color */}
           <Link
             href="/cms"
-            className="flex flex-col items-center justify-center bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-blue-900/20 border border-white/20 shadow-md shadow-black/10"
+            className="flex flex-col items-center justify-center bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-purple-900/20 border border-white/20 shadow-md shadow-black/10"
           >
             <span className="text-sm md:text-base font-bold tracking-wide">
               Organa

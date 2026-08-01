@@ -60,7 +60,7 @@ export function ReferralCard({
         const pngUrl = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = pngUrl;
-        a.download = `rccg-rehoboth-referral-${referralCode}.png`;
+        a.download = `mfm-youth-church-referral-${referralCode}.png`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -71,8 +71,8 @@ export function ReferralCard({
   };
 
   return (
-    <Card className="overflow-hidden border-[#1A237E]/20">
-      <CardHeader className="bg-gradient-to-br from-[#1A237E] to-[#0D1557] text-white">
+    <Card className="overflow-hidden border-[#4A148C]/20">
+      <CardHeader className="bg-gradient-to-br from-[#4A148C] to-[#1A0033] text-white">
         <CardTitle className="flex items-center gap-2 text-lg">
           <Link2 className="size-5" />
           Your Referral Link
@@ -81,25 +81,25 @@ export function ReferralCard({
       <CardContent className="p-6 space-y-5">
         {/* QR Code */}
         <div className="flex justify-center">
-          <div className="bg-white p-4 rounded-2xl border-2 border-[#1A237E]/10 shadow-sm">
+          <div className="bg-white p-4 rounded-2xl border-2 border-[#4A148C]/10 shadow-sm">
             <QRCodeSVG
               data-gaf-qr="true"
               value={fullUrl}
               size={200}
               level="M"
               bgColor="#ffffff"
-              fgColor="#1A237E"
+              fgColor="#4A148C"
               marginSize={2}
             />
           </div>
         </div>
 
         {/* Link display */}
-        <div className="bg-[#F0F4FF] rounded-xl p-3 border border-[#1A237E]/10">
+        <div className="bg-[#F3E5F5] rounded-xl p-3 border border-[#4A148C]/10">
           <p className="text-xs text-gray-500 mb-1 uppercase tracking-wide font-medium">
             Your link
           </p>
-          <p className="text-sm font-mono text-[#1A237E] break-all leading-relaxed">
+          <p className="text-sm font-mono text-[#4A148C] break-all leading-relaxed">
             {fullUrl}
           </p>
         </div>
@@ -111,7 +111,7 @@ export function ReferralCard({
             baseUrl={baseUrl}
             memberName={memberName}
             trigger={
-              <button className="w-full flex items-center justify-center gap-2 h-10 rounded-xl bg-[#1A237E] hover:bg-[#0D1557] text-white text-sm font-medium transition-colors">
+              <button className="w-full flex items-center justify-center gap-2 h-10 rounded-xl bg-[#4A148C] hover:bg-[#1A0033] text-white text-sm font-medium transition-colors">
                 <Link2 className="size-4" />
                 Share
               </button>
@@ -131,8 +131,8 @@ export function ReferralCard({
             showLabel
             variant="outline"
             className="w-full border-[#25D366] text-[#1A8E3B] hover:bg-[#25D366]/10 rounded-xl"
-            title="Join me at RCCG Rehoboth Assembly"
-            text={`Hi! ${memberName} invites you to worship with us at RCCG Rehoboth Assembly, Abuja. Tap: ${fullUrl}`}
+            title="Join me at MFM Youth Church"
+            text={`Hi! ${memberName} invites you to worship with us at MFM Youth Church, Abuja. Tap: ${fullUrl}`}
           />
         </div>
 

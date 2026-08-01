@@ -97,7 +97,7 @@ export function GafAdminMembers() {
   return (
     <div className="p-4 lg:p-8 space-y-6">
       <div>
-        <h1 className="text-2xl lg:text-3xl font-bold text-[#1A237E]">Members</h1>
+        <h1 className="text-2xl lg:text-3xl font-bold text-[#4A148C]">Members</h1>
         <p className="text-sm text-gray-500 mt-1">
           {total} registered {total === 1 ? "member" : "members"}
         </p>
@@ -134,7 +134,7 @@ export function GafAdminMembers() {
       {loading ? (
         <Card className="border-0 shadow-md">
           <CardContent className="py-16 flex justify-center">
-            <Loader2 className="size-8 text-[#1A237E] animate-spin" />
+            <Loader2 className="size-8 text-[#4A148C] animate-spin" />
           </CardContent>
         </Card>
       ) : members.length === 0 ? (
@@ -149,12 +149,12 @@ export function GafAdminMembers() {
             <ul className="divide-y divide-gray-100">
               {members.map((m) => (
                 <li key={m.id} className="flex items-center gap-4 p-4 hover:bg-gray-50">
-                  <div className="shrink-0 w-10 h-10 rounded-full bg-[#1A237E]/10 flex items-center justify-center text-sm font-bold text-[#1A237E]">
+                  <div className="shrink-0 w-10 h-10 rounded-full bg-[#4A148C]/10 flex items-center justify-center text-sm font-bold text-[#4A148C]">
                     {m.fullName.charAt(0).toUpperCase()}
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
-                      <p className="font-medium text-[#1A237E] truncate">{m.fullName}</p>
+                      <p className="font-medium text-[#4A148C] truncate">{m.fullName}</p>
                       <span
                         className={`px-2 py-0.5 rounded-full text-xs font-medium ${
                           STATUS_STYLES[m.status] || STATUS_STYLES.active

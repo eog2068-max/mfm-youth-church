@@ -27,8 +27,8 @@ export async function POST() {
         id: "singleton",
         referralLinkBaseUrl: process.env.NEXT_PUBLIC_GAF_BASE_URL
           ? `${process.env.NEXT_PUBLIC_GAF_BASE_URL}/r/`
-          : "https://rccg-rehoboth.app/r/",
-        qrCodeDefaultColor: "#1A237E",
+          : "https://mfm-youthchurch.app/r/",
+        qrCodeDefaultColor: "#4A148C",
         qrCodeDefaultSize: 512,
         leaderboardRefreshIntervalSec: 300,
         leaderboardShowRealNames: true,
@@ -69,7 +69,7 @@ export async function POST() {
             name: "Top Inviter",
             description: "Awarded to the member who invited the most new people (by count, regardless of follow-through).",
             icon: "Users",
-            color: "#1A237E",
+            color: "#4A148C",
             criteria: "Highest count of referrals created during the quarter.",
             scoringRule: JSON.stringify({ metric: "invite_count", topN: 3 }),
             displayOrder: 2,

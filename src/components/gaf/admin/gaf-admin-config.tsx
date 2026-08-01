@@ -101,7 +101,7 @@ export function GafAdminConfig() {
   if (loading) {
     return (
       <div className="p-4 lg:p-8 flex items-center justify-center min-h-[60vh]">
-        <Loader2 className="size-8 text-[#1A237E] animate-spin" />
+        <Loader2 className="size-8 text-[#4A148C] animate-spin" />
       </div>
     );
   }
@@ -124,7 +124,7 @@ export function GafAdminConfig() {
     <div className="p-4 lg:p-8 space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl lg:text-3xl font-bold text-[#1A237E]">Configuration</h1>
+          <h1 className="text-2xl lg:text-3xl font-bold text-[#4A148C]">Configuration</h1>
           <p className="text-sm text-gray-500 mt-1">
             Scoring weights, leaderboard settings, and feature flags
           </p>
@@ -132,7 +132,7 @@ export function GafAdminConfig() {
         <Button
           onClick={handleSave}
           disabled={saving}
-          className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl gap-2"
+          className="bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl gap-2"
         >
           {saving ? <Loader2 className="size-4 animate-spin" /> : saved ? <CheckCircle2 className="size-4" /> : <Save className="size-4" />}
           {saving ? "Saving..." : saved ? "Saved!" : "Save Changes"}
@@ -149,7 +149,7 @@ export function GafAdminConfig() {
       {/* Scoring weights */}
       <Card className="border-0 shadow-md">
         <CardHeader>
-          <CardTitle className="text-lg text-[#1A237E]">Scoring Weights</CardTitle>
+          <CardTitle className="text-lg text-[#4A148C]">Scoring Weights</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {Object.entries(DEFAULT_WEIGHTS).map(([key, _default]) => (
@@ -175,7 +175,7 @@ export function GafAdminConfig() {
       {/* Referral link settings */}
       <Card className="border-0 shadow-md">
         <CardHeader>
-          <CardTitle className="text-lg text-[#1A237E]">Referral Link</CardTitle>
+          <CardTitle className="text-lg text-[#4A148C]">Referral Link</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-1.5">
@@ -193,7 +193,7 @@ export function GafAdminConfig() {
               <Input
                 value={config.qrCodeDefaultColor}
                 onChange={(e) => updateConfig("qrCodeDefaultColor", e.target.value)}
-                placeholder="#1A237E"
+                placeholder="#4A148C"
                 className="rounded-xl"
               />
             </div>
@@ -204,7 +204,7 @@ export function GafAdminConfig() {
       {/* Leaderboard settings */}
       <Card className="border-0 shadow-md">
         <CardHeader>
-          <CardTitle className="text-lg text-[#1A237E]">Leaderboard</CardTitle>
+          <CardTitle className="text-lg text-[#4A148C]">Leaderboard</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-1.5">
@@ -248,7 +248,7 @@ export function GafAdminConfig() {
       {/* Feature flags */}
       <Card className="border-0 shadow-md">
         <CardHeader>
-          <CardTitle className="text-lg text-[#1A237E]">Feature Flags</CardTitle>
+          <CardTitle className="text-lg text-[#4A148C]">Feature Flags</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">

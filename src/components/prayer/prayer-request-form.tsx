@@ -85,7 +85,7 @@ export function PrayerRequestForm() {
         <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-6">
           <CheckCircle2 className="size-10 text-[#2E7D32]" />
         </div>
-        <h2 className="text-2xl font-bold text-[#1A237E] mb-2">Prayer Request Received</h2>
+        <h2 className="text-2xl font-bold text-[#4A148C] mb-2">Prayer Request Received</h2>
         <p className="text-gray-500 mb-2">
           Thank you for sharing your prayer need with us. Be assured that our prayer team is standing in agreement with you.
         </p>
@@ -100,7 +100,7 @@ export function PrayerRequestForm() {
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button
             asChild
-            className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl px-6"
+            className="bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl px-6"
           >
             <Link href="/">Back to Home</Link>
           </Button>
@@ -156,17 +156,17 @@ export function PrayerRequestForm() {
                         }}
                         className={`flex items-start gap-3 p-3.5 rounded-xl border-2 text-left transition-all ${
                           isSelected
-                            ? "border-[#1A237E] bg-[#F0F4FF]"
+                            ? "border-[#4A148C] bg-[#F3E5F5]"
                             : "border-gray-100 hover:border-gray-200"
                         }`}
                       >
                         <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
-                          isSelected ? "bg-[#1A237E]" : "bg-gray-100"
+                          isSelected ? "bg-[#4A148C]" : "bg-gray-100"
                         }`}>
                           <IconComp className={`size-4 ${isSelected ? "text-white" : "text-gray-400"}`} />
                         </div>
                         <div className="min-w-0">
-                          <p className={`text-sm font-semibold leading-snug ${isSelected ? "text-[#1A237E]" : "text-gray-700"}`}>
+                          <p className={`text-sm font-semibold leading-snug ${isSelected ? "text-[#4A148C]" : "text-gray-700"}`}>
                             {cat.label}
                           </p>
                           <p className="text-[11px] text-gray-400 mt-0.5 leading-relaxed">{cat.desc}</p>
@@ -192,7 +192,7 @@ export function PrayerRequestForm() {
                   onChange={(e) => handleChange("request", e.target.value)}
                   placeholder="Share your prayer need in detail. Be as specific as you are comfortable with. Our prayer team will stand in agreement with you."
                   rows={6}
-                  className="rounded-xl border-gray-200 focus:border-[#1A237E]/30 resize-none"
+                  className="rounded-xl border-gray-200 focus:border-[#4A148C]/30 resize-none"
                 />
                 {errors.request && <p className="text-xs text-[#D32F2F] mt-1">{errors.request}</p>}
               </div>
@@ -208,7 +208,7 @@ export function PrayerRequestForm() {
                     value={formData.fullName}
                     onChange={(e) => handleChange("fullName", e.target.value)}
                     placeholder="Your name (optional)"
-                    className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+                    className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
                   />
                 </div>
                 <div className={!formData.isAnonymous ? "" : "opacity-40 pointer-events-none"}>
@@ -221,7 +221,7 @@ export function PrayerRequestForm() {
                     value={formData.email}
                     onChange={(e) => handleChange("email", e.target.value)}
                     placeholder="your@email.com"
-                    className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+                    className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
                   />
                 </div>
               </div>
@@ -237,7 +237,7 @@ export function PrayerRequestForm() {
                   value={formData.phone}
                   onChange={(e) => handleChange("phone", e.target.value)}
                   placeholder="+234 800 000 0000"
-                  className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30 max-w-sm"
+                  className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30 max-w-sm"
                 />
               </div>
 
@@ -246,10 +246,10 @@ export function PrayerRequestForm() {
                 <button
                   type="button"
                   onClick={() => handleChange("isAnonymous", !formData.isAnonymous)}
-                  className="flex items-center gap-2 text-xs text-gray-500 hover:text-[#1A237E] transition-colors"
+                  className="flex items-center gap-2 text-xs text-gray-500 hover:text-[#4A148C] transition-colors"
                 >
                   <div className={`w-4 h-4 rounded border-2 flex items-center justify-center transition-colors ${
-                    formData.isAnonymous ? "bg-[#1A237E] border-[#1A237E]" : "border-gray-300"
+                    formData.isAnonymous ? "bg-[#4A148C] border-[#4A148C]" : "border-gray-300"
                   }`}>
                     {formData.isAnonymous && <CheckCircle2 className="size-2.5 text-white" />}
                   </div>
@@ -279,7 +279,7 @@ export function PrayerRequestForm() {
               <Button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl h-12 text-base font-semibold"
+                className="w-full bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl h-12 text-base font-semibold"
               >
                 {submitting ? "Sending..." : "Submit Prayer Request"}
               </Button>
@@ -290,17 +290,17 @@ export function PrayerRequestForm() {
         {/* Sidebar */}
         <div className="lg:col-span-2 space-y-6">
           {/* Scripture */}
-          <div className="bg-gradient-to-br from-[#0D1557] to-[#1A237E] rounded-2xl p-6 text-white">
+          <div className="bg-gradient-to-br from-[#1A0033] to-[#4A148C] rounded-2xl p-6 text-white">
             <BookOpen className="size-6 text-white/60 mb-3" />
             <p className="text-lg font-semibold leading-relaxed mb-2 italic">
               &ldquo;Therefore I tell you, whatever you ask in prayer, believe that you have received it, and it will be yours.&rdquo;
             </p>
-            <p className="text-sm text-blue-200/70 font-medium">— Mark 11:24 (NKJV)</p>
+            <p className="text-sm text-purple-200/70 font-medium">— Mark 11:24 (NKJV)</p>
           </div>
 
           {/* How it works */}
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-            <h3 className="text-sm font-bold text-[#1A237E] mb-4">How It Works</h3>
+            <h3 className="text-sm font-bold text-[#4A148C] mb-4">How It Works</h3>
             <div className="space-y-4">
               {[
                 { step: "1", title: "Submit Your Request", desc: "Fill in the form with your prayer need. You can submit anonymously." },
@@ -309,8 +309,8 @@ export function PrayerRequestForm() {
                 { step: "4", title: "God Answers", desc: "We believe God hears and answers prayer. Trust Him for the outcome." },
               ].map((item) => (
                 <div key={item.step} className="flex items-start gap-3">
-                  <div className="w-7 h-7 rounded-lg bg-[#F0F4FF] flex items-center justify-center shrink-0">
-                    <span className="text-[10px] font-bold text-[#1A237E]">{item.step}</span>
+                  <div className="w-7 h-7 rounded-lg bg-[#F3E5F5] flex items-center justify-center shrink-0">
+                    <span className="text-[10px] font-bold text-[#4A148C]">{item.step}</span>
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-gray-800">{item.title}</p>

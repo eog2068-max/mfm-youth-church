@@ -145,10 +145,10 @@ export function TestimoniesMain() {
         <SectionWrapper>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
             <div className="bg-white rounded-xl border border-gray-100 p-5 text-center">
-              <div className="w-10 h-10 rounded-xl bg-[#F0F4FF] flex items-center justify-center mx-auto mb-3">
-                <Heart className="size-5 text-[#1A237E]" />
+              <div className="w-10 h-10 rounded-xl bg-[#F3E5F5] flex items-center justify-center mx-auto mb-3">
+                <Heart className="size-5 text-[#4A148C]" />
               </div>
-              <p className="text-2xl font-bold text-[#1A237E]">
+              <p className="text-2xl font-bold text-[#4A148C]">
                 {stats.total}
               </p>
               <p className="text-xs text-gray-400 mt-0.5">
@@ -190,7 +190,7 @@ export function TestimoniesMain() {
         {/* Browse Testimonies Section */}
         <SectionWrapper>
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-bold text-[#1A237E]">
+            <h3 className="text-lg font-bold text-[#4A148C]">
               Browse Testimonies
             </h3>
             <Button
@@ -210,7 +210,7 @@ export function TestimoniesMain() {
                 placeholder="Search testimonies..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-10 rounded-xl border-gray-200 bg-white h-10 focus:border-[#1A237E]/30"
+                className="pl-10 rounded-xl border-gray-200 bg-white h-10 focus:border-[#4A148C]/30"
               />
               {search && (
                 <button
@@ -227,7 +227,7 @@ export function TestimoniesMain() {
               <select
                 value={sort}
                 onChange={(e) => setSort(e.target.value as SortOption)}
-                className="h-10 rounded-xl border border-gray-200 bg-white px-3 text-sm text-gray-600 focus:outline-none focus:border-[#1A237E]/30 cursor-pointer"
+                className="h-10 rounded-xl border border-gray-200 bg-white px-3 text-sm text-gray-600 focus:outline-none focus:border-[#4A148C]/30 cursor-pointer"
               >
                 <option value="newest">Newest First</option>
                 <option value="most_liked">Most Liked</option>
@@ -242,7 +242,7 @@ export function TestimoniesMain() {
               onClick={() => setCategory("")}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                 category === ""
-                  ? "bg-[#1A237E] text-white"
+                  ? "bg-[#4A148C] text-white"
                   : "bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50"
               }`}
             >
@@ -256,7 +256,7 @@ export function TestimoniesMain() {
                   onClick={() => setCategory(category === cat ? "" : cat)}
                   className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                     category === cat
-                      ? "bg-[#1A237E] text-white"
+                      ? "bg-[#4A148C] text-white"
                       : "bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50"
                   }`}
                 >
@@ -321,16 +321,16 @@ export function TestimoniesMain() {
 
         {/* Scripture Encouragement Section */}
         <SectionWrapper>
-          <div className="bg-gradient-to-br from-[#EBF0FA] to-[#F0F4FF] rounded-2xl p-8 md:p-12 text-center my-12">
+          <div className="bg-gradient-to-br from-[#EBF0FA] to-[#F3E5F5] rounded-2xl p-8 md:p-12 text-center my-12">
             <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mx-auto mb-5">
-              <BookOpen className="size-7 text-[#1A237E]" />
+              <BookOpen className="size-7 text-[#4A148C]" />
             </div>
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <p className="text-lg md:text-xl font-semibold text-[#1A237E] leading-relaxed mb-3 italic max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl font-semibold text-[#4A148C] leading-relaxed mb-3 italic max-w-2xl mx-auto">
                 &ldquo;Oh, give thanks to the Lord, for He is good! For His
                 mercy endures forever. Let the redeemed of the Lord say
                 so.&rdquo;

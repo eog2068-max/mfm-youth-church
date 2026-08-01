@@ -46,7 +46,7 @@ export default function AmenWallPage() {
     <FeatureLandingPage feature={feature} onEnter={() => setEntered(true)}>
       {/* What you'll find on the wall preview */}
       <div className="bg-gray-50 rounded-xl p-4 border border-gray-100 mb-2">
-        <p className="text-xs font-semibold text-[#1A237E] mb-3">
+        <p className="text-xs font-semibold text-[#4A148C] mb-3">
           What You&apos;ll Find on the Wall:
         </p>
         <div className="space-y-2.5">

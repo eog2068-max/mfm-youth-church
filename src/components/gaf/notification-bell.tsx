@@ -51,13 +51,13 @@ const TYPE_ICONS: Record<string, React.ElementType> = {
 };
 
 const TYPE_COLORS: Record<string, string> = {
-  referral_status: "bg-blue-100 text-blue-600",
+  referral_status: "bg-purple-100 text-purple-600",
   commendation: "bg-amber-100 text-amber-600",
   award: "bg-yellow-100 text-yellow-700",
   outreach_approved: "bg-emerald-100 text-emerald-600",
-  outreach_flagged: "bg-orange-100 text-orange-600",
+  outreach_flagged: "bg-red-100 text-red-600",
   cycle_closed: "bg-purple-100 text-purple-600",
-  leaderboard_rank: "bg-indigo-100 text-indigo-600",
+  leaderboard_rank: "bg-purple-100 text-purple-600",
   admin_broadcast: "bg-rose-100 text-rose-600",
 };
 
@@ -180,7 +180,7 @@ export function NotificationBell() {
         onClick={handleToggle}
         className="relative rounded-xl"
       >
-        <Bell className="size-5 text-[#1A237E]" />
+        <Bell className="size-5 text-[#4A148C]" />
         {unreadCount > 0 && (
           <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center size-5 rounded-full bg-[#D32F2F] text-white text-[10px] font-bold">
             {unreadCount > 99 ? "99+" : unreadCount}
@@ -192,7 +192,7 @@ export function NotificationBell() {
         <div className="absolute right-0 top-full mt-2 w-96 max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-xl border border-gray-100 z-50 overflow-hidden">
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 bg-gray-50/50">
-            <h3 className="font-semibold text-[#1A237E] text-sm">Notifications</h3>
+            <h3 className="font-semibold text-[#4A148C] text-sm">Notifications</h3>
             <div className="flex items-center gap-2">
               {unreadCount > 0 && (
                 <Button
@@ -200,7 +200,7 @@ export function NotificationBell() {
                   size="sm"
                   onClick={markAllRead}
                   disabled={markingAll}
-                  className="text-xs text-[#1A237E] hover:bg-[#1A237E]/5 gap-1"
+                  className="text-xs text-[#4A148C] hover:bg-[#4A148C]/5 gap-1"
                 >
                   <CheckCheck className="size-3" />
                   {markingAll ? "Marking..." : "Mark all read"}
@@ -208,7 +208,7 @@ export function NotificationBell() {
               )}
               <Link
                 href="/go-a-fishing/notifications"
-                className="text-xs text-blue-600 hover:underline"
+                className="text-xs text-purple-600 hover:underline"
                 onClick={() => setOpen(false)}
               >
                 View all
@@ -220,7 +220,7 @@ export function NotificationBell() {
           <div className="max-h-96 overflow-y-auto">
             {loading ? (
               <div className="flex items-center justify-center py-12">
-                <div className="animate-spin size-5 border-2 border-[#1A237E] border-t-transparent rounded-full" />
+                <div className="animate-spin size-5 border-2 border-[#4A148C] border-t-transparent rounded-full" />
               </div>
             ) : notifications.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-12 px-6">
@@ -240,7 +240,7 @@ export function NotificationBell() {
                     <li
                       key={n.id}
                       className={`flex items-start gap-3 px-4 py-3 hover:bg-gray-50/50 transition-colors cursor-pointer ${
-                        !n.read ? "bg-blue-50/30" : ""
+                        !n.read ? "bg-purple-50/30" : ""
                       }`}
                       onClick={() => !n.read && markRead(n.id)}
                     >
@@ -255,13 +255,13 @@ export function NotificationBell() {
                             className={`text-sm leading-snug ${
                               n.read
                                 ? "text-gray-600"
-                                : "font-semibold text-[#1A237E]"
+                                : "font-semibold text-[#4A148C]"
                             }`}
                           >
                             {n.title}
                           </p>
                           {!n.read && (
-                            <span className="shrink-0 size-2 rounded-full bg-[#1A237E] mt-1.5" />
+                            <span className="shrink-0 size-2 rounded-full bg-[#4A148C] mt-1.5" />
                           )}
                         </div>
                         <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">

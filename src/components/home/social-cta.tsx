@@ -16,7 +16,7 @@ export function SocialCTA() {
   return (
     <SectionWrapper className="py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593] rounded-3xl overflow-hidden relative">
+        <div className="bg-gradient-to-br from-[#1A0033] via-[#4A148C] to-[#6A1B9A] rounded-3xl overflow-hidden relative">
           {/* Decorative elements */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
@@ -26,7 +26,7 @@ export function SocialCTA() {
             }} />
           </div>
           <div className="absolute top-0 right-0 w-64 h-64 bg-pink-400/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-400/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-400/10 rounded-full blur-3xl" />
 
           <div className="relative z-10 p-8 md:p-12 lg:p-16 text-center">
             <motion.div
@@ -53,9 +53,9 @@ export function SocialCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-blue-100/70 mb-8 max-w-lg mx-auto"
+              className="text-purple-100/70 mb-8 max-w-lg mx-auto"
             >
-              Join RehobothSocial — a place to connect, pray, encourage, and grow together. No account needed.
+              Join YouthConnect — a place to connect, pray, encourage, and grow together. No account needed.
             </motion.p>
 
             {/* Feature pills */}
@@ -69,7 +69,7 @@ export function SocialCTA() {
               {highlights.map((item) => (
                 <span
                   key={item.text}
-                  className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-2 text-sm text-blue-100/80"
+                  className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-2 text-sm text-purple-100/80"
                 >
                   <span>{item.emoji}</span>
                   {item.text}
@@ -87,10 +87,10 @@ export function SocialCTA() {
             >
               <Link
                 href="/social"
-                className="inline-flex items-center justify-center gap-2 bg-white text-[#1A237E] px-8 py-3.5 rounded-xl font-semibold hover:bg-gray-100 transition-colors shadow-lg text-sm"
+                className="inline-flex items-center justify-center gap-2 bg-white text-[#4A148C] px-8 py-3.5 rounded-xl font-semibold hover:bg-gray-100 transition-colors shadow-lg text-sm"
               >
                 <Sparkles className="size-4" />
-                ENTER REHOBOTHSOCIAL
+                ENTER YOUTHCONNECT
               </Link>
               <Link
                 href="/social/im-here"
@@ -106,7 +106,7 @@ export function SocialCTA() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="mt-6 text-xs text-blue-200/40 tracking-widest uppercase"
+              className="mt-6 text-xs text-purple-200/40 tracking-widest uppercase"
             >
               Connect. Pray. Encourage. Grow. Together.
             </motion.p>

@@ -50,7 +50,7 @@ export function AnnouncementCard({
         transition={{ duration: 0.5, delay: index * 0.1 }}
         className="bg-white rounded-2xl border border-gray-100 shadow-lg shadow-black/5 overflow-hidden"
       >
-        <div className="h-1.5 bg-gradient-to-r from-[#1A237E] via-[#3949AB] to-[#5C6BC0]" />
+        <div className="h-1.5 bg-gradient-to-r from-[#4A148C] via-[#7B1FA2] to-[#9C27B0]" />
         <div className="flex flex-col md:flex-row">
           <div className="flex-1 p-6 md:p-8">
             <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -75,7 +75,7 @@ export function AnnouncementCard({
               </Badge>
             </div>
 
-            <h3 className="text-xl md:text-2xl font-bold text-[#1A237E] mb-3 leading-snug">
+            <h3 className="text-xl md:text-2xl font-bold text-[#4A148C] mb-3 leading-snug">
               {a.title}
             </h3>
             <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-4">
@@ -134,7 +134,7 @@ export function AnnouncementCard({
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
             {a.isPinned && <Pin className="size-3 text-[#D32F2F] shrink-0" />}
-            <p className="text-sm font-semibold text-gray-800 truncate group-hover:text-[#1A237E] transition-colors">
+            <p className="text-sm font-semibold text-gray-800 truncate group-hover:text-[#4A148C] transition-colors">
               {a.title}
             </p>
           </div>
@@ -189,7 +189,7 @@ export function AnnouncementCard({
           </Badge>
         </div>
 
-        <h3 className="text-base font-bold text-gray-800 mb-2 group-hover:text-[#1A237E] transition-colors leading-snug">
+        <h3 className="text-base font-bold text-gray-800 mb-2 group-hover:text-[#4A148C] transition-colors leading-snug">
           {a.title}
         </h3>
         <p className="text-sm text-gray-500 leading-relaxed line-clamp-3 mb-4">

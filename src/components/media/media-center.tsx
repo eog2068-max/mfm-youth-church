@@ -26,12 +26,12 @@ export function MediaCenter() {
         <SectionWrapper>
           {/* Tab navigation */}
           <Tabs defaultValue={tab} className="w-full">
-            <TabsList className="bg-[#F0F4FF] p-1.5 rounded-xl mx-auto w-fit flex-wrap gap-1 mb-10">
+            <TabsList className="bg-[#F3E5F5] p-1.5 rounded-xl mx-auto w-fit flex-wrap gap-1 mb-10">
               {tabItems.map((item) => (
                 <TabsTrigger
                   key={item.value}
                   value={item.value}
-                  className="rounded-lg px-4 py-2.5 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-[#1A237E] data-[state=active]:shadow-sm gap-2"
+                  className="rounded-lg px-4 py-2.5 text-sm font-medium data-[state=active]:bg-white data-[state=active]:text-[#4A148C] data-[state=active]:shadow-sm gap-2"
                 >
                   <item.icon className="size-4" />
                   <span className="hidden sm:inline">{item.label}</span>

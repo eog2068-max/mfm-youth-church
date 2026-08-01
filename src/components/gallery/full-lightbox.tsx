@@ -153,8 +153,8 @@ export function FullLightbox({
                   zoomed ? "w-full h-full" : "max-w-5xl max-h-[80vh] w-[90vw] aspect-video"
                 }`}
               >
-                <Camera className="size-20 text-[#1A237E]/15" />
-                <span className="absolute text-sm text-[#1A237E]/30 font-medium">Photo</span>
+                <Camera className="size-20 text-[#4A148C]/15" />
+                <span className="absolute text-sm text-[#4A148C]/30 font-medium">Photo</span>
               </motion.div>
             </AnimatePresence>
 
@@ -218,13 +218,13 @@ export function FullLightbox({
                       <button
                         key={p.id}
                         onClick={() => setCurrent(i)}
-                        className={`aspect-square rounded-lg bg-gradient-to-br from-[#E8EDFF] to-[#F0F4FF] flex items-center justify-center transition-all ${
+                        className={`aspect-square rounded-lg bg-gradient-to-br from-[#E8EDFF] to-[#F3E5F5] flex items-center justify-center transition-all ${
                           i === current
                             ? "ring-2 ring-white/50 scale-95"
                             : "opacity-60 hover:opacity-100"
                         }`}
                       >
-                        {i === current && <Camera className="size-4 text-[#1A237E]/30" />}
+                        {i === current && <Camera className="size-4 text-[#4A148C]/30" />}
                       </button>
                     ))}
                   </div>

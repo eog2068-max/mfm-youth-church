@@ -80,14 +80,14 @@ const OUTREACH_TYPES: Array<{
   icon: typeof Fish;
   color: string;
 }> = [
-  { key: "door_to_door", label: "Door-to-Door", icon: Home, color: "bg-blue-100 text-blue-700" },
+  { key: "door_to_door", label: "Door-to-Door", icon: Home, color: "bg-purple-100 text-purple-700" },
   { key: "street_preaching", label: "Street Preaching", icon: Megaphone, color: "bg-amber-100 text-amber-700" },
   { key: "hospital_visit", label: "Hospital Visit", icon: Heart, color: "bg-rose-100 text-rose-700" },
   { key: "prison_ministry", label: "Prison Ministry", icon: BookOpen, color: "bg-purple-100 text-purple-700" },
   { key: "school_outreach", label: "School Outreach", icon: GraduationCap, color: "bg-teal-100 text-teal-700" },
-  { key: "market_evangelism", label: "Market Evangelism", icon: ShoppingBag, color: "bg-orange-100 text-orange-700" },
+  { key: "market_evangelism", label: "Market Evangelism", icon: ShoppingBag, color: "bg-red-100 text-red-700" },
   { key: "phone_call", label: "Phone Call", icon: Phone, color: "bg-green-100 text-green-700" },
-  { key: "social_media", label: "Social Media", icon: Wifi, color: "bg-indigo-100 text-indigo-700" },
+  { key: "social_media", label: "Social Media", icon: Wifi, color: "bg-purple-100 text-purple-700" },
   { key: "personal_visit", label: "Personal Visit", icon: UserCheck, color: "bg-cyan-100 text-cyan-700" },
   { key: "other", label: "Other", icon: HelpCircle, color: "bg-gray-100 text-gray-600" },
 ];
@@ -225,12 +225,12 @@ export function GafMyOutreach() {
   };
 
   return (
-    <section className="py-12 md:py-16 bg-[#F0F4FF] min-h-screen">
+    <section className="py-12 md:py-16 bg-[#F3E5F5] min-h-screen">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Header */}
         <SectionWrapper className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1A237E]">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#4A148C]">
               My Outreach Log
             </h2>
             <p className="text-sm text-gray-600 mt-1">
@@ -242,7 +242,7 @@ export function GafMyOutreach() {
               resetForm();
               setShowCreate(true);
             }}
-            className="gap-2 bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl"
+            className="gap-2 bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl"
           >
             <Plus className="size-4" />
             Log Activity
@@ -255,10 +255,10 @@ export function GafMyOutreach() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               <Card className="border-0 shadow-md">
                 <CardContent className="p-5">
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white mb-3">
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 text-white mb-3">
                     <Fish className="size-5" />
                   </div>
-                  <div className="text-2xl font-bold text-[#1A237E]">
+                  <div className="text-2xl font-bold text-[#4A148C]">
                     {data.stats.totalActivities}
                   </div>
                   <div className="text-xs text-gray-500">Activities Logged</div>
@@ -269,7 +269,7 @@ export function GafMyOutreach() {
                   <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 text-white mb-3">
                     <Users className="size-5" />
                   </div>
-                  <div className="text-2xl font-bold text-[#1A237E]">
+                  <div className="text-2xl font-bold text-[#4A148C]">
                     {data.stats.totalContacts}
                   </div>
                   <div className="text-xs text-gray-500">People Reached</div>
@@ -280,7 +280,7 @@ export function GafMyOutreach() {
                   <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-white mb-3">
                     <Heart className="size-5" />
                   </div>
-                  <div className="text-2xl font-bold text-[#1A237E]">
+                  <div className="text-2xl font-bold text-[#4A148C]">
                     {data.stats.totalDecisions}
                   </div>
                   <div className="text-xs text-gray-500">Decisions for Christ</div>
@@ -288,10 +288,10 @@ export function GafMyOutreach() {
               </Card>
               <Card className="border-0 shadow-md">
                 <CardContent className="p-5">
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-orange-700 text-white mb-3">
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-700 text-white mb-3">
                     <Flame className="size-5" />
                   </div>
-                  <div className="text-2xl font-bold text-[#1A237E]">
+                  <div className="text-2xl font-bold text-[#4A148C]">
                     {data.stats.currentStreak}
                   </div>
                   <div className="text-xs text-gray-500">
@@ -312,7 +312,7 @@ export function GafMyOutreach() {
               className={cn(
                 "px-3 py-1.5 rounded-full text-xs font-medium transition-colors",
                 !filterType
-                  ? "bg-[#1A237E] text-white"
+                  ? "bg-[#4A148C] text-white"
                   : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
               )}
             >
@@ -326,7 +326,7 @@ export function GafMyOutreach() {
                 className={cn(
                   "px-3 py-1.5 rounded-full text-xs font-medium transition-colors",
                   filterType === t.key
-                    ? "bg-[#1A237E] text-white"
+                    ? "bg-[#4A148C] text-white"
                     : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
                 )}
               >
@@ -340,7 +340,7 @@ export function GafMyOutreach() {
         <SectionWrapper>
           <Card className="border-0 shadow-md">
             <CardHeader className="border-b border-gray-100">
-              <CardTitle className="text-lg text-[#1A237E]">
+              <CardTitle className="text-lg text-[#4A148C]">
                 Activity Log
                 {data && (
                   <span className="text-sm font-normal text-gray-400 ml-2">
@@ -352,14 +352,14 @@ export function GafMyOutreach() {
             <CardContent className="p-0">
               {loading && !data ? (
                 <div className="py-16 flex flex-col items-center gap-3">
-                  <Loader2 className="size-8 text-[#1A237E] animate-spin" />
+                  <Loader2 className="size-8 text-[#4A148C] animate-spin" />
                   <p className="text-sm text-gray-500">Loading activities...</p>
                 </div>
               ) : error ? (
                 <div className="py-16 flex flex-col items-center gap-3 text-center">
                   <AlertCircle className="size-8 text-red-500" />
                   <p className="text-gray-700">{error}</p>
-                  <Button onClick={() => fetchOutreach()} className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl">
+                  <Button onClick={() => fetchOutreach()} className="bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl">
                     Try again
                   </Button>
                 </div>
@@ -380,7 +380,7 @@ export function GafMyOutreach() {
                       resetForm();
                       setShowCreate(true);
                     }}
-                    className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl gap-2"
+                    className="bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl gap-2"
                   >
                     <Plus className="size-4" />
                     Log your first activity
@@ -412,7 +412,7 @@ export function GafMyOutreach() {
                             <div className="min-w-0 flex-1">
                               <div className="flex items-start justify-between gap-2">
                                 <div className="min-w-0">
-                                  <p className="font-semibold text-[#1A237E]">
+                                  <p className="font-semibold text-[#4A148C]">
                                     {act.title}
                                   </p>
                                   <div className="flex flex-wrap items-center gap-2 mt-1">
@@ -443,7 +443,7 @@ export function GafMyOutreach() {
                                 <div className="shrink-0 flex gap-3">
                                   {act.contacts > 0 && (
                                     <div className="text-center">
-                                      <p className="text-lg font-bold text-[#1A237E]">
+                                      <p className="text-lg font-bold text-[#4A148C]">
                                         {act.contacts}
                                       </p>
                                       <p className="text-xs text-gray-400">reached</p>
@@ -484,7 +484,7 @@ export function GafMyOutreach() {
               variant="outline"
               onClick={() => data.nextCursor && fetchOutreach(data.nextCursor)}
               disabled={loading}
-              className="gap-2 rounded-xl border-[#1A237E]/20 text-[#1A237E] hover:bg-[#1A237E]/5"
+              className="gap-2 rounded-xl border-[#4A148C]/20 text-[#4A148C] hover:bg-[#4A148C]/5"
             >
               {loading ? (
                 <Loader2 className="size-4 animate-spin" />
@@ -498,7 +498,7 @@ export function GafMyOutreach() {
 
         {/* Scripture footer */}
         <SectionWrapper className="text-center py-8">
-          <MapPin className="size-8 mx-auto text-[#1A237E] mb-3" />
+          <MapPin className="size-8 mx-auto text-[#4A148C] mb-3" />
           <p className="text-sm text-gray-600 italic max-w-md mx-auto leading-relaxed">
             &ldquo;Go therefore and make disciples of all nations, baptizing them in
             the name of the Father and of the Son and of the Holy Spirit.&rdquo;
@@ -528,8 +528,8 @@ export function GafMyOutreach() {
               className="relative bg-white rounded-2xl shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto"
             >
               <div className="flex items-center justify-between p-5 border-b border-gray-100">
-                <h2 className="text-lg font-bold text-[#1A237E] flex items-center gap-2">
-                  <MapPin className="size-5 text-blue-500" />
+                <h2 className="text-lg font-bold text-[#4A148C] flex items-center gap-2">
+                  <MapPin className="size-5 text-purple-500" />
                   Log Outreach Activity
                 </h2>
                 <Button
@@ -566,7 +566,7 @@ export function GafMyOutreach() {
                           className={cn(
                             "flex items-center gap-2 px-3 py-2.5 rounded-xl text-xs font-medium transition-all border text-left",
                             formType === t.key
-                              ? "bg-[#1A237E] text-white border-[#1A237E]"
+                              ? "bg-[#4A148C] text-white border-[#4A148C]"
                               : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
                           )}
                         >
@@ -589,7 +589,7 @@ export function GafMyOutreach() {
                     value={formTitle}
                     onChange={(e) => setFormTitle(e.target.value)}
                     maxLength={200}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E]"
+                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C]"
                   />
                 </div>
 
@@ -604,7 +604,7 @@ export function GafMyOutreach() {
                       value={formDate}
                       max={new Date().toISOString().split("T")[0]}
                       onChange={(e) => setFormDate(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E]"
+                      className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C]"
                     />
                   </div>
                   <div>
@@ -616,7 +616,7 @@ export function GafMyOutreach() {
                       placeholder="e.g. Gwarinpa, Abuja"
                       value={formLocation}
                       onChange={(e) => setFormLocation(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E]"
+                      className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C]"
                     />
                   </div>
                 </div>
@@ -633,7 +633,7 @@ export function GafMyOutreach() {
                       max="999"
                       value={formContacts}
                       onChange={(e) => setFormContacts(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E]"
+                      className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C]"
                     />
                   </div>
                   <div>
@@ -646,7 +646,7 @@ export function GafMyOutreach() {
                       max="999"
                       value={formDecisions}
                       onChange={(e) => setFormDecisions(e.target.value)}
-                      className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E]"
+                      className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C]"
                     />
                   </div>
                 </div>
@@ -662,7 +662,7 @@ export function GafMyOutreach() {
                     onChange={(e) => setFormDescription(e.target.value)}
                     maxLength={500}
                     rows={2}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E] resize-none"
+                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C] resize-none"
                   />
                 </div>
 
@@ -677,7 +677,7 @@ export function GafMyOutreach() {
                     onChange={(e) => setFormNotes(e.target.value)}
                     maxLength={500}
                     rows={2}
-                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E] resize-none"
+                    className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C] resize-none"
                   />
                 </div>
               </div>
@@ -694,7 +694,7 @@ export function GafMyOutreach() {
                 <Button
                   onClick={handleCreate}
                   disabled={creating}
-                  className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl gap-2"
+                  className="bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl gap-2"
                 >
                   {creating && <Loader2 className="size-4 animate-spin" />}
                   {creating ? "Saving..." : "Log Activity"}

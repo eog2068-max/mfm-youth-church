@@ -84,7 +84,7 @@ export function GivingMain() {
             transition={{ duration: 0.6 }}
           >
             <Quote className="size-10 text-[#D32F2F]/30 mx-auto mb-4" />
-            <p className="text-xl md:text-2xl font-semibold text-[#1A237E] leading-relaxed italic">
+            <p className="text-xl md:text-2xl font-semibold text-[#4A148C] leading-relaxed italic">
               &ldquo;Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.&rdquo;
             </p>
             <p className="text-sm text-gray-500 mt-3 font-medium">— 2 Corinthians 9:7 (NIV)</p>
@@ -93,7 +93,7 @@ export function GivingMain() {
       </SectionWrapper>
 
       {/* Giving Categories */}
-      <SectionWrapper className="bg-[#F0F4FF] py-16 md:py-20">
+      <SectionWrapper className="bg-[#F3E5F5] py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <SectionTitle
             title="Ways to Give"
@@ -121,7 +121,7 @@ export function GivingMain() {
                   >
                     <IconComp className="size-6 text-white" />
                   </div>
-                  <h3 className="text-base font-bold text-gray-800 mb-2 group-hover:text-[#1A237E] transition-colors">
+                  <h3 className="text-base font-bold text-gray-800 mb-2 group-hover:text-[#4A148C] transition-colors">
                     {cat.name}
                   </h3>
                   <p className="text-sm text-gray-500 leading-relaxed">{cat.description}</p>
@@ -151,8 +151,8 @@ export function GivingMain() {
                   onClick={() => setActiveMethod(method.id)}
                   className={`flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium transition-all ${
                     isActive
-                      ? "bg-[#1A237E] text-white shadow-md"
-                      : "bg-white text-gray-600 border border-gray-200 hover:border-[#1A237E]/30 hover:text-[#1A237E]"
+                      ? "bg-[#4A148C] text-white shadow-md"
+                      : "bg-white text-gray-600 border border-gray-200 hover:border-[#4A148C]/30 hover:text-[#4A148C]"
                   }`}
                 >
                   <IconComp className="size-4" />
@@ -170,14 +170,14 @@ export function GivingMain() {
               className="max-w-lg mx-auto"
             >
               <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-                <div className="bg-gradient-to-r from-[#1A237E] to-[#283593] p-6">
+                <div className="bg-gradient-to-r from-[#4A148C] to-[#6A1B9A] p-6">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center">
                       <Landmark className="size-5 text-white" />
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-white">Bank Transfer Details</h3>
-                      <p className="text-sm text-blue-200/80">Transfer to the account below</p>
+                      <p className="text-sm text-purple-200/80">Transfer to the account below</p>
                     </div>
                   </div>
                 </div>
@@ -200,17 +200,17 @@ export function GivingMain() {
                       Account Number
                     </p>
                     <div className="flex items-center gap-3">
-                      <p className="text-2xl font-bold text-[#1A237E] tracking-wider">
+                      <p className="text-2xl font-bold text-[#4A148C] tracking-wider">
                         {bankDetails.accountNumber}
                       </p>
                       <button
                         onClick={copyAccountNumber}
-                        className="p-2 rounded-lg bg-[#F0F4FF] hover:bg-[#EBF0FA] transition-colors"
+                        className="p-2 rounded-lg bg-[#F3E5F5] hover:bg-[#EBF0FA] transition-colors"
                       >
                         {copied ? (
                           <Check className="size-4 text-[#2E7D32]" />
                         ) : (
-                          <Copy className="size-4 text-[#1A237E]" />
+                          <Copy className="size-4 text-[#4A148C]" />
                         )}
                       </button>
                     </div>
@@ -230,7 +230,7 @@ export function GivingMain() {
                       Please use your name as the payment reference when making the transfer. Send
                       your payment confirmation to{" "}
                       <span className="font-semibold text-gray-600">
-                        info@rccgrehoboth.org
+                        info@mfmyouthchurch.org
                       </span>{" "}
                       or via WhatsApp.
                     </p>
@@ -252,7 +252,7 @@ export function GivingMain() {
                   <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-4">
                     <Check className="size-8 text-[#2E7D32]" />
                   </div>
-                  <h3 className="text-xl font-bold text-[#1A237E] mb-2">Thank You for Your Giving!</h3>
+                  <h3 className="text-xl font-bold text-[#4A148C] mb-2">Thank You for Your Giving!</h3>
                   <p className="text-sm text-gray-500 leading-relaxed mb-6">
                     Your generous contribution has been received. May God bless you abundantly as you
                     have sown into His kingdom. Remember, &ldquo;God loves a cheerful giver.&rdquo;
@@ -263,7 +263,7 @@ export function GivingMain() {
                       setPaymentForm({ amount: "", name: "", email: "", phone: "" });
                       setSelectedCategory("");
                     }}
-                    className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl"
+                    className="bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl"
                   >
                     Give Again
                   </Button>
@@ -300,7 +300,7 @@ export function GivingMain() {
                             setPaymentForm((p) => ({ ...p, amount: e.target.value }))
                           }
                           placeholder="Enter amount"
-                          className="pl-8 rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+                          className="pl-8 rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
                           required
                         />
                       </div>
@@ -313,7 +313,7 @@ export function GivingMain() {
                       <select
                         value={selectedCategory}
                         onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="w-full h-11 rounded-xl border border-gray-200 bg-white px-3 text-sm text-gray-700 focus:border-[#1A237E]/30 focus:outline-none focus:ring-1 focus:ring-[#1A237E]/20"
+                        className="w-full h-11 rounded-xl border border-gray-200 bg-white px-3 text-sm text-gray-700 focus:border-[#4A148C]/30 focus:outline-none focus:ring-1 focus:ring-[#4A148C]/20"
                         required
                       >
                         <option value="">Select category</option>
@@ -335,7 +335,7 @@ export function GivingMain() {
                           setPaymentForm((p) => ({ ...p, name: e.target.value }))
                         }
                         placeholder="Your full name"
-                        className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+                        className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
                         required
                       />
                     </div>
@@ -352,7 +352,7 @@ export function GivingMain() {
                             setPaymentForm((p) => ({ ...p, email: e.target.value }))
                           }
                           placeholder="your@email.com"
-                          className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+                          className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
                           required
                         />
                       </div>
@@ -367,7 +367,7 @@ export function GivingMain() {
                             setPaymentForm((p) => ({ ...p, phone: e.target.value }))
                           }
                           placeholder="+234 800 000 0000"
-                          className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+                          className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
                         />
                       </div>
                     </div>
@@ -375,7 +375,7 @@ export function GivingMain() {
                     <Button
                       type="submit"
                       disabled={submitting}
-                      className="w-full bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl h-12 text-base font-semibold"
+                      className="w-full bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl h-12 text-base font-semibold"
                     >
                       {submitting ? "Processing..." : "Pay Now"}
                     </Button>
@@ -414,7 +414,7 @@ export function GivingMain() {
 
                 <div className="p-6 space-y-4">
                   <div className="bg-[#F8FAFF] rounded-xl p-5">
-                    <h4 className="text-sm font-bold text-[#1A237E] mb-3">Service Times</h4>
+                    <h4 className="text-sm font-bold text-[#4A148C] mb-3">Service Times</h4>
                     <div className="space-y-3">
                       <div className="flex items-start gap-3">
                         <div className="w-2 h-2 rounded-full bg-[#D32F2F] mt-1.5 shrink-0" />
@@ -424,7 +424,7 @@ export function GivingMain() {
                         </div>
                       </div>
                       <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 rounded-full bg-[#1A237E] mt-1.5 shrink-0" />
+                        <div className="w-2 h-2 rounded-full bg-[#4A148C] mt-1.5 shrink-0" />
                         <div>
                           <p className="text-sm font-semibold text-gray-800">Tuesday Bible Study</p>
                           <p className="text-xs text-gray-500">5:30 PM</p>
@@ -464,7 +464,7 @@ export function GivingMain() {
       </SectionWrapper>
 
       {/* Why We Give - Scriptures */}
-      <SectionWrapper className="bg-[#F5F7FF] py-16 md:py-20">
+      <SectionWrapper className="bg-[#F3E5F5] py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <SectionTitle
             title="Why We Give"
@@ -485,7 +485,7 @@ export function GivingMain() {
                 <p className="text-sm text-gray-700 leading-relaxed italic mb-3">
                   &ldquo;{scripture.text}&rdquo;
                 </p>
-                <p className="text-sm font-bold text-[#1A237E]">{scripture.reference}</p>
+                <p className="text-sm font-bold text-[#4A148C]">{scripture.reference}</p>
               </motion.div>
             ))}
           </div>
@@ -511,14 +511,14 @@ export function GivingMain() {
                 className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#F0F4FF] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#F3E5F5] flex items-center justify-center shrink-0">
                     <Heart className="size-5 text-[#D32F2F]" />
                   </div>
                   <div className="flex-1">
                     <p className="text-sm text-gray-700 leading-relaxed mb-3">{item.testimony}</p>
                     <div className="flex items-center gap-2">
-                      <p className="text-sm font-bold text-[#1A237E]">{item.name}</p>
-                      <span className="text-xs bg-[#F0F4FF] text-[#1A237E] px-2 py-0.5 rounded-full font-medium">
+                      <p className="text-sm font-bold text-[#4A148C]">{item.name}</p>
+                      <span className="text-xs bg-[#F3E5F5] text-[#4A148C] px-2 py-0.5 rounded-full font-medium">
                         {item.category}
                       </span>
                     </div>

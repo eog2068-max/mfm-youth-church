@@ -55,7 +55,7 @@ export default function Home() {
         <AnnouncementPreview />
       </div>
 
-      {/* §6 — RehobothSocial Showcase */}
+      {/* §6 — YouthConnect Showcase */}
       <SocialShowcase />
 
       {/* Media Previews */}

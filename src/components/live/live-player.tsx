@@ -46,10 +46,10 @@ export function LivePlayer() {
   return (
     <div className={`bg-black rounded-2xl overflow-hidden shadow-2xl ${isFullscreen ? "fixed inset-0 z-[70] rounded-none" : ""}`}>
       {/* Player area */}
-      <div className="relative w-full aspect-video bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#0D1557]">
+      <div className="relative w-full aspect-video bg-gradient-to-br from-[#1A0033] via-[#4A148C] to-[#1A0033]">
         {/* Decorative elements */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-60 h-60 bg-blue-400 rounded-full blur-[100px]" />
+          <div className="absolute top-20 left-20 w-60 h-60 bg-purple-400 rounded-full blur-[100px]" />
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-red-400 rounded-full blur-[80px]" />
         </div>
 
@@ -104,10 +104,10 @@ export function LivePlayer() {
               <h2 className="text-2xl md:text-4xl font-bold text-white mb-2">
                 {activeService.title}
               </h2>
-              <p className="text-blue-200/70 text-base md:text-lg mb-6">
+              <p className="text-purple-200/70 text-base md:text-lg mb-6">
                 Stream is live now — join us in worship and the Word
               </p>
-              <div className="flex items-center gap-4 text-sm text-blue-200/50">
+              <div className="flex items-center gap-4 text-sm text-purple-200/50">
                 <span className="flex items-center gap-1.5">
                   <MonitorSmartphone className="size-4" />
                   {viewerCount} viewers
@@ -126,7 +126,7 @@ export function LivePlayer() {
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
                 Stream is Currently Offline
               </h2>
-              <p className="text-blue-200/60 text-base max-w-md">
+              <p className="text-purple-200/60 text-base max-w-md">
                 Our next live stream will begin at the scheduled service time. See the schedule below and set a reminder.
               </p>
             </>
@@ -148,7 +148,7 @@ export function LivePlayer() {
               </div>
             </div>
             <p className="text-xs text-white/40 hidden sm:block">
-              RCCG Rehoboth Assembly Parish, Utako, Abuja
+              MFM Youth Church, Utako, Abuja
             </p>
           </div>
         </div>
@@ -156,7 +156,7 @@ export function LivePlayer() {
 
       {/* Below-player info strip (when not fullscreen) */}
       {!isFullscreen && (
-        <div className="bg-[#0D1557] px-5 py-4 flex items-center justify-between">
+        <div className="bg-[#1A0033] px-5 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
             <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
               <Radio className="size-5 text-white/60" />
@@ -165,7 +165,7 @@ export function LivePlayer() {
               <p className="text-sm font-semibold text-white truncate">
                 {activeService ? activeService.title : "Live Stream Channel"}
               </p>
-              <p className="text-xs text-blue-200/60">
+              <p className="text-xs text-purple-200/60">
                 {activeService ? "Currently streaming live" : "Offline — check schedule for next stream"}
               </p>
             </div>
@@ -201,17 +201,17 @@ export function LivePlayer() {
         >
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
             <div>
-              <p className="text-blue-200/40 text-xs uppercase tracking-wider mb-1">Status</p>
+              <p className="text-purple-200/40 text-xs uppercase tracking-wider mb-1">Status</p>
               <p className="text-white font-medium">
                 {activeService ? "Currently Live" : "Offline"}
               </p>
             </div>
             <div>
-              <p className="text-blue-200/40 text-xs uppercase tracking-wider mb-1">Viewers</p>
+              <p className="text-purple-200/40 text-xs uppercase tracking-wider mb-1">Viewers</p>
               <p className="text-white font-medium">{viewerCount} watching now</p>
             </div>
             <div>
-              <p className="text-blue-200/40 text-xs uppercase tracking-wider mb-1">Location</p>
+              <p className="text-purple-200/40 text-xs uppercase tracking-wider mb-1">Location</p>
               <p className="text-white font-medium">Utako, Abuja, Nigeria</p>
             </div>
           </div>

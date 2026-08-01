@@ -45,6 +45,16 @@ const beliefs = [
     content:
       "We believe in the personal, visible, and glorious return of the Lord Jesus Christ. This blessed hope motivates us to live holy lives, to be watchful, and to occupy diligently until He comes. We also believe in the resurrection of both the saved and the lost — the saved to eternal life and the lost to eternal condemnation.",
   },
+  {
+    title: "Spiritual Warfare",
+    content:
+      "We believe in the reality of spiritual warfare and that believers are called to wage war against the kingdom of darkness through the power of the Holy Spirit, the blood of Jesus, and the Word of God. We are equipped to pull down strongholds, cast out demons, and enforce the victory of Calvary in every area of life.",
+  },
+  {
+    title: "Holiness and Sanctification",
+    content:
+      "We believe that without holiness, no man shall see the Lord. We are called to a life of consecration, purity, and separation from sin. Holiness is not optional but a fundamental requirement for every believer who desires to walk closely with God and experience His glory.",
+  },
 ];
 
 export function AboutBeliefs() {
@@ -53,7 +63,7 @@ export function AboutBeliefs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="What We Believe"
-          subtitle="Our statement of faith is rooted in the eternal Word of God and aligned with the foundational beliefs of The Redeemed Christian Church of God worldwide."
+          subtitle="Our statement of faith is rooted in the eternal Word of God and aligned with the foundational beliefs of Mountain of Fire and Miracles Ministries worldwide."
         />
 
         <div className="grid md:grid-cols-2 gap-6 mt-12">
@@ -64,14 +74,14 @@ export function AboutBeliefs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="group p-6 md:p-7 rounded-2xl border border-gray-100 hover:border-[#1A237E]/15 hover:shadow-lg hover:shadow-[#1A237E]/5 transition-all duration-300 bg-white"
+              className="group p-6 md:p-7 rounded-2xl border border-gray-100 hover:border-[#4A148C]/15 hover:shadow-lg hover:shadow-[#4A148C]/5 transition-all duration-300 bg-white"
             >
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-[#F0F4FF] flex items-center justify-center shrink-0 group-hover:bg-[#1A237E] transition-colors duration-300">
-                  <CheckCircle className="size-5 text-[#1A237E] group-hover:text-white transition-colors duration-300" />
+                <div className="w-10 h-10 rounded-xl bg-[#F3E5F5] flex items-center justify-center shrink-0 group-hover:bg-[#4A148C] transition-colors duration-300">
+                  <CheckCircle className="size-5 text-[#4A148C] group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-[#1A237E] mb-2">{belief.title}</h3>
+                  <h3 className="text-lg font-bold text-[#4A148C] mb-2">{belief.title}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{belief.content}</p>
                 </div>
               </div>

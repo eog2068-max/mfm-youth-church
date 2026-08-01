@@ -66,11 +66,11 @@ export function GafLogin({ error, message }: GafLoginProps) {
   const initialError = error ? (ERROR_MESSAGES[error] || message || "An error occurred.") : null;
 
   return (
-    <section className="py-12 md:py-16 bg-[#F0F4FF] min-h-[60vh]">
+    <section className="py-12 md:py-16 bg-[#F3E5F5] min-h-[60vh]">
       <div className="max-w-md mx-auto px-4 sm:px-6">
         <SectionWrapper>
           <Card className="border-0 shadow-xl">
-            <CardHeader className="bg-gradient-to-br from-[#1A237E] to-[#0D1557] text-white rounded-t-lg">
+            <CardHeader className="bg-gradient-to-br from-[#4A148C] to-[#1A0033] text-white rounded-t-lg">
               <CardTitle className="flex items-center gap-2 text-xl">
                 <Mail className="size-5" />
                 Sign in with Email
@@ -92,7 +92,7 @@ export function GafLogin({ error, message }: GafLoginProps) {
                 >
                   <CheckCircle2 className="size-16 text-emerald-500 mx-auto" />
                   <div>
-                    <h3 className="font-bold text-[#1A237E] text-lg">Check your email</h3>
+                    <h3 className="font-bold text-[#4A148C] text-lg">Check your email</h3>
                     <p className="text-sm text-gray-600 mt-2 leading-relaxed">
                       We sent a sign-in link to <strong>{email}</strong>. Click the
                       link in the email to sign in to your Go-A-Fishing account.
@@ -116,7 +116,7 @@ export function GafLogin({ error, message }: GafLoginProps) {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-[#1A237E]">
+                    <label htmlFor="email" className="text-sm font-medium text-[#4A148C]">
                       Email address
                     </label>
                     <Input
@@ -143,7 +143,7 @@ export function GafLogin({ error, message }: GafLoginProps) {
                   <Button
                     type="submit"
                     disabled={status === "sending" || !email}
-                    className="w-full bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl"
+                    className="w-full bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl"
                   >
                     {status === "sending" ? (
                       <>
@@ -168,7 +168,7 @@ export function GafLogin({ error, message }: GafLoginProps) {
               <div className="pt-4 border-t border-gray-100">
                 <Link
                   href="/go-a-fishing"
-                  className="inline-flex items-center gap-1.5 text-sm text-[#1A237E] hover:underline"
+                  className="inline-flex items-center gap-1.5 text-sm text-[#4A148C] hover:underline"
                 >
                   <ArrowLeft className="size-4" />
                   Back to Go-A-Fishing

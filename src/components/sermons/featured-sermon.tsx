@@ -22,7 +22,7 @@ export function FeaturedSermon({ sermon, onPlay }: FeaturedSermonProps) {
       <div className="flex flex-col lg:flex-row">
         {/* Left: Visual / Player area */}
         <div className="relative lg:w-[420px] shrink-0">
-          <div className="aspect-video lg:aspect-auto lg:h-full bg-gradient-to-br from-[#1A237E] via-[#283593] to-[#3949AB] flex items-center justify-center">
+          <div className="aspect-video lg:aspect-auto lg:h-full bg-gradient-to-br from-[#4A148C] via-[#6A1B9A] to-[#7B1FA2] flex items-center justify-center">
             <div className="absolute inset-0 opacity-5">
               <div className="absolute top-10 left-10 w-40 h-40 bg-white rounded-full blur-[60px]" />
               <div className="absolute bottom-10 right-10 w-32 h-32 bg-[#D32F2F] rounded-full blur-[60px]" />
@@ -49,7 +49,7 @@ export function FeaturedSermon({ sermon, onPlay }: FeaturedSermonProps) {
             </span>
           )}
 
-          <h2 className="text-2xl md:text-3xl font-bold text-[#1A237E] mb-3 leading-tight">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#4A148C] mb-3 leading-tight">
             {sermon.title}
           </h2>
 
@@ -85,9 +85,9 @@ export function FeaturedSermon({ sermon, onPlay }: FeaturedSermonProps) {
               {sermon.scriptures.map((scripture) => (
                 <span
                   key={scripture}
-                  className="inline-flex items-center text-xs font-medium text-[#1A237E] bg-[#F0F4FF] px-2.5 py-1 rounded-lg"
+                  className="inline-flex items-center text-xs font-medium text-[#4A148C] bg-[#F3E5F5] px-2.5 py-1 rounded-lg"
                 >
-                  <BookOpen className="size-3 mr-1.5 text-[#1A237E]/60" />
+                  <BookOpen className="size-3 mr-1.5 text-[#4A148C]/60" />
                   {scripture}
                 </span>
               ))}
@@ -109,7 +109,7 @@ export function FeaturedSermon({ sermon, onPlay }: FeaturedSermonProps) {
               <Button
                 onClick={() => onPlay(sermon)}
                 variant="outline"
-                className="border-[#1A237E]/20 text-[#1A237E] hover:bg-[#F0F4FF] hover:text-[#1A237E] rounded-xl h-11 px-6 font-semibold"
+                className="border-[#4A148C]/20 text-[#4A148C] hover:bg-[#F3E5F5] hover:text-[#4A148C] rounded-xl h-11 px-6 font-semibold"
               >
                 <Headphones className="size-4" />
                 Listen Audio

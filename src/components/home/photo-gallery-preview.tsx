@@ -3,17 +3,17 @@ import { Camera, ArrowRight } from "lucide-react";
 import { SectionWrapper, SectionTitle } from "./section-wrapper";
 
 const photoSlots = [
-  { bg: "from-[#1A237E]/15 to-[#1A237E]/5", label: "Worship Service" },
+  { bg: "from-[#4A148C]/15 to-[#4A148C]/5", label: "Worship Service" },
   { bg: "from-[#D32F2F]/15 to-[#D32F2F]/5", label: "Church Events" },
   { bg: "from-[#2E7D32]/15 to-[#2E7D32]/5", label: "Bible Study" },
   { bg: "from-[#6A1B9A]/15 to-[#6A1B9A]/5", label: "Youth Activities" },
-  { bg: "from-[#E65100]/15 to-[#E65100]/5", label: "Outreach" },
-  { bg: "from-[#1A237E]/10 to-[#3949AB]/10", label: "Fellowship" },
+  { bg: "from-[#C62828]/15 to-[#C62828]/5", label: "Outreach" },
+  { bg: "from-[#4A148C]/10 to-[#7B1FA2]/10", label: "Fellowship" },
 ];
 
 export function PhotoGalleryPreview() {
   return (
-    <SectionWrapper className="bg-[#F0F4FF] py-16 md:py-24">
+    <SectionWrapper className="bg-[#F3E5F5] py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionTitle title="Photo Gallery" subtitle="Moments from our church family" />
 

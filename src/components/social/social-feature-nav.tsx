@@ -11,7 +11,7 @@ interface SocialFeatureNavProps {
 }
 
 /**
- * Bottom navigation bar shown on every RehobothSocial feature page.
+ * Bottom navigation bar shown on every YouthConnect feature page.
  * Lets users jump between the 5 social features without going back to /social.
  *
  * Design notes:
@@ -48,7 +48,7 @@ export function SocialFeatureNav({ currentFeatureId }: SocialFeatureNavProps) {
                     "flex items-center gap-0.5 sm:gap-1 px-1 sm:px-2 py-1.5 transition-all duration-200 text-center min-w-0",
                     isActive
                       ? "text-white bg-white/10"
-                      : "text-blue-200/70 hover:text-white hover:bg-white/5"
+                      : "text-purple-200/70 hover:text-white hover:bg-white/5"
                   )}
                 >
                   <span className="text-sm sm:text-base leading-none shrink-0">

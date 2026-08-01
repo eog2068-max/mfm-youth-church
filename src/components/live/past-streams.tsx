@@ -10,10 +10,10 @@ export function PastStreams() {
   return (
     <div>
       <div className="flex items-center justify-between mb-5">
-        <h3 className="text-lg font-bold text-[#1A237E]">Recent Service Replays</h3>
+        <h3 className="text-lg font-bold text-[#4A148C]">Recent Service Replays</h3>
         <Link
           href="/videos"
-          className="text-sm text-[#1A237E] hover:text-[#0D1557] font-medium transition-colors"
+          className="text-sm text-[#4A148C] hover:text-[#1A0033] font-medium transition-colors"
         >
           View All Videos
         </Link>
@@ -30,7 +30,7 @@ export function PastStreams() {
             className="group bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md hover:border-gray-200 transition-all cursor-pointer"
           >
             {/* Thumbnail */}
-            <div className="relative aspect-video bg-gradient-to-br from-[#0D1557] to-[#1A237E] flex items-center justify-center">
+            <div className="relative aspect-video bg-gradient-to-br from-[#1A0033] to-[#4A148C] flex items-center justify-center">
               <div className="absolute inset-0 opacity-5">
                 <div className="absolute top-4 right-4 w-20 h-20 bg-white rounded-full blur-[40px]" />
               </div>
@@ -47,7 +47,7 @@ export function PastStreams() {
 
             {/* Content */}
             <div className="p-4">
-              <h4 className="text-sm font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-[#1A237E] transition-colors leading-snug">
+              <h4 className="text-sm font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-[#4A148C] transition-colors leading-snug">
                 {stream.title}
               </h4>
               <div className="flex items-center gap-3 text-xs text-gray-400">

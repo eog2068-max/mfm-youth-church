@@ -16,13 +16,13 @@ export function DevotionalPreview() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <SectionTitle title="Today's Devotional" />
 
-        <div className="bg-white rounded-2xl shadow-lg shadow-black/5 p-6 md:p-8 border border-[#1A237E]/5">
+        <div className="bg-white rounded-2xl shadow-lg shadow-black/5 p-6 md:p-8 border border-[#4A148C]/5">
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-            <BookOpen className="size-4 text-[#1A237E]" />
+            <BookOpen className="size-4 text-[#4A148C]" />
             <span>{today}</span>
           </div>
 
-          <h3 className="text-xl md:text-2xl font-bold text-[#1A237E] mb-4">
+          <h3 className="text-xl md:text-2xl font-bold text-[#4A148C] mb-4">
             Walking in God&apos;s Purpose
           </h3>
 
@@ -42,7 +42,7 @@ export function DevotionalPreview() {
             <Button
               asChild
               variant="outline"
-              className="rounded-xl border-[#1A237E]/20 text-[#1A237E] hover:bg-[#EBF0FA]"
+              className="rounded-xl border-[#4A148C]/20 text-[#4A148C] hover:bg-[#EBF0FA]"
             >
               <Link href="/devotionals">
                 Read Full Devotional
@@ -50,7 +50,7 @@ export function DevotionalPreview() {
               </Link>
             </Button>
             <div className="mt-3">
-              <Link href="/devotionals" className="text-xs text-gray-400 hover:text-[#1A237E] transition-colors">
+              <Link href="/devotionals" className="text-xs text-gray-400 hover:text-[#4A148C] transition-colors">
                 View All Devotionals →
               </Link>
             </div>

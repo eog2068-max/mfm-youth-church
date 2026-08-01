@@ -12,7 +12,7 @@ export const givingCategories: GivingCategory[] = [
     name: "Tithe",
     description: "Returning 10% of your income as an act of obedience and trust in God's provision.",
     icon: "TrendingUp",
-    color: "from-[#1A237E] to-[#283593]",
+    color: "from-[#4A148C] to-[#6A1B9A]",
   },
   {
     id: "offering",
@@ -33,7 +33,7 @@ export const givingCategories: GivingCategory[] = [
     name: "Special Seed",
     description: "A prophetic or targeted gift sown towards a specific need or breakthrough.",
     icon: "Sprout",
-    color: "from-[#F57C00] to-[#E65100]",
+    color: "from-[#F57C00] to-[#C62828]",
   },
   {
     id: "mission",
@@ -61,13 +61,13 @@ export const givingCategories: GivingCategory[] = [
     name: "Youth Fund",
     description: "Empowering the next generation through youth programmes, scholarships, and events.",
     icon: "Flame",
-    color: "from-[#E65100] to-[#BF360C]",
+    color: "from-[#C62828] to-[#B71C1C]",
   },
 ];
 
 export const bankDetails = {
   bankName: "Access Bank",
-  accountName: "RCCG Rehoboth Assembly Parish",
+  accountName: "MFM Youth Church",
   accountNumber: "0045678901",
   sortCode: "",
 };

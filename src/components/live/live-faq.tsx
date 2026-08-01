@@ -43,8 +43,8 @@ export function LiveFAQ() {
   return (
     <div>
       <div className="flex items-center gap-2 mb-5">
-        <HelpCircle className="size-5 text-[#1A237E]" />
-        <h3 className="text-lg font-bold text-[#1A237E]">Frequently Asked Questions</h3>
+        <HelpCircle className="size-5 text-[#4A148C]" />
+        <h3 className="text-lg font-bold text-[#4A148C]">Frequently Asked Questions</h3>
       </div>
 
       <div className="space-y-2">

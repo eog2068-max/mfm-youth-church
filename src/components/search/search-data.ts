@@ -44,10 +44,10 @@ export const typeConfig: Record<string, TypeConfig> = {
   sermon: {
     icon: "BookOpen",
     label: "Sermon",
-    color: "bg-blue-100 text-blue-800 border-blue-200",
-    bgColor: "bg-blue-50",
-    borderColor: "border-blue-200",
-    textColor: "text-blue-800",
+    color: "bg-purple-100 text-purple-800 border-purple-200",
+    bgColor: "bg-purple-50",
+    borderColor: "border-purple-200",
+    textColor: "text-purple-800",
     hrefPrefix: "/sermons",
   },
   event: {
@@ -98,10 +98,10 @@ export const typeConfig: Record<string, TypeConfig> = {
   leader: {
     icon: "Users",
     label: "Leader",
-    color: "bg-indigo-100 text-indigo-800 border-indigo-200",
-    bgColor: "bg-indigo-50",
-    borderColor: "border-indigo-200",
-    textColor: "text-indigo-800",
+    color: "bg-purple-100 text-purple-800 border-purple-200",
+    bgColor: "bg-purple-50",
+    borderColor: "border-purple-200",
+    textColor: "text-purple-800",
     hrefPrefix: "/leadership",
   },
   ministry: {
@@ -116,10 +116,10 @@ export const typeConfig: Record<string, TypeConfig> = {
   gallery: {
     icon: "Image",
     label: "Media",
-    color: "bg-orange-100 text-orange-800 border-orange-200",
-    bgColor: "bg-orange-50",
-    borderColor: "border-orange-200",
-    textColor: "text-orange-800",
+    color: "bg-red-100 text-red-800 border-red-200",
+    bgColor: "bg-red-50",
+    borderColor: "border-red-200",
+    textColor: "text-red-800",
     hrefPrefix: "/gallery",
   },
 };
@@ -224,12 +224,12 @@ const mockSearchResults: SearchResult[] = [
   {
     id: "evt3",
     type: "event",
-    title: "RCCG Holy Ghost Congress",
+    title: "MFM Holy Ghost Congress",
     description:
-      "The annual Holy Ghost Congress of The Redeemed Christian Church of God. A gathering of millions of believers worldwide for supernatural encounters, miracles, and divine empowerment.",
+      "The annual Holy Ghost Congress of Mountain of Fire and Miracles Ministries. A gathering of millions of believers worldwide for supernatural encounters, miracles, and divine empowerment.",
     url: "/events#evt3",
     date: "2025-12-08",
-    tags: ["congress", "holy ghost", "miracles", "RCCG"],
+    tags: ["congress", "holy ghost", "miracles", "MFM"],
     meta: { location: "Redemption Camp", time: "6:00 PM" },
   },
   {
@@ -261,7 +261,7 @@ const mockSearchResults: SearchResult[] = [
     type: "announcement",
     title: "New Member Classes Begin",
     description:
-      "Welcome to RCCG Rehoboth Assembly! New member orientation classes begin this Sunday. Learn about our church history, beliefs, departments, and how to get plugged into the life of the church.",
+      "Welcome to MFM Youth Church! New member orientation classes begin this Sunday. Learn about our church history, beliefs, departments, and how to get plugged into the life of the church.",
     url: "/announcements#ann1",
     date: "2025-07-14",
     tags: ["new members", "orientation", "welcome", "classes"],
@@ -421,7 +421,7 @@ const mockSearchResults: SearchResult[] = [
     type: "page",
     title: "About Us",
     description:
-      "Learn about RCCG Rehoboth Assembly Parish, our history, mission, vision, and core values. Discover who we are and what drives our passion for kingdom advancement and community impact.",
+      "Learn about MFM Youth Church, our history, mission, vision, and core values. Discover who we are and what drives our passion for kingdom advancement and community impact.",
     url: "/about",
     date: "2025-01-01",
     tags: ["about", "history", "mission", "vision"],
@@ -432,7 +432,7 @@ const mockSearchResults: SearchResult[] = [
     type: "page",
     title: "Leadership",
     description:
-      "Meet the dedicated leaders and pastors who serve at RCCG Rehoboth Assembly Parish. Our leadership team is committed to shepherding the flock with integrity, love, and the Word of God.",
+      "Meet the dedicated leaders and pastors who serve at MFM Youth Church. Our leadership team is committed to shepherding the flock with integrity, love, and the Word of God.",
     url: "/leadership",
     date: "2025-01-01",
     tags: ["leadership", "pastors", "elders", "team"],
@@ -467,7 +467,7 @@ const mockSearchResults: SearchResult[] = [
     type: "leader",
     title: "Pastor Adebayo",
     description:
-      "Senior Pastor of RCCG Rehoboth Assembly Parish, Utako, Abuja. A dedicated servant of God with over 20 years of ministry experience, passionate about teaching the Word and raising leaders.",
+      "Senior Pastor of MFM Youth Church, Utako, Abuja. A dedicated servant of God with over 20 years of ministry experience, passionate about teaching the Word and raising leaders.",
     url: "/leadership#lead1",
     date: "2025-01-01",
     tags: ["pastor", "senior pastor", "leader", "teacher"],
@@ -478,7 +478,7 @@ const mockSearchResults: SearchResult[] = [
     type: "leader",
     title: "Minister Chukwu",
     description:
-      "Associate Minister at RCCG Rehoboth Assembly. A gifted teacher of the Word with a passion for discipleship and youth mentorship. Leads the Bible Study ministry.",
+      "Associate Minister at MFM Youth Church. A gifted teacher of the Word with a passion for discipleship and youth mentorship. Leads the Bible Study ministry.",
     url: "/leadership#lead2",
     date: "2025-01-01",
     tags: ["minister", "teacher", "discipleship", "youth"],

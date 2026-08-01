@@ -174,7 +174,7 @@ export function SearchMain() {
                 }
               }}
               placeholder="Search sermons, events, people, and more..."
-              className="w-full h-14 md:h-16 pl-12 pr-12 text-base md:text-lg rounded-2xl border border-gray-200 bg-white shadow-lg shadow-gray-200/50 focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E]/40 placeholder:text-gray-400 transition-all"
+              className="w-full h-14 md:h-16 pl-12 pr-12 text-base md:text-lg rounded-2xl border border-gray-200 bg-white shadow-lg shadow-gray-200/50 focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C]/40 placeholder:text-gray-400 transition-all"
             />
             {query && (
               <button
@@ -243,7 +243,7 @@ export function SearchMain() {
                     <button
                       key={term}
                       onClick={() => handleQuickSearch(term)}
-                      className="px-3.5 py-1.5 rounded-full bg-[#EBF0FA] border border-[#c5d3f0] text-sm font-medium text-[#1A237E] hover:bg-[#dce4f8] transition-colors capitalize"
+                      className="px-3.5 py-1.5 rounded-full bg-[#EBF0FA] border border-[#c5d3f0] text-sm font-medium text-[#4A148C] hover:bg-[#dce4f8] transition-colors capitalize"
                     >
                       {term}
                     </button>
@@ -261,12 +261,12 @@ export function SearchMain() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className="group flex items-center gap-3 p-4 rounded-xl bg-white border border-gray-200/80 hover:border-[#1A237E]/20 hover:shadow-md transition-all"
+                      className="group flex items-center gap-3 p-4 rounded-xl bg-white border border-gray-200/80 hover:border-[#4A148C]/20 hover:shadow-md transition-all"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-[#F0F4FF] flex items-center justify-center group-hover:bg-[#1A237E] transition-colors">
-                        <link.icon className="size-5 text-[#1A237E] group-hover:text-white transition-colors" />
+                      <div className="w-10 h-10 rounded-lg bg-[#F3E5F5] flex items-center justify-center group-hover:bg-[#4A148C] transition-colors">
+                        <link.icon className="size-5 text-[#4A148C] group-hover:text-white transition-colors" />
                       </div>
-                      <span className="text-sm font-medium text-gray-700 group-hover:text-[#1A237E] transition-colors">
+                      <span className="text-sm font-medium text-gray-700 group-hover:text-[#4A148C] transition-colors">
                         {link.label}
                       </span>
                     </Link>
@@ -335,7 +335,7 @@ export function SearchMain() {
                         onClick={() => setActiveCategory(cat.value)}
                         className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
                           isActive
-                            ? "bg-[#1A237E] text-white shadow-md shadow-[#1A237E]/20"
+                            ? "bg-[#4A148C] text-white shadow-md shadow-[#4A148C]/20"
                             : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 hover:border-gray-300"
                         }`}
                       >
@@ -433,7 +433,7 @@ export function SearchMain() {
                       <button
                         key={term}
                         onClick={() => handleQuickSearch(term)}
-                        className="px-3.5 py-1.5 rounded-full bg-[#EBF0FA] border border-[#c5d3f0] text-sm font-medium text-[#1A237E] hover:bg-[#dce4f8] transition-colors capitalize"
+                        className="px-3.5 py-1.5 rounded-full bg-[#EBF0FA] border border-[#c5d3f0] text-sm font-medium text-[#4A148C] hover:bg-[#dce4f8] transition-colors capitalize"
                       >
                         {term}
                       </button>

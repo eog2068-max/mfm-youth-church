@@ -37,8 +37,8 @@ export function DevotionalCard({
         className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/80 transition-colors cursor-pointer group"
         onClick={() => onClick?.(devotional)}
       >
-        <div className="w-10 h-10 rounded-lg bg-[#F0F4FF] flex flex-col items-center justify-center shrink-0">
-          <span className="text-sm font-bold text-[#1A237E] leading-none">
+        <div className="w-10 h-10 rounded-lg bg-[#F3E5F5] flex flex-col items-center justify-center shrink-0">
+          <span className="text-sm font-bold text-[#4A148C] leading-none">
             {dateObj.getDate()}
           </span>
           <span className="text-[9px] text-gray-400 leading-none">
@@ -46,7 +46,7 @@ export function DevotionalCard({
           </span>
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold text-gray-800 truncate group-hover:text-[#1A237E] transition-colors">
+          <p className="text-sm font-semibold text-gray-800 truncate group-hover:text-[#4A148C] transition-colors">
             {devotional.title}
           </p>
           <p className="text-xs text-gray-400 truncate">
@@ -72,7 +72,7 @@ export function DevotionalCard({
         className="bg-white rounded-2xl border border-gray-100 shadow-lg shadow-black/5 overflow-hidden cursor-pointer group"
         onClick={() => onClick?.(devotional)}
       >
-        <div className="h-2 bg-gradient-to-r from-[#1A237E] to-[#3949AB]" />
+        <div className="h-2 bg-gradient-to-r from-[#4A148C] to-[#7B1FA2]" />
         <div className="p-6 md:p-8">
           <div className="flex items-center gap-2 mb-3">
             <Badge
@@ -86,7 +86,7 @@ export function DevotionalCard({
             </span>
           </div>
 
-          <h3 className="text-xl md:text-2xl font-bold text-[#1A237E] mb-2 group-hover:text-[#283593] transition-colors">
+          <h3 className="text-xl md:text-2xl font-bold text-[#4A148C] mb-2 group-hover:text-[#6A1B9A] transition-colors">
             {devotional.title}
           </h3>
 
@@ -103,7 +103,7 @@ export function DevotionalCard({
             <span className="text-sm font-medium text-gray-600">
               {devotional.author}
             </span>
-            <span className="text-sm font-semibold text-[#1A237E] flex items-center gap-1 group-hover:gap-2 transition-all">
+            <span className="text-sm font-semibold text-[#4A148C] flex items-center gap-1 group-hover:gap-2 transition-all">
               Read More
               <ArrowRight className="size-4" />
             </span>
@@ -123,7 +123,7 @@ export function DevotionalCard({
       className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all cursor-pointer group"
       onClick={() => onClick?.(devotional)}
     >
-      <div className="h-1.5 bg-gradient-to-r from-[#1A237E] to-[#3949AB]" />
+      <div className="h-1.5 bg-gradient-to-r from-[#4A148C] to-[#7B1FA2]" />
       <div className="p-5">
         <div className="flex items-center gap-2 mb-3">
           <Badge
@@ -137,7 +137,7 @@ export function DevotionalCard({
           </span>
         </div>
 
-        <h3 className="text-base font-bold text-gray-800 mb-2 group-hover:text-[#1A237E] transition-colors leading-snug">
+        <h3 className="text-base font-bold text-gray-800 mb-2 group-hover:text-[#4A148C] transition-colors leading-snug">
           {devotional.title}
         </h3>
 
@@ -154,7 +154,7 @@ export function DevotionalCard({
           <span className="text-xs font-medium text-gray-500">
             {devotional.author}
           </span>
-          <span className="text-xs font-semibold text-[#1A237E] flex items-center gap-1 group-hover:gap-1.5 transition-all">
+          <span className="text-xs font-semibold text-[#4A148C] flex items-center gap-1 group-hover:gap-1.5 transition-all">
             Read More
             <ArrowRight className="size-3.5" />
           </span>

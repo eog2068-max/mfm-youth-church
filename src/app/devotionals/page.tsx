@@ -6,7 +6,7 @@ import { DevotionalCTA } from "@/components/devotionals/devotional-cta";
 export const metadata: Metadata = {
   title: "Daily Devotionals",
   description:
-    "Grow in faith through daily encounters with God's Word. Read Bible-based devotionals from the pastors and ministers of RCCG Rehoboth Assembly Parish, Utako, Abuja.",
+    "Grow in faith through daily encounters with God's Word. Read Bible-based devotionals from the pastors and ministers of MFM Youth Church, Utako, Abuja.",
 };
 
 export default function DevotionalsPage() {

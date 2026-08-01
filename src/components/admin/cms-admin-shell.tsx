@@ -50,7 +50,7 @@ export function CmsAdminShell({ role, userEmail, children }: CmsAdminShellProps)
             className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
               isActive
                 ? "bg-white/15 text-white font-semibold"
-                : "text-blue-200/70 hover:text-white hover:bg-white/10"
+                : "text-purple-200/70 hover:text-white hover:bg-white/10"
             }`}
           >
             <Icon className="size-4 shrink-0" />
@@ -62,7 +62,7 @@ export function CmsAdminShell({ role, userEmail, children }: CmsAdminShellProps)
       <Link
         href="/admin"
         onClick={() => setMobileOpen(false)}
-        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-blue-200/70 hover:text-white hover:bg-white/10 transition-colors"
+        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-purple-200/70 hover:text-white hover:bg-white/10 transition-colors"
       >
         <ArrowLeft className="size-4 shrink-0" />
         Back to Admin Home
@@ -73,15 +73,15 @@ export function CmsAdminShell({ role, userEmail, children }: CmsAdminShellProps)
   return (
     <div className="flex min-h-screen">
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex w-64 bg-[#0D1557] flex-col">
+      <aside className="hidden lg:flex w-64 bg-[#1A0033] flex-col">
         <div className="p-5 border-b border-white/10">
           <h1 className="text-lg font-bold text-white">CMS Admin</h1>
-          <p className="text-xs text-blue-200/50 mt-1">Church Management System</p>
+          <p className="text-xs text-purple-200/50 mt-1">Church Management System</p>
         </div>
         {navContent}
         <div className="mt-auto p-4 border-t border-white/10">
-          <p className="text-xs text-blue-200/40">{userEmail}</p>
-          <p className="text-[10px] text-blue-200/30 mt-0.5 uppercase tracking-wider">{role}</p>
+          <p className="text-xs text-purple-200/40">{userEmail}</p>
+          <p className="text-[10px] text-purple-200/30 mt-0.5 uppercase tracking-wider">{role}</p>
         </div>
       </aside>
 
@@ -97,7 +97,7 @@ export function CmsAdminShell({ role, userEmail, children }: CmsAdminShellProps)
                   <Menu className="size-5 text-gray-600" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-64 p-0 bg-[#0D1557] text-white">
+              <SheetContent side="left" className="w-64 p-0 bg-[#1A0033] text-white">
                 <SheetHeader className="p-5 border-b border-white/10">
                   <SheetTitle className="text-white text-left">CMS Admin</SheetTitle>
                 </SheetHeader>
@@ -108,7 +108,7 @@ export function CmsAdminShell({ role, userEmail, children }: CmsAdminShellProps)
           </div>
           <div className="flex items-center gap-2">
             <span className="hidden sm:inline text-xs text-gray-500">{userEmail}</span>
-            <span className="text-[10px] bg-blue-50 text-[#1A237E] px-2 py-0.5 rounded-full font-medium uppercase">{role}</span>
+            <span className="text-[10px] bg-purple-50 text-[#4A148C] px-2 py-0.5 rounded-full font-medium uppercase">{role}</span>
           </div>
         </header>
 

@@ -20,8 +20,8 @@ export const socialFeatures: SocialFeature[] = [
     description:
       "Stay connected with your church family through meaningful conversations throughout the week.",
     href: "/social/family-chat",
-    color: "from-[#1A237E] to-[#283593]",
-    iconBg: "bg-blue-500",
+    color: "from-[#4A148C] to-[#6A1B9A]",
+    iconBg: "bg-purple-500",
     featured: true,
     extendedDescription:
       "FamilyChat is your church family\u2019s digital gathering place. Connect through meaningful conversations in dedicated channels \u2014 share prayer requests, discuss Scripture, encourage one another, and stay updated on church life. No account needed. Just come as you are.",
@@ -122,8 +122,8 @@ export const socialFeatures: SocialFeature[] = [
     description:
       "Post encouragement, gratitude, testimonies, and faith declarations for the family.",
     href: "/social/amen-wall",
-    color: "from-[#E65100] to-[#F57C00]",
-    iconBg: "bg-orange-500",
+    color: "from-[#C62828] to-[#F57C00]",
+    iconBg: "bg-red-500",
     featured: false,
     extendedDescription:
       "The Amen Wall is our digital testimony board. Post your gratitude, encouragement, answered prayers, faith declarations, and praise reports. When you see something that blesses you, respond with a prayer, a love reaction, or a simple \u2018Amen!\u2019 It\u2019s our wall of faith together.",

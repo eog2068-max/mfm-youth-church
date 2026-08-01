@@ -22,18 +22,18 @@ export function AlbumCard({ album, index, onClick }: AlbumCardProps) {
     >
       <div className="relative rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
         {/* Cover image area */}
-        <div className="relative aspect-[4/3] bg-gradient-to-br from-[#E8EDFF] via-[#F0F4FF] to-[#EBF0FA] overflow-hidden">
+        <div className="relative aspect-[4/3] bg-gradient-to-br from-[#E8EDFF] via-[#F3E5F5] to-[#EBF0FA] overflow-hidden">
           <div className="absolute inset-0 flex items-center justify-center">
-            <Camera className="size-12 text-[#1A237E]/10" />
+            <Camera className="size-12 text-[#4A148C]/10" />
           </div>
 
           {/* Category tag */}
-          <span className="absolute top-3 left-3 bg-white/90 text-[#1A237E] text-[11px] px-2.5 py-1 rounded-lg font-semibold backdrop-blur-sm">
+          <span className="absolute top-3 left-3 bg-white/90 text-[#4A148C] text-[11px] px-2.5 py-1 rounded-lg font-semibold backdrop-blur-sm">
             {album.category}
           </span>
 
           {/* Photo count badge */}
-          <span className="absolute top-3 right-3 bg-[#1A237E]/90 text-white text-[11px] px-2.5 py-1 rounded-lg font-semibold backdrop-blur-sm">
+          <span className="absolute top-3 right-3 bg-[#4A148C]/90 text-white text-[11px] px-2.5 py-1 rounded-lg font-semibold backdrop-blur-sm">
             {album.photoCount} photos
           </span>
 
@@ -48,7 +48,7 @@ export function AlbumCard({ album, index, onClick }: AlbumCardProps) {
 
         {/* Info */}
         <div className="p-5">
-          <h3 className="text-base font-bold text-[#1A237E] leading-tight group-hover:text-[#0D1557] transition-colors">
+          <h3 className="text-base font-bold text-[#4A148C] leading-tight group-hover:text-[#1A0033] transition-colors">
             {album.name}
           </h3>
           <p className="mt-1.5 text-sm text-gray-500 leading-relaxed line-clamp-2">

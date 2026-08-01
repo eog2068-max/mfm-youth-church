@@ -50,7 +50,7 @@ export const categoryColors: Record<
   AnnouncementCategory,
   { bg: string; text: string; dot: string }
 > = {
-  general: { bg: "bg-blue-50", text: "text-blue-700", dot: "bg-blue-500" },
+  general: { bg: "bg-purple-50", text: "text-purple-700", dot: "bg-purple-500" },
   service: { bg: "bg-purple-50", text: "text-purple-700", dot: "bg-purple-500" },
   event: { bg: "bg-amber-50", text: "text-amber-700", dot: "bg-amber-500" },
   ministry: {
@@ -58,7 +58,7 @@ export const categoryColors: Record<
     text: "text-teal-700",
     dot: "bg-teal-500",
   },
-  youth: { bg: "bg-orange-50", text: "text-orange-700", dot: "bg-orange-500" },
+  youth: { bg: "bg-red-50", text: "text-red-700", dot: "bg-red-500" },
   children: {
     bg: "bg-pink-50",
     text: "text-pink-700",
@@ -93,9 +93,9 @@ export const priorityConfig: Record<
   normal: {
     label: "Normal",
     border: "border-l-blue-400",
-    bg: "bg-blue-50",
-    text: "text-blue-700",
-    dot: "bg-blue-400",
+    bg: "bg-purple-50",
+    text: "text-purple-700",
+    dot: "bg-purple-400",
   },
   low: {
     label: "Low",
@@ -123,7 +123,7 @@ export const mockAnnouncements: Announcement[] = [
   {
     id: "ann-002",
     title: "Youth Conference 2025 Registration Now Open",
-    body: "Registration for the Rehoboth Youth Conference 2025 themed 'Arise and Shine: The Next Generation of Kingdom Leaders' is now officially open. The conference holds from August 15th to 17th at the church auditorium. This year's edition features guest speakers from across Nigeria, interactive workshops on leadership, digital evangelism, and purpose discovery, as well as worship sessions led by anointed music ministers. Early bird registration fee is N2,000 which covers conference materials, lunch for three days, and a conference T-shirt. You can register at the youth desk after service or via the church website. Don't miss this life-transforming experience.",
+    body: "Registration for the Youth Youth Conference 2025 themed 'Arise and Shine: The Next Generation of Kingdom Leaders' is now officially open. The conference holds from August 15th to 17th at the church auditorium. This year's edition features guest speakers from across Nigeria, interactive workshops on leadership, digital evangelism, and purpose discovery, as well as worship sessions led by anointed music ministers. Early bird registration fee is N2,000 which covers conference materials, lunch for three days, and a conference T-shirt. You can register at the youth desk after service or via the church website. Don't miss this life-transforming experience.",
     category: "youth",
     priority: "high",
     date: "2025-07-15",
@@ -165,7 +165,7 @@ export const mockAnnouncements: Announcement[] = [
   {
     id: "ann-005",
     title: "New Members' Classes Begin Next Month",
-    body: "If you have been worshipping with us for three months or more and have not yet attended the New Members' Class, this is your opportunity. The next batch of classes begins on Sunday, August 3rd, immediately after the first service. The six-week programme covers the foundational doctrines of the Christian faith, the history and vision of RCCG, the structure of Rehoboth Assembly Parish, spiritual gifts discovery, and how to get plugged into a department. Completion of the class is a prerequisite for becoming a full member of the parish. Please register at the church office or speak with Deaconess Adeyinka after service.",
+    body: "If you have been worshipping with us for three months or more and have not yet attended the New Members' Class, this is your opportunity. The next batch of classes begins on Sunday, August 3rd, immediately after the first service. The six-week programme covers the foundational doctrines of the Christian faith, the history and vision of MFM, the structure of Youth Church, spiritual gifts discovery, and how to get plugged into a department. Completion of the class is a prerequisite for becoming a full member of the parish. Please register at the church office or speak with Deaconess Adeyinka after service.",
     category: "general",
     priority: "normal",
     date: "2025-07-14",
@@ -230,7 +230,7 @@ export const mockAnnouncements: Announcement[] = [
   {
     id: "ann-010",
     title: "Women's Fellowship Monthly Meeting",
-    body: "The Rehoboth Women's Fellowship invites all sisters to the July edition of our monthly meeting holding this Saturday, July 19th, from 10:00 AM to 1:00 PM in the church fellowship hall. Our guest speaker, Pastor (Mrs) Folake Adeyemi from RCCG Dominion Parish, Gwarinpa, will be ministering on the topic 'Walking in Divine Health: God's Promise for His Daughters.' There will also be a special prayer session for families, time for fellowship, and light refreshment. All women, young and old, married and single, are warmly welcome. Please come with your Bible and notebook. Childcare will be provided for mothers with young children.",
+    body: "The Youth Women's Fellowship invites all sisters to the July edition of our monthly meeting holding this Saturday, July 19th, from 10:00 AM to 1:00 PM in the church fellowship hall. Our guest speaker, Pastor (Mrs) Folake Adeyemi from MFM Dominion Parish, Gwarinpa, will be ministering on the topic 'Walking in Divine Health: God's Promise for His Daughters.' There will also be a special prayer session for families, time for fellowship, and light refreshment. All women, young and old, married and single, are warmly welcome. Please come with your Bible and notebook. Childcare will be provided for mothers with young children.",
     category: "ministry",
     priority: "normal",
     date: "2025-07-14",
@@ -256,7 +256,7 @@ export const mockAnnouncements: Announcement[] = [
   {
     id: "ann-012",
     title: "Church Website and Mobile App Update",
-    body: "We are excited to announce that the Rehoboth Assembly Parish website and mobile app have been updated with new features to serve you better. You can now stream live services directly from the app, submit prayer requests, register for events, give your tithes and offerings online, and access sermon notes and devotionals. To get the latest version of the app, please update it from the Google Play Store or Apple App Store. If you do not have the app yet, search for 'Rehoboth Assembly' in your app store to download it. Your feedback is valuable — please share your experience with the ICT team.",
+    body: "We are excited to announce that the Youth Church website and mobile app have been updated with new features to serve you better. You can now stream live services directly from the app, submit prayer requests, register for events, give your tithes and offerings online, and access sermon notes and devotionals. To get the latest version of the app, please update it from the Google Play Store or Apple App Store. If you do not have the app yet, search for 'Youth Assembly' in your app store to download it. Your feedback is valuable — please share your experience with the ICT team.",
     category: "general",
     priority: "low",
     date: "2025-07-13",
@@ -295,7 +295,7 @@ export const mockAnnouncements: Announcement[] = [
   {
     id: "ann-015",
     title: "New Department Launch: Creative Arts Ministry",
-    body: "We are pleased to announce the official launch of the Rehoboth Creative Arts Ministry. This new department is dedicated to harnessing the creative gifts within our congregation for the glory of God. Areas of focus include photography, videography, graphic design, social media content creation, drama, poetry, spoken word, and fine arts. Whether you are a professional or simply have a passion for the creative arts, there is a place for you. The inaugural meeting holds on Saturday, July 26th at 3:00 PM in the church conference room. Come and discover how your creativity can serve God's kingdom. For enquiries, contact the department head, Sister Amara.",
+    body: "We are pleased to announce the official launch of the Youth Creative Arts Ministry. This new department is dedicated to harnessing the creative gifts within our congregation for the glory of God. Areas of focus include photography, videography, graphic design, social media content creation, drama, poetry, spoken word, and fine arts. Whether you are a professional or simply have a passion for the creative arts, there is a place for you. The inaugural meeting holds on Saturday, July 26th at 3:00 PM in the church conference room. Come and discover how your creativity can serve God's kingdom. For enquiries, contact the department head, Sister Amara.",
     category: "ministry",
     priority: "normal",
     date: "2025-07-16",

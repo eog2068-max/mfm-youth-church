@@ -16,7 +16,7 @@ export interface Devotional {
 }
 
 export const categoryConfig: Record<DevotionalCategory, { label: string; bg: string; text: string }> = {
-  daily: { label: "Daily", bg: "bg-blue-50", text: "text-blue-700" },
+  daily: { label: "Daily", bg: "bg-purple-50", text: "text-purple-700" },
   weekly: { label: "Weekly", bg: "bg-purple-50", text: "text-purple-700" },
   youth: { label: "Youth", bg: "bg-amber-50", text: "text-amber-700" },
   family: { label: "Family", bg: "bg-green-50", text: "text-green-700" },

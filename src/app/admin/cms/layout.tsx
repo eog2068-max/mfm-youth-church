@@ -17,10 +17,10 @@ export default async function CmsAdminLayout({
     !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   ) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F5F7FF]">
+      <div className="min-h-screen flex items-center justify-center bg-[#F3E5F5]">
         <div className="text-center p-8 max-w-md">
           <div className="text-6xl mb-4">⚙️</div>
-          <h1 className="text-2xl font-bold text-[#1A237E] mb-2">Supabase Not Connected</h1>
+          <h1 className="text-2xl font-bold text-[#4A148C] mb-2">Supabase Not Connected</h1>
           <p className="text-gray-600 leading-relaxed">
             The CMS admin panel requires a Supabase project. Please configure
             the following environment variables:
@@ -49,7 +49,7 @@ export default async function CmsAdminLayout({
   const role = (user.app_metadata?.role as string) || "member";
 
   return (
-    <div className="min-h-screen bg-[#F5F7FF]">
+    <div className="min-h-screen bg-[#F3E5F5]">
       <CmsAdminShell role={role} userEmail={user.email || ""}>
         {children}
       </CmsAdminShell>

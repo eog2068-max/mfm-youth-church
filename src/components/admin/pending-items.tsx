@@ -19,13 +19,13 @@ const priorityConfig: Record<
     icon: AlertTriangle,
   },
   medium: {
-    color: "text-[#E65100]",
-    bg: "bg-[#E65100]/10 border-[#E65100]/20",
+    color: "text-[#C62828]",
+    bg: "bg-[#C62828]/10 border-[#C62828]/20",
     icon: Clock,
   },
   low: {
-    color: "text-[#1A237E]/50",
-    bg: "bg-[#1A237E]/5 border-[#1A237E]/10",
+    color: "text-[#4A148C]/50",
+    bg: "bg-[#4A148C]/5 border-[#4A148C]/10",
     icon: Minus,
   },
 };
@@ -91,25 +91,25 @@ function PendingItemRow({ item }: { item: PendingItem }) {
               <div className="flex flex-wrap items-center gap-1.5">
                 <Badge
                   variant="outline"
-                  className="rounded-full border-[#EBF0FA] bg-[#F5F7FF] px-2 py-0 text-[10px] font-semibold text-[#1A237E]/70"
+                  className="rounded-full border-[#EBF0FA] bg-[#F3E5F5] px-2 py-0 text-[10px] font-semibold text-[#4A148C]/70"
                 >
                   {item.type}
                 </Badge>
-                <span className="text-[10px] text-[#1A237E]/40">
+                <span className="text-[10px] text-[#4A148C]/40">
                   {getRelativeTime(item.submittedAt)}
                 </span>
               </div>
-              <p className="mt-1 text-sm font-medium leading-snug text-[#1A237E]">
+              <p className="mt-1 text-sm font-medium leading-snug text-[#4A148C]">
                 {item.title}
               </p>
-              <p className="mt-0.5 text-xs text-[#1A237E]/50">
+              <p className="mt-0.5 text-xs text-[#4A148C]/50">
                 by {item.submittedBy}
               </p>
 
               <div className="mt-2.5 flex items-center gap-2">
                 <Button
                   size="sm"
-                  className="h-7 rounded-md bg-[#1A237E] px-3 text-xs font-medium text-white hover:bg-[#1A237E]/90"
+                  className="h-7 rounded-md bg-[#4A148C] px-3 text-xs font-medium text-white hover:bg-[#4A148C]/90"
                   onClick={() => handleAction(buttons.primary)}
                   disabled={action !== null}
                 >
@@ -132,7 +132,7 @@ function PendingItemRow({ item }: { item: PendingItem }) {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="h-7 rounded-md border-[#EBF0FA] px-3 text-xs font-medium text-[#1A237E]/60 hover:border-[#D32F2F]/30 hover:bg-[#D32F2F]/5 hover:text-[#D32F2F]"
+                  className="h-7 rounded-md border-[#EBF0FA] px-3 text-xs font-medium text-[#4A148C]/60 hover:border-[#D32F2F]/30 hover:bg-[#D32F2F]/5 hover:text-[#D32F2F]"
                   onClick={() => handleAction(buttons.secondary)}
                   disabled={action !== null}
                 >
@@ -166,7 +166,7 @@ export function PendingItems() {
     <Card className="border-[#EBF0FA] bg-white shadow-sm">
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-base font-semibold text-[#1A237E]">
+          <CardTitle className="text-base font-semibold text-[#4A148C]">
             Pending Review
           </CardTitle>
           <Badge className="rounded-full bg-[#D32F2F] px-2 py-0.5 text-xs font-semibold text-white">

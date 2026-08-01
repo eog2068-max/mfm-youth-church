@@ -55,10 +55,10 @@ export default function NewContentBlockPage() {
 
   return (
     <div className="max-w-2xl">
-      <Link href="/admin/cms/blocks" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-[#1A237E] mb-4">
+      <Link href="/admin/cms/blocks" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-[#4A148C] mb-4">
         <ArrowLeft className="size-4" /> Back to Content Blocks
       </Link>
-      <h1 className="text-2xl font-bold text-[#1A237E] mb-1">Create Content Block</h1>
+      <h1 className="text-2xl font-bold text-[#4A148C] mb-1">Create Content Block</h1>
       <p className="text-sm text-gray-500 mb-6">Add a new editable content section</p>
 
       <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-gray-100 p-6 space-y-4">
@@ -89,7 +89,7 @@ export default function NewContentBlockPage() {
             id="content"
             name="content"
             rows={6}
-            className="mt-1 w-full rounded-md border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1A237E]/20 focus:border-[#1A237E]"
+            className="mt-1 w-full rounded-md border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A148C]/20 focus:border-[#4A148C]"
             required
           />
         </div>
@@ -110,7 +110,7 @@ export default function NewContentBlockPage() {
         </div>
 
         <div className="flex gap-3 pt-2">
-          <Button type="submit" disabled={loading} className="bg-[#1A237E] hover:bg-[#0D1557]">
+          <Button type="submit" disabled={loading} className="bg-[#4A148C] hover:bg-[#1A0033]">
             {loading ? "Creating..." : "Create Block"}
           </Button>
           <Button type="button" variant="outline" asChild>

@@ -40,7 +40,7 @@ export function SermonSeriesGrid({ series, onSelect }: SermonSeriesGridProps) {
 
             {/* Content */}
             <div className="p-5">
-              <h3 className="text-base font-bold text-[#1A237E] mb-1.5 group-hover:text-[#0D1557] transition-colors leading-snug">
+              <h3 className="text-base font-bold text-[#4A148C] mb-1.5 group-hover:text-[#1A0033] transition-colors leading-snug">
                 {s.name}
               </h3>
               <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 mb-3">
@@ -51,7 +51,7 @@ export function SermonSeriesGrid({ series, onSelect }: SermonSeriesGridProps) {
                   {s.startDate && new Date(s.startDate).toLocaleDateString("en-NG", { month: "short", year: "numeric" })}
                   {s.endDate ? ` — ${new Date(s.endDate).toLocaleDateString("en-NG", { month: "short", year: "numeric" })}` : " — Present"}
                 </span>
-                <ChevronRight className="size-4 text-gray-300 group-hover:text-[#1A237E] group-hover:translate-x-0.5 transition-all" />
+                <ChevronRight className="size-4 text-gray-300 group-hover:text-[#4A148C] group-hover:translate-x-0.5 transition-all" />
               </div>
             </div>
           </div>

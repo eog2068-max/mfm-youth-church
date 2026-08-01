@@ -62,13 +62,13 @@ const TYPE_ICONS: Record<string, React.ElementType> = {
 };
 
 const TYPE_COLORS: Record<string, string> = {
-  referral_status: "bg-blue-100 text-blue-600",
+  referral_status: "bg-purple-100 text-purple-600",
   commendation: "bg-amber-100 text-amber-600",
   award: "bg-yellow-100 text-yellow-700",
   outreach_approved: "bg-emerald-100 text-emerald-600",
-  outreach_flagged: "bg-orange-100 text-orange-600",
+  outreach_flagged: "bg-red-100 text-red-600",
   cycle_closed: "bg-purple-100 text-purple-600",
-  leaderboard_rank: "bg-indigo-100 text-indigo-600",
+  leaderboard_rank: "bg-purple-100 text-purple-600",
   admin_broadcast: "bg-rose-100 text-rose-600",
 };
 
@@ -189,13 +189,13 @@ export function GafNotifications() {
   }
 
   return (
-    <section className="py-12 md:py-16 bg-[#F0F4FF] min-h-screen">
+    <section className="py-12 md:py-16 bg-[#F3E5F5] min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1A237E] flex items-center gap-3">
-              <div className="flex items-center justify-center size-10 rounded-xl bg-[#1A237E] text-white">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#4A148C] flex items-center gap-3">
+              <div className="flex items-center justify-center size-10 rounded-xl bg-[#4A148C] text-white">
                 <Bell className="size-5" />
               </div>
               Notifications
@@ -234,7 +234,7 @@ export function GafNotifications() {
             onClick={() => setTypeFilter("all")}
             className={`rounded-full shrink-0 gap-1.5 ${
               typeFilter === "all"
-                ? "bg-[#1A237E] text-white hover:bg-[#0D1557]"
+                ? "bg-[#4A148C] text-white hover:bg-[#1A0033]"
                 : ""
             }`}
           >
@@ -251,7 +251,7 @@ export function GafNotifications() {
                 onClick={() => setTypeFilter(type)}
                 className={`rounded-full shrink-0 gap-1.5 ${
                   typeFilter === type
-                    ? "bg-[#1A237E] text-white hover:bg-[#0D1557]"
+                    ? "bg-[#4A148C] text-white hover:bg-[#1A0033]"
                     : ""
                 }`}
               >
@@ -265,7 +265,7 @@ export function GafNotifications() {
         {/* Loading */}
         {loading && (
           <div className="flex flex-col items-center justify-center py-20">
-            <div className="animate-spin size-8 border-3 border-[#1A237E] border-t-transparent rounded-full mb-4" />
+            <div className="animate-spin size-8 border-3 border-[#4A148C] border-t-transparent rounded-full mb-4" />
             <p className="text-sm text-gray-500">Loading notifications...</p>
           </div>
         )}
@@ -288,7 +288,7 @@ export function GafNotifications() {
         {!loading && !error && notifications.length === 0 && (
           <Card className="border-0 shadow-md p-12 text-center">
             <Inbox className="size-16 text-gray-200 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-[#1A237E] mb-2">
+            <h3 className="text-lg font-semibold text-[#4A148C] mb-2">
               No notifications yet
             </h3>
             <p className="text-sm text-gray-500 mb-6 max-w-sm mx-auto">
@@ -308,7 +308,7 @@ export function GafNotifications() {
             {typeFilter === "all" && (
               <Button
                 asChild
-                className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl"
+                className="bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl"
               >
                 <Link href="/go-a-fishing/dashboard">Go to Dashboard</Link>
               </Button>
@@ -339,7 +339,7 @@ export function GafNotifications() {
                         <Card
                           className={`border-0 shadow-sm transition-all hover:shadow-md cursor-pointer ${
                             !n.read
-                              ? "bg-white border-l-4 border-l-[#1A237E]"
+                              ? "bg-white border-l-4 border-l-[#4A148C]"
                               : "bg-gray-50/50"
                           }`}
                           onClick={() => !n.read && markRead(n.id)}
@@ -357,7 +357,7 @@ export function GafNotifications() {
                                     className={`text-sm leading-snug ${
                                       n.read
                                         ? "text-gray-600"
-                                        : "font-semibold text-[#1A237E]"
+                                        : "font-semibold text-[#4A148C]"
                                     }`}
                                   >
                                     {n.title}
@@ -368,7 +368,7 @@ export function GafNotifications() {
                                 </div>
                                 <div className="flex items-center gap-2 shrink-0">
                                   {!n.read && (
-                                    <span className="size-2.5 rounded-full bg-[#1A237E]" />
+                                    <span className="size-2.5 rounded-full bg-[#4A148C]" />
                                   )}
                                 </div>
                               </div>

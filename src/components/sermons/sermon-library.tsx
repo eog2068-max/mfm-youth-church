@@ -148,10 +148,10 @@ export function SermonLibrary() {
 
             <SectionWrapper>
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl md:text-2xl font-bold text-[#1A237E]">Sermon Series</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-[#4A148C]">Sermon Series</h2>
                 <button
                   onClick={showAllView}
-                  className="text-sm text-[#1A237E] hover:text-[#0D1557] font-medium flex items-center gap-1 transition-colors"
+                  className="text-sm text-[#4A148C] hover:text-[#1A0033] font-medium flex items-center gap-1 transition-colors"
                 >
                   View All Sermons
                   <ArrowRight className="size-4" />
@@ -173,8 +173,8 @@ export function SermonLibrary() {
                     key={stat.label}
                     className="bg-white rounded-xl border border-gray-100 p-4 text-center"
                   >
-                    <stat.icon className="size-5 text-[#1A237E]/40 mx-auto mb-2" />
-                    <p className="text-2xl font-bold text-[#1A237E]">{stat.value}</p>
+                    <stat.icon className="size-5 text-[#4A148C]/40 mx-auto mb-2" />
+                    <p className="text-2xl font-bold text-[#4A148C]">{stat.value}</p>
                     <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
                   </div>
                 ))}
@@ -188,14 +188,14 @@ export function SermonLibrary() {
           <div className="mb-6">
             <button
               onClick={clearSeries}
-              className="text-sm text-[#1A237E] hover:text-[#0D1557] font-medium flex items-center gap-1.5 transition-colors mb-3"
+              className="text-sm text-[#4A148C] hover:text-[#1A0033] font-medium flex items-center gap-1.5 transition-colors mb-3"
             >
               <ArrowLeft className="size-4 rotate-180" />
               Back to Series
             </button>
             <div className="bg-white rounded-xl border border-gray-100 p-5 mb-2">
               <div className={`w-full h-3 bg-gradient-to-r ${selectedSeries.coverGradient} rounded-lg mb-4`} />
-              <h2 className="text-2xl md:text-3xl font-bold text-[#1A237E] mb-1">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#4A148C] mb-1">
                 {selectedSeries.name}
               </h2>
               <p className="text-sm text-gray-500 mb-2">{selectedSeries.description}</p>
@@ -213,7 +213,7 @@ export function SermonLibrary() {
           <div className="mb-6">
             <button
               onClick={backToHome}
-              className="text-sm text-[#1A237E] hover:text-[#0D1557] font-medium flex items-center gap-1.5 transition-colors mb-2"
+              className="text-sm text-[#4A148C] hover:text-[#1A0033] font-medium flex items-center gap-1.5 transition-colors mb-2"
             >
               <ArrowLeft className="size-4 rotate-180" />
               Back to Library Home
@@ -232,7 +232,7 @@ export function SermonLibrary() {
                   placeholder="Search by title, speaker, scripture, or topic..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="pl-10 rounded-xl border-gray-200 bg-white h-10 focus:border-[#1A237E]/30"
+                  className="pl-10 rounded-xl border-gray-200 bg-white h-10 focus:border-[#4A148C]/30"
                 />
                 {search && (
                   <button
@@ -248,7 +248,7 @@ export function SermonLibrary() {
                 onClick={() => setShowFilters(!showFilters)}
                 className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border transition-colors h-10 ${
                   showFilters || activeFiltersCount > 0
-                    ? "bg-[#1A237E] text-white border-[#1A237E]"
+                    ? "bg-[#4A148C] text-white border-[#4A148C]"
                     : "bg-white text-gray-600 border-gray-200 hover:border-gray-300"
                 }`}
               >
@@ -270,7 +270,7 @@ export function SermonLibrary() {
                   onClick={() => setCategory(cat)}
                   className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                     category === cat
-                      ? "bg-[#1A237E] text-white"
+                      ? "bg-[#4A148C] text-white"
                       : "bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50"
                   }`}
                 >
@@ -301,7 +301,7 @@ export function SermonLibrary() {
                           <select
                             value={sortBy}
                             onChange={(e) => setSortBy(e.target.value)}
-                            className="w-full h-10 pl-3 pr-8 rounded-lg border border-gray-200 bg-white text-sm text-gray-700 appearance-none focus:outline-none focus:border-[#1A237E]/30"
+                            className="w-full h-10 pl-3 pr-8 rounded-lg border border-gray-200 bg-white text-sm text-gray-700 appearance-none focus:outline-none focus:border-[#4A148C]/30"
                           >
                             {sortOptions.map((opt) => (
                               <option key={opt.value} value={opt.value}>
@@ -323,7 +323,7 @@ export function SermonLibrary() {
                           <select
                             value={speakerFilter}
                             onChange={(e) => setSpeakerFilter(e.target.value)}
-                            className="w-full h-10 pl-3 pr-8 rounded-lg border border-gray-200 bg-white text-sm text-gray-700 appearance-none focus:outline-none focus:border-[#1A237E]/30"
+                            className="w-full h-10 pl-3 pr-8 rounded-lg border border-gray-200 bg-white text-sm text-gray-700 appearance-none focus:outline-none focus:border-[#4A148C]/30"
                           >
                             <option value="All">All Speakers</option>
                             {allSpeakers.map((sp) => (
@@ -355,7 +355,7 @@ export function SermonLibrary() {
             {/* Results count */}
             <div className="flex items-center justify-between mb-5">
               <p className="text-sm text-gray-500">
-                <span className="font-semibold text-[#1A237E]">{filteredSermons.length}</span>{" "}
+                <span className="font-semibold text-[#4A148C]">{filteredSermons.length}</span>{" "}
                 sermon{filteredSermons.length !== 1 ? "s" : ""}
                 {selectedSeries && (
                   <span> in <span className="font-medium text-gray-700">{selectedSeries.name}</span></span>
@@ -395,7 +395,7 @@ export function SermonLibrary() {
                 <p className="text-sm text-gray-500 mt-1">Try adjusting your search or filters.</p>
                 <button
                   onClick={clearAllFilters}
-                  className="mt-4 text-sm font-medium text-[#1A237E] hover:text-[#0D1557] transition-colors"
+                  className="mt-4 text-sm font-medium text-[#4A148C] hover:text-[#1A0033] transition-colors"
                 >
                   Clear All Filters
                 </button>

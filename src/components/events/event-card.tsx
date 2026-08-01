@@ -38,7 +38,7 @@ export function EventCard({ event, index, onOpen, variant = "default" }: EventCa
         className="bg-white rounded-2xl border border-gray-100 shadow-lg shadow-black/5 overflow-hidden"
       >
         {/* Top color bar */}
-        <div className={`h-2 ${event.category === "Conference" ? "bg-gradient-to-r from-purple-500 to-purple-600" : event.category === "Youth" ? "bg-gradient-to-r from-amber-400 to-amber-500" : "bg-gradient-to-r from-[#1A237E] to-[#3949AB]"}`} />
+        <div className={`h-2 ${event.category === "Conference" ? "bg-gradient-to-r from-purple-500 to-purple-600" : event.category === "Youth" ? "bg-gradient-to-r from-amber-400 to-amber-500" : "bg-gradient-to-r from-[#4A148C] to-[#7B1FA2]"}`} />
 
         <div className="flex flex-col md:flex-row">
           {/* Date block */}
@@ -47,7 +47,7 @@ export function EventCard({ event, index, onOpen, variant = "default" }: EventCa
               <div className="text-xs font-semibold text-[#D32F2F] uppercase tracking-wider mb-1">
                 {dayName}
               </div>
-              <div className="text-5xl font-bold text-[#1A237E] leading-none">{dayNum}</div>
+              <div className="text-5xl font-bold text-[#4A148C] leading-none">{dayNum}</div>
               <div className="text-sm font-semibold text-gray-400 mt-1">{monthName}</div>
               {event.endDate && (
                 <div className="text-xs text-gray-400 mt-1">
@@ -71,7 +71,7 @@ export function EventCard({ event, index, onOpen, variant = "default" }: EventCa
               )}
             </div>
 
-            <h3 className="text-xl md:text-2xl font-bold text-[#1A237E] mb-2">{event.title}</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-[#4A148C] mb-2">{event.title}</h3>
             <p className="text-sm text-gray-500 leading-relaxed mb-4 line-clamp-2">
               {event.description}
             </p>
@@ -109,7 +109,7 @@ export function EventCard({ event, index, onOpen, variant = "default" }: EventCa
                 <Button
                   asChild
                   variant="outline"
-                  className="border-[#1A237E]/20 text-[#1A237E] hover:bg-[#F0F4FF] rounded-xl h-10 px-6 text-sm font-semibold"
+                  className="border-[#4A148C]/20 text-[#4A148C] hover:bg-[#F3E5F5] rounded-xl h-10 px-6 text-sm font-semibold"
                 >
                   <Link href="/events">
                     <Calendar className="size-4 mr-1.5" />
@@ -134,13 +134,13 @@ export function EventCard({ event, index, onOpen, variant = "default" }: EventCa
         className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer group"
         onClick={() => onOpen?.(event)}
       >
-        <div className="w-12 h-12 rounded-xl bg-[#F0F4FF] flex flex-col items-center justify-center shrink-0">
+        <div className="w-12 h-12 rounded-xl bg-[#F3E5F5] flex flex-col items-center justify-center shrink-0">
           <span className="text-[10px] font-bold text-[#D32F2F] uppercase leading-none">{dayName.slice(0, 3)}</span>
-          <span className="text-lg font-bold text-[#1A237E] leading-none">{dayNum}</span>
+          <span className="text-lg font-bold text-[#4A148C] leading-none">{dayNum}</span>
           <span className="text-[9px] text-gray-400 leading-none">{monthName}</span>
         </div>
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold text-gray-800 truncate group-hover:text-[#1A237E] transition-colors">{event.title}</p>
+          <p className="text-sm font-semibold text-gray-800 truncate group-hover:text-[#4A148C] transition-colors">{event.title}</p>
           <p className="text-xs text-gray-400 truncate">
             {formatTime(event.time)} &middot; {event.venue}
           </p>
@@ -162,7 +162,7 @@ export function EventCard({ event, index, onOpen, variant = "default" }: EventCa
       className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md hover:border-gray-200 transition-all group"
     >
       {/* Color bar */}
-      <div className={`h-1.5 ${event.category === "Conference" ? "bg-gradient-to-r from-purple-500 to-purple-600" : event.category === "Youth" ? "bg-gradient-to-r from-amber-400 to-amber-500" : event.category === "Community" ? "bg-gradient-to-r from-green-500 to-green-600" : event.category === "Special Programme" ? "bg-gradient-to-r from-[#D32F2F] to-[#E53935]" : "bg-gradient-to-r from-[#1A237E] to-[#3949AB]"}`} />
+      <div className={`h-1.5 ${event.category === "Conference" ? "bg-gradient-to-r from-purple-500 to-purple-600" : event.category === "Youth" ? "bg-gradient-to-r from-amber-400 to-amber-500" : event.category === "Community" ? "bg-gradient-to-r from-green-500 to-green-600" : event.category === "Special Programme" ? "bg-gradient-to-r from-[#D32F2F] to-[#E53935]" : "bg-gradient-to-r from-[#4A148C] to-[#7B1FA2]"}`} />
 
       <div className="p-5">
         <div className="flex items-center gap-2 mb-3">
@@ -180,7 +180,7 @@ export function EventCard({ event, index, onOpen, variant = "default" }: EventCa
           )}
         </div>
 
-        <h3 className="text-base font-bold text-gray-800 mb-2 group-hover:text-[#1A237E] transition-colors leading-snug">
+        <h3 className="text-base font-bold text-gray-800 mb-2 group-hover:text-[#4A148C] transition-colors leading-snug">
           {event.title}
         </h3>
         <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 mb-4">
@@ -211,7 +211,7 @@ export function EventCard({ event, index, onOpen, variant = "default" }: EventCa
             </div>
             <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
               <div
-                className="h-full bg-[#1A237E] rounded-full"
+                className="h-full bg-[#4A148C] rounded-full"
                 style={{ width: `${Math.min(((event.registeredCount || 0) / event.capacity) * 100, 100)}%` }}
               />
             </div>

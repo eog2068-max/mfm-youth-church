@@ -85,7 +85,7 @@ export function SocialLandingPage() {
             }}
           />
           {/* Moving light beams */}
-          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-blue-500/8 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-purple-500/8 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-purple-500/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
           <div className="absolute top-[30%] right-[20%] w-[30%] h-[30%] bg-pink-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }} />
         </div>
@@ -110,7 +110,7 @@ export function SocialLandingPage() {
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
             className="relative block mb-8"
           >
-            <div className="absolute inset-0 bg-blue-400/25 rounded-full blur-3xl scale-[2]" />
+            <div className="absolute inset-0 bg-purple-400/25 rounded-full blur-3xl scale-[2]" />
             <div className="relative text-[6rem] sm:text-[7rem] md:text-[9rem] leading-none">💬</div>
           </motion.div>
 
@@ -121,8 +121,8 @@ export function SocialLandingPage() {
             transition={{ delay: 0.05 }}
             className="inline-flex items-center gap-2 bg-white/[0.07] backdrop-blur-sm border border-white/[0.12] rounded-full px-4 py-1.5 mb-8"
           >
-            <Users className="size-3.5 text-blue-300" />
-            <span className="text-xs font-medium text-blue-200/80">
+            <Users className="size-3.5 text-purple-300" />
+            <span className="text-xs font-medium text-purple-200/80">
               Your Digital Church Family Hub
             </span>
           </motion.div>
@@ -134,8 +134,8 @@ export function SocialLandingPage() {
             transition={{ delay: 0.15 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6"
           >
-            <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-              RehobothSocial
+            <span className="bg-gradient-to-r from-white via-purple-100 to-purple-200 bg-clip-text text-transparent">
+              YouthConnect
             </span>
           </motion.h1>
 
@@ -157,7 +157,7 @@ export function SocialLandingPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 }}
-            className="text-sm md:text-base text-blue-200/50 mb-8 max-w-lg mx-auto leading-relaxed"
+            className="text-sm md:text-base text-purple-200/50 mb-8 max-w-lg mx-auto leading-relaxed"
           >
             You Don&rsquo;t Have To Wait Until The Next Church Service To Feel
             Connected To Your Church Family.
@@ -175,7 +175,7 @@ export function SocialLandingPage() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400" />
               </span>
-              <span className="text-sm text-blue-100/80">
+              <span className="text-sm text-purple-100/80">
                 <span className="font-bold text-white">{presenceCount}</span>{" "}
                 people connected right now
               </span>
@@ -231,13 +231,13 @@ export function SocialLandingPage() {
         >
           {/* Decorative dash */}
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-px w-8 bg-[#1A237E]/30" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#1A237E]/60">
+            <div className="h-px w-8 bg-[#4A148C]/30" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#4A148C]/60">
               Explore
             </span>
-            <div className="h-px w-8 bg-[#1A237E]/30" />
+            <div className="h-px w-8 bg-[#4A148C]/30" />
           </div>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-[#0D1557] mb-3">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-[#1A0033] mb-3">
             Five Ways to Connect
           </h2>
           <p className="text-gray-500 max-w-md mx-auto text-sm leading-relaxed">
@@ -278,7 +278,7 @@ export function SocialLandingPage() {
                       <p className="text-xs text-gray-500 leading-relaxed mb-3.5">
                         {feature.description}
                       </p>
-                      <div className="flex items-center gap-1.5 text-xs text-[#1A237E] font-semibold group-hover:gap-2.5 transition-all duration-300">
+                      <div className="flex items-center gap-1.5 text-xs text-[#4A148C] font-semibold group-hover:gap-2.5 transition-all duration-300">
                         {feature.featured ? (
                           <>
                             <span>Enter</span>
@@ -309,7 +309,7 @@ export function SocialLandingPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1A237E] mb-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#4A148C] mb-3">
               How It Works Together
             </h2>
             <p className="text-gray-500 max-w-md mx-auto">
@@ -348,7 +348,7 @@ export function SocialLandingPage() {
                 transition={{ delay: i * 0.1 }}
                 className="text-center"
               >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#1A237E] to-[#283593] flex items-center justify-center mx-auto mb-3 text-xl">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#4A148C] to-[#6A1B9A] flex items-center justify-center mx-auto mb-3 text-xl">
                   {item.emoji}
                 </div>
                 <h3 className="text-sm font-bold text-gray-800 mb-1">
@@ -386,7 +386,7 @@ export function SocialLandingPage() {
             ].map((item) => (
               <div key={item.title} className="text-center">
                 <div className="w-12 h-12 rounded-xl bg-[#E8ECF8] flex items-center justify-center mx-auto mb-3">
-                  <item.icon className="size-6 text-[#1A237E]" />
+                  <item.icon className="size-6 text-[#4A148C]" />
                 </div>
                 <h3 className="text-sm font-bold text-gray-800 mb-1">
                   {item.title}
@@ -401,7 +401,7 @@ export function SocialLandingPage() {
       </section>
 
       {/* ===== BOTTOM CTA ===== */}
-      <section className="bg-gradient-to-r from-[#0B0F3A] to-[#1A237E] py-14">
+      <section className="bg-gradient-to-r from-[#0B0F3A] to-[#4A148C] py-14">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -412,10 +412,10 @@ export function SocialLandingPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
               Ready to Connect?
             </h2>
-            <p className="text-blue-200/70 mb-2 text-sm max-w-md mx-auto leading-relaxed">
+            <p className="text-purple-200/70 mb-2 text-sm max-w-md mx-auto leading-relaxed">
               I Remain Connected To My Church Family Throughout The Week.
             </p>
-            <p className="text-blue-200/50 mb-8 text-xs max-w-md mx-auto">
+            <p className="text-purple-200/50 mb-8 text-xs max-w-md mx-auto">
               You don&rsquo;t have to wait until the next church service.
             </p>
             <Link

@@ -20,12 +20,12 @@ export interface Series {
 }
 
 export const mockSeries: Series[] = [
-  { id: "s1", name: "Walking in Destiny", description: "A powerful series on discovering and fulfilling your God-given destiny", videoCount: 6, coverGradient: "from-[#1A237E] to-[#283593]" },
+  { id: "s1", name: "Walking in Destiny", description: "A powerful series on discovering and fulfilling your God-given destiny", videoCount: 6, coverGradient: "from-[#4A148C] to-[#6A1B9A]" },
   { id: "s2", name: "Prayer That Moves Mountains", description: "Learning the secrets of effectual and fervent prayer", videoCount: 4, coverGradient: "from-[#D32F2F] to-[#B71C1C]" },
   { id: "s3", name: "The Grace Life", description: "Understanding God's unmerited favour and walking in it daily", videoCount: 5, coverGradient: "from-[#2E7D32] to-[#1B5E20]" },
-  { id: "s4", name: "Family Matters", description: "Building godly homes and strong family foundations", videoCount: 4, coverGradient: "from-[#E65100] to-[#BF360C]" },
+  { id: "s4", name: "Family Matters", description: "Building godly homes and strong family foundations", videoCount: 4, coverGradient: "from-[#C62828] to-[#B71C1C]" },
   { id: "s5", name: "Spiritual Warfare", description: "Equipping believers for victory in spiritual battles", videoCount: 3, coverGradient: "from-[#4A148C] to-[#311B92]" },
-  { id: "s6", name: "Sunday Services", description: "Complete Sunday worship service recordings", videoCount: 12, coverGradient: "from-[#0D1557] to-[#1A237E]" },
+  { id: "s6", name: "Sunday Services", description: "Complete Sunday worship service recordings", videoCount: 12, coverGradient: "from-[#1A0033] to-[#4A148C]" },
 ];
 
 export const mockVideos: Video[] = [

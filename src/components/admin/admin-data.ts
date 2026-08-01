@@ -178,7 +178,7 @@ export const quickActions: QuickAction[] = [
     icon: "BookOpen",
     description: "Upload a new sermon to the library",
     href: "#",
-    color: "#1A237E",
+    color: "#4A148C",
   },
   {
     id: "qa-2",
@@ -210,7 +210,7 @@ export const quickActions: QuickAction[] = [
     icon: "Star",
     description: "Approve or moderate testimonies",
     href: "#",
-    color: "#E65100",
+    color: "#C62828",
   },
   {
     id: "qa-6",

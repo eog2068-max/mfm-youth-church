@@ -37,14 +37,14 @@ export function LivePrayerRequest() {
       className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
     >
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#1A237E] to-[#283593] px-6 py-4">
+      <div className="bg-gradient-to-r from-[#4A148C] to-[#6A1B9A] px-6 py-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center">
             <Heart className="size-5 text-white" />
           </div>
           <div>
             <h3 className="text-base font-bold text-white">Live Prayer Request</h3>
-            <p className="text-xs text-blue-200/70">Submit your request during the live service</p>
+            <p className="text-xs text-purple-200/70">Submit your request during the live service</p>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@ export function LivePrayerRequest() {
             <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-4">
               <CheckCircle2 className="size-8 text-[#2E7D32]" />
             </div>
-            <h4 className="text-lg font-bold text-[#1A237E] mb-1">Prayer Request Sent</h4>
+            <h4 className="text-lg font-bold text-[#4A148C] mb-1">Prayer Request Sent</h4>
             <p className="text-sm text-gray-500">
               Your request has been received. We are praying with you right now.
             </p>
@@ -77,7 +77,7 @@ export function LivePrayerRequest() {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your name (optional)"
                 disabled={isAnonymous}
-                className="rounded-xl border-gray-200 h-10 focus:border-[#1A237E]/30"
+                className="rounded-xl border-gray-200 h-10 focus:border-[#4A148C]/30"
               />
             </div>
 
@@ -85,10 +85,10 @@ export function LivePrayerRequest() {
             <button
               type="button"
               onClick={() => setIsAnonymous(!isAnonymous)}
-              className="flex items-center gap-2 text-xs text-gray-500 hover:text-[#1A237E] transition-colors"
+              className="flex items-center gap-2 text-xs text-gray-500 hover:text-[#4A148C] transition-colors"
             >
               <div className={`w-4 h-4 rounded border-2 flex items-center justify-center transition-colors ${
-                isAnonymous ? "bg-[#1A237E] border-[#1A237E]" : "border-gray-300"
+                isAnonymous ? "bg-[#4A148C] border-[#4A148C]" : "border-gray-300"
               }`}>
                 {isAnonymous && <CheckCircle2 className="size-2.5 text-white" />}
               </div>
@@ -107,7 +107,7 @@ export function LivePrayerRequest() {
                 placeholder="Share your prayer need... We believe God will answer."
                 rows={4}
                 required
-                className="rounded-xl border-gray-200 focus:border-[#1A237E]/30 resize-none"
+                className="rounded-xl border-gray-200 focus:border-[#4A148C]/30 resize-none"
               />
             </div>
 
@@ -115,7 +115,7 @@ export function LivePrayerRequest() {
             <Button
               type="submit"
               disabled={!request.trim() || sending}
-              className="w-full bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl h-11 font-semibold"
+              className="w-full bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl h-11 font-semibold"
             >
               {sending ? (
                 "Sending..."

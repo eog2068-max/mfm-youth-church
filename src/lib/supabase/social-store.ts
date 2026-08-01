@@ -1,4 +1,4 @@
-// RehobothSocial In-Memory Data Store
+// YouthConnect In-Memory Data Store
 // This is a mock data layer that simulates Supabase.
 // When Supabase is connected, replace these functions with actual Supabase queries.
 // All data resets on server restart (intentional for mock mode).

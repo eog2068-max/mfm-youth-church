@@ -6,7 +6,7 @@ import { TestimoniesCTA } from "@/components/testimonies/testimonies-cta";
 export const metadata: Metadata = {
   title: "Testimonies",
   description:
-    "Read and share testimonies of God's faithfulness at The Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja. Be encouraged by real stories of healing, provision, and breakthrough.",
+    "Read and share testimonies of God's faithfulness at Mountain of Fire and Miracles Ministries, Youth Church, Utako, Abuja. Be encouraged by real stories of healing, provision, and breakthrough.",
 };
 
 export default function TestimoniesPage() {

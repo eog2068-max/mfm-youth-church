@@ -123,7 +123,7 @@ export function PrayerCircle() {
             >
               <CheckCircle2 className="size-10 text-[#2E7D32]" />
             </motion.div>
-            <h2 className="text-2xl font-bold text-[#1A237E] mb-2">Private Prayer Request Received</h2>
+            <h2 className="text-2xl font-bold text-[#4A148C] mb-2">Private Prayer Request Received</h2>
             <p className="text-gray-500 max-w-md mx-auto leading-relaxed">
               Your prayer request has been received. It will only be seen by our pastoral team.
               We are standing with you in prayer.
@@ -142,7 +142,7 @@ export function PrayerCircle() {
                 setIsUrgent(false);
                 setShowContactFields(false);
               }}
-              className="mt-8 bg-[#1A237E] text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#0D1557] transition-colors"
+              className="mt-8 bg-[#4A148C] text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#1A0033] transition-colors"
             >
               Submit Another Request
             </button>
@@ -167,7 +167,7 @@ export function PrayerCircle() {
             >
               <CheckCircle2 className="size-10 text-[#2E7D32]" />
             </motion.div>
-            <h2 className="text-2xl font-bold text-[#1A237E] mb-2">Prayer Request Shared!</h2>
+            <h2 className="text-2xl font-bold text-[#4A148C] mb-2">Prayer Request Shared!</h2>
             <p className="text-gray-500 max-w-md mx-auto leading-relaxed">
               Your prayer request has been shared with the community. The church family will stand in agreement with you.
             </p>
@@ -200,7 +200,7 @@ export function PrayerCircle() {
               🙏
             </motion.span>
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-[#1A237E]">Prayer Circle</h1>
+              <h1 className="text-2xl md:text-3xl font-bold text-[#4A148C]">Prayer Circle</h1>
               <p className="text-gray-500 text-sm">Share your prayer needs and stand in agreement with others.</p>
             </div>
           </div>
@@ -219,7 +219,7 @@ export function PrayerCircle() {
               onClick={() => setIsPublic(true)}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
                 isPublic
-                  ? "bg-[#1A237E] text-white shadow-md shadow-[#1A237E]/20"
+                  ? "bg-[#4A148C] text-white shadow-md shadow-[#4A148C]/20"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
@@ -229,7 +229,7 @@ export function PrayerCircle() {
               onClick={() => setIsPublic(false)}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
                 !isPublic
-                  ? "bg-[#1A237E] text-white shadow-md shadow-[#1A237E]/20"
+                  ? "bg-[#4A148C] text-white shadow-md shadow-[#4A148C]/20"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
@@ -245,15 +245,15 @@ export function PrayerCircle() {
                 exit={{ opacity: 0, height: 0 }}
                 className="mb-4"
               >
-                <div className="flex items-start gap-2 text-xs text-gray-500 bg-blue-50 rounded-xl p-3 mb-3">
-                  <Shield className="size-3.5 mt-0.5 shrink-0 text-[#1A237E]" />
+                <div className="flex items-start gap-2 text-xs text-gray-500 bg-purple-50 rounded-xl p-3 mb-3">
+                  <Shield className="size-3.5 mt-0.5 shrink-0 text-[#4A148C]" />
                   <p>Private requests are only visible to our pastoral team. They will never be shown publicly.</p>
                 </div>
 
                 {/* Optional contact info toggle */}
                 <button
                   onClick={() => setShowContactFields(!showContactFields)}
-                  className="text-xs text-[#1A237E] hover:underline mb-2"
+                  className="text-xs text-[#4A148C] hover:underline mb-2"
                 >
                   {showContactFields ? "- Hide contact info" : "+ Add optional contact info"}
                 </button>
@@ -273,7 +273,7 @@ export function PrayerCircle() {
                           value={contactName}
                           onChange={(e) => setContactName(e.target.value.slice(0, 100))}
                           placeholder="Full Name (optional)"
-                          className="w-full rounded-lg border border-gray-200 pl-9 pr-3 py-2 text-sm focus:outline-none focus:border-[#1A237E]/30 focus:ring-2 focus:ring-[#1A237E]/10"
+                          className="w-full rounded-lg border border-gray-200 pl-9 pr-3 py-2 text-sm focus:outline-none focus:border-[#4A148C]/30 focus:ring-2 focus:ring-[#4A148C]/10"
                         />
                       </div>
                       <div className="relative">
@@ -283,7 +283,7 @@ export function PrayerCircle() {
                           value={contactEmail}
                           onChange={(e) => setContactEmail(e.target.value.slice(0, 100))}
                           placeholder="Email (optional)"
-                          className="w-full rounded-lg border border-gray-200 pl-9 pr-3 py-2 text-sm focus:outline-none focus:border-[#1A237E]/30 focus:ring-2 focus:ring-[#1A237E]/10"
+                          className="w-full rounded-lg border border-gray-200 pl-9 pr-3 py-2 text-sm focus:outline-none focus:border-[#4A148C]/30 focus:ring-2 focus:ring-[#4A148C]/10"
                         />
                       </div>
                       <div className="relative">
@@ -293,7 +293,7 @@ export function PrayerCircle() {
                           value={contactPhone}
                           onChange={(e) => setContactPhone(e.target.value.slice(0, 20))}
                           placeholder="Phone (optional)"
-                          className="w-full rounded-lg border border-gray-200 pl-9 pr-3 py-2 text-sm focus:outline-none focus:border-[#1A237E]/30 focus:ring-2 focus:ring-[#1A237E]/10"
+                          className="w-full rounded-lg border border-gray-200 pl-9 pr-3 py-2 text-sm focus:outline-none focus:border-[#4A148C]/30 focus:ring-2 focus:ring-[#4A148C]/10"
                         />
                       </div>
                     </motion.div>
@@ -368,7 +368,7 @@ export function PrayerCircle() {
 
         {/* Public Prayer Requests */}
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-bold text-[#1A237E]">Community Prayers</h2>
+          <h2 className="text-lg font-bold text-[#4A148C]">Community Prayers</h2>
           <button onClick={fetchPrayers} className="text-xs text-gray-400 hover:text-gray-600 transition-colors">
             Refresh
           </button>

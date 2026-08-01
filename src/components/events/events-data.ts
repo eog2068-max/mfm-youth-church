@@ -29,7 +29,7 @@ export const eventCategories: EventCategory[] = [
 ];
 
 export const categoryColors: Record<EventCategory, { bg: string; text: string; border: string }> = {
-  "Service": { bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-100" },
+  "Service": { bg: "bg-purple-50", text: "text-purple-700", border: "border-purple-100" },
   "Special Programme": { bg: "bg-red-50", text: "text-red-700", border: "border-red-100" },
   "Conference": { bg: "bg-purple-50", text: "text-purple-700", border: "border-purple-100" },
   "Community": { bg: "bg-green-50", text: "text-green-700", border: "border-green-100" },
@@ -45,7 +45,7 @@ export const mockEvents: ChurchEvent[] = [
     date: "2025-07-20",
     time: "08:00",
     endTime: "13:00",
-    venue: "RCCG Rehoboth Assembly, Utako",
+    venue: "MFM Youth Church, Utako",
     category: "Service",
     isRecurring: true,
     recurringDay: "Every Sunday",
@@ -89,7 +89,7 @@ export const mockEvents: ChurchEvent[] = [
     endDate: "2025-08-10",
     time: "09:00",
     endTime: "21:00",
-    venue: "RCCG Redemption Camp, Km 46 Lagos-Ibadan Expressway",
+    venue: "MFM Redemption Camp, Km 46 Lagos-Ibadan Expressway",
     category: "Conference",
     isRecurring: false,
     featured: true,

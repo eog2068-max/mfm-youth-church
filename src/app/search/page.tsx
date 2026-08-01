@@ -6,7 +6,7 @@ import { SearchCTA } from "@/components/search/search-cta";
 export const metadata: Metadata = {
   title: "Search",
   description:
-    "Find sermons, events, announcements, devotionals, testimonies, and more across RCCG Rehoboth Assembly Parish, Utako, Abuja.",
+    "Find sermons, events, announcements, devotionals, testimonies, and more across MFM Youth Church, Utako, Abuja.",
 };
 
 export default function SearchPage() {

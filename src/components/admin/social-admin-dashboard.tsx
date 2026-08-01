@@ -101,10 +101,10 @@ export function SocialAdminDashboard() {
   ];
 
   const statCards = [
-    { label: "Current Presence", value: stats?.presenceCount || 0, icon: Users, color: "text-blue-600", bg: "bg-blue-50" },
+    { label: "Current Presence", value: stats?.presenceCount || 0, icon: Users, color: "text-purple-600", bg: "bg-purple-50" },
     { label: "Public Prayers", value: stats?.totalPublicPrayers || 0, icon: Heart, color: "text-red-600", bg: "bg-red-50" },
     { label: "Private Prayers", value: stats?.totalPrivatePrayers || 0, icon: ShieldCheck, color: "text-purple-600", bg: "bg-purple-50" },
-    { label: "Amen Wall Posts", value: stats?.totalAmenPosts || 0, icon: Flame, color: "text-orange-600", bg: "bg-orange-50" },
+    { label: "Amen Wall Posts", value: stats?.totalAmenPosts || 0, icon: Flame, color: "text-red-600", bg: "bg-red-50" },
     { label: "Question Responses", value: stats?.totalQuestionResponses || 0, icon: MessageCircle, color: "text-green-600", bg: "bg-green-50" },
     { label: "Attendance Intents", value: stats?.totalAttendanceIntentions || 0, icon: CalendarCheck, color: "text-teal-600", bg: "bg-teal-50" },
   ];
@@ -112,7 +112,7 @@ export function SocialAdminDashboard() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#1A237E] to-[#283593] text-white px-6 py-6">
+      <div className="bg-gradient-to-r from-[#4A148C] to-[#6A1B9A] text-white px-6 py-6">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -121,9 +121,9 @@ export function SocialAdminDashboard() {
               </Link>
               <div>
                 <h1 className="text-2xl font-bold flex items-center gap-2">
-                  ❤️ RehobothSocial Admin
+                  ❤️ YouthConnect Admin
                 </h1>
-                <p className="text-blue-200/70 text-sm mt-1">Manage social features, moderation, and community content</p>
+                <p className="text-purple-200/70 text-sm mt-1">Manage social features, moderation, and community content</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -154,7 +154,7 @@ export function SocialAdminDashboard() {
               }}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
                 activeTab === tab.id
-                  ? "bg-white text-[#1A237E] shadow-sm"
+                  ? "bg-white text-[#4A148C] shadow-sm"
                   : "text-gray-500 hover:text-gray-700"
               }`}
             >
@@ -261,7 +261,7 @@ export function SocialAdminDashboard() {
               {/* Quick Links */}
               <div className="bg-white rounded-xl border border-gray-100 p-6">
                 <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2 mb-4">
-                  <Eye className="size-5 text-blue-500" />
+                  <Eye className="size-5 text-purple-500" />
                   Quick Actions
                 </h3>
                 <div className="space-y-2">
@@ -271,7 +271,7 @@ export function SocialAdminDashboard() {
                     { href: "/social/prayer-circle", label: "Prayer Circle" },
                     { href: "/social/amen-wall", label: "Amen Wall" },
                   ].map((link) => (
-                    <Link key={link.href} href={link.href} className="block text-sm text-[#1A237E] hover:underline">
+                    <Link key={link.href} href={link.href} className="block text-sm text-[#4A148C] hover:underline">
                       → {link.label}
                     </Link>
                   ))}
@@ -291,7 +291,7 @@ export function SocialAdminDashboard() {
                 </h3>
                 <button
                   onClick={loadPrivatePrayers}
-                  className="text-sm text-[#1A237E] hover:underline"
+                  className="text-sm text-[#4A148C] hover:underline"
                 >
                   Refresh
                 </button>

@@ -20,7 +20,7 @@ function getDayIcon(day: string) {
 function getDayColor(day: string) {
   switch (day) {
     case "Sunday":
-      return "bg-[#1A237E]";
+      return "bg-[#4A148C]";
     case "Tuesday":
       return "bg-[#2E7D32]";
     case "Thursday":
@@ -103,7 +103,7 @@ export function ServiceTimesCard() {
                         }
                         className={`flex items-center justify-between p-2.5 rounded-xl transition-colors ${
                           isUpcoming
-                            ? "bg-[#EBF0FA] border border-[#1A237E]/15"
+                            ? "bg-[#EBF0FA] border border-[#4A148C]/15"
                             : "hover:bg-gray-50"
                         }`}
                       >
@@ -112,14 +112,14 @@ export function ServiceTimesCard() {
                             <p
                               className={`text-sm font-semibold ${
                                 isUpcoming
-                                  ? "text-[#1A237E]"
+                                  ? "text-[#4A148C]"
                                   : "text-gray-700"
                               }`}
                             >
                               {service.name}
                             </p>
                             {isUpcoming && (
-                              <span className="text-[10px] font-bold text-[#1A237E] bg-[#1A237E]/10 px-1.5 py-0.5 rounded-md uppercase tracking-wider">
+                              <span className="text-[10px] font-bold text-[#4A148C] bg-[#4A148C]/10 px-1.5 py-0.5 rounded-md uppercase tracking-wider">
                                 Next
                               </span>
                             )}
@@ -132,7 +132,7 @@ export function ServiceTimesCard() {
                         </div>
                         <p
                           className={`text-xs font-semibold whitespace-nowrap ml-3 ${
-                            isUpcoming ? "text-[#1A237E]" : "text-gray-500"
+                            isUpcoming ? "text-[#4A148C]" : "text-gray-500"
                           }`}
                         >
                           {service.startTime}
@@ -184,7 +184,7 @@ export function ServiceTimesCard() {
                         }
                         className={`flex items-center justify-between p-2.5 rounded-xl transition-colors ${
                           isUpcoming
-                            ? "bg-[#EBF0FA] border border-[#1A237E]/15"
+                            ? "bg-[#EBF0FA] border border-[#4A148C]/15"
                             : "hover:bg-gray-50"
                         }`}
                       >
@@ -193,14 +193,14 @@ export function ServiceTimesCard() {
                             <p
                               className={`text-sm font-semibold ${
                                 isUpcoming
-                                  ? "text-[#1A237E]"
+                                  ? "text-[#4A148C]"
                                   : "text-gray-700"
                               }`}
                             >
                               {service.name}
                             </p>
                             {isUpcoming && (
-                              <span className="text-[10px] font-bold text-[#1A237E] bg-[#1A237E]/10 px-1.5 py-0.5 rounded-md uppercase tracking-wider">
+                              <span className="text-[10px] font-bold text-[#4A148C] bg-[#4A148C]/10 px-1.5 py-0.5 rounded-md uppercase tracking-wider">
                                 Next
                               </span>
                             )}
@@ -213,7 +213,7 @@ export function ServiceTimesCard() {
                         </div>
                         <p
                           className={`text-xs font-semibold whitespace-nowrap ml-3 ${
-                            isUpcoming ? "text-[#1A237E]" : "text-gray-500"
+                            isUpcoming ? "text-[#4A148C]" : "text-gray-500"
                           }`}
                         >
                           {service.startTime}

@@ -18,19 +18,19 @@ export function LocationMap() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="RCCG Rehoboth Assembly Location"
+              title="MFM Youth Church Location"
               className="w-full h-full"
             />
           </div>
 
           {/* Contact Info */}
           <div className="md:w-80 lg:w-96 shrink-0 bg-white rounded-2xl p-6 shadow-lg shadow-black/5 border border-gray-100">
-            <h3 className="text-lg font-bold text-[#1A237E] mb-6">Contact Information</h3>
+            <h3 className="text-lg font-bold text-[#4A148C] mb-6">Contact Information</h3>
 
             <div className="space-y-5">
               <div className="flex items-start gap-3">
                 <div className="w-9 h-9 rounded-lg bg-[#EBF0FA] flex items-center justify-center shrink-0 mt-0.5">
-                  <MapPin className="size-4 text-[#1A237E]" />
+                  <MapPin className="size-4 text-[#4A148C]" />
                 </div>
                 <div>
                   <p className="font-semibold text-gray-800 text-sm">Address</p>
@@ -42,7 +42,7 @@ export function LocationMap() {
 
               <div className="flex items-start gap-3">
                 <div className="w-9 h-9 rounded-lg bg-[#EBF0FA] flex items-center justify-center shrink-0 mt-0.5">
-                  <Phone className="size-4 text-[#1A237E]" />
+                  <Phone className="size-4 text-[#4A148C]" />
                 </div>
                 <div>
                   <p className="font-semibold text-gray-800 text-sm">Phone</p>
@@ -57,15 +57,15 @@ export function LocationMap() {
 
               <div className="flex items-start gap-3">
                 <div className="w-9 h-9 rounded-lg bg-[#EBF0FA] flex items-center justify-center shrink-0 mt-0.5">
-                  <Mail className="size-4 text-[#1A237E]" />
+                  <Mail className="size-4 text-[#4A148C]" />
                 </div>
                 <div>
                   <p className="font-semibold text-gray-800 text-sm">Email</p>
                   <a
-                    href="mailto:info@rccgrehoboth.org"
+                    href="mailto:info@mfmyouthchurch.org"
                     className="text-sm text-[#D32F2F] hover:underline mt-0.5 block"
                   >
-                    info@rccgrehoboth.org
+                    info@mfmyouthchurch.org
                   </a>
                 </div>
               </div>
@@ -89,7 +89,7 @@ export function LocationMap() {
 
               <div className="flex items-start gap-3">
                 <div className="w-9 h-9 rounded-lg bg-[#EBF0FA] flex items-center justify-center shrink-0 mt-0.5">
-                  <Clock className="size-4 text-[#1A237E]" />
+                  <Clock className="size-4 text-[#4A148C]" />
                 </div>
                 <div>
                   <p className="font-semibold text-gray-800 text-sm">Office Hours</p>

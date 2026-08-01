@@ -58,7 +58,7 @@ export function LiveTogether() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
           <div className="flex items-center gap-3 mb-3">
             <span className="text-4xl">🔴</span>
-            <h1 className="text-2xl md:text-3xl font-bold text-[#1A237E]">Live Together</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-[#4A148C]">Live Together</h1>
           </div>
           <p className="text-gray-500">Worship together during live services.</p>
         </motion.div>
@@ -116,13 +116,13 @@ export function LiveTogether() {
             <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-6">
               <Radio className="size-10 text-gray-400" />
             </div>
-            <h2 className="text-xl font-bold text-[#1A237E] mb-2">Not Live Right Now</h2>
+            <h2 className="text-xl font-bold text-[#4A148C] mb-2">Not Live Right Now</h2>
             <p className="text-gray-500 max-w-md mx-auto">
               Join us during our next live service to worship together! We go live every Sunday at 7:00 AM, Tuesday at 5:30 PM, and Thursday at 5:30 PM.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-              <div className="bg-blue-50 rounded-xl px-4 py-3">
-                <p className="text-sm font-bold text-[#1A237E]">Sunday</p>
+              <div className="bg-purple-50 rounded-xl px-4 py-3">
+                <p className="text-sm font-bold text-[#4A148C]">Sunday</p>
                 <p className="text-xs text-gray-500">7:00 AM</p>
               </div>
               <div className="bg-green-50 rounded-xl px-4 py-3">

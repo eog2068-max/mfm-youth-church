@@ -21,14 +21,14 @@ export default async function CmsDashboardPage() {
 
   return (
     <div className="max-w-5xl">
-      <h1 className="text-2xl font-bold text-[#1A237E] mb-1">CMS Dashboard</h1>
+      <h1 className="text-2xl font-bold text-[#4A148C] mb-1">CMS Dashboard</h1>
       <p className="text-sm text-gray-500 mb-6">Overview of church content management</p>
 
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         <div className="bg-white rounded-xl border border-gray-100 p-5">
           <p className="text-xs text-gray-500 uppercase tracking-wider font-medium">Total Blocks</p>
-          <p className="text-3xl font-bold text-[#1A237E] mt-1">{totalBlocks}</p>
+          <p className="text-3xl font-bold text-[#4A148C] mt-1">{totalBlocks}</p>
         </div>
         <div className="bg-white rounded-xl border border-gray-100 p-5">
           <p className="text-xs text-gray-500 uppercase tracking-wider font-medium">Published</p>

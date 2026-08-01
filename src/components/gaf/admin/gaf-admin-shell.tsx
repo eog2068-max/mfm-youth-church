@@ -3,7 +3,7 @@
 /**
  * GafAdminShell — shared admin sidebar + header for all /admin/gaf/* pages.
  *
- * Uses the same visual style as the existing admin sidebar (dark navy #1A237E)
+ * Uses the same visual style as the existing admin sidebar (dark navy #4A148C)
  * but scoped to Go-A-Fishing admin navigation only.
  *
  * Stage 6 of Go-A-Fishing.
@@ -63,14 +63,14 @@ export function GafAdminShell({ children, role, userEmail }: GafAdminShellProps)
   return (
     <div className="flex min-h-screen">
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex flex-col w-64 bg-[#1A237E] text-white fixed inset-y-0 left-0 z-40">
+      <aside className="hidden lg:flex flex-col w-64 bg-[#4A148C] text-white fixed inset-y-0 left-0 z-40">
         <div className="flex items-center gap-3 h-16 px-4 border-b border-white/10">
           <div className="flex size-9 items-center justify-center rounded-lg bg-white/15">
             <Fish className="size-5" />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-bold truncate">Go-A-Fishing</p>
-            <p className="text-xs text-blue-200 truncate">Admin Panel</p>
+            <p className="text-xs text-purple-200 truncate">Admin Panel</p>
           </div>
         </div>
 
@@ -87,7 +87,7 @@ export function GafAdminShell({ children, role, userEmail }: GafAdminShellProps)
                     "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors",
                     active
                       ? "bg-white/20 text-white"
-                      : "text-blue-100/70 hover:bg-white/10 hover:text-white"
+                      : "text-purple-100/70 hover:bg-white/10 hover:text-white"
                   )}
                 >
                   <Icon className="size-4 shrink-0" />
@@ -99,10 +99,10 @@ export function GafAdminShell({ children, role, userEmail }: GafAdminShellProps)
           </nav>
 
           <div className="px-3 mt-6 pt-4 border-t border-white/10">
-            <p className="text-xs text-blue-300/60 px-3 mb-2">MAIN ADMIN</p>
+            <p className="text-xs text-purple-300/60 px-3 mb-2">MAIN ADMIN</p>
             <Link
               href="/admin"
-              className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-blue-100/70 hover:bg-white/10 hover:text-white transition-colors"
+              className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-purple-100/70 hover:bg-white/10 hover:text-white transition-colors"
             >
               <Church className="size-4" />
               <span>General Admin</span>
@@ -112,21 +112,21 @@ export function GafAdminShell({ children, role, userEmail }: GafAdminShellProps)
 
         {/* User info at bottom */}
         <div className="border-t border-white/10 px-4 py-3">
-          <p className="text-xs text-blue-200 truncate">{userEmail}</p>
-          <p className="text-xs text-blue-300/60 capitalize">{role}</p>
+          <p className="text-xs text-purple-200 truncate">{userEmail}</p>
+          <p className="text-xs text-purple-300/60 capitalize">{role}</p>
         </div>
       </aside>
 
       {/* Mobile header + overlay sidebar */}
       <div className="lg:hidden fixed inset-0 z-40">
         {/* Mobile top bar */}
-        <header className="fixed top-0 left-0 right-0 h-14 bg-[#1A237E] text-white z-50 flex items-center justify-between px-4">
+        <header className="fixed top-0 left-0 right-0 h-14 bg-[#4A148C] text-white z-50 flex items-center justify-between px-4">
           <div className="flex items-center gap-2">
             <Fish className="size-5" />
             <span className="text-sm font-bold">GAF Admin</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-xs text-blue-200 capitalize">{role}</span>
+            <span className="text-xs text-purple-200 capitalize">{role}</span>
             <Button
               variant="ghost"
               size="sm"
@@ -145,7 +145,7 @@ export function GafAdminShell({ children, role, userEmail }: GafAdminShellProps)
               className="absolute inset-0 bg-black/50"
               onClick={() => setMobileOpen(false)}
             />
-            <aside className="absolute left-0 top-0 bottom-0 w-72 bg-[#1A237E] text-white">
+            <aside className="absolute left-0 top-0 bottom-0 w-72 bg-[#4A148C] text-white">
               <div className="flex items-center justify-between h-14 px-4 border-b border-white/10">
                 <div className="flex items-center gap-2">
                   <Fish className="size-5" />
@@ -174,7 +174,7 @@ export function GafAdminShell({ children, role, userEmail }: GafAdminShellProps)
                           "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors",
                           active
                             ? "bg-white/20 text-white"
-                            : "text-blue-100/70 hover:bg-white/10 hover:text-white"
+                            : "text-purple-100/70 hover:bg-white/10 hover:text-white"
                         )}
                       >
                         <Icon className="size-4" />
@@ -187,7 +187,7 @@ export function GafAdminShell({ children, role, userEmail }: GafAdminShellProps)
                   <Link
                     href="/go-a-fishing"
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-blue-100/70 hover:bg-white/10 hover:text-white"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-purple-100/70 hover:bg-white/10 hover:text-white"
                   >
                     <LogOut className="size-4" />
                     <span>Back to GAF</span>
@@ -195,7 +195,7 @@ export function GafAdminShell({ children, role, userEmail }: GafAdminShellProps)
                   <Link
                     href="/admin"
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-blue-100/70 hover:bg-white/10 hover:text-white"
+                    className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-purple-100/70 hover:bg-white/10 hover:text-white"
                   >
                     <Church className="size-4" />
                     <span>General Admin</span>

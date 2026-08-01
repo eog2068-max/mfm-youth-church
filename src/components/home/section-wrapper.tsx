@@ -36,7 +36,7 @@ export function SectionTitle({ title, subtitle, className = "", light = false }:
     <div className={`text-center mb-10 md:mb-14 ${className}`}>
       <h2
         className={`text-3xl md:text-4xl font-bold tracking-tight ${
-          light ? "text-white" : "text-[#1A237E]"
+          light ? "text-white" : "text-[#4A148C]"
         }`}
       >
         {title}

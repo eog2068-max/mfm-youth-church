@@ -6,7 +6,7 @@ import { ContactCTA } from "@/components/contact/contact-cta";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with RCCG Rehoboth Assembly Parish, Utako, Abuja. Find our address, phone, email, service times, and send us a message.",
+    "Get in touch with MFM Youth Church, Utako, Abuja. Find our address, phone, email, service times, and send us a message.",
 };
 
 export default function ContactPage() {

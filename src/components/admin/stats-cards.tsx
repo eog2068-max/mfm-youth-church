@@ -30,8 +30,8 @@ const statsData: StatCardData[] = [
     change: "+8.2%",
     changeDirection: "up",
     icon: Users,
-    gradient: "from-[#1A237E] to-[#3949AB]",
-    iconBg: "bg-[#1A237E]/10",
+    gradient: "from-[#4A148C] to-[#7B1FA2]",
+    iconBg: "bg-[#4A148C]/10",
   },
   {
     label: "Weekly Attendance",
@@ -48,8 +48,8 @@ const statsData: StatCardData[] = [
     change: "+2.3%",
     changeDirection: "up",
     icon: TrendingUp,
-    gradient: "from-[#E65100] to-[#FB8C00]",
-    iconBg: "bg-[#E65100]/10",
+    gradient: "from-[#C62828] to-[#FB8C00]",
+    iconBg: "bg-[#C62828]/10",
   },
   {
     label: "Active Ministries",
@@ -125,15 +125,15 @@ export function StatsCards() {
               <div
                 className={`flex size-10 items-center justify-center rounded-lg ${stat.iconBg}`}
               >
-                <IconComponent className="size-5 text-[#1A237E]" />
+                <IconComponent className="size-5 text-[#4A148C]" />
               </div>
 
               {/* Value */}
               <div>
-                <p className="text-2xl font-bold tracking-tight text-[#1A237E] sm:text-3xl">
+                <p className="text-2xl font-bold tracking-tight text-[#4A148C] sm:text-3xl">
                   {stat.value}
                 </p>
-                <p className="mt-0.5 text-xs font-medium text-[#1A237E]/50 sm:text-sm">
+                <p className="mt-0.5 text-xs font-medium text-[#4A148C]/50 sm:text-sm">
                   {stat.label}
                 </p>
               </div>
@@ -154,7 +154,7 @@ export function StatsCards() {
                 >
                   {stat.change}
                 </span>
-                <span className="text-xs text-[#1A237E]/40">vs last period</span>
+                <span className="text-xs text-[#4A148C]/40">vs last period</span>
               </div>
             </div>
           </motion.div>

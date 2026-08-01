@@ -83,14 +83,14 @@ const TYPE_LABELS: Record<string, string> = {
 };
 
 const TYPE_COLORS: Record<string, string> = {
-  door_to_door: "bg-blue-100 text-blue-700",
+  door_to_door: "bg-purple-100 text-purple-700",
   street_preaching: "bg-amber-100 text-amber-700",
   hospital_visit: "bg-rose-100 text-rose-700",
   prison_ministry: "bg-purple-100 text-purple-700",
   school_outreach: "bg-teal-100 text-teal-700",
-  market_evangelism: "bg-orange-100 text-orange-700",
+  market_evangelism: "bg-red-100 text-red-700",
   phone_call: "bg-green-100 text-green-700",
-  social_media: "bg-indigo-100 text-indigo-700",
+  social_media: "bg-purple-100 text-purple-700",
   personal_visit: "bg-cyan-100 text-cyan-700",
   other: "bg-gray-100 text-gray-600",
 };
@@ -209,7 +209,7 @@ export function GafAdminOutreach() {
     <div className="p-4 lg:p-8 space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl lg:text-3xl font-bold text-[#1A237E]">
+        <h1 className="text-2xl lg:text-3xl font-bold text-[#4A148C]">
           Outreach Activities
         </h1>
         <p className="text-sm text-gray-500 mt-1">
@@ -222,7 +222,7 @@ export function GafAdminOutreach() {
         <div className="grid grid-cols-3 gap-4">
           <Card className="border-0 shadow-sm">
             <CardContent className="p-4 text-center">
-              <div className="text-2xl font-bold text-[#1A237E]">
+              <div className="text-2xl font-bold text-[#4A148C]">
                 {data.summary.totalActivities}
               </div>
               <div className="text-xs text-gray-500">Total Activities</div>
@@ -255,7 +255,7 @@ export function GafAdminOutreach() {
             onClick={() => setFilterType("")}
             className={cn(
               "px-3 py-1.5 rounded-full text-xs font-medium transition-colors border",
-              !filterType ? "bg-[#1A237E] text-white border-[#1A237E]" : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
+              !filterType ? "bg-[#4A148C] text-white border-[#4A148C]" : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
             )}
           >
             All Types
@@ -267,7 +267,7 @@ export function GafAdminOutreach() {
               onClick={() => setFilterType(key)}
               className={cn(
                 "px-3 py-1.5 rounded-full text-xs font-medium transition-colors border",
-                filterType === key ? "bg-[#1A237E] text-white border-[#1A237E]" : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
+                filterType === key ? "bg-[#4A148C] text-white border-[#4A148C]" : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
               )}
             >
               {label}
@@ -284,7 +284,7 @@ export function GafAdminOutreach() {
                 onClick={() => setFilterStatus(s)}
                 className={cn(
                   "px-3 py-1.5 rounded-full text-xs font-medium transition-colors border",
-                  filterStatus === s ? "bg-[#1A237E] text-white border-[#1A237E]" : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
+                  filterStatus === s ? "bg-[#4A148C] text-white border-[#4A148C]" : "bg-white text-gray-600 border-gray-200 hover:bg-gray-50"
                 )}
               >
                 {label}
@@ -297,8 +297,8 @@ export function GafAdminOutreach() {
       {/* Activity list */}
       <Card className="border-0 shadow-md">
         <CardHeader className="pb-3">
-          <CardTitle className="text-lg text-[#1A237E] flex items-center gap-2">
-            <MapPin className="size-5 text-blue-500" />
+          <CardTitle className="text-lg text-[#4A148C] flex items-center gap-2">
+            <MapPin className="size-5 text-purple-500" />
             All Activities
             {data && (
               <span className="text-sm font-normal text-gray-400">({data.total})</span>
@@ -308,7 +308,7 @@ export function GafAdminOutreach() {
         <CardContent>
           {loading && !data ? (
             <div className="py-16 flex flex-col items-center gap-3">
-              <Loader2 className="size-8 text-[#1A237E] animate-spin" />
+              <Loader2 className="size-8 text-[#4A148C] animate-spin" />
               <p className="text-sm text-gray-500">Loading...</p>
             </div>
           ) : error ? (
@@ -334,13 +334,13 @@ export function GafAdminOutreach() {
                       className="py-4"
                     >
                       <div className="flex items-start gap-4">
-                        <div className="shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-sm font-bold">
+                        <div className="shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center text-white text-sm font-bold">
                           {act.member.fullName.split(" ").map((n) => n[0]).join("").slice(0, 2)}
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="flex items-start justify-between gap-2">
                             <div className="min-w-0">
-                              <p className="font-semibold text-[#1A237E]">{act.title}</p>
+                              <p className="font-semibold text-[#4A148C]">{act.title}</p>
                               <div className="flex flex-wrap items-center gap-2 mt-1">
                                 <span className="text-xs font-medium text-gray-500">{act.member.fullName}</span>
                                 <span className={cn("px-2 py-0.5 rounded-full text-xs font-medium", typeColor)}>
@@ -356,7 +356,7 @@ export function GafAdminOutreach() {
                             </div>
                             <div className="shrink-0 flex items-center gap-2">
                               {act.contacts > 0 && (
-                                <span className="text-xs bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full">{act.contacts} reached</span>
+                                <span className="text-xs bg-purple-50 text-purple-600 px-2 py-0.5 rounded-full">{act.contacts} reached</span>
                               )}
                               {act.decisions > 0 && (
                                 <span className="text-xs bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded-full">{act.decisions} saved</span>

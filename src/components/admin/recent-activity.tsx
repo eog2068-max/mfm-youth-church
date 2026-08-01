@@ -31,17 +31,17 @@ const typeIconMap: Record<ActivityType, React.ElementType> = {
 };
 
 const typeColorMap: Record<ActivityType, string> = {
-  member: "bg-[#1A237E]/10 text-[#1A237E]",
+  member: "bg-[#4A148C]/10 text-[#4A148C]",
   sermon: "bg-[#2E7D32]/10 text-[#2E7D32]",
-  event: "bg-[#E65100]/10 text-[#E65100]",
+  event: "bg-[#C62828]/10 text-[#C62828]",
   prayer: "bg-[#6A1B9A]/10 text-[#6A1B9A]",
   testimony: "bg-[#AD1457]/10 text-[#AD1457]",
   announcement: "bg-[#00695C]/10 text-[#00695C]",
 };
 
 const statusColorMap: Record<ActivityStatus, string> = {
-  new: "bg-[#1A237E] text-white",
-  pending: "bg-[#E65100]/10 text-[#E65100] border-[#E65100]/20",
+  new: "bg-[#4A148C] text-white",
+  pending: "bg-[#C62828]/10 text-[#C62828] border-[#C62828]/20",
   approved: "bg-[#2E7D32]/10 text-[#2E7D32] border-[#2E7D32]/20",
   published: "bg-[#00695C]/10 text-[#00695C] border-[#00695C]/20",
 };
@@ -67,13 +67,13 @@ export function RecentActivity() {
   return (
     <Card className="border-[#EBF0FA] bg-white shadow-sm">
       <CardHeader className="flex flex-row items-center justify-between pb-2">
-        <CardTitle className="text-base font-semibold text-[#1A237E]">
+        <CardTitle className="text-base font-semibold text-[#4A148C]">
           Recent Activity
         </CardTitle>
         <Button
           variant="ghost"
           size="sm"
-          className="text-xs text-[#1A237E]/60 hover:text-[#1A237E]"
+          className="text-xs text-[#4A148C]/60 hover:text-[#4A148C]"
         >
           View All
           <ArrowRight className="ml-1 size-3.5" />
@@ -102,7 +102,7 @@ export function RecentActivity() {
                   {/* Content */}
                   <div className="min-w-0 flex-1">
                     <div className="flex items-start justify-between gap-2">
-                      <p className="text-sm font-medium leading-snug text-[#1A237E]">
+                      <p className="text-sm font-medium leading-snug text-[#4A148C]">
                         {activity.title}
                       </p>
                       <Badge
@@ -113,10 +113,10 @@ export function RecentActivity() {
                           activity.status.slice(1)}
                       </Badge>
                     </div>
-                    <p className="mt-1 text-xs leading-relaxed text-[#1A237E]/50">
+                    <p className="mt-1 text-xs leading-relaxed text-[#4A148C]/50">
                       {activity.description}
                     </p>
-                    <div className="mt-1.5 flex items-center gap-1 text-[10px] text-[#1A237E]/40">
+                    <div className="mt-1.5 flex items-center gap-1 text-[10px] text-[#4A148C]/40">
                       <Clock className="size-3" />
                       {getRelativeTime(activity.timestamp)}
                     </div>

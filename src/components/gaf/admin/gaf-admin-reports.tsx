@@ -119,7 +119,7 @@ const FUNNEL_COLORS: Record<string, string> = {
   attended: "#F59E0B",     // amber
   saved: "#10B981",        // emerald
   baptized: "#8B5CF6",     // purple
-  member: "#1A237E",       // navy (brand)
+  member: "#4A148C",       // navy (brand)
   lost_contact: "#9CA3AF", // gray
 };
 
@@ -164,7 +164,7 @@ export function GafAdminReports() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl lg:text-3xl font-bold text-[#1A237E]">
+          <h1 className="text-2xl lg:text-3xl font-bold text-[#4A148C]">
             Outreach Reports
           </h1>
           <p className="text-sm text-gray-500 mt-1">
@@ -185,7 +185,7 @@ export function GafAdminReports() {
       {/* Loading */}
       {loading && (
         <div className="py-20 flex flex-col items-center gap-3">
-          <Loader2 className="size-10 text-[#1A237E] animate-spin" />
+          <Loader2 className="size-10 text-[#4A148C] animate-spin" />
           <p className="text-gray-500 text-sm">Loading analytics...</p>
         </div>
       )}
@@ -196,7 +196,7 @@ export function GafAdminReports() {
           <CardContent className="py-10 flex flex-col items-center gap-3 text-center">
             <AlertTriangle className="size-10 text-red-500" />
             <p className="text-gray-700">{error}</p>
-            <Button onClick={() => fetchAnalytics(false)} className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl">
+            <Button onClick={() => fetchAnalytics(false)} className="bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl">
               Try again
             </Button>
           </CardContent>
@@ -216,7 +216,7 @@ export function GafAdminReports() {
               label="Total Members"
               value={data.totalMembers}
               icon={Users}
-              color="from-blue-500 to-blue-700"
+              color="from-purple-500 to-purple-700"
               sublabel={`${data.activeMembers} active`}
             />
             <KpiCard
@@ -240,7 +240,7 @@ export function GafAdminReports() {
                     <div>
                       <p className="text-xs text-gray-500">Quarter Growth</p>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className="text-2xl font-bold text-[#1A237E]">
+                        <span className="text-2xl font-bold text-[#4A148C]">
                           {data.quarterGrowthPercent > 0 ? "+" : ""}
                           {data.quarterGrowthPercent}%
                         </span>
@@ -287,8 +287,8 @@ export function GafAdminReports() {
             {/* Referral Funnel */}
             <Card className="border-0 shadow-md lg:col-span-3">
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg text-[#1A237E] flex items-center gap-2">
-                  <BarChart3 className="size-5 text-blue-500" />
+                <CardTitle className="text-lg text-[#4A148C] flex items-center gap-2">
+                  <BarChart3 className="size-5 text-purple-500" />
                   Referral Funnel
                 </CardTitle>
                 <p className="text-xs text-gray-400">
@@ -342,7 +342,7 @@ export function GafAdminReports() {
                         style={{ backgroundColor: FUNNEL_COLORS[item.status] || "#6B7280" }}
                       />
                       <span className="text-gray-600">
-                        {item.label}: <strong className="text-[#1A237E]">{item.count}</strong>
+                        {item.label}: <strong className="text-[#4A148C]">{item.count}</strong>
                         <span className="text-gray-400"> ({item.percentage}%)</span>
                       </span>
                     </div>
@@ -354,7 +354,7 @@ export function GafAdminReports() {
             {/* Channel Distribution */}
             <Card className="border-0 shadow-md lg:col-span-2">
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg text-[#1A237E] flex items-center gap-2">
+                <CardTitle className="text-lg text-[#4A148C] flex items-center gap-2">
                   <PieChartIcon className="size-5 text-purple-500" />
                   Channel Distribution
                 </CardTitle>
@@ -369,7 +369,7 @@ export function GafAdminReports() {
                       <div key={ch.channel}>
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-sm text-gray-700">{ch.label || ch.channel}</span>
-                          <span className="text-sm font-medium text-[#1A237E]">
+                          <span className="text-sm font-medium text-[#4A148C]">
                             {ch.count} ({ch.percentage}%)
                           </span>
                         </div>
@@ -405,7 +405,7 @@ export function GafAdminReports() {
           {/* ── Monthly Trend ── */}
           <Card className="border-0 shadow-md">
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg text-[#1A237E] flex items-center gap-2">
+              <CardTitle className="text-lg text-[#4A148C] flex items-center gap-2">
                 <TrendingUp className="size-5 text-emerald-500" />
                 Monthly Trend (Last 12 Months)
               </CardTitle>
@@ -464,9 +464,9 @@ export function GafAdminReports() {
                     type="monotone"
                     dataKey="newMembers"
                     name="New Members"
-                    stroke="#1A237E"
+                    stroke="#4A148C"
                     strokeWidth={2.5}
-                    dot={{ fill: "#1A237E", r: 4 }}
+                    dot={{ fill: "#4A148C", r: 4 }}
                     activeDot={{ r: 6 }}
                   />
                 </LineChart>
@@ -477,7 +477,7 @@ export function GafAdminReports() {
           {/* ── Top Performers Table ── */}
           <Card className="border-0 shadow-md">
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg text-[#1A237E] flex items-center gap-2">
+              <CardTitle className="text-lg text-[#4A148C] flex items-center gap-2">
                 <Award className="size-5 text-amber-500" />
                 Top Performers
               </CardTitle>
@@ -514,20 +514,20 @@ export function GafAdminReports() {
                                 "inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold",
                                 idx === 0 && "bg-amber-100 text-amber-700",
                                 idx === 1 && "bg-gray-100 text-gray-600",
-                                idx === 2 && "bg-orange-100 text-orange-700",
-                                idx > 2 && "bg-blue-50 text-blue-600"
+                                idx === 2 && "bg-red-100 text-red-700",
+                                idx > 2 && "bg-purple-50 text-purple-600"
                               )}
                             >
                               {idx + 1}
                             </span>
                           </td>
                           <td className="py-3">
-                            <p className="font-medium text-[#1A237E]">{p.fullName}</p>
+                            <p className="font-medium text-[#4A148C]">{p.fullName}</p>
                             <p className="text-xs text-gray-400 font-mono">{p.referralCode}</p>
                           </td>
                           <td className="py-3 text-center font-medium">{p.totalReferrals}</td>
                           <td className="py-3 text-center">
-                            <span className="font-bold text-[#1A237E]">{Math.round(p.totalScore)}</span>
+                            <span className="font-bold text-[#4A148C]">{Math.round(p.totalScore)}</span>
                           </td>
                           <td className="py-3 text-center">
                             <span
@@ -593,7 +593,7 @@ function KpiCard({
           >
             <Icon className="size-5" />
           </div>
-          <div className="text-2xl font-bold text-[#1A237E]">{value}</div>
+          <div className="text-2xl font-bold text-[#4A148C]">{value}</div>
           <div className="text-xs text-gray-500 mt-1">{label}</div>
           {sublabel && (
             <div className="text-xs text-gray-400 mt-0.5">{sublabel}</div>

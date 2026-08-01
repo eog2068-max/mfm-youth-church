@@ -72,7 +72,7 @@ export function JoinMinistryMain() {
                   <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-4">
                     <CheckCircle2 className="size-8 text-[#2E7D32]" />
                   </div>
-                  <h3 className="text-xl font-bold text-[#1A237E] mb-2">Application Submitted!</h3>
+                  <h3 className="text-xl font-bold text-[#4A148C] mb-2">Application Submitted!</h3>
                   <p className="text-sm text-gray-500 mb-1">
                     Thank you for your interest in the <span className="font-semibold text-gray-700">{selectedMinistry.name}</span>.
                   </p>
@@ -86,7 +86,7 @@ export function JoinMinistryMain() {
                     <Button onClick={() => {
                       setSubmitted(false);
                       setFormData({ fullName: "", email: "", phone: "", message: "" });
-                    }} className="bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl">
+                    }} className="bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl">
                       Join Another Ministry
                     </Button>
                   </div>
@@ -119,7 +119,7 @@ export function JoinMinistryMain() {
                         onChange={(e) => setFormData((p) => ({ ...p, fullName: e.target.value }))}
                         placeholder="Your full name"
                         required
-                        className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+                        className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
                       />
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -133,7 +133,7 @@ export function JoinMinistryMain() {
                           value={formData.email}
                           onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
                           placeholder="your@email.com"
-                          className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+                          className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
                         />
                       </div>
                       <div>
@@ -147,7 +147,7 @@ export function JoinMinistryMain() {
                           onChange={(e) => setFormData((p) => ({ ...p, phone: e.target.value }))}
                           placeholder="+234 800 000 0000"
                           required
-                          className="rounded-xl border-gray-200 h-11 focus:border-[#1A237E]/30"
+                          className="rounded-xl border-gray-200 h-11 focus:border-[#4A148C]/30"
                         />
                       </div>
                     </div>
@@ -160,7 +160,7 @@ export function JoinMinistryMain() {
                         onChange={(e) => setFormData((p) => ({ ...p, message: e.target.value }))}
                         placeholder="Share any relevant experience, skills, or your motivation for joining this ministry..."
                         rows={3}
-                        className="rounded-xl border-gray-200 focus:border-[#1A237E]/30 resize-none"
+                        className="rounded-xl border-gray-200 focus:border-[#4A148C]/30 resize-none"
                       />
                     </div>
                     <div className="flex items-center gap-3">
@@ -201,7 +201,7 @@ export function JoinMinistryMain() {
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <h3 className="text-base font-bold text-gray-800 group-hover:text-[#1A237E] transition-colors">
+                        <h3 className="text-base font-bold text-gray-800 group-hover:text-[#4A148C] transition-colors">
                           {ministry.name}
                         </h3>
                         <Badge className="bg-green-50 text-green-700 border-0 text-[9px] px-1.5 py-0">Open</Badge>
@@ -244,7 +244,7 @@ export function JoinMinistryMain() {
 
                   <Button
                     onClick={() => handleJoin(ministry)}
-                    className="w-full bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-xl h-10 text-sm font-semibold"
+                    className="w-full bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-xl h-10 text-sm font-semibold"
                   >
                     Join This Ministry
                     <ArrowRight className="size-4 ml-1" />

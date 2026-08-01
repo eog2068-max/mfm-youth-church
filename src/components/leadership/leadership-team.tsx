@@ -20,7 +20,7 @@ const associatePastors: Leader[] = [
     role: "Associate Pastor",
     initials: "AP",
     bio: "Passionately committed to discipleship and spiritual growth, [Name] oversees the teaching ministry and coordinates midweek programs that equip believers for victorious Christian living.",
-    accentColor: "bg-[#1A237E]/10 text-[#1A237E]",
+    accentColor: "bg-[#4A148C]/10 text-[#4A148C]",
   },
   {
     name: "[Name]",
@@ -44,7 +44,7 @@ const ministers: Leader[] = [
     role: "Minister / Worship Leader",
     initials: "WL",
     bio: "Leads the worship team with a spirit of excellence, creating an atmosphere where the presence of God is tangible and hearts are drawn into intimate communion with the Father.",
-    accentColor: "bg-[#1A237E]/10 text-[#1A237E]",
+    accentColor: "bg-[#4A148C]/10 text-[#4A148C]",
   },
   {
     name: "[Name]",
@@ -65,7 +65,7 @@ const ministers: Leader[] = [
     role: "Minister / Choir Director",
     initials: "CD",
     bio: "A gifted musician and director, [Name] leads the choir in ministrations that bless the congregation and create an atmosphere of praise and worship during services.",
-    accentColor: "bg-[#1A237E]/10 text-[#1A237E]",
+    accentColor: "bg-[#4A148C]/10 text-[#4A148C]",
   },
   {
     name: "[Name]",
@@ -90,12 +90,12 @@ function LeaderCard({ leader, index }: { leader: Leader; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#1A237E]/10 hover:shadow-xl hover:shadow-[#1A237E]/5 transition-all duration-300"
+      className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#4A148C]/10 hover:shadow-xl hover:shadow-[#4A148C]/5 transition-all duration-300"
     >
       {/* Photo area */}
-      <div className="relative h-48 bg-gradient-to-br from-[#F0F4FF] to-[#E8EDF8] flex items-center justify-center">
+      <div className="relative h-48 bg-gradient-to-br from-[#F3E5F5] to-[#E1BEE7] flex items-center justify-center">
         <div className="w-20 h-20 rounded-full bg-white/80 shadow-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          <span className="text-xl font-bold text-[#1A237E]">{leader.initials}</span>
+          <span className="text-xl font-bold text-[#4A148C]">{leader.initials}</span>
         </div>
         {/* Role badge */}
         <div className="absolute bottom-3 left-3">
@@ -107,7 +107,7 @@ function LeaderCard({ leader, index }: { leader: Leader; index: number }) {
 
       {/* Info */}
       <div className="p-5">
-        <h3 className="text-lg font-bold text-[#1A237E] mb-2">{leader.name}</h3>
+        <h3 className="text-lg font-bold text-[#4A148C] mb-2">{leader.name}</h3>
         <p className="text-gray-600 text-sm leading-relaxed">{leader.bio}</p>
       </div>
     </motion.div>
@@ -118,11 +118,11 @@ export function LeadershipTeam() {
   return (
     <>
       {/* Associate Pastors */}
-      <SectionWrapper className="py-16 md:py-24 bg-[#F5F7FF]">
+      <SectionWrapper className="py-16 md:py-24 bg-[#F3E5F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionTitle
             title="Associate Pastors"
-            subtitle="Our associate pastors work alongside the Senior Pastor to fulfill the vision and ensure every member of the Rehoboth family is well-shepherded."
+            subtitle="Our associate pastors work alongside the Senior Pastor to fulfill the vision and ensure every member of the Youth family is well-shepherded."
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
             {associatePastors.map((pastor, i) => (

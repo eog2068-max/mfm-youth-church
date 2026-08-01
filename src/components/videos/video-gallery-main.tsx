@@ -54,7 +54,7 @@ export function VideoGalleryMain() {
         <SectionWrapper>
           <SectionTitle
             title="Video Gallery"
-            subtitle="Watch powerful sermons, inspiring messages, and complete service recordings from Rehoboth Assembly Parish"
+            subtitle="Watch powerful sermons, inspiring messages, and complete service recordings from Youth Church"
           />
         </SectionWrapper>
 
@@ -69,10 +69,10 @@ export function VideoGalleryMain() {
         {!selectedSeries && !showAllVideos && (
           <SectionWrapper>
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl md:text-2xl font-bold text-[#1A237E]">Sermon Series</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-[#4A148C]">Sermon Series</h2>
               <button
                 onClick={() => setShowAllVideos(true)}
-                className="text-sm text-[#1A237E] hover:text-[#0D1557] font-medium flex items-center gap-1 transition-colors"
+                className="text-sm text-[#4A148C] hover:text-[#1A0033] font-medium flex items-center gap-1 transition-colors"
               >
                 View All Videos
                 <ArrowRight className="size-4" />
@@ -97,12 +97,12 @@ export function VideoGalleryMain() {
           <div className="mb-8">
             <button
               onClick={() => setSelectedSeries(null)}
-              className="text-sm text-[#1A237E] hover:text-[#0D1557] font-medium flex items-center gap-1.5 transition-colors mb-2"
+              className="text-sm text-[#4A148C] hover:text-[#1A0033] font-medium flex items-center gap-1.5 transition-colors mb-2"
             >
               <ArrowLeft className="size-4 rotate-180" />
               Back to Series
             </button>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1A237E]">{selectedSeries.name}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#4A148C]">{selectedSeries.name}</h2>
             <p className="text-sm text-gray-500 mt-1">{selectedSeries.description}</p>
             <p className="text-xs text-gray-400 mt-1">{selectedSeries.videoCount} videos</p>
           </div>
@@ -113,7 +113,7 @@ export function VideoGalleryMain() {
           <div className="mb-8">
             <button
               onClick={() => setShowAllVideos(false)}
-              className="text-sm text-[#1A237E] hover:text-[#0D1557] font-medium flex items-center gap-1.5 transition-colors mb-2"
+              className="text-sm text-[#4A148C] hover:text-[#1A0033] font-medium flex items-center gap-1.5 transition-colors mb-2"
             >
               <ArrowLeft className="size-4 rotate-180" />
               Back to Featured
@@ -130,7 +130,7 @@ export function VideoGalleryMain() {
                 placeholder="Search videos..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-10 rounded-xl border-gray-200 bg-white h-10 focus:border-[#1A237E]/30"
+                className="pl-10 rounded-xl border-gray-200 bg-white h-10 focus:border-[#4A148C]/30"
               />
             </div>
 
@@ -141,7 +141,7 @@ export function VideoGalleryMain() {
                   onClick={() => setCategory(cat)}
                   className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                     category === cat
-                      ? "bg-[#1A237E] text-white"
+                      ? "bg-[#4A148C] text-white"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}
                 >
@@ -154,7 +154,7 @@ export function VideoGalleryMain() {
 
         {/* Results count */}
         <p className="text-sm text-gray-500 mb-6">
-          <span className="font-semibold text-[#1A237E]">{filteredVideos.length}</span> video{filteredVideos.length !== 1 ? "s" : ""}
+          <span className="font-semibold text-[#4A148C]">{filteredVideos.length}</span> video{filteredVideos.length !== 1 ? "s" : ""}
           {selectedSeries && (
             <span> in <span className="font-medium text-gray-700">{selectedSeries.name}</span></span>
           )}

@@ -141,12 +141,12 @@ export function SermonPlayerModal({
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 shrink-0">
           <div className="flex items-center gap-2 min-w-0">
-            <div className="w-9 h-9 rounded-lg bg-[#F0F4FF] flex items-center justify-center shrink-0">
-              <Headphones className="size-4.5 text-[#1A237E]" />
+            <div className="w-9 h-9 rounded-lg bg-[#F3E5F5] flex items-center justify-center shrink-0">
+              <Headphones className="size-4.5 text-[#4A148C]" />
             </div>
             <div className="min-w-0">
               <p className="text-xs text-gray-400 font-medium">Now Playing</p>
-              <p className="text-sm font-bold text-[#1A237E] truncate">{current.title}</p>
+              <p className="text-sm font-bold text-[#4A148C] truncate">{current.title}</p>
             </div>
           </div>
           <button
@@ -197,9 +197,9 @@ export function SermonPlayerModal({
                 {current.scriptures.map((scripture) => (
                   <span
                     key={scripture}
-                    className="inline-flex items-center text-xs font-medium text-[#1A237E] bg-[#F0F4FF] px-2.5 py-1 rounded-lg"
+                    className="inline-flex items-center text-xs font-medium text-[#4A148C] bg-[#F3E5F5] px-2.5 py-1 rounded-lg"
                   >
-                    <BookOpen className="size-3 mr-1.5 text-[#1A237E]/60" />
+                    <BookOpen className="size-3 mr-1.5 text-[#4A148C]/60" />
                     {scripture}
                   </span>
                 ))}
@@ -209,7 +209,7 @@ export function SermonPlayerModal({
             {/* Format badges */}
             <div className="flex flex-wrap gap-2 mb-2">
               {current.hasAudio && (
-                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#1A237E] bg-[#F0F4FF] px-3 py-1.5 rounded-lg">
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-[#4A148C] bg-[#F3E5F5] px-3 py-1.5 rounded-lg">
                   <Headphones className="size-3.5" />
                   Audio Available
                 </span>
@@ -261,21 +261,21 @@ export function SermonPlayerModal({
                 className="overflow-hidden"
               >
                 <div className="px-5 md:px-8 pb-6">
-                  <div className="bg-[#F8FAFF] border border-[#1A237E]/8 rounded-xl p-5 md:p-6">
+                  <div className="bg-[#F8FAFF] border border-[#4A148C]/8 rounded-xl p-5 md:p-6">
                     <div className="flex items-center gap-2 mb-4">
-                      <FileText className="size-4 text-[#1A237E]" />
-                      <h3 className="text-sm font-bold text-[#1A237E]">Sermon Notes</h3>
+                      <FileText className="size-4 text-[#4A148C]" />
+                      <h3 className="text-sm font-bold text-[#4A148C]">Sermon Notes</h3>
                     </div>
                     <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
                       {current.notes}
                     </div>
-                    <div className="flex items-center gap-2 mt-4 pt-4 border-t border-[#1A237E]/8">
-                      <button className="inline-flex items-center gap-1.5 text-xs font-medium text-[#1A237E] hover:text-[#0D1557] transition-colors">
+                    <div className="flex items-center gap-2 mt-4 pt-4 border-t border-[#4A148C]/8">
+                      <button className="inline-flex items-center gap-1.5 text-xs font-medium text-[#4A148C] hover:text-[#1A0033] transition-colors">
                         <Download className="size-3.5" />
                         Download Notes
                       </button>
                       <span className="text-gray-200">|</span>
-                      <button className="inline-flex items-center gap-1.5 text-xs font-medium text-[#1A237E] hover:text-[#0D1557] transition-colors">
+                      <button className="inline-flex items-center gap-1.5 text-xs font-medium text-[#4A148C] hover:text-[#1A0033] transition-colors">
                         <Share2 className="size-3.5" />
                         Share
                       </button>
@@ -306,18 +306,18 @@ export function SermonPlayerModal({
                       }}
                       className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-colors ${
                         isCurrent
-                          ? "bg-[#F0F4FF] border border-[#1A237E]/10"
+                          ? "bg-[#F3E5F5] border border-[#4A148C]/10"
                           : "hover:bg-gray-50"
                       }`}
                     >
                       <span className={`text-xs font-bold w-5 text-center shrink-0 ${
-                        isCurrent ? "text-[#1A237E]" : "text-gray-400"
+                        isCurrent ? "text-[#4A148C]" : "text-gray-400"
                       }`}>
                         {i + 1}
                       </span>
                       <div className="flex-1 min-w-0">
                         <p className={`text-sm font-semibold truncate ${
-                          isCurrent ? "text-[#1A237E]" : "text-gray-700"
+                          isCurrent ? "text-[#4A148C]" : "text-gray-700"
                         }`}>
                           {sermon.title}
                         </p>
@@ -326,7 +326,7 @@ export function SermonPlayerModal({
                         </p>
                       </div>
                       {isCurrent && (
-                        <span className="text-[10px] font-semibold text-[#1A237E] bg-[#1A237E]/10 px-2 py-0.5 rounded shrink-0">
+                        <span className="text-[10px] font-semibold text-[#4A148C] bg-[#4A148C]/10 px-2 py-0.5 rounded shrink-0">
                           PLAYING
                         </span>
                       )}
@@ -346,11 +346,11 @@ export function SermonPlayerModal({
             onClick={handleProgressClick}
           >
             <div
-              className="absolute left-0 top-0 h-full bg-[#1A237E] rounded-full transition-all duration-300"
+              className="absolute left-0 top-0 h-full bg-[#4A148C] rounded-full transition-all duration-300"
               style={{ width: `${progressPercent}%` }}
             />
             <div
-              className="absolute top-1/2 -translate-y-1/2 size-3.5 bg-[#1A237E] rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute top-1/2 -translate-y-1/2 size-3.5 bg-[#4A148C] rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
               style={{ left: `calc(${progressPercent}% - 7px)` }}
             />
           </div>
@@ -375,13 +375,13 @@ export function SermonPlayerModal({
               <button
                 onClick={goPrev}
                 disabled={!hasPrev}
-                className="p-2 text-gray-400 hover:text-[#1A237E] disabled:text-gray-200 disabled:cursor-not-allowed transition-colors"
+                className="p-2 text-gray-400 hover:text-[#4A148C] disabled:text-gray-200 disabled:cursor-not-allowed transition-colors"
               >
                 <SkipBack className="size-5" />
               </button>
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="w-12 h-12 rounded-full bg-[#1A237E] text-white flex items-center justify-center hover:bg-[#0D1557] transition-colors shadow-lg shadow-[#1A237E]/20"
+                className="w-12 h-12 rounded-full bg-[#4A148C] text-white flex items-center justify-center hover:bg-[#1A0033] transition-colors shadow-lg shadow-[#4A148C]/20"
               >
                 {isPlaying ? (
                   <Pause className="size-5" />
@@ -392,7 +392,7 @@ export function SermonPlayerModal({
               <button
                 onClick={goNext}
                 disabled={!hasNext}
-                className="p-2 text-gray-400 hover:text-[#1A237E] disabled:text-gray-200 disabled:cursor-not-allowed transition-colors"
+                className="p-2 text-gray-400 hover:text-[#4A148C] disabled:text-gray-200 disabled:cursor-not-allowed transition-colors"
               >
                 <SkipForward className="size-5" />
               </button>
@@ -402,7 +402,7 @@ export function SermonPlayerModal({
             <div className="flex items-center gap-2 flex-1 justify-end">
               <button
                 onClick={() => setIsMuted(!isMuted)}
-                className="p-1.5 text-gray-400 hover:text-[#1A237E] transition-colors hidden sm:block"
+                className="p-1.5 text-gray-400 hover:text-[#4A148C] transition-colors hidden sm:block"
               >
                 {isMuted ? (
                   <VolumeX className="size-4" />
@@ -412,7 +412,7 @@ export function SermonPlayerModal({
               </button>
               <div className="hidden sm:flex items-center w-20 h-1.5 bg-gray-100 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-[#1A237E] rounded-full transition-all"
+                  className="h-full bg-[#4A148C] rounded-full transition-all"
                   style={{ width: `${isMuted ? 0 : volume}%` }}
                 />
               </div>

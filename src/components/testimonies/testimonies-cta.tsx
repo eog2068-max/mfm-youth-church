@@ -7,10 +7,10 @@ import { Button } from "@/components/ui/button";
 export function TestimoniesCTA() {
   return (
     <section className="relative py-16 md:py-20 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1A0033] via-[#4A148C] to-[#6A1B9A]" />
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#D32F2F] rounded-full blur-[128px] -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-blue-400/20 rounded-full blur-[128px] translate-y-1/2" />
+        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-purple-400/20 rounded-full blur-[128px] translate-y-1/2" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -34,12 +34,12 @@ export function TestimoniesCTA() {
               &ldquo;And they overcame him by the blood of the Lamb and by the
               word of their testimony.&rdquo;
             </p>
-            <p className="text-sm text-blue-200/70 font-medium">
+            <p className="text-sm text-purple-200/70 font-medium">
               — Revelation 12:11 (NKJV)
             </p>
           </div>
 
-          <p className="text-base md:text-lg text-blue-200/80 max-w-2xl mx-auto leading-relaxed mb-8">
+          <p className="text-base md:text-lg text-purple-200/80 max-w-2xl mx-auto leading-relaxed mb-8">
             Your story of God&apos;s goodness is a weapon of warfare. When you
             share what God has done, you encourage the faith of others and
             glorify His name. Do not keep your testimony to yourself — someone

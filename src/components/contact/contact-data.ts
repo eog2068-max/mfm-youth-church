@@ -1,35 +1,35 @@
 export const churchInfo = {
-  name: "The Redeemed Christian Church of God, Rehoboth Assembly Parish",
-  shortName: "RCCG Rehoboth Assembly",
-  address: "1 Rehoboth Close, off Utako Market Road, Utako, Abuja FCT, Nigeria",
-  mapsQuery: "1+Rehoboth+Close+Utako+Abuja+Nigeria",
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=1+Rehoboth+Close+Utako+Abuja+Nigeria",
+  name: "Mountain of Fire and Miracles Ministries, Youth Church",
+  shortName: "MFM Youth Church",
+  address: "[Your Church Address]",
+  mapsQuery: "[Your+Church+Location]",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=[Your+Church+Location]",
   phone: "+234 812 345 6789",
   phoneRaw: "+2348123456789",
-  email: "info@rccgrehobothutako.org",
-  website: "www.rccgrehobothutako.org",
-  websiteUrl: "https://www.rccgrehobothutako.org",
+  email: "info@mfmyouthchurch.org",
+  website: "www.mfmyouthchurch.org",
+  websiteUrl: "https://www.mfmyouthchurch.org",
 };
 
 export const socialLinks = [
   {
     name: "Facebook",
-    url: "https://facebook.com/rccgrehobothutako",
+    url: "https://facebook.com/mfmyouthchurch",
     icon: "facebook" as const,
   },
   {
     name: "Instagram",
-    url: "https://instagram.com/rccgrehobothutako",
+    url: "https://instagram.com/mfmyouthchurch",
     icon: "instagram" as const,
   },
   {
     name: "YouTube",
-    url: "https://youtube.com/@rccgrehobothutako",
+    url: "https://youtube.com/@mfmyouthchurch",
     icon: "youtube" as const,
   },
   {
     name: "X (Twitter)",
-    url: "https://x.com/rccgrehobothutako",
+    url: "https://x.com/mfmyouthchurch",
     icon: "twitter" as const,
   },
 ];

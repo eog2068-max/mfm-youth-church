@@ -46,7 +46,7 @@ export default function LiveTogetherPage() {
     <FeatureLandingPage feature={feature} onEnter={() => setEntered(true)}>
       {/* Reaction types preview */}
       <div className="bg-gray-50 rounded-xl p-4 border border-gray-100 mb-2">
-        <p className="text-xs font-semibold text-[#1A237E] mb-3">
+        <p className="text-xs font-semibold text-[#4A148C] mb-3">
           React in Real-Time During Service:
         </p>
         <div className="flex flex-wrap gap-3">

@@ -60,8 +60,8 @@ const departments: Department[] = [
       "Annual Sunday School retreat",
     ],
     meetingDay: "Sundays, 7:00 AM",
-    accentColor: "text-[#1A237E]",
-    bgColor: "bg-[#1A237E]/10",
+    accentColor: "text-[#4A148C]",
+    bgColor: "bg-[#4A148C]/10",
   },
   {
     name: "Ushering",
@@ -105,8 +105,8 @@ const departments: Department[] = [
       "Parent-child dedication services",
     ],
     meetingDay: "Sundays, 9:00 AM",
-    accentColor: "text-[#1A237E]",
-    bgColor: "bg-[#1A237E]/10",
+    accentColor: "text-[#4A148C]",
+    bgColor: "bg-[#4A148C]/10",
   },
   {
     name: "Youth & Teens Ministry",
@@ -150,8 +150,8 @@ const departments: Department[] = [
       "Community development projects",
     ],
     meetingDay: "Third Saturdays, 11:00 AM",
-    accentColor: "text-[#1A237E]",
-    bgColor: "bg-[#1A237E]/10",
+    accentColor: "text-[#4A148C]",
+    bgColor: "bg-[#4A148C]/10",
   },
   {
     name: "Technical & Media",
@@ -195,17 +195,17 @@ const departments: Department[] = [
       "Creative workshops and talent development",
     ],
     meetingDay: "Saturdays, 3:00 PM",
-    accentColor: "text-[#1A237E]",
-    bgColor: "bg-[#1A237E]/10",
+    accentColor: "text-[#4A148C]",
+    bgColor: "bg-[#4A148C]/10",
   },
   {
     name: "Mission & Missions",
     icon: Globe,
     description:
-      "The Mission and Missions Department coordinates the church's involvement in local and international missions. This includes supporting RCCG mission fields, organising short-term mission trips, collecting mission offerings, and raising awareness about the global mandate to reach unreached people groups with the Gospel of Jesus Christ.",
+      "The Mission and Missions Department coordinates the church's involvement in local and international missions. This includes supporting MFM mission fields, organising short-term mission trips, collecting mission offerings, and raising awareness about the global mandate to reach unreached people groups with the Gospel of Jesus Christ.",
     activities: [
       "Monthly mission awareness and prayer meetings",
-      "Support for RCCG mission fields and missionaries",
+      "Support for MFM mission fields and missionaries",
       "Short-term mission trip coordination",
       "Mission offering collection and remittance",
     ],
@@ -221,7 +221,7 @@ export function DepartmentsList() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Explore Our Departments"
-          subtitle="Rehoboth Assembly has a place for everyone. Browse our departments below and find where your gifts, passion, and calling align with God's purpose for your life."
+          subtitle="Youth Assembly has a place for everyone. Browse our departments below and find where your gifts, passion, and calling align with God's purpose for your life."
         />
 
         <div className="space-y-6 mt-12">
@@ -232,7 +232,7 @@ export function DepartmentsList() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
               transition={{ duration: 0.5, delay: index * 0.03 }}
-              className="group bg-white rounded-2xl border border-gray-100 hover:border-[#1A237E]/10 hover:shadow-xl hover:shadow-[#1A237E]/5 transition-all duration-300 overflow-hidden"
+              className="group bg-white rounded-2xl border border-gray-100 hover:border-[#4A148C]/10 hover:shadow-xl hover:shadow-[#4A148C]/5 transition-all duration-300 overflow-hidden"
             >
               <div className="p-6 md:p-8">
                 <div className="flex flex-col md:flex-row md:items-start gap-5">
@@ -246,9 +246,9 @@ export function DepartmentsList() {
                   {/* Content */}
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                      <h3 className="text-xl font-bold text-[#1A237E]">{dept.name}</h3>
+                      <h3 className="text-xl font-bold text-[#4A148C]">{dept.name}</h3>
                       {dept.meetingDay && (
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#F5F7FF] text-[#1A237E] whitespace-nowrap">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#F3E5F5] text-[#4A148C] whitespace-nowrap">
                           {dept.meetingDay}
                         </span>
                       )}

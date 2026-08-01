@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function SocialPromise() {
   return (
-    <section className="relative bg-gradient-to-b from-[#0D1557] via-[#1A237E] to-[#0D1557] py-20 md:py-28 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-[#1A0033] via-[#4A148C] to-[#1A0033] py-20 md:py-28 overflow-hidden">
       {/* Subtle decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -13,7 +13,7 @@ export function SocialPromise() {
           backgroundSize: "80px 80px"
         }} />
       </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-400/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-400/5 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
         <motion.p

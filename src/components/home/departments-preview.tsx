@@ -7,7 +7,7 @@ const departments = [
     name: "Choir (Music)",
     description: "Leading the congregation in heartfelt worship and praise through music and songs.",
     icon: Music,
-    color: "text-[#1A237E]",
+    color: "text-[#4A148C]",
     bg: "bg-[#EBF0FA]",
   },
   {
@@ -28,7 +28,7 @@ const departments = [
     name: "Youth Church",
     description: "Empowering young people to live purpose-driven lives and impact their generation for Christ.",
     icon: Sparkles,
-    color: "text-[#E65100]",
+    color: "text-[#C62828]",
     bg: "bg-[#FFF3E0]",
   },
   {
@@ -49,7 +49,7 @@ const departments = [
 
 export function DepartmentsPreview() {
   return (
-    <SectionWrapper className="bg-[#F0F4FF] py-16 md:py-24">
+    <SectionWrapper className="bg-[#F3E5F5] py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionTitle title="Our Departments" subtitle="Serving God together through diverse ministries" />
 
@@ -62,12 +62,12 @@ export function DepartmentsPreview() {
               <div className={`w-12 h-12 ${dept.bg} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                 <dept.icon className={`size-6 ${dept.color}`} />
               </div>
-              <h3 className="text-lg font-bold text-[#1A237E] mb-2">{dept.name}</h3>
+              <h3 className="text-lg font-bold text-[#4A148C] mb-2">{dept.name}</h3>
               <p className="text-sm text-gray-600 leading-relaxed">{dept.description}</p>
               {dept.name === "Evangelism" && (
                 <Link
                   href="/go-a-fishing"
-                  className="inline-flex items-center gap-1 mt-2 text-[#3949AB] text-xs font-semibold hover:gap-2 transition-all"
+                  className="inline-flex items-center gap-1 mt-2 text-[#7B1FA2] text-xs font-semibold hover:gap-2 transition-all"
                 >
                   Go-A-Fishing →
                 </Link>

@@ -73,7 +73,7 @@ export function VideoPlayerModal({ videos, initialVideo, onClose }: VideoPlayerM
           className="relative z-10 w-full max-w-6xl bg-[#0A0A1A] rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[95vh]"
         >
           {/* Video Player Area */}
-          <div className="relative aspect-video bg-[#0D1557] shrink-0">
+          <div className="relative aspect-video bg-[#1A0033] shrink-0">
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center">
                 <Play className="size-10 text-white/30 ml-1" />
@@ -201,7 +201,7 @@ export function VideoPlayerModal({ videos, initialVideo, onClose }: VideoPlayerM
                           }`}
                         >
                           {/* Thumbnail */}
-                          <div className="relative w-28 h-16 rounded-lg bg-gradient-to-br from-[#1A237E] to-[#283593] shrink-0 flex items-center justify-center">
+                          <div className="relative w-28 h-16 rounded-lg bg-gradient-to-br from-[#4A148C] to-[#6A1B9A] shrink-0 flex items-center justify-center">
                             <Play className="size-4 text-white/30" />
                             <span className="absolute bottom-1 right-1 bg-black/70 text-white text-[9px] px-1 py-0.5 rounded font-medium">
                               {v.duration}

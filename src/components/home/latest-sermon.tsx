@@ -23,7 +23,7 @@ export function LatestSermon() {
         <div className="bg-white rounded-2xl shadow-lg shadow-black/5 overflow-hidden border border-gray-100">
           <div className="flex flex-col md:flex-row">
             {/* Thumbnail placeholder */}
-            <div className="relative md:w-80 aspect-video md:aspect-auto bg-gradient-to-br from-[#1A237E] to-[#3949AB] flex items-center justify-center shrink-0">
+            <div className="relative md:w-80 aspect-video md:aspect-auto bg-gradient-to-br from-[#4A148C] to-[#7B1FA2] flex items-center justify-center shrink-0">
               <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center cursor-pointer hover:bg-white/30 transition-colors">
                 <Play className="size-7 text-white fill-white ml-1" />
               </div>
@@ -34,7 +34,7 @@ export function LatestSermon() {
 
             {/* Content */}
             <div className="p-6 md:p-8 flex flex-col justify-center">
-              <h3 className="text-xl md:text-2xl font-bold text-[#1A237E] mb-2">
+              <h3 className="text-xl md:text-2xl font-bold text-[#4A148C] mb-2">
                 The Power of Faith
               </h3>
               <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-4">
@@ -64,7 +64,7 @@ export function LatestSermon() {
                 </Button>
               </div>
               <div className="mt-3">
-                <Link href="/sermons" className="text-xs text-gray-400 hover:text-[#1A237E] transition-colors">
+                <Link href="/sermons" className="text-xs text-gray-400 hover:text-[#4A148C] transition-colors">
                   Browse Sermon Library →
                 </Link>
               </div>

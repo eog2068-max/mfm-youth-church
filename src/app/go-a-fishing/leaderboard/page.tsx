@@ -6,7 +6,7 @@ import { getCurrentMemberId } from "@/lib/gaf/auth";
 export const metadata: Metadata = {
   title: "Leaderboard | Go-A-Fishing",
   description:
-    "See the top gospel-laborers at RCCG Rehoboth Assembly. Quarterly standings, year-to-date, and all-time rankings.",
+    "See the top gospel-laborers at MFM Youth Church. Quarterly standings, year-to-date, and all-time rankings.",
 };
 
 export default async function GafLeaderboardPage() {

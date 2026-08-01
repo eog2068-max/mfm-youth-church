@@ -50,13 +50,13 @@ export function TestimonyCard({
     : testimony.name;
 
   const avatarBgColors = [
-    "bg-[#1A237E]",
+    "bg-[#4A148C]",
     "bg-[#D32F2F]",
     "bg-[#2E7D32]",
-    "bg-[#E65100]",
+    "bg-[#C62828]",
     "bg-[#4A148C]",
     "bg-[#006064]",
-    "bg-[#BF360C]",
+    "bg-[#B71C1C]",
     "bg-[#1B5E20]",
   ];
 
@@ -74,10 +74,10 @@ export function TestimonyCard({
         transition={{ duration: 0.6, delay: index * 0.1 }}
         className="relative rounded-2xl overflow-hidden"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#283593]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A0033] via-[#4A148C] to-[#6A1B9A]" />
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-72 h-72 bg-[#D32F2F] rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3" />
-          <div className="absolute bottom-0 left-0 w-56 h-56 bg-blue-400/30 rounded-full blur-[100px] translate-y-1/2" />
+          <div className="absolute bottom-0 left-0 w-56 h-56 bg-purple-400/30 rounded-full blur-[100px] translate-y-1/2" />
         </div>
 
         <div className="relative z-10 p-6 md:p-10">
@@ -87,7 +87,7 @@ export function TestimonyCard({
             >
               {categoryLabels[testimony.category]}
             </Badge>
-            <span className="text-[11px] text-blue-200/60">
+            <span className="text-[11px] text-purple-200/60">
               Featured Testimony
             </span>
           </div>
@@ -104,7 +104,7 @@ export function TestimonyCard({
               <p className="text-sm font-semibold text-white">
                 {displayName}
               </p>
-              <p className="text-xs text-blue-200/60 flex items-center gap-1">
+              <p className="text-xs text-purple-200/60 flex items-center gap-1">
                 <Calendar className="size-3" />
                 {formatDate(testimony.date)}
               </p>
@@ -115,7 +115,7 @@ export function TestimonyCard({
           <h3 className="text-xl md:text-2xl font-bold text-white mb-3 leading-snug">
             {testimony.title}
           </h3>
-          <p className="text-sm md:text-base text-blue-100/80 leading-relaxed mb-6">
+          <p className="text-sm md:text-base text-purple-100/80 leading-relaxed mb-6">
             {testimony.body}
           </p>
 
@@ -157,7 +157,7 @@ export function TestimonyCard({
               {testimony.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[10px] text-blue-200/50 bg-white/5 px-2.5 py-0.5 rounded-full"
+                  className="text-[10px] text-purple-200/50 bg-white/5 px-2.5 py-0.5 rounded-full"
                 >
                   #{tag}
                 </span>
@@ -203,7 +203,7 @@ export function TestimonyCard({
           </p>
         </div>
 
-        <h3 className="text-base font-bold text-gray-800 mb-2 leading-snug group-hover:text-[#1A237E] transition-colors">
+        <h3 className="text-base font-bold text-gray-800 mb-2 leading-snug group-hover:text-[#4A148C] transition-colors">
           {testimony.title}
         </h3>
         <p className="text-sm text-gray-500 leading-relaxed line-clamp-4 mb-4 flex-1">

@@ -119,7 +119,7 @@ export function EventsMain() {
                 placeholder="Search events..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-10 rounded-xl border-gray-200 bg-white h-10 focus:border-[#1A237E]/30"
+                className="pl-10 rounded-xl border-gray-200 bg-white h-10 focus:border-[#4A148C]/30"
               />
               {search && (
                 <button onClick={() => setSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
@@ -147,7 +147,7 @@ export function EventsMain() {
                 onClick={() => setCategory(cat)}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                   category === cat
-                    ? "bg-[#1A237E] text-white"
+                    ? "bg-[#4A148C] text-white"
                     : "bg-white text-gray-600 border border-gray-200 hover:border-gray-300 hover:bg-gray-50"
                 }`}
               >
@@ -170,7 +170,7 @@ export function EventsMain() {
             {/* Upcoming */}
             {upcomingEvents.length > 0 && (
               <div>
-                <h3 className="text-base font-bold text-[#1A237E] mb-4">
+                <h3 className="text-base font-bold text-[#4A148C] mb-4">
                   Upcoming Events
                   <span className="text-sm font-normal text-gray-400 ml-2">({upcomingEvents.length})</span>
                 </h3>
@@ -220,14 +220,14 @@ export function EventsMain() {
           <div className="space-y-6">
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-sm font-bold text-[#1A237E]">
+                <h3 className="text-sm font-bold text-[#4A148C]">
                   {monthNames[calMonth]} {calYear}
                 </h3>
                 <div className="flex items-center gap-1">
-                  <button onClick={calPrev} className="p-1.5 text-gray-400 hover:text-[#1A237E] hover:bg-gray-100 rounded-lg transition-colors">
+                  <button onClick={calPrev} className="p-1.5 text-gray-400 hover:text-[#4A148C] hover:bg-gray-100 rounded-lg transition-colors">
                     <ChevronLeft className="size-4" />
                   </button>
-                  <button onClick={calNext} className="p-1.5 text-gray-400 hover:text-[#1A237E] hover:bg-gray-100 rounded-lg transition-colors">
+                  <button onClick={calNext} className="p-1.5 text-gray-400 hover:text-[#4A148C] hover:bg-gray-100 rounded-lg transition-colors">
                     <ChevronRight className="size-4" />
                   </button>
                 </div>
@@ -257,9 +257,9 @@ export function EventsMain() {
                       key={day}
                       className={`aspect-square rounded-lg flex flex-col items-center justify-center text-xs relative cursor-default transition-colors ${
                         isToday
-                          ? "bg-[#1A237E] text-white font-bold"
+                          ? "bg-[#4A148C] text-white font-bold"
                           : hasEvents
-                            ? "bg-[#F0F4FF] text-[#1A237E] font-semibold hover:bg-[#E3EAFF]"
+                            ? "bg-[#F3E5F5] text-[#4A148C] font-semibold hover:bg-[#E3EAFF]"
                             : "text-gray-500 hover:bg-gray-50"
                       }`}
                     >
@@ -270,7 +270,7 @@ export function EventsMain() {
                             <div
                               key={j}
                               className={`w-1 h-1 rounded-full ${
-                                e.category === "Service" ? "bg-blue-400" :
+                                e.category === "Service" ? "bg-purple-400" :
                                 e.category === "Conference" ? "bg-purple-400" :
                                 e.category === "Youth" ? "bg-amber-400" :
                                 e.category === "Community" ? "bg-green-400" :
@@ -298,7 +298,7 @@ export function EventsMain() {
                 {eventCategories.slice(0, 4).map((cat) => (
                   <div key={cat} className="flex items-center gap-1.5 text-[10px] text-gray-400">
                     <div className={`w-2 h-2 rounded-full ${
-                      cat === "Service" ? "bg-blue-400" :
+                      cat === "Service" ? "bg-purple-400" :
                       cat === "Conference" ? "bg-purple-400" :
                       cat === "Community" ? "bg-green-400" :
                       "bg-red-400"
@@ -312,7 +312,7 @@ export function EventsMain() {
             {/* Quick stats */}
             <div className="grid grid-cols-2 gap-3">
               <div className="bg-white rounded-xl border border-gray-100 p-4 text-center">
-                <p className="text-2xl font-bold text-[#1A237E]">{mockEvents.length}</p>
+                <p className="text-2xl font-bold text-[#4A148C]">{mockEvents.length}</p>
                 <p className="text-[11px] text-gray-400 mt-0.5">Total Events</p>
               </div>
               <div className="bg-white rounded-xl border border-gray-100 p-4 text-center">

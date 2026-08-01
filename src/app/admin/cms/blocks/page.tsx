@@ -19,10 +19,10 @@ export default async function ContentBlocksPage() {
     <div className="max-w-6xl">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-[#1A237E] mb-1">Content Blocks</h1>
+          <h1 className="text-2xl font-bold text-[#4A148C] mb-1">Content Blocks</h1>
           <p className="text-sm text-gray-500">Manage editable church content sections</p>
         </div>
-        <Button asChild className="bg-[#1A237E] hover:bg-[#0D1557]">
+        <Button asChild className="bg-[#4A148C] hover:bg-[#1A0033]">
           <Link href="/admin/cms/blocks/new">
             <Plus className="size-4" />
             Create Block
@@ -33,7 +33,7 @@ export default async function ContentBlocksPage() {
       {blocks.length === 0 ? (
         <div className="bg-white rounded-xl border border-gray-100 p-12 text-center">
           <p className="text-gray-400 mb-4">No content blocks found.</p>
-          <Button asChild variant="outline" className="border-[#1A237E] text-[#1A237E]">
+          <Button asChild variant="outline" className="border-[#4A148C] text-[#4A148C]">
             <Link href="/admin/cms/blocks/new">Create Your First Block</Link>
           </Button>
         </div>
@@ -73,7 +73,7 @@ export default async function ContentBlocksPage() {
                   <td className="px-4 py-3 text-right">
                     <Link
                       href={`/admin/cms/blocks/${block.id}/edit`}
-                      className="text-xs font-medium text-[#1A237E] hover:underline"
+                      className="text-xs font-medium text-[#4A148C] hover:underline"
                     >
                       Edit
                     </Link>

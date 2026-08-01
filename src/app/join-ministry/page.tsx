@@ -6,7 +6,7 @@ import { MinistryCTA } from "@/components/ministry/ministry-cta";
 export const metadata: Metadata = {
   title: "Join a Ministry",
   description:
-    "Find your place of service at The Redeemed Christian Church of God, Rehoboth Assembly Parish. Browse all ministries and submit your application to join.",
+    "Find your place of service at Mountain of Fire and Miracles Ministries, Youth Church. Browse all ministries and submit your application to join.",
 };
 
 export default function JoinMinistryPage() {

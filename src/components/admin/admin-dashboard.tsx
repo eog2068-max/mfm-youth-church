@@ -21,7 +21,7 @@ export function AdminDashboard() {
   });
 
   return (
-    <div className="fixed inset-0 z-50 flex bg-[#F5F7FF]">
+    <div className="fixed inset-0 z-50 flex bg-[#F3E5F5]">
       {/* Sidebar */}
       <AdminSidebar
         activeItem="Dashboard"
@@ -47,10 +47,10 @@ export function AdminDashboard() {
               transition={{ duration: 0.4 }}
               className="mb-6"
             >
-              <h2 className="text-xl font-bold text-[#1A237E] sm:text-2xl">
+              <h2 className="text-xl font-bold text-[#4A148C] sm:text-2xl">
                 Welcome back, Admin
               </h2>
-              <p className="mt-1 text-sm text-[#1A237E]/50">{today}</p>
+              <p className="mt-1 text-sm text-[#4A148C]/50">{today}</p>
             </motion.div>
 
             {/* Stats Cards */}

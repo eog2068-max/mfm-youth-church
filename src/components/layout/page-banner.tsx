@@ -34,11 +34,11 @@ export function PageBanner({
     >
       {/* Background */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#1A237E]"
+        className="absolute inset-0 bg-gradient-to-br from-[#1A0033] via-[#4A148C] to-[#4A148C]"
       />
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#D32F2F] rounded-full blur-[128px] -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#3949AB] rounded-full blur-[128px] translate-y-1/2 -translate-x-1/3" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#7B1FA2] rounded-full blur-[128px] translate-y-1/2 -translate-x-1/3" />
       </div>
       {overlay && (
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyem0wLTMwVjBoLTEydjRoMTJ6TTI0IDI0aDEydi0ySDI0djJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-40" />
@@ -92,7 +92,7 @@ export function PageBanner({
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-4 text-lg md:text-xl text-blue-200/80 max-w-2xl leading-relaxed">
+            <p className="mt-4 text-lg md:text-xl text-purple-200/80 max-w-2xl leading-relaxed">
               {subtitle}
             </p>
           )}

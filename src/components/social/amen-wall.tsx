@@ -75,7 +75,7 @@ export function AmenWall() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
           <div className="flex items-center gap-3 mb-3">
             <span className="text-4xl">❤️</span>
-            <h1 className="text-2xl md:text-3xl font-bold text-[#1A237E]">Amen Wall</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-[#4A148C]">Amen Wall</h1>
           </div>
           <p className="text-gray-500">Share your faith declarations and encourage the community.</p>
         </motion.div>
@@ -87,11 +87,11 @@ export function AmenWall() {
             onChange={(e) => setNewMessage(e.target.value.slice(0, 200))}
             placeholder='Share a praise, declaration, or word of encouragement... e.g. "God has been faithful!"'
             rows={3}
-            className="w-full rounded-xl border border-gray-200 p-4 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-[#E65100]/30 focus:ring-2 focus:ring-[#E65100]/10 resize-none"
+            className="w-full rounded-xl border border-gray-200 p-4 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-[#C62828]/30 focus:ring-2 focus:ring-[#C62828]/10 resize-none"
           />
           <div className="flex items-center justify-between mt-3">
             <p className="text-xs text-gray-400">{newMessage.length}/200</p>
-            <button onClick={handleSubmit} disabled={!newMessage.trim() || submitting} className="inline-flex items-center gap-2 bg-[#E65100] hover:bg-[#BF360C] text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors disabled:opacity-40">
+            <button onClick={handleSubmit} disabled={!newMessage.trim() || submitting} className="inline-flex items-center gap-2 bg-[#C62828] hover:bg-[#B71C1C] text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-colors disabled:opacity-40">
               <Send className="size-4" />
               {submitting ? "Posting..." : "Post"}
             </button>

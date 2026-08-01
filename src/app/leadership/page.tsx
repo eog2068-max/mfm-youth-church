@@ -7,7 +7,7 @@ import { LeadershipCTA } from "@/components/leadership/leadership-cta";
 export const metadata: Metadata = {
   title: "Leadership",
   description:
-    "Meet the dedicated leaders of The Redeemed Christian Church of God, Rehoboth Assembly Parish — our pastors, ministers, and elders who serve with passion and purpose.",
+    "Meet the dedicated leaders of Mountain of Fire and Miracles Ministries, Youth Church — our pastors, ministers, and elders who serve with passion and purpose.",
 };
 
 export default function LeadershipPage() {
@@ -15,7 +15,7 @@ export default function LeadershipPage() {
     <>
       <PageBanner
         title="Our Leadership"
-        subtitle="Meet the men and women God has called to serve, lead, and shepherd the Rehoboth Assembly Parish family."
+        subtitle="Meet the men and women God has called to serve, lead, and shepherd the Youth Church family."
         breadcrumbs={[{ label: "Leadership" }]}
       />
       <SeniorPastor />

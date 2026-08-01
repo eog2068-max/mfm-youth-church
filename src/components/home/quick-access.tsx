@@ -16,15 +16,15 @@ import Link from "next/link";
 import { SectionWrapper, SectionTitle } from "@/components/home/section-wrapper";
 
 const services = [
-  { label: "Announcements", href: "/announcements", icon: Megaphone, color: "#1A237E", bgClass: "bg-blue-50", textClass: "text-blue-700" },
-  { label: "Events", href: "/events", icon: CalendarDays, color: "#1A237E", bgClass: "bg-blue-50", textClass: "text-blue-700" },
-  { label: "Devotionals", href: "/devotionals", icon: BookOpen, color: "#1A237E", bgClass: "bg-blue-50", textClass: "text-blue-700" },
-  { label: "Prayer Request", href: "/prayer", icon: HandHeart, color: "#1A237E", bgClass: "bg-blue-50", textClass: "text-blue-700" },
-  { label: "Ministries", href: "/join-ministry", icon: Music, color: "#1A237E", bgClass: "bg-blue-50", textClass: "text-blue-700" },
+  { label: "Announcements", href: "/announcements", icon: Megaphone, color: "#4A148C", bgClass: "bg-purple-50", textClass: "text-purple-700" },
+  { label: "Events", href: "/events", icon: CalendarDays, color: "#4A148C", bgClass: "bg-purple-50", textClass: "text-purple-700" },
+  { label: "Devotionals", href: "/devotionals", icon: BookOpen, color: "#4A148C", bgClass: "bg-purple-50", textClass: "text-purple-700" },
+  { label: "Prayer Request", href: "/prayer", icon: HandHeart, color: "#4A148C", bgClass: "bg-purple-50", textClass: "text-purple-700" },
+  { label: "Ministries", href: "/join-ministry", icon: Music, color: "#4A148C", bgClass: "bg-purple-50", textClass: "text-purple-700" },
   { label: "Livestream", href: "/live", icon: Radio, color: "#D32F2F", bgClass: "bg-red-50", textClass: "text-[#D32F2F]" },
-  { label: "Church Media", href: "/media", icon: Film, color: "#1A237E", bgClass: "bg-blue-50", textClass: "text-blue-700" },
-  { label: "Member Gallery", href: "/members", icon: Users, color: "#1A237E", bgClass: "bg-blue-50", textClass: "text-blue-700" },
-  { label: "Contact", href: "/contact", icon: Mail, color: "#1A237E", bgClass: "bg-blue-50", textClass: "text-blue-700" },
+  { label: "Church Media", href: "/media", icon: Film, color: "#4A148C", bgClass: "bg-purple-50", textClass: "text-purple-700" },
+  { label: "Member Gallery", href: "/members", icon: Users, color: "#4A148C", bgClass: "bg-purple-50", textClass: "text-purple-700" },
+  { label: "Contact", href: "/contact", icon: Mail, color: "#4A148C", bgClass: "bg-purple-50", textClass: "text-purple-700" },
 ];
 
 const containerVariants: Variants = {

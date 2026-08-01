@@ -7,10 +7,10 @@ import { SectionWrapper, SectionTitle } from "@/components/home/section-wrapper"
 const missions = [
   {
     name: "CONNECT",
-    purpose: "RehobothSocial",
+    purpose: "YouthConnect",
     description: "Keep your Church family connected throughout the week.",
     icon: Heart,
-    accentColor: "#E65100",
+    accentColor: "#C62828",
   },
   {
     name: "ORGANIZE",
@@ -18,14 +18,14 @@ const missions = [
     description:
       "Help your Church communicate, coordinate and manage its activities.",
     icon: Settings,
-    accentColor: "#1A237E",
+    accentColor: "#4A148C",
   },
   {
     name: "REACH",
     purpose: "Go-A-Fishing",
     description: "Mobilize your Church family to reach beyond the walls.",
     icon: Fish,
-    accentColor: "#3949AB",
+    accentColor: "#7B1FA2",
   },
 ];
 

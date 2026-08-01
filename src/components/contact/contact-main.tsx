@@ -64,7 +64,7 @@ const infoCards = [
     value: churchInfo.email,
     href: `mailto:${churchInfo.email}`,
     external: false,
-    color: "text-[#1A237E]",
+    color: "text-[#4A148C]",
     bg: "bg-[#EBF0FA]",
   },
   {
@@ -100,7 +100,7 @@ export function ContactMain() {
             <motion.div variants={itemVariants}>
               <div className="relative rounded-2xl overflow-hidden border border-gray-100 shadow-sm h-64 md:h-80">
                 {/* Dark gradient background simulating a map */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0D1557] via-[#1A237E] to-[#1B2656]" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1A0033] via-[#4A148C] to-[#1B2656]" />
 
                 {/* Decorative grid lines to simulate streets */}
                 <div className="absolute inset-0 opacity-[0.06]">
@@ -121,7 +121,7 @@ export function ContactMain() {
                 <div className="absolute left-2/3 top-0 bottom-0 w-[1px] bg-white/10" />
 
                 {/* Blur circles for atmosphere */}
-                <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-[#3949AB] rounded-full blur-[80px] opacity-30" />
+                <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-[#7B1FA2] rounded-full blur-[80px] opacity-30" />
                 <div className="absolute bottom-1/4 left-1/3 w-40 h-40 bg-[#D32F2F] rounded-full blur-[80px] opacity-10" />
 
                 {/* Pin and address overlay */}
@@ -150,7 +150,7 @@ export function ContactMain() {
                     <p className="text-white font-semibold text-sm md:text-base max-w-md leading-relaxed">
                       {churchInfo.address}
                     </p>
-                    <p className="text-blue-200/60 text-xs mt-2">
+                    <p className="text-purple-200/60 text-xs mt-2">
                       {churchInfo.shortName}
                     </p>
                   </motion.div>
@@ -164,7 +164,7 @@ export function ContactMain() {
                   >
                     <Button
                       asChild
-                      className="bg-white text-[#1A237E] hover:bg-gray-100 rounded-xl px-6 font-semibold shadow-lg text-sm"
+                      className="bg-white text-[#4A148C] hover:bg-gray-100 rounded-xl px-6 font-semibold shadow-lg text-sm"
                     >
                       <a
                         href={churchInfo.mapsUrl}
@@ -205,7 +205,7 @@ export function ContactMain() {
                       <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
                         {card.label}
                       </p>
-                      <p className="text-sm font-medium text-gray-700 mt-0.5 group-hover:text-[#1A237E] transition-colors leading-snug">
+                      <p className="text-sm font-medium text-gray-700 mt-0.5 group-hover:text-[#4A148C] transition-colors leading-snug">
                         {card.value}
                       </p>
                     </div>
@@ -267,7 +267,7 @@ export function ContactMain() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.name}
-                      className="w-10 h-10 rounded-xl bg-[#F0F4FF] flex items-center justify-center text-[#1A237E] hover:bg-[#1A237E] hover:text-white transition-all hover:shadow-md hover:shadow-[#1A237E]/20"
+                      className="w-10 h-10 rounded-xl bg-[#F3E5F5] flex items-center justify-center text-[#4A148C] hover:bg-[#4A148C] hover:text-white transition-all hover:shadow-md hover:shadow-[#4A148C]/20"
                     >
                       <IconComp className="size-4.5" />
                     </a>

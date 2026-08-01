@@ -6,7 +6,7 @@ import { AnnouncementsCTA } from "@/components/announcements/announcements-cta";
 export const metadata: Metadata = {
   title: "Announcements",
   description:
-    "Stay up to date with everything happening at The Redeemed Christian Church of God, Rehoboth Assembly Parish, Utako, Abuja. View church announcements, notices, and important updates.",
+    "Stay up to date with everything happening at Mountain of Fire and Miracles Ministries, Youth Church, Utako, Abuja. View church announcements, notices, and important updates.",
 };
 
 export default function AnnouncementsPage() {
@@ -14,7 +14,7 @@ export default function AnnouncementsPage() {
     <>
       <PageBanner
         title="Announcements"
-        subtitle="Stay up to date with everything happening at Rehoboth Assembly"
+        subtitle="Stay up to date with everything happening at Youth Assembly"
         breadcrumbs={[{ label: "Announcements" }]}
       />
       <AnnouncementsMain />

@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
   const supabase = await getSupabaseServer();
 
   // Determine the redirect URL for after the user clicks the magic link.
-  // E.g. https://rccg-rehoboth.app/api/gaf/auth/callback
+  // E.g. https://mfm-youthchurch.app/api/gaf/auth/callback
   const origin = req.nextUrl.origin;
   const redirectUrl = `${origin}/api/gaf/auth/callback`;
 

@@ -3,9 +3,9 @@ import { PageBanner } from "@/components/layout/page-banner";
 import { CmsLanding } from "@/components/cms/cms-landing";
 
 export const metadata: Metadata = {
-  title: "Church Management System | RCCG Rehoboth Assembly",
+  title: "Church Management System | MFM Youth Church",
   description:
-    "Manage every aspect of church life at The Redeemed Christian Church of God, Rehoboth Assembly Parish. Announcements, events, devotionals, sermons, giving, and more — all in one place.",
+    "Manage every aspect of church life at Mountain of Fire and Miracles Ministries, Youth Church. Announcements, events, devotionals, sermons, giving, and more — all in one place.",
 };
 
 export default function CmsPage() {
