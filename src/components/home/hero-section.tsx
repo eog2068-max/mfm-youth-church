@@ -51,7 +51,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight">
-            MFM INT&rsquo;L HQ ANNEX, Youth Church, Abuja
+            MFM INT&rsquo;L HQ ANNEX Youth Church, Abuja
           </h1>
         </motion.div>
 
