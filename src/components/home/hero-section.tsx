@@ -115,7 +115,7 @@ export function HeroSection() {
           {/* 3. Church Management System — Deep navy, matching section color */}
           <Link
             href="/cms"
-            className="flex flex-col items-center justify-center bg-[#4A148C] hover:bg-[#1A0033] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-purple-900/20 border border-white/20 shadow-md shadow-black/10"
+            className="flex flex-col items-center justify-center bg-[#5C6BC0] hover:bg-[#3F51B5] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-indigo-500/20 border border-white/20 shadow-md shadow-black/10"
           >
             <span className="text-sm md:text-base font-bold tracking-wide">
               Organa
