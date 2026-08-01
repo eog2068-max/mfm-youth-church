@@ -141,12 +141,13 @@ const menuCategories: MenuCategory[] = [
   // ── CHURCH MANAGEMENT SYSTEM ──
   {
     id: "church-management",
-    title: "CHURCH MANAGEMENT SYSTEM",
-    subtitle: "CMS — ORGANIZE",
+    title: "Church Management System",
+    subtitle: "To CMS Home",
+    headerLink: "/cms",
     color: {
-      headerBg: "bg-blue-50",
+      headerBg: "bg-[#1A237E]",
       accentBar: "bg-[#1A237E]",
-      accentText: "text-[#1A237E]",
+      accentText: "text-white",
       ctaBg: "bg-[#1A237E]",
       ctaHover: "hover:bg-[#0D1557]",
       iconBg: "bg-blue-100",
@@ -169,19 +170,18 @@ const menuCategories: MenuCategory[] = [
       { label: "Testimonies", href: "/testimonies", icon: Star },
       { label: "Contact", href: "/contact", icon: Mail },
     ],
-    cta: { label: "EXPLORE CMS", href: "/cms" },
   },
 
   // ── GO-A-FISHING ──
   {
     id: "go-a-fishing",
-    title: "GO-A-FISHING",
-    subtitle: "Digital Evangelism System — REACH",
-    quote: "I'll make you fishers of men.",
+    title: "Go-A-Fishing",
+    subtitle: "To GAF Home",
+    headerLink: "/go-a-fishing",
     color: {
-      headerBg: "bg-indigo-50",
+      headerBg: "bg-[#3949AB]",
       accentBar: "bg-[#3949AB]",
-      accentText: "text-[#3949AB]",
+      accentText: "text-white",
       ctaBg: "bg-[#3949AB]",
       ctaHover: "hover:bg-[#1A237E]",
       iconBg: "bg-indigo-100",
@@ -198,18 +198,18 @@ const menuCategories: MenuCategory[] = [
       { label: "Profile", href: "/go-a-fishing/profile", icon: User },
       { label: "Notifications", href: "/go-a-fishing/notifications", icon: Bell },
     ],
-    cta: { label: "GO-A-FISHING", href: "/go-a-fishing" },
   },
 
   // ── CHURCH INFORMATION ──
   {
     id: "general",
-    title: "CHURCH INFORMATION",
-    subtitle: "About Us",
+    title: "Church Information",
+    subtitle: "To About",
+    headerLink: "/about",
     color: {
-      headerBg: "bg-gray-50",
+      headerBg: "bg-[#4B5563]",
       accentBar: "bg-[#4B5563]",
-      accentText: "text-[#4B5563]",
+      accentText: "text-white",
       ctaBg: "bg-[#4B5563]",
       ctaHover: "hover:bg-[#374151]",
       iconBg: "bg-gray-100",
@@ -222,7 +222,6 @@ const menuCategories: MenuCategory[] = [
       { label: "Leadership", href: "/leadership", icon: UserCog },
       { label: "Watch Live", href: "/live", icon: Tv },
     ],
-    // No CTA for General — items are sufficient
   },
 ];
 
@@ -619,7 +618,7 @@ export function Navbar() {
                 </SheetHeader>
 
                 {/* Categorized menu sections */}
-                <div className="flex flex-col gap-3 px-3 pb-4">
+                <div className="flex flex-col gap-5 px-3 pb-4">
                   {menuCategories.map((category, idx) => (
                     <MenuCategorySection
                       key={category.id}

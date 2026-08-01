@@ -99,28 +99,28 @@ export function HeroSection() {
             </span>
           </Link>
 
-          {/* 2. Go-A-Fishing — Sky blue, floating card style, barely rounded */}
+          {/* 2. Go-A-Fishing — Indigo solid, matching section color */}
           <Link
             href="/go-a-fishing"
-            className="flex flex-col items-center justify-center bg-[#EBF3FF] hover:bg-[#D6EAFF] rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-blue-300/30 border border-white/20 shadow-md shadow-black/10"
+            className="flex flex-col items-center justify-center bg-[#3949AB] hover:bg-[#303F9F] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-indigo-500/20 border border-white/20 shadow-md shadow-black/10"
           >
-            <span className="text-sm md:text-base font-bold text-[#1A237E] tracking-wide">
+            <span className="text-sm md:text-base font-bold tracking-wide">
               Digital Evangelism System - DES
             </span>
-            <span className="text-xs text-[#3949AB] font-normal mt-0.5">
+            <span className="text-xs font-normal mt-0.5 text-white/90">
               Go-A-Fishing & Get Rewarded
             </span>
           </Link>
 
-          {/* 3. Church Management System — Sky blue, identical floating style, barely rounded */}
+          {/* 3. Church Management System — Deep navy, matching section color */}
           <Link
             href="/cms"
-            className="flex flex-col items-center justify-center bg-[#EBF3FF] hover:bg-[#D6EAFF] rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-blue-300/30 border border-white/20 shadow-md shadow-black/10"
+            className="flex flex-col items-center justify-center bg-[#1A237E] hover:bg-[#0D1557] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-blue-900/20 border border-white/20 shadow-md shadow-black/10"
           >
-            <span className="text-sm md:text-base font-bold text-[#1A237E] tracking-wide">
+            <span className="text-sm md:text-base font-bold tracking-wide">
               Church Management System - CMS
             </span>
-            <span className="text-xs text-[#3949AB] font-normal mt-0.5">
+            <span className="text-xs font-normal mt-0.5 text-white/90">
               We're Well Organized.
             </span>
           </Link>
