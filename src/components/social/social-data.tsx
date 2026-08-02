@@ -1,7 +1,35 @@
+import React from "react";
+
+// ──────────────────────────────────────────────────────────────────
+// Permanent chat-bubble SVG icon.
+// Do NOT replace with emoji or lucide MessageCircle.
+// Emoji rendering is device-dependent and causes visual bugs.
+// ──────────────────────────────────────────────────────────────────
+export function ChatBubbleIcon({ className, ...props }: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+      {...props}
+    >
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+  );
+}
+
 export interface SocialFeature {
   id: string;
   title: string;
-  emoji: string;
+  emoji: React.ReactNode;
   description: string;
   href: string;
   color: string;
@@ -9,14 +37,14 @@ export interface SocialFeature {
   featured: boolean;
   extendedDescription: string;
   ctaText: string;
-  landingSteps: { emoji: string; title: string; description: string }[];
+  landingSteps: { emoji: React.ReactNode; title: string; description: string }[];
 }
 
 export const socialFeatures: SocialFeature[] = [
   {
     id: "family-chat",
     title: "FamilyChat",
-    emoji: "\ud83d\udcac",
+    emoji: <ChatBubbleIcon />,
     description:
       "Stay connected with your church family through meaningful conversations throughout the week.",
     href: "/social/family-chat",
@@ -34,7 +62,7 @@ export const socialFeatures: SocialFeature[] = [
           "Browse six themed channels \u2014 from General Family to Announcements.",
       },
       {
-        emoji: "\ud83d\udcac",
+        emoji: <ChatBubbleIcon className="size-5" />,
         title: "Join the Conversation",
         description:
           "Send messages, reply to others, and react with emojis to build fellowship.",
@@ -102,7 +130,7 @@ export const socialFeatures: SocialFeature[] = [
           "A fresh question is posted daily \u2014 thought-provoking, fun, or reflective.",
       },
       {
-        emoji: "\ud83d\udcac",
+        emoji: <ChatBubbleIcon className="size-5" />,
         title: "Share Your Answer",
         description:
           "Respond in your own words. There are no wrong answers \u2014 just honest hearts.",

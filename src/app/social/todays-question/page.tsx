@@ -60,7 +60,7 @@ export default function TodaysQuestionPage() {
               key={i}
               className="flex items-start gap-2 text-xs text-gray-600"
             >
-              <span className="text-sm mt-0.5">💬</span>
+              <span className="text-sm mt-0.5 text-[#2E7D32] font-bold">Q</span>
               <p className="italic leading-relaxed">{q}</p>
             </div>
           ))}

@@ -15,30 +15,11 @@ import {
   ChevronRight,
   Users,
 } from "lucide-react";
-import { socialFeatures } from "./social-data";
+import { socialFeatures, ChatBubbleIcon } from "./social-data";
 
-// Chat-bubble icon — hardcoded SVG, permanently locked.
-// Do NOT replace with lucide MessageCircle (it mutates across versions).
-function ChatBubbleIcon({ className, ...props }: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={24}
-      height={24}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className={className}
-      {...props}
-    >
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-    </svg>
-  );
-}
+// ⛔ Do NOT replace ChatBubbleIcon with emoji or lucide MessageCircle.
+//   Emoji rendering is device-dependent and causes visual bugs.
+//   The canonical definition lives in social-data.tsx.
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -111,7 +92,7 @@ export function SocialLandingPage() {
             className="relative block mb-8"
           >
             <div className="absolute inset-0 bg-purple-400/25 rounded-full blur-3xl scale-[2]" />
-            <div className="relative text-[6rem] sm:text-[7rem] md:text-[9rem] leading-none">💬</div>
+            <ChatBubbleIcon className="w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 text-white drop-shadow-2xl" />
           </motion.div>
 
           {/* Pill badge */}
@@ -326,7 +307,7 @@ export function SocialLandingPage() {
               },
               {
                 step: "Participate",
-                emoji: "💬",
+                emoji: <ChatBubbleIcon className="size-5" />,
                 desc: "Send a message, share a prayer request, or answer the question.",
               },
               {

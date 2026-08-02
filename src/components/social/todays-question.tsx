@@ -96,7 +96,7 @@ export function TodaysQuestion() {
             animate={{ opacity: 1, y: 0 }}
             className="bg-gradient-to-br from-[#2E7D32] to-[#388E3C] rounded-2xl p-6 md:p-8 mb-8 shadow-lg"
           >
-            <p className="text-green-100/70 text-sm font-medium mb-2">💬 TODAY&apos;S QUESTION</p>
+            <p className="text-green-100/70 text-sm font-medium mb-2">TODAY&apos;S QUESTION</p>
             <h1 className="text-2xl md:text-3xl font-bold text-white leading-snug">
               &ldquo;{question.question}&rdquo;
             </h1>

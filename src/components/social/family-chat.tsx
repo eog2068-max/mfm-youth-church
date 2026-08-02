@@ -60,7 +60,7 @@ const REPORT_REASONS = [
 
 const WARM_GREETINGS = [
   "Welcome to FamilyChat! 🏠",
-  "God bless you as you connect with the family today. 💬",
+  "God bless you as you connect with the family today.",
   "The service may end, but the fellowship continues here. ❤️",
 ];
 

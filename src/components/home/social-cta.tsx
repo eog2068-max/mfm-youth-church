@@ -7,7 +7,7 @@ import { SectionWrapper } from "@/components/home/section-wrapper";
 
 const highlights = [
   { emoji: "👋", text: "No account needed", icon: Users },
-  { emoji: "💬", text: "Daily questions", icon: MessageCircle },
+  { emoji: "✨", text: "Daily questions", icon: MessageCircle },
   { emoji: "🙏", text: "Pray together", icon: Heart },
   { emoji: "🔥", text: "Weekly challenges", icon: Flame },
 ];
