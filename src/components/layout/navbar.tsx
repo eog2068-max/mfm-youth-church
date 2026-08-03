@@ -576,7 +576,7 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <Button
               asChild
-              className="inline-flex items-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg pl-1.5 pr-2 h-8 sm:h-9 shadow-md transition-colors"
+              className="inline-flex items-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg !pl-1 pr-2 h-8 sm:h-9 shadow-md transition-colors"
             >
               <Link href="/giving" className="flex items-center gap-1.5">
                 <svg width="22" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0" aria-hidden="true">
