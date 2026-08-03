@@ -581,7 +581,9 @@ export function Navbar() {
               <svg width="26" height="33" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 self-start mt-[1px]" aria-hidden="true">
                 <path d="M12 3c-1 0-1.5.5-1.5 1.5V6L8 8.5C6.5 10 6 12 6 14c0 3.5 2.5 6 6 6s6-2.5 6-6c0-2-.5-4-2-5.5L13.5 6V4.5C13.5 3.5 13 3 12 3z" />
                 <path d="M10 6h4" strokeWidth="1.4" />
-                <path d="M12 11v5M10 12.5c0-1 2-1.5 2 0s2 1 2 0" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+                <path d="M12 10.5v6" strokeWidth="1.4" strokeLinecap="round" />
+                <path d="M10.5 12 C10.5 10.5 13.5 10.5 13.5 12" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+                <path d="M13.5 14 C13.5 15.5 10.5 15.5 10.5 14" strokeWidth="1.4" strokeLinecap="round" fill="none" />
               </svg>
               <span className="flex flex-col items-center justify-center leading-[1.15]">
                 <span className="text-[10px] sm:text-[11px] font-extrabold tracking-wider uppercase text-white">
