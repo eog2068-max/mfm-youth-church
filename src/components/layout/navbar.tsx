@@ -573,26 +573,24 @@ export function Navbar() {
           </div>
 
           {/* Right side: Mobile Hamburger + Watch Live before it */}
-          <div className="flex items-center gap-3">
-            {/* DONATIONS — two-line red button beside Watch Live */}
+          <div className="flex items-center gap-2">
             <Button
               asChild
-              className="inline-flex flex-col items-center justify-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg px-3 py-0.5 h-9 sm:h-[38px] shadow-md transition-colors"
+              className="inline-flex items-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg px-2 h-8 sm:h-9 shadow-md transition-colors"
             >
-              <Link href="/giving" className="flex flex-col items-center justify-center leading-tight">
-                <span className="flex items-center gap-1">
-                  {/* Hand holding donation bag with coin */}
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="shrink-0" aria-hidden="true">
-                    <path d="M12 3c-1 0-1.5.5-1.5 1.5V6L8 8.5C6.5 10 6 12 6 14c0 3.5 2.5 6 6 6s6-2.5 6-6c0-2-.5-4-2-5.5L13.5 6V4.5C13.5 3.5 13 3 12 3z" />
-                    <path d="M10 6h4" strokeWidth="1.5" />
-                    <path d="M12 11v5M10 13h4" strokeWidth="1.5" strokeLinecap="round" />
-                  </svg>
-                  <span className="text-[10px] sm:text-[11px] font-extrabold tracking-wider uppercase">
+              <Link href="/giving" className="flex items-center gap-1.5">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="shrink-0" aria-hidden="true">
+                  <path d="M12 3c-1 0-1.5.5-1.5 1.5V6L8 8.5C6.5 10 6 12 6 14c0 3.5 2.5 6 6 6s6-2.5 6-6c0-2-.5-4-2-5.5L13.5 6V4.5C13.5 3.5 13 3 12 3z" />
+                  <path d="M10 6h4" strokeWidth="1.4" />
+                  <path d="M12 11v5M10 13h4" strokeWidth="1.4" strokeLinecap="round" />
+                </svg>
+                <span className="flex flex-col items-center justify-center leading-[1.15]">
+                  <span className="text-[10px] sm:text-[11px] font-extrabold tracking-wider uppercase text-white">
                     Donations
                   </span>
-                </span>
-                <span className="text-[8px] sm:text-[9px] font-light tracking-wide opacity-85">
-                  Give 2d Lord
+                  <span className="text-[8px] sm:text-[9px] font-normal tracking-wide text-white">
+                    Give To The Lord
+                  </span>
                 </span>
               </Link>
             </Button>
