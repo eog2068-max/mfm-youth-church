@@ -84,32 +84,15 @@ export function SocialLandingPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center pt-8">
-          {/* Hero chat-bubble — pure CSS, no scaled SVG */}
+          {/* Hero icon — original ChatBubbleIcon with tail */}
           <motion.div
             initial={{ scale: 0, rotate: -10 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            className="flex justify-center mb-8"
+            className="relative flex justify-center mb-8"
           >
-            <div className="relative">
-              {/* Glow behind bubble */}
-              <div className="absolute inset-0 bg-purple-400/25 rounded-[2rem] blur-3xl scale-[1.8]" />
-              {/* Bubble body */}
-              <div
-                className="relative w-32 h-28 sm:w-40 sm:h-36 md:w-52 md:h-44 rounded-[1.6rem] bg-white/[0.12] backdrop-blur-sm border-2 border-white/30 flex items-center justify-center shadow-2xl"
-              >
-                {/* Three animated dots inside the bubble */}
-                <div className="flex items-center gap-2.5">
-                  <span className="block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/70 animate-bounce" style={{ animationDelay: "0ms" }} />
-                  <span className="block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/70 animate-bounce" style={{ animationDelay: "150ms" }} />
-                  <span className="block w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/70 animate-bounce" style={{ animationDelay: "300ms" }} />
-                </div>
-                {/* Tail pointer — CSS triangle, bottom-left */}
-                <div
-                  className="absolute -bottom-3 left-6 sm:left-8 w-6 h-6 bg-white/[0.12] border-b-2 border-l-2 border-white/30 rotate-[-45deg] rounded-b-sm"
-                />
-              </div>
-            </div>
+            <div className="absolute inset-0 bg-purple-400/25 rounded-full blur-3xl scale-[2]" />
+            <ChatBubbleIcon className="w-36 h-36 sm:w-44 sm:h-44 md:w-48 md:h-48 text-white drop-shadow-2xl relative" />
           </motion.div>
 
           {/* Pill badge */}
