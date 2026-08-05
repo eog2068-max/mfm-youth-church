@@ -67,6 +67,10 @@ model Member {
   auditLogs          AuditLog[]
   outreachActivities OutreachActivity[]
   notifications      Notification[]
+  dailyWalkHabits   DailyWalkHabit[]
+  dailyWalkCheckIns DailyWalkCheckIn[]
+  dailyWalkStreaks  DailyWalkStreak[]
+  pushSubscription   PushSubscription?
 
   @@index([status])
   @@index([referralCode])
@@ -273,4 +277,84 @@ model ContentBlock {
 
   @@index([section, status])
   @@index([key])
+}
+
+// ============================================================================
+// DailyWalk Models — Personal spiritual routine and habit tracker.
+// Members define spiritual habits, check in daily, and build streaks.
+// Push subscriptions are stored separately for Web Push notifications.
+// ============================================================================
+
+model DailyWalkHabit {
+  id          String   @id @default(cuid())
+  memberId    String
+  name        String                   // e.g. "Morning Devotion", "Scripture Reading"
+  description String?                  // optional detail about the habit
+  category    String   @default("general") // prayer | scripture | fasting | worship | devotion | meditation | general
+  icon        String   @default("heart")   // lucide icon name for UI rendering
+  color       String   @default("#4A148C") // hex color for personalization
+  frequency   String   @default("daily")  // daily | weekdays | weekends | custom
+  customDays  String?                  // JSON array of day indices [0-6] if frequency="custom"
+  reminderTime String?                  // HH:MM format, e.g. "06:30"
+  reminderEnabled Boolean @default(false)
+  sortOrder   Int      @default(0)      // user-defined display order
+  isActive    Boolean  @default(true)
+  isArchived  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  member    Member              @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  checkIns  DailyWalkCheckIn[]
+  streaks   DailyWalkStreak[]
+
+  @@index([memberId, isActive])
+  @@index([memberId, sortOrder])
+}
+
+model DailyWalkCheckIn {
+  id          String   @id @default(cuid())
+  habitId     String
+  memberId    String
+  checkedInAt DateTime @default(now())   // when the user checked in
+  note        String?                     // optional reflection/journal entry
+  mood        String?                     // great | good | okay | struggling | tough
+  createdAt   DateTime @default(now())
+
+  habit  DailyWalkHabit @relation(fields: [habitId], references: [id], onDelete: Cascade)
+  member Member          @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@unique([habitId, memberId, checkedInAt]) // one check-in per habit per member per timestamp (truncated to day via app logic)
+  @@index([memberId, checkedInAt])
+  @@index([habitId, checkedInAt])
+}
+
+model DailyWalkStreak {
+  id            String   @id @default(cuid())
+  habitId       String
+  memberId       String
+  currentLength Int      @default(0)    // current consecutive days
+  longestLength Int      @default(0)    // all-time best
+  lastCheckInAt DateTime?                 // most recent check-in date
+  startedAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  habit  DailyWalkHabit @relation(fields: [habitId], references: [id], onDelete: Cascade)
+  member Member          @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@unique([habitId, memberId]) // one streak record per habit per member
+  @@index([memberId, currentLength(sort: Desc)])
+  @@index([memberId, longestLength(sort: Desc)])
+}
+
+model PushSubscription {
+  id        String   @id @default(cuid())
+  memberId  String   @unique               // one push subscription per member for now
+  endpoint  String                         // push subscription endpoint URL
+  p256dh    String                         // encryption key (base64)
+  auth      String                         // auth key (base64)
+  userAgent String?                        // browser/device info
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  member Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
 }

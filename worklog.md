@@ -1073,3 +1073,96 @@ Stage Summary:
 - Deliverable: /home/z/my-project/download/CGS_Video_Ad_Script.docx
 - Contains: YouTube 60s script, Facebook 30s script, full production notes
 - All quality checks passed
+
+---
+Task ID: DW-S3
+Agent: Main Agent
+Task: DailyWalk Stage 3 — Core Service Layer
+
+Work Log:
+- Created src/lib/gaf/dailywalk.ts (~470 lines) — complete business logic for DailyWalk feature
+- Defined 7 habit categories (prayer, scripture, fasting, worship, devotion, meditation, general) with labels and icons
+- Defined 4 frequency types (daily, weekdays, weekends, custom) with labels
+- Defined 5 mood types for check-in reflections (great, good, okay, struggling, tough) with labels and emoji
+- Defined 10 preset habit colors for personalization
+- Implemented timezone helpers using Africa/Lagos (WAT, UTC+1) for all day-boundary calculations — resolves R9
+- Implemented isHabitDueOn() frequency checker with custom days JSON support
+- Implemented Habit CRUD: createHabit (with MAX_ACTIVE_HABITS=12, MAX_TOTAL=20 limits), updateHabit, archiveHabit, restoreHabit, deleteHabitPermanently, reorderHabits (transactional), listHabits, getHabit
+- Implemented checkIn() with WAT day truncation, duplicate prevention (409 conflict), archived-habit rejection
+- Implemented undoCheckIn() for accidental check-ins with automatic streak recalculation
+- Implemented recalculateStreak() — fetches last 100 check-ins, counts consecutive days from today/yesterday, handles gap detection, upserts DailyWalkStreak record
+- Implemented upsertStreak() — updates both currentLength and longestLength (all-time best tracking)
+- Implemented getDailyWalkSummary() — primary dashboard query returning enriched habits with today's status, streaks, frequency-based due-check, and overall stats (completion rate, total check-ins, best streak)
+- Implemented getCheckInHistory() with date range filtering and pagination (limit/offset) — addresses R10 pattern
+- Implemented getWeeklySummary() — 7-day day-by-day check-in counts for weekly chart
+- Implemented getAllStreaks() — all streaks with habit details, sorted by current length desc
+- Implemented getHabitsWithReminders() — for push notification scheduling (Stage 11)
+- Extended notification-engine.ts with 4 DailyWalk notification types: dailywalk_streak_milestone, dailywalk_streak_broken, dailywalk_reminder, dailywalk_encouragement
+- Added NOTIFICATION_TYPE_LABELS and NOTIFICATION_TYPE_ICONS for all 4 new types
+- Added notifyStreakMilestoneIfNeeded() — triggers at 7,14,21,30,50,75,100,150,200,365 days with scripture-based encouragement
+- Added notifyStreakBroken() — contextual messages based on lost streak length with Proverbs 24:16
+- Added notifyDailyWalkReminder() — for Stage 11 push notification integration
+- Added notifyDailyWalkEncouragement() — random scripture-based encouragement for struggling members
+- Fixed TS error in getDayOfWeekInTZ (invalid weekday:"numeric" → weekday:"long" with day name mapping)
+- Removed unused getTZOffsetMinutes helper
+- Pre-existing TS errors: 34→33 (1 removed with dead code)
+- New code: 0 TypeScript errors
+- Production build: 91 pages, 0 errors, 0 warnings
+
+Risks Resolved This Stage:
+- R4 (Notification engine lacks DailyWalk types) → RESOLVED: 4 types + 4 convenience functions added
+- R9 (No timezone handling strategy) → RESOLVED: All day operations use Africa/Lagos via Intl.DateTimeFormat
+
+Pre-Implementation Checklist Progress:
+- [x] R6 Prisma logging fix (Stage 2)
+- [x] 4 Prisma models added (Stage 2)
+- [x] Migration generated (Stage 2)
+- [x] Notification types extended (Stage 3) ← DONE
+- [x] Timezone strategy defined (Stage 3) ← DONE
+- [ ] Rate limiting on check-in endpoints (Stage 4)
+- [ ] Service worker push handlers (Stage 11)
+
+Stage Summary:
+- 1 new file: src/lib/gaf/dailywalk.ts (~470 lines, 19 exported functions + 7 type/constant exports)
+- 1 modified file: src/lib/gaf/notification-engine.ts (+120 lines, 4 new types + 4 convenience functions)
+- All business logic is pure server-side, ready for API route consumption in Stage 4
+- Zero new TS errors introduced
+- Build: 91 pages, 0 errors, 0 warnings
+- R4 and R9 resolved
+
+---
+Task ID: NAV-RESTRUCTURE
+Agent: Main Agent
+Task: Navbar Restructure — Extract hamburger, add DailyWalk button, relocate menu to hero
+
+Work Log:
+- Created src/components/layout/hamburger-menu.tsx (~280 lines) — extracted entire hamburger menu system from navbar.tsx
+  - All 4 menuCategories data arrays preserved verbatim (YouthConnect, CMS, GAF, Church Info)
+  - MenuCategorySection component preserved verbatim
+  - Sheet/SheetContent/SheetTrigger preserved with all styling
+  - HamburgerMenu component exported with route-change auto-close
+  - Trigger button styled for dark hero bg: bg-white/10, backdrop-blur, border-white/15, white Menu icon
+- Rewrote src/components/layout/navbar.tsx (reduced from 673 to 107 lines)
+  - Removed: hamburger Sheet (60+ lines), desktop nav links (Home/About), Explore dropdown (90+ lines)
+  - Removed: all unused imports (Sheet, DropdownMenu, 30+ lucide icons, usePathname)
+  - Added: DailyWalk button (Footprints icon, red #D32F2F, matching Donations/Watch Live style)
+  - Reduced left padding (pl-3 sm:pl-4) to push logo closer to left edge
+  - New navbar order: Logo | DailyWalk | Donations | Watch Live
+  - Kept: scroll detection, scrolled/not-scrolled header styling, church name on lg+
+- Modified src/components/home/hero-section.tsx
+  - Changed section from `flex items-center justify-center` to `flex flex-col`
+  - Added Row 1: Hamburger button in a full-width row, right-aligned (px-3 sm:px-5 md:px-8), h-16 md:h-20 (matches navbar height)
+  - Row 2: Main hero content in flex-1 with vertical centering, below hamburger
+  - Removed pt-28/32/36 (replaced by the Row 1 spacer div matching navbar height)
+  - All hero content (logo, name, tagline, 3 pillar buttons) preserved unchanged
+- Verified: only layout.tsx imports Navbar — no other files affected
+- Production build: 91 pages, 0 errors, 0 warnings
+
+Stage Summary:
+- 1 new file: src/components/layout/hamburger-menu.tsx (280 lines)
+- 1 rewritten file: src/components/layout/navbar.tsx (673 → 107 lines, 84% reduction)
+- 1 modified file: src/components/home/hero-section.tsx (hamburger row added)
+- Navbar now has exactly 4 items: Logo | DailyWalk | Donations | Watch Live
+- Hamburger menu relocated to hero section, right-aligned, above the big logo
+- All existing menu data, links, and styling preserved verbatim
+- Zero new TS errors, build clean

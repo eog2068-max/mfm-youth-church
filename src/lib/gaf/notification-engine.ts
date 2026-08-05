@@ -32,6 +32,11 @@ export const NOTIFICATION_TYPES = [
   "cycle_closed",
   "leaderboard_rank",
   "admin_broadcast",
+  // DailyWalk notification types (Stage 3)
+  "dailywalk_streak_milestone",
+  "dailywalk_streak_broken",
+  "dailywalk_reminder",
+  "dailywalk_encouragement",
 ] as const;
 
 export type NotificationType = (typeof NOTIFICATION_TYPES)[number];
@@ -45,6 +50,10 @@ export const NOTIFICATION_TYPE_LABELS: Record<NotificationType, string> = {
   cycle_closed: "Cycle Closed",
   leaderboard_rank: "Leaderboard",
   admin_broadcast: "Announcement",
+  dailywalk_streak_milestone: "Streak Milestone",
+  dailywalk_streak_broken: "Streak Broken",
+  dailywalk_reminder: "Habit Reminder",
+  dailywalk_encouragement: "Encouragement",
 };
 
 export const NOTIFICATION_TYPE_ICONS: Record<NotificationType, string> = {
@@ -56,6 +65,10 @@ export const NOTIFICATION_TYPE_ICONS: Record<NotificationType, string> = {
   cycle_closed: "Clock",
   leaderboard_rank: "BarChart3",
   admin_broadcast: "Bell",
+  dailywalk_streak_milestone: "Flame",
+  dailywalk_streak_broken: "CloudRain",
+  dailywalk_reminder: "Clock",
+  dailywalk_encouragement: "Heart",
 };
 
 // ─── Status display labels for referrals ─────────────────────────────────────
@@ -240,5 +253,114 @@ export async function broadcastToAllMembers(
 export async function getUnreadCount(memberId: string): Promise<number> {
   return db.notification.count({
     where: { memberId, read: false },
+  });
+}
+
+// ─── DailyWalk Convenience Notifications (Stage 3) ─────────────────────────
+
+/** Milestone thresholds for streak celebrations. */
+const STREAK_MILESTONES = [7, 14, 21, 30, 50, 75, 100, 150, 200, 365] as const;
+
+/**
+ * Checks if a streak length is a milestone and notifies if so.
+ * Call this after recalculateStreak() in the check-in flow.
+ */
+export async function notifyStreakMilestoneIfNeeded(
+  memberId: string,
+  habitName: string,
+  newStreakLength: number
+) {
+  if (STREAK_MILESTONES.includes(newStreakLength as typeof STREAK_MILESTONES[number])) {
+    const encouragement =
+      newStreakLength >= 100
+        ? "Incredible dedication! You are building a lifestyle of faith."
+        : newStreakLength >= 30
+          ? "A full month of consistency! God honors your faithfulness."
+          : newStreakLength >= 7
+          ? "A full week! Keep pressing on toward the goal."
+          : "Amazing consistency! Keep going strong.";
+
+    await createNotification({
+      memberId,
+      type: "dailywalk_streak_milestone",
+      title: `${newStreakLength}-Day Streak: ${habitName}`,
+      message: `You've maintained a ${newStreakLength}-day streak for "${habitName}"! ${encouragement}`,
+      data: { habitName, streakLength: newStreakLength },
+    });
+  }
+}
+
+/**
+ * Notifies a member when their streak has been broken (called by
+ * a scheduled check or when they view the dashboard after missing a day).
+ */
+export async function notifyStreakBroken(
+  memberId: string,
+  habitName: string,
+  lostStreakLength: number
+) {
+  const message =
+    lostStreakLength >= 30
+      ? `Your ${lostStreakLength}-day streak for "${habitName}" has ended. That was an incredible run! Don't be discouraged — start again today. "Though the righteous fall seven times, they rise again." — Proverbs 24:16`
+      : lostStreakLength >= 7
+        ? `Your ${lostStreakLength}-day streak for "${habitName}" has ended. Great effort! Every day with God matters. Start fresh today.`
+        : `You missed a day for "${habitName}". That's okay — God's grace is new every morning. Check in today!`;
+
+  await createNotification({
+    memberId,
+    type: "dailywalk_streak_broken",
+    title: `Streak Ended: ${habitName}`,
+    message,
+    data: { habitName, lostStreakLength },
+  });
+}
+
+/**
+ * Creates a DailyWalk reminder notification.
+ * In Stage 11, this will also trigger a Web Push notification.
+ */
+export async function notifyDailyWalkReminder(
+  memberId: string,
+  habitName: string,
+  reminderTime: string
+) {
+  await createNotification({
+    memberId,
+    type: "dailywalk_reminder",
+    title: `Time for: ${habitName}`,
+    message: `It's ${reminderTime} — time to check in for "${habitName}". Stay faithful in your daily walk with God!`,
+    data: { habitName, reminderTime },
+  });
+}
+
+/**
+ * Sends an encouragement notification after a period of struggle.
+ * Triggered when a member's mood is consistently "struggling" or "tough".
+ */
+export async function notifyDailyWalkEncouragement(
+  memberId: string
+) {
+  const encouragements = [
+    {
+      title: "You're Not Alone",
+      message: "Even in the tough seasons, God is with you. \"Cast all your anxiety on Him because He cares for you.\" — 1 Peter 5:7",
+    },
+    {
+      title: "Fresh Start Today",
+      message: "Every day is a new opportunity to seek God. \"Because of the Lord's great love we are not consumed, for His compassions never fail. They are new every morning.\" — Lamentations 3:22-23",
+    },
+    {
+      title: "Strength for Today",
+      message: "\"I can do all things through Christ who strengthens me.\" — Philippians 4:13. You've got this — not in your own power, but His.",
+    },
+  ];
+
+  const pick = encouragements[Math.floor(Math.random() * encouragements.length)];
+
+  await createNotification({
+    memberId,
+    type: "dailywalk_encouragement",
+    title: pick.title,
+    message: pick.message,
   });
 }
