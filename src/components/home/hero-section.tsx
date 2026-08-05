@@ -24,8 +24,11 @@ export function HeroSection() {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-red-400/5 rounded-full blur-3xl" />
 
+      {/* ── Spacer: push below fixed navbar (h-16 md:h-20) ── */}
+      <div className="h-16 md:h-20 shrink-0" />
+
       {/* ── Row 1: Hamburger (right-aligned, below navbar, close to page edge) ── */}
-      <div className="relative z-10 flex justify-end px-3 sm:px-5 md:px-8 h-16 md:h-20 shrink-0">
+      <div className="relative z-10 flex justify-end px-3 sm:px-5 md:px-8 py-1.5 shrink-0">
         <HamburgerMenu />
       </div>
 

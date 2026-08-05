@@ -83,11 +83,11 @@ export function Navbar() {
             {/* 2. DailyWalk — red button matching Donations/Watch Live style */}
             <Button
               asChild
-              className="inline-flex items-center gap-1.5 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg px-2 sm:px-2.5 py-1 h-8 sm:h-9 font-semibold shadow-md text-xs"
+              className="inline-flex items-center gap-1.5 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg px-2.5 sm:px-3 py-1 h-8 sm:h-9 font-semibold shadow-md text-xs"
             >
               <Link href="/dailywalk" className="flex items-center gap-1.5">
                 <Footprints className="size-3.5" />
-                <span className="hidden xs:inline">DailyWalk</span>
+                <span>DailyWalk</span>
               </Link>
             </Button>
 
