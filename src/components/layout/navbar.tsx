@@ -40,11 +40,11 @@ export function Navbar() {
           : "bg-[#F3E5F5]/70 backdrop-blur-md border-b border-white/30"
       )}
     >
-      <nav className="max-w-7xl mx-auto pl-3 sm:pl-4 pr-3 sm:pr-4 lg:pr-6">
+      <nav className="max-w-7xl mx-auto pl-2 sm:pl-4 pr-2 sm:pr-4 lg:pr-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* ── 1. Logo (extreme left, tighter padding) ── */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0">
-            <div className="relative h-10 w-10 md:h-12 md:w-12 rounded-full bg-white/90 p-0.5 shadow-md">
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <div className="relative h-9 w-9 md:h-12 md:w-12 rounded-full bg-white/90 p-0.5 shadow-md">
               <Image
                 src="/mfm-logo.png"
                 alt="Mountain of Fire and Miracles Ministries"
@@ -79,13 +79,13 @@ export function Navbar() {
           </Link>
 
           {/* ── 2-4. Action buttons (right side) ── */}
-          <div className="flex items-center gap-1.5 sm:gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             {/* 2. DailyWalk — red button matching Donations/Watch Live style */}
             <Button
               asChild
-              className="inline-flex items-center gap-1.5 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg px-2.5 sm:px-3 py-1 h-8 sm:h-9 font-semibold shadow-md text-xs"
+              className="inline-flex items-center gap-1 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg px-1.5 sm:px-3 py-1 h-8 sm:h-9 font-semibold shadow-md text-xs"
             >
-              <Link href="/dailywalk" className="flex items-center gap-1.5">
+              <Link href="/dailywalk" className="flex items-center gap-1">
                 <Footprints className="size-3.5" />
                 <span>DailyWalk</span>
               </Link>
@@ -94,7 +94,7 @@ export function Navbar() {
             {/* 3. Donations */}
             <Link
               href="/giving"
-              className="inline-flex items-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg pl-1 pr-2 h-8 sm:h-9 shadow-md transition-colors"
+              className="inline-flex items-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg pl-1 pr-1.5 sm:pr-2 h-8 sm:h-9 shadow-md transition-colors"
             >
               <svg width="26" height="33" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 self-start mt-[1px]" aria-hidden="true">
                 <path d="M12 3c-1 0-1.5.5-1.5 1.5V6L8 8.5C6.5 10 6 12 6 14c0 3.5 2.5 6 6 6s6-2.5 6-6c0-2-.5-4-2-5.5L13.5 6V4.5C13.5 3.5 13 3 12 3z" />
@@ -116,9 +116,9 @@ export function Navbar() {
             {/* 4. Watch Live */}
             <Button
               asChild
-              className="inline-flex items-center gap-1.5 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg px-2 sm:px-2.5 py-1 h-8 sm:h-9 font-semibold shadow-md text-xs"
+              className="inline-flex items-center gap-1 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg px-1.5 sm:px-2.5 py-1 h-8 sm:h-9 font-semibold shadow-md text-xs"
             >
-              <Link href="/live" className="flex items-center gap-1.5">
+              <Link href="/live" className="flex items-center gap-1">
                 <Radio className="size-3.5" />
                 <span>Watch Live</span>
               </Link>
