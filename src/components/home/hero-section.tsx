@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { HamburgerMenu } from "@/components/layout/hamburger-menu";
 
 export function HeroSection() {
   return (
@@ -23,11 +24,16 @@ export function HeroSection() {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-red-400/5 rounded-full blur-3xl" />
 
-      {/* ── Spacer: push below fixed navbar (h-16 md:h-20) ── */}
+      {/* ── Spacer: push below fixed navbar (h-16 md:h-20) + extra breathing room ── */}
       <div className="h-16 md:h-20 shrink-0" />
 
+      {/* ── Hamburger menu (white, top-right of hero) ── */}
+      <div className="absolute top-20 md:top-[5.25rem] right-3 z-20">
+        <HamburgerMenu iconColor="white" />
+      </div>
+
       {/* ── Main hero content (centered, vertically fills remaining space) ── */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 pb-10">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 pt-6 pb-4">
         <div className="text-center max-w-4xl mx-auto">
           {/* Logo */}
           <motion.div
@@ -82,7 +88,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-10 flex flex-col gap-3 max-w-sm mx-auto"
+            className="mt-6 flex flex-col gap-2.5 max-w-sm mx-auto"
           >
             {/* 1. YouthConnect */}
             <Link

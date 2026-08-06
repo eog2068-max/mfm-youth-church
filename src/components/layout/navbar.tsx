@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Radio,
   Footprints,
@@ -11,11 +12,12 @@ import { cn } from "@/lib/utils";
 import { HamburgerMenu } from "./hamburger-menu";
 
 // ──────────────────────────────────────────────────────────────
-// Navbar: Hamburger | DailyWalk | Donations | Watch Live
-// Logo removed — hamburger menu restored for site-wide navigation.
+// Navbar: DailyWalk | Donations | Watch Live  [+ Hamburger on non-home pages]
 // ──────────────────────────────────────────────────────────────
 
 export function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -42,12 +44,12 @@ export function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* ── 1-3. Action buttons (left side) ── */}
-          <div className="flex items-center gap-1 sm:gap-2">
-            {/* 2. DailyWalk */}
+          {/* ── 3 Action buttons (centered with equal gaps) ── */}
+          <div className="flex items-center gap-2 sm:gap-3 mx-auto">
+            {/* 1. DailyWalk */}
             <Button
               asChild
-              className="inline-flex items-center gap-1 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg px-1.5 sm:px-3 py-1 h-8 sm:h-9 font-semibold shadow-md text-xs"
+              className="inline-flex items-center gap-1 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-sm px-2 sm:px-3 py-1 h-8 sm:h-9 font-semibold shadow-md text-xs"
             >
               <Link href="/dailywalk" className="flex items-center gap-1">
                 <Footprints className="size-3.5" />
@@ -55,10 +57,10 @@ export function Navbar() {
               </Link>
             </Button>
 
-            {/* 3. Donations */}
+            {/* 2. Donations — elongated so text stays on 2 lines */}
             <Link
               href="/giving"
-              className="inline-flex items-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg pl-1 pr-1.5 sm:pr-2 h-8 sm:h-9 shadow-md transition-colors"
+              className="inline-flex items-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-sm pl-1 pr-2 sm:pr-3 h-8 sm:h-9 shadow-md transition-colors"
             >
               <svg width="26" height="33" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 self-start mt-[1px]" aria-hidden="true">
                 <path d="M12 3c-1 0-1.5.5-1.5 1.5V6L8 8.5C6.5 10 6 12 6 14c0 3.5 2.5 6 6 6s6-2.5 6-6c0-2-.5-4-2-5.5L13.5 6V4.5C13.5 3.5 13 3 12 3z" />
@@ -71,28 +73,30 @@ export function Navbar() {
                 <span className="text-[10px] sm:text-[11px] font-extrabold tracking-wider uppercase text-white">
                   Donations
                 </span>
-                <span className="text-[8px] sm:text-[9px] font-normal tracking-wide text-white">
+                <span className="text-[8px] sm:text-[9px] font-normal tracking-wide text-white whitespace-nowrap">
                   Give To The Lord
                 </span>
               </span>
             </Link>
 
-            {/* 4. Watch Live */}
+            {/* 3. Watch Live */}
             <Button
               asChild
-              className="inline-flex items-center gap-1 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg px-1.5 sm:px-2.5 py-1 h-8 sm:h-9 font-semibold shadow-md text-xs"
+              className="inline-flex items-center gap-1 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-sm px-2 sm:px-2.5 py-1 h-8 sm:h-9 font-semibold shadow-md text-xs"
             >
               <Link href="/live" className="flex items-center gap-1">
                 <Radio className="size-3.5" />
                 <span>Watch Live</span>
               </Link>
             </Button>
+          </div>
 
-            {/* 4. Hamburger menu (right side) ── */}
-            <div className="shrink-0">
+          {/* ── Hamburger: only on non-home pages (right side) ── */}
+          {!isHome && (
+            <div className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2">
               <HamburgerMenu />
             </div>
-          </div>
+          )}
         </div>
       </nav>
     </header>

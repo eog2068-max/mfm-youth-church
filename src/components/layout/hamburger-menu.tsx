@@ -361,7 +361,7 @@ function MenuCategorySection({
 // Exported HamburgerMenu component
 // ──────────────────────────────────────────────────────────────
 
-export function HamburgerMenu() {
+export function HamburgerMenu({ iconColor = "black" }: { iconColor?: string }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -379,7 +379,7 @@ export function HamburgerMenu() {
           className="p-2 rounded-lg hover:bg-black/5 transition-all duration-200 group"
           aria-label="Open menu"
         >
-          <Menu className="size-6 text-black group-hover:scale-110 transition-transform" />
+          <Menu className={cn("size-7 group-hover:scale-110 transition-transform", iconColor === "white" ? "text-white hover:bg-white/10" : "text-black hover:bg-black/5")} />
         </button>
       </SheetTrigger>
       <SheetContent side="right" className="w-80 overflow-y-auto p-0">
