@@ -379,7 +379,7 @@ export function HamburgerMenu() {
           className="p-2 rounded-lg hover:bg-black/5 transition-all duration-200 group"
           aria-label="Open menu"
         >
-          <Menu className="size-5 text-[#4A148C] group-hover:scale-110 transition-transform" />
+          <Menu className="size-6 text-black group-hover:scale-110 transition-transform" />
         </button>
       </SheetTrigger>
       <SheetContent side="right" className="w-80 overflow-y-auto p-0">

@@ -27,7 +27,7 @@ export function HeroSection() {
       <div className="h-16 md:h-20 shrink-0" />
 
       {/* ── Main hero content (centered, vertically fills remaining space) ── */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 pb-3">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 pb-10">
         <div className="text-center max-w-4xl mx-auto">
           {/* Logo */}
           <motion.div
@@ -82,17 +82,17 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-6 flex flex-col gap-2.5 max-w-sm mx-auto"
+            className="mt-10 flex flex-col gap-3 max-w-sm mx-auto"
           >
             {/* 1. YouthConnect */}
             <Link
               href="/social"
               className="flex flex-col items-center justify-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-red-500/20 border border-white/20"
             >
-              <span className="text-3xl md:text-4xl font-bold tracking-wide">
+              <span className="text-lg md:text-2xl font-bold tracking-wide">
                 YouthConnect
               </span>
-              <span className="text-base md:text-lg font-medium leading-tight">
+              <span className="text-xs md:text-sm font-medium leading-tight">
                 Connecting Members 24/7 Round The Week
               </span>
               <span className="text-xs font-normal leading-tight text-white/80">
@@ -105,10 +105,10 @@ export function HeroSection() {
               href="/go-a-fishing"
               className="flex flex-col items-center justify-center bg-[#7B1FA2] hover:bg-[#4A148C] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-purple-500/20 border border-white/20 shadow-md shadow-black/10"
             >
-              <span className="text-3xl md:text-4xl font-bold tracking-wide">
+              <span className="text-lg md:text-2xl font-bold tracking-wide">
                 Go-A-Fishing
               </span>
-              <span className="text-base md:text-lg font-medium leading-tight">
+              <span className="text-xs md:text-sm font-medium leading-tight">
                 Engage & Get Rewarded
               </span>
               <span className="text-xs font-normal leading-tight text-white/80">
@@ -121,10 +121,10 @@ export function HeroSection() {
               href="/cms"
               className="flex flex-col items-center justify-center bg-[#5C6BC0] hover:bg-[#3F51B5] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-indigo-500/20 border border-white/20 shadow-md shadow-black/10"
             >
-              <span className="text-3xl md:text-4xl font-bold tracking-wide">
+              <span className="text-lg md:text-2xl font-bold tracking-wide">
                 Organa
               </span>
-              <span className="text-base md:text-lg font-medium leading-tight">
+              <span className="text-xs md:text-sm font-medium leading-tight">
                 We&rsquo;re Well Organized
               </span>
               <span className="text-xs font-normal leading-tight text-white/80">

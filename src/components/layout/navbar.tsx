@@ -42,12 +42,7 @@ export function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* ── 1. Hamburger menu (left side) ── */}
-          <div className="shrink-0">
-            <HamburgerMenu />
-          </div>
-
-          {/* ── 2-4. Action buttons (right side) ── */}
+          {/* ── 1-3. Action buttons (left side) ── */}
           <div className="flex items-center gap-1 sm:gap-2">
             {/* 2. DailyWalk */}
             <Button
@@ -92,6 +87,11 @@ export function Navbar() {
                 <span>Watch Live</span>
               </Link>
             </Button>
+
+            {/* 4. Hamburger menu (right side) ── */}
+            <div className="shrink-0">
+              <HamburgerMenu />
+            </div>
           </div>
         </div>
       </nav>
