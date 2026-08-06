@@ -2,17 +2,17 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   Radio,
   Footprints,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { HamburgerMenu } from "./hamburger-menu";
 
 // ──────────────────────────────────────────────────────────────
-// Slim Navbar: Logo | DailyWalk | Donations | Watch Live
-// Hamburger menu extracted to hamburger-menu.tsx
+// Navbar: Hamburger | DailyWalk | Donations | Watch Live
+// Logo removed — hamburger menu restored for site-wide navigation.
 // ──────────────────────────────────────────────────────────────
 
 export function Navbar() {
@@ -40,47 +40,16 @@ export function Navbar() {
           : "bg-[#F3E5F5]/70 backdrop-blur-md border-b border-white/30"
       )}
     >
-      <nav className="max-w-7xl mx-auto pl-2 sm:pl-4 pr-2 sm:pr-4 lg:pr-6">
+      <nav className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* ── 1. Logo (extreme left, tighter padding) ── */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <div className="relative h-9 w-9 md:h-12 md:w-12 rounded-full bg-white/90 p-0.5 shadow-md">
-              <Image
-                src="/mfm-logo.png"
-                alt="Mountain of Fire and Miracles Ministries"
-                fill
-                sizes="40px"
-                className="object-contain"
-                priority
-              />
-            </div>
-            <div className="hidden lg:block">
-              <p
-                className={cn(
-                  "text-sm font-bold leading-tight transition-colors",
-                  mounted && scrolled
-                    ? "text-white"
-                    : "text-[#4A148C]/90"
-                )}
-              >
-                Mountain of Fire and Miracles Ministries
-              </p>
-              <p
-                className={cn(
-                  "text-xs leading-tight transition-colors",
-                  mounted && scrolled
-                    ? "text-purple-200/80"
-                    : "text-gray-600"
-                )}
-              >
-                (Youth Church)
-              </p>
-            </div>
-          </Link>
+          {/* ── 1. Hamburger menu (left side) ── */}
+          <div className="shrink-0">
+            <HamburgerMenu />
+          </div>
 
           {/* ── 2-4. Action buttons (right side) ── */}
           <div className="flex items-center gap-1 sm:gap-2">
-            {/* 2. DailyWalk — red button matching Donations/Watch Live style */}
+            {/* 2. DailyWalk */}
             <Button
               asChild
               className="inline-flex items-center gap-1 bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-lg px-1.5 sm:px-3 py-1 h-8 sm:h-9 font-semibold shadow-md text-xs"

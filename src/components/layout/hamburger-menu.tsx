@@ -376,10 +376,10 @@ export function HamburgerMenu() {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <button
-          className="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/15 transition-all duration-200 group"
+          className="p-2 rounded-lg hover:bg-black/5 transition-all duration-200 group"
           aria-label="Open menu"
         >
-          <Menu className="size-6 text-white group-hover:scale-110 transition-transform" />
+          <Menu className="size-5 text-[#4A148C] group-hover:scale-110 transition-transform" />
         </button>
       </SheetTrigger>
       <SheetContent side="right" className="w-80 overflow-y-auto p-0">

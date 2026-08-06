@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { HamburgerMenu } from "@/components/layout/hamburger-menu";
 
 export function HeroSection() {
   return (
@@ -27,12 +26,7 @@ export function HeroSection() {
       {/* ── Spacer: push below fixed navbar (h-16 md:h-20) ── */}
       <div className="h-16 md:h-20 shrink-0" />
 
-      {/* ── Row 1: Hamburger (right-aligned, below navbar, close to page edge) ── */}
-      <div className="relative z-10 flex justify-end px-3 sm:px-5 md:px-8 py-1.5 shrink-0">
-        <HamburgerMenu />
-      </div>
-
-      {/* ── Row 2+: Main hero content (centered, vertically fills remaining space) ── */}
+      {/* ── Main hero content (centered, vertically fills remaining space) ── */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 pb-3">
         <div className="text-center max-w-4xl mx-auto">
           {/* Logo */}
@@ -95,13 +89,13 @@ export function HeroSection() {
               href="/social"
               className="flex flex-col items-center justify-center bg-[#D32F2F] hover:bg-[#B71C1C] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-red-500/20 border border-white/20"
             >
-              <span className="text-sm md:text-base font-bold tracking-wide">
+              <span className="text-xl md:text-2xl font-bold tracking-wide">
                 YouthConnect
               </span>
-              <span className="text-xs font-medium leading-tight">
+              <span className="text-sm font-medium leading-tight">
                 Connecting Members 24/7 Round The Week
               </span>
-              <span className="text-[10px] font-normal leading-tight text-white/80">
+              <span className="text-xs font-normal leading-tight text-white/80">
                 Church Connect System - CCS
               </span>
             </Link>
@@ -111,13 +105,13 @@ export function HeroSection() {
               href="/go-a-fishing"
               className="flex flex-col items-center justify-center bg-[#7B1FA2] hover:bg-[#4A148C] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-purple-500/20 border border-white/20 shadow-md shadow-black/10"
             >
-              <span className="text-sm md:text-base font-bold tracking-wide">
+              <span className="text-xl md:text-2xl font-bold tracking-wide">
                 Go-A-Fishing
               </span>
-              <span className="text-xs font-medium leading-tight">
+              <span className="text-sm font-medium leading-tight">
                 Engage & Get Rewarded
               </span>
-              <span className="text-[10px] font-normal leading-tight text-white/80">
+              <span className="text-xs font-normal leading-tight text-white/80">
                 Digital Evangelism System - DES
               </span>
             </Link>
@@ -127,13 +121,13 @@ export function HeroSection() {
               href="/cms"
               className="flex flex-col items-center justify-center bg-[#5C6BC0] hover:bg-[#3F51B5] text-white rounded-sm py-2 px-6 transition-all hover:shadow-lg hover:shadow-indigo-500/20 border border-white/20 shadow-md shadow-black/10"
             >
-              <span className="text-sm md:text-base font-bold tracking-wide">
+              <span className="text-xl md:text-2xl font-bold tracking-wide">
                 Organa
               </span>
-              <span className="text-xs font-medium leading-tight">
+              <span className="text-sm font-medium leading-tight">
                 We&rsquo;re Well Organized
               </span>
-              <span className="text-[10px] font-normal leading-tight text-white/80">
+              <span className="text-xs font-normal leading-tight text-white/80">
                 Church Management System - CMS
               </span>
             </Link>

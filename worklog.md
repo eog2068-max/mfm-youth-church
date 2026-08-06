@@ -1166,3 +1166,67 @@ Stage Summary:
 - Hamburger menu relocated to hero section, right-aligned, above the big logo
 - All existing menu data, links, and styling preserved verbatim
 - Zero new TS errors, build clean
+
+---
+Task ID: DW-S5
+Agent: Main Agent
+Task: DailyWalk Stage 5 — Page Shell
+
+Work Log:
+- Created src/app/dailywalk/page.tsx — Server Component with auth gate (getCurrentMember + redirect to /go-a-fishing/login), metadata
+- Created src/app/dailywalk/loading.tsx — uses DailyWalkSkeleton for Next.js streaming loading
+- Created src/components/dailywalk/dailywalk-shell.tsx — Client Component that:
+  - Fetches /api/dailywalk/summary on mount
+  - Shows DailyWalkSkeleton during load
+  - Shows error state with retry button on failure
+  - Shows DailyWalkEmptyState when no habits exist
+  - Shows stats row (4 cards: Today, Best Streak, Completion %, Total check-ins)
+  - Shows habit list with check-in indicators and streak badges
+  - Has placeholder FAB button for Stage 7 (create habit form)
+- Created src/components/dailywalk/dailywalk-skeleton.tsx — Skeleton matching the shell layout (4 stat cards + section header + 3 habit card rows)
+- Created src/components/dailywalk/dailywalk-empty-state.tsx — Empty state with Footprints illustration, suggested quick-start habits (Morning Prayer, Scripture Reading, Worship), CTA button for Stage 7
+- Pre-existing TS errors: 34 (no new errors)
+- Production build: 92 pages, 0 errors, 0 warnings
+- /dailywalk route registered in build output
+
+Stage Summary:
+- 4 new files: 2 route files (page.tsx + loading.tsx) + 3 components (shell, skeleton, empty-state)
+- Auth gate via getCurrentMember() → redirect to /go-a-fishing/login
+- Full loading/error/empty/content state handling
+- Stats row and habit list are pre-built but will be enhanced in Stage 6
+- Zero new TS errors, build clean
+
+---
+Task ID: DW-S6
+Agent: Main Agent
+Task: DailyWalk Stage 6 — Dashboard View
+
+Work Log:
+- Created src/components/dailywalk/completion-ring.tsx — SVG circular progress ring
+  - Animated on mount and value change via framer-motion
+  - Shows percentage in center, color shifts purple → green when 100%
+- Created src/components/dailywalk/mood-picker.tsx — standalone mood picker (5 moods with emoji)
+  - Used as optional post-check-in flow
+  - Skip/Save buttons
+- Created src/components/dailywalk/habit-card.tsx — full interactive habit card
+  - Tap icon to check in (calls /api/dailywalk/checkin)
+  - Inline undo with confirmation (calls /api/dailywalk/checkin action=undo)
+  - Inline mood picker slides down after check-in (5 emoji quick-pick)
+  - Streak badge with color from habit
+  - Not-due habits shown dimmed with category label
+  - Done habits shown in green with CheckCircle2 animation (spring physics)
+- Rewrote src/components/dailywalk/dailywalk-shell.tsx
+  - Replaced old stat cards + flat habit list with: hero card (completion ring + 4 mini stats) + HabitCard list
+  - Optimistic check-in: instant UI update, API call in background, revert on failure
+  - Optimistic undo: same pattern
+  - Completion ring + stats re-render immediately on check-in/undo
+- Fixed import bug in habit-card.tsx (missing @/ prefix on button)
+- Pre-existing TS errors: 34 (no new errors)
+- Production build: 92 pages, 0 errors, 0 warnings
+
+Stage Summary:
+- 3 new component files: completion-ring.tsx, mood-picker.tsx, habit-card.tsx
+- 1 rewritten file: dailywalk-shell.tsx (full dashboard with optimistic updates)
+- Interactive check-in, undo, mood selection all working
+- Zero new TS errors, build clean
+- Ready for Stage 7 (Create/Edit Habit Form)
