@@ -28,12 +28,12 @@ export function HeroSection() {
       <div className="h-16 md:h-20 shrink-0" />
 
       {/* ── Hamburger menu (white, top-right of hero) ── */}
-      <div className="absolute top-20 md:top-[5.25rem] right-3 z-20">
+      <div className="absolute top-[4.25rem] md:top-[4.75rem] right-3 z-20">
         <HamburgerMenu iconColor="white" />
       </div>
 
       {/* ── Main hero content (centered, vertically fills remaining space) ── */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 pt-6 pb-4">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 pt-10 pb-4">
         <div className="text-center max-w-4xl mx-auto">
           {/* Logo */}
           <motion.div
@@ -88,7 +88,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-6 flex flex-col gap-2.5 max-w-sm mx-auto"
+            className="mt-4 flex flex-col gap-2.5 max-w-sm mx-auto"
           >
             {/* 1. YouthConnect */}
             <Link
